@@ -1,0 +1,374 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    font-family: 'Exo', sans-serif;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, #00c6ff, #F2F2F2, #FFFFFF);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+.box {
+    position: relative;
+    width: 100%;
+    opacity: 1;
+}
+
+.box h4{
+    margin-top: 2%;
+}
+
+.our-services {
+    margin-top: 70px;
+    padding-bottom: 150px;
+    padding: 0 40px;
+    min-height: 120px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 25px 0 rgba(20, 27, 202, .17);
+    opacity: 1;
+}
+
+.our-services .icon {
+    margin-bottom: -21px;
+    transform: translateY(-50%);
+    text-align: center
+}
+
+.our-services:hover h4,
+.our-services:hover p {
+    color: #fff
+}
+
+.speedup:hover {
+    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+    cursor: pointer;
+    background-image: linear-gradient(-45deg, #fb0054 0%, #f55b2a 100%)
+}
+
+.settings:hover {
+    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+    cursor: pointer;
+    background-color: #00c6ff;
+}
+
+.privacy:hover {
+    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+    cursor: pointer;
+    background-image: linear-gradient(-45deg, #3615e7 0%, #44a2f6 100%)
+}
+
+.backups:hover {
+    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+    cursor: pointer;
+    background-color: #00c6ff;
+}
+
+.ssl:hover {
+    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+    cursor: pointer;
+    background-image: linear-gradient(-45deg, #8d40fb 0%, #5a57fb 100%)
+}
+
+.database:hover {
+    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+    cursor: pointer;
+    background-image: linear-gradient(-45deg, #27b88d 0%, #22dd73 100%)
+}
+
+.context {
+    height: 100%;
+    width: 100%;
+    top:1%;    
+    
+}
+
+.context h1{
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+}
+
+
+.area{
+    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+    width: 100%;
+    height:100%;
+}
+
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: #FBF3E4;
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+    
+}
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
+
+/* Modal Styles */
+#css-modal {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+  z-index: 10000000;
+}
+
+#css-modal h2 {
+  color: #0198cc;
+  font-size: 2em;
+  letter-spacing: 0.02em;
+  padding: 0;
+  margin-bottom: 0.5em;
+  margin-top: 0;
+}
+
+#css-modal .css-modal-check {
+  display: none;
+  pointer-events: auto;
+}
+
+#css-modal .css-modal-check:checked ~ .css-modal {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#css-modal .css-modal {
+  background: #fff;
+  border-radius: 3px;
+  display: inline-block;
+  max-width: 550px;
+  opacity: 0;
+  padding: 2.25em;
+  pointer-events: none;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  white-space: normal;
+  z-index: 1;
+}
+
+#css-modal .css-modal p {
+  text-align: center;
+}
+
+#css-modal .css-modal .close {
+  position: absolute;
+  right: 1em;
+  top: 0.5em;
+}
+
+#css-modal .css-modal .css-modal-btn button {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-top: 1em;
+}
+
+#css-modal .css-modal-check:checked ~ #overlay {
+  opacity: 0.8;
+  pointer-events: auto;
+}
+
+#css-modal #overlay {
+  background: #000;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 0.8s;
+}
+
+#css-modal:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.close:after {
+  color: #0198cc;
+  content: "\0058";
+  float: right;
+  font-size: 1.75em;
+}
+
+#css-modal .btn-primary {
+  color: #fff;
+  background-color: #0198cc;
+}
+
+#css-modal .btn-primary:hover {
+  background-color: #01afea;
+}
+
+#css-modal .btn {
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0.75em 1.25em;
+  text-align: center;
+}
+.context {
+    overflow-y: auto;
+    height: 100vh; /* Ubah tinggi sesuai kebutuhan */
+}
+.width-card{
+    width: 100px;
+}
+.table-flex{
+    padding-top: 20px;
+    width: 85%;
+}
+.height-img{
+    height: 100px;
+}
+.width-img-70{
+    width: 70px;
+}
+.width-img-72{
+    width: 72px;
+}
+.width-img-83{
+    width: 83px;
+}
+.width-img-60{
+    width: 60px;
+}
+.width-img-120{
+    width: 120px;
+}
+.width-img-100{
+    width: 100px;
+}
+.width-img-80{
+    width: 80px;
+}
+
+.gap-flex{
+    padding: 10px;
+}
+.Bg{
+    background-image:url(https://i.pinimg.com/564x/3a/c5/ff/3ac5ff639e701804aaa3142f305df7ee.jpg) ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
