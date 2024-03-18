@@ -1,218 +1,212 @@
-*{
-    margin: 0px;
-    padding: 0px;
+* {
+  margin: 0px;
+  padding: 0px;
 }
 
-body{
-    font-family: 'Exo', sans-serif;
-    background: rgb(0,0,0);
-    background: linear-gradient(0deg, #00c6ff, #F2F2F2, #FFFFFF);
-    width: 100%;
-    height: 100%;
-    position: fixed;
+body {
+  font-family: "Exo", sans-serif;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, #00c6ff, #f2f2f2, #ffffff);
+  width: 100%;
+  height: 100%;
+  position: fixed;
 }
 
 .box {
-    position: relative;
-    width: 100%;
-    opacity: 1;
+  position: relative;
+  width: 100%;
+  opacity: 1;
 }
 
-.box h4{
-    margin-top: 2%;
+.box h4 {
+  margin-top: 2%;
 }
 
 .our-services {
-    margin-top: 70px;
-    padding-bottom: 150px;
-    padding: 0 40px;
-    min-height: 120px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: #fff;
-    transition: all .4s ease-in-out;
-    box-shadow: 0 0 25px 0 rgba(20, 27, 202, .17);
-    opacity: 1;
+  margin-top: 70px;
+  padding-bottom: 150px;
+  padding: 0 40px;
+  min-height: 120px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 0 25px 0 rgba(20, 27, 202, 0.17);
+  opacity: 1;
 }
 
 .our-services .icon {
-    margin-bottom: -21px;
-    transform: translateY(-50%);
-    text-align: center
+  margin-bottom: -21px;
+  transform: translateY(-50%);
+  text-align: center;
 }
 
 .our-services:hover h4,
 .our-services:hover p {
-    color: #fff
+  color: #fff;
 }
 
 .speedup:hover {
-    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
-    cursor: pointer;
-    background-image: linear-gradient(-45deg, #fb0054 0%, #f55b2a 100%)
+  box-shadow: 0 0 25px 0 rgba(20, 27, 201, 0.05);
+  cursor: pointer;
+  background-image: linear-gradient(-45deg, #fb0054 0%, #f55b2a 100%);
 }
 
 .settings:hover {
-    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
-    cursor: pointer;
-    background-color: #00c6ff;
+  box-shadow: 0 0 25px 0 rgba(20, 27, 201, 0.05);
+  cursor: pointer;
+  background-color: #00c6ff;
 }
 
 .privacy:hover {
-    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
-    cursor: pointer;
-    background-image: linear-gradient(-45deg, #3615e7 0%, #44a2f6 100%)
+  box-shadow: 0 0 25px 0 rgba(20, 27, 201, 0.05);
+  cursor: pointer;
+  background-image: linear-gradient(-45deg, #3615e7 0%, #44a2f6 100%);
 }
 
 .backups:hover {
-    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
-    cursor: pointer;
-    background-color: #00c6ff;
+  box-shadow: 0 0 25px 0 rgba(20, 27, 201, 0.05);
+  cursor: pointer;
+  background-color: #00c6ff;
 }
 
 .ssl:hover {
-    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
-    cursor: pointer;
-    background-image: linear-gradient(-45deg, #8d40fb 0%, #5a57fb 100%)
+  box-shadow: 0 0 25px 0 rgba(20, 27, 201, 0.05);
+  cursor: pointer;
+  background-image: linear-gradient(-45deg, #8d40fb 0%, #5a57fb 100%);
 }
 
 .database:hover {
-    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
-    cursor: pointer;
-    background-image: linear-gradient(-45deg, #27b88d 0%, #22dd73 100%)
+  box-shadow: 0 0 25px 0 rgba(20, 27, 201, 0.05);
+  cursor: pointer;
+  background-image: linear-gradient(-45deg, #27b88d 0%, #22dd73 100%);
 }
 
 .context {
-    height: 100%;
-    width: 100%;
-    top:1%;    
-    
+  height: 100%;
+  width: 100%;
+  top: 1%;
 }
 
-.context h1{
-    text-align: center;
-    color: #fff;
-    font-size: 30px;
+.context h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 30px;
 }
 
-
-.area{
-    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
-    width: 100%;
-    height:100%;
+.area {
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  width: 100%;
+  height: 100%;
 }
 
-.circles{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.circles li{
-    position: absolute;
-    display: block;
-    list-style: none;
-    width: 20px;
-    height: 20px;
-    background: #FBF3E4;
-    animation: animate 25s linear infinite;
-    bottom: -150px;
-    
+.circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: #fbf3e4;
+  animation: animate 25s linear infinite;
+  bottom: -150px;
 }
 
-.circles li:nth-child(1){
-    left: 25%;
-    width: 80px;
-    height: 80px;
-    animation-delay: 0s;
+.circles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
 }
 
-
-.circles li:nth-child(2){
-    left: 10%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 2s;
-    animation-duration: 12s;
+.circles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
 }
 
-.circles li:nth-child(3){
-    left: 70%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 4s;
+.circles li:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
 }
 
-.circles li:nth-child(4){
-    left: 40%;
-    width: 60px;
-    height: 60px;
-    animation-delay: 0s;
-    animation-duration: 18s;
+.circles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
 }
 
-.circles li:nth-child(5){
-    left: 65%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 0s;
+.circles li:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
 }
 
-.circles li:nth-child(6){
-    left: 75%;
-    width: 110px;
-    height: 110px;
-    animation-delay: 3s;
+.circles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
 }
 
-.circles li:nth-child(7){
-    left: 35%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 7s;
+.circles li:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
 }
 
-.circles li:nth-child(8){
-    left: 50%;
-    width: 25px;
-    height: 25px;
-    animation-delay: 15s;
-    animation-duration: 45s;
+.circles li:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
 }
 
-.circles li:nth-child(9){
-    left: 20%;
-    width: 15px;
-    height: 15px;
-    animation-delay: 2s;
-    animation-duration: 35s;
+.circles li:nth-child(9) {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
 }
 
-.circles li:nth-child(10){
-    left: 85%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 11s;
+.circles li:nth-child(10) {
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
 }
 
 @keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
 
-    0%{
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-        border-radius: 0;
-    }
-
-    100%{
-        transform: translateY(-1000px) rotate(720deg);
-        opacity: 0;
-        border-radius: 50%;
-    }
-
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
 }
 
 /* Modal Styles */
@@ -328,47 +322,207 @@ body{
   text-align: center;
 }
 .context {
-    overflow-y: auto;
-    height: 100vh; /* Ubah tinggi sesuai kebutuhan */
+  overflow-y: auto;
+  height: 100vh; /* Ubah tinggi sesuai kebutuhan */
 }
-.width-card{
-    width: 100px;
+.width-card {
+  width: 100px;
 }
-.table-flex{
-    padding-top: 20px;
-    width: 85%;
+.table-flex {
+  padding-top: 20px;
+  width: 85%;
 }
-.height-img{
-    height: 100px;
+.height-img {
+  height: 100px;
 }
-.width-img-70{
-    width: 70px;
+.width-img-70 {
+  width: 70px;
 }
-.width-img-72{
-    width: 72px;
+.width-img-72 {
+  width: 72px;
 }
-.width-img-83{
-    width: 83px;
+.width-img-83 {
+  width: 83px;
 }
-.width-img-60{
-    width: 60px;
+.width-img-60 {
+  width: 60px;
 }
-.width-img-120{
-    width: 120px;
+.width-img-120 {
+  width: 120px;
 }
-.width-img-100{
-    width: 100px;
+.width-img-100 {
+  width: 100px;
 }
-.width-img-80{
-    width: 80px;
+.width-img-80 {
+  width: 80px;
 }
 
-.gap-flex{
-    padding: 10px;
+.gap-flex {
+  padding: 10px;
 }
-.Bg{
-    background-image:url(https://i.pinimg.com/564x/3a/c5/ff/3ac5ff639e701804aaa3142f305df7ee.jpg) ;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.Bg {
+  background-image: url(https://i.pinimg.com/564x/3a/c5/ff/3ac5ff639e701804aaa3142f305df7ee.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.center-logo {
+  margin-bottom: 20px; /* Menambahkan jarak antara logo dan card/box */
+}
+
+@media screen and (max-width: 768px) {
+  .table-flex {
+    padding-top: 20px;
+  }
+  .height-img {
+    height: 80px;
+    padding-bottom: 50px;
+  }
+  .gap-flex {
+    padding-bottom: 50px;
+  }
+  .context {
+    overflow-y: auto;
+    height: 100vh; /* Ubah tinggi sesuai kebutuhan */
+  }
+  .our-services {
+    margin-top: 20px; /* Mengurangi margin atas pada card/box */
+    padding-bottom: 150px;
+    padding: 0 10px; /* Mengurangi padding agar lebih banyak ruang */
+    width: 90%; /* Mengatur lebar agar berada di tengah */
+    margin: 0 auto; /* Mengatur margin untuk membuatnya berada di tengah */
+    min-height: 150px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 0 25px 0 rgba(20, 27, 202, 0.17);
+    opacity: 1;
+  }
+  .box {
+    width: 150px;
+    margin: 0 auto; /* Mengatur margin untuk membuatnya berada di tengah */
+  }
+  .h3 {
+    padding: 0;
+    margin: 10px 0; /* Memberikan margin atas dan bawah 10px */
+    text-align: center;
+  }
+  .pendataan {
+    width: 75px;
+  }
+  .pembayaran {
+    width: 85px;
+  }
+  .tabungan {
+    width: 100px;
+  }
+  .keuangan {
+    width: 70px;
+  }
+  .inventaris {
+    width: 150px;
+  }
+  .ziswaf {
+    width: 120px;
+  }
+  .ppd {
+    width: 150px;
+  }
+  .komunikasi {
+    width: 125px;
+  }
+  .apbs {
+    width: 150px;
+  }
+  .kinerja {
+    width: 98px;
+  }
+  .monitoring {
+    width: 95px;
+  }
+  .saku {
+    width: 95px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .table-flex {
+    padding-top: 20px;
+  }
+  .height-img {
+    height: 80px;
+    padding-bottom: 100px;
+  }
+  .gap-flex {
+    padding-bottom: 70px;
+  }
+  .context {
+    overflow-y: auto;
+    height: 100vh; /* Ubah tinggi sesuai kebutuhan */
+  }
+  .our-services {
+    margin-top: 20px; /* Mengurangi margin atas pada card/box */
+    padding-bottom: 150px;
+    padding: 0 10px; /* Mengurangi padding agar lebih banyak ruang */
+    width: 155%; /* Mengatur lebar agar berada di tengah */
+    margin: 0px 27px ; /* Mengatur margin untuk membuatnya berada di tengah */
+    min-height: 200px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 0 25px 0 rgba(20, 27, 202, 0.17);
+    opacity: 1;
+  }
+  .box {
+    width: 150px;
+    margin: 0 auto; /* Mengatur margin untuk membuatnya berada di tengah */
+  }
+  .h3 {
+    padding: 0;
+    margin: 10px 0; /* Memberikan margin atas dan bawah 10px */
+    text-align: center;
+  }
+  .pendataan {
+    width: 85px;
+  }
+  .pembayaran {
+    width: 100px;
+  }
+  .tabungan {
+    width: 120px;
+  }
+  .keuangan {
+    width: 80px;
+  }
+  .inventaris {
+    width: 180px;
+  }
+  .ziswaf {
+    width: 150px;
+  }
+  .ppd {
+    width: 180px;
+  }
+  .komunikasi {
+    width: 155px;
+  }
+  .apbs {
+    width: 185px;
+  }
+  .kinerja {
+    width: 120px;
+  }
+  .monitoring {
+    width: 115px;
+  }
+  .saku {
+    width: 115px;
+  }
+  .flex-gap-tr{
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

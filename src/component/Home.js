@@ -46,11 +46,12 @@ const Home = () => {
                     {" "}
                     <img
                       src={Data}
-                      className="border-radius: 20px width-img-70"
+                      className="border-radius: 20px width-img-70 pendataan"
                     />{" "}
                   </div>
-                  <h3 style={{textAlign:"center"}}>PENDATAAN</h3>
+                  <h3 className="h3" >PENDATAAN</h3>
                 </div>
+                <h2></h2>
               </div>
             </td>
             <td className="width: 20% gap-flex" >
@@ -63,7 +64,7 @@ const Home = () => {
                     {" "}
                     <img
                       src={Pembayaran}
-                      className="border-radius: 20px width-img-72"
+                      className="border-radius: 20px width-img-72 pembayaran"
                     //   style={{fontSize: "1.5rem"}}
                     />{" "}
                   </div>
@@ -81,7 +82,7 @@ const Home = () => {
                     {" "}
                     <img
                       src={Tabungan}
-                      className="border-radius: 20px width-img-83"
+                      className="border-radius: 20px width-img-83 tabungan"
                     />{" "}
                   </div>
                   <h3>TABUNGAN</h3>
@@ -98,7 +99,7 @@ const Home = () => {
                     {" "}
                     <img
                       src={Keungan}
-                      className="border-radius: 20px width-img-60"
+                      className="border-radius: 20px width-img-60 keuangan"
                     />{" "}
                   </div>
                   <h3>KEUANGAN</h3>
@@ -107,7 +108,7 @@ const Home = () => {
             </td>
           </tr>
 
-          <tr align="center">
+          <tr align="center" className="flex-gap-tr">
             <td className="width: 20% gap-flex">
               <div
                 class="box"
@@ -118,7 +119,7 @@ const Home = () => {
                     {" "}
                     <img
                       src={Inventaris}
-                      className="border-radius: 20px width-img-120"
+                      className="border-radius: 20px width-img-120 inventaris"
                     />{" "}
                   </div>
                   <h3>INVENTARIS</h3>
@@ -135,7 +136,7 @@ const Home = () => {
                     {" "}
                     <img
                       src={Ziswaf}
-                      className="border-radius: 20px width-img-100"
+                      className="border-radius: 20px width-img-100 ziswaf"
                     />{" "}
                   </div>
                   <h3>ZISWAF</h3>
@@ -152,7 +153,7 @@ const Home = () => {
                     {" "}
                     <img
                       src={PPDB}
-                      className="border-radius: 20px width-img-120"
+                      className="border-radius: 20px width-img-120 ppd"
                     />{" "}
                   </div>
                   <h3>PPD</h3>
@@ -169,7 +170,7 @@ const Home = () => {
                     {" "}
                     <img
                       src={Komunikasi}
-                      className="border-radius: 20px width-img-100"
+                      className="border-radius: 20px width-img-100 komunikasi"
                     />{" "}
                   </div>
                   <h3>KOMUNIKASI</h3>
@@ -178,7 +179,7 @@ const Home = () => {
             </td>
           </tr>
 
-          <tr align="center">
+          <tr align="center" className="flex-gap-tr">
             <td className="width: 20% gap-flex">
               <div
                 class="box"
@@ -190,7 +191,7 @@ const Home = () => {
                     <img
                       src={APBS}
                       width="120px"
-                      className="border-radius: 20px width-img-120"
+                      className="border-radius: 20px width-img-120 apbs"
                     />{" "}
                   </div>
                   <h3>APBS</h3>
@@ -207,7 +208,7 @@ const Home = () => {
                     {" "}
                     <img
                       src={Kinerja}
-                      className="border-radius: 20px width-img-80"
+                      className="border-radius: 20px width-img-80 kinerja"
                     />{" "}
                   </div>
                   <h3>KINERJA</h3>
@@ -224,7 +225,7 @@ const Home = () => {
                     {" "}
                     <img
                       src={Monitoring}
-                      className="border-radius: 20px width-img-80"
+                      className="border-radius: 20px width-img-80 monitoring"
                     />{" "}
                   </div>
                   <h3>MONITORING</h3>
@@ -241,7 +242,7 @@ const Home = () => {
                     {" "}
                     <img
                       src={Uang}
-                      className="border-radius: 20px width-img-80"
+                      className="border-radius: 20px width-img-80 saku"
                     />{" "}
                   </div>
                   <h3>UANG SAKU</h3>
