@@ -1,108 +1,106 @@
 import React from "react";
 import "../css/Home.css";
-import SMKPK from "../aset/SMK PK.png";
-import Data from "../aset/pngtree-office-cartoon-data-image_1194691-removebg-preview.png";
-import Pembayaran from "../aset/bayar.png"
-import Tabungan from "../aset/pembayran.png"
-import Keungan from "../aset/uang.png"
-import Inventaris from "../aset/inventaris.png" 
-import Ziswaf from "../aset/Ziswaf.png"
-import PPDB from "../aset/siswa_sma-removebg-preview.png"
+import UKS from "../aset/uks.png";
+import Kampung from "../aset/kampung.png"
+import Absensi from "../aset/absensi.png"
+import SIS from "../aset/SIS.png"
+import BayarTagihan from "../aset/pembayaran.png" 
+import Sewa from "../aset/tabungan.png"
+import Bawaslu from "../aset/bawaslu.png"
 import Komunikasi from "../aset/Komunikasi.png"
-import APBS from "../aset/apbs.png"
-import Kinerja from "../aset/Kinerja (2).png"
-import Monitoring from "../aset/Monitoring.png"
-import Uang from "../aset/uang-saku.png";
-import Logo from "../aset/logo.png"
+import APK from "../aset/apk.png"
+import Invit from "../aset/invitatition.png"
+import Monitoring from "../aset/penggajian.png"
+import Kasir from "../aset/kasir.png"
+import Logo from "../aset/LOGO_Katalog.png"
+import PT from "../aset/pt-dinartech.png"
 const Home = () => {
   return (
-    <div class="context" >
+    <div className="context" >
       <center className="Bg">
         <table
           align="center"
           className="table-flex"
           border="0"
         >
-          <tr >
-            <td colspan="2">
+          <tbody>
+          <tr className="tbody-tr">
+            <td colSpan="2">
               <img
-                src="https://aksesbersama.my.id/assets/img/logo-sikopin-biru.png"
+                src={Logo}
                 className="height-img"
+                id="logo-logo"
               />
             </td>
-            <td colspan="2" align="right">
-              <img src={Logo} className="height-img" />
+            <td colSpan="2" align="right">
+              <img src={PT} className="logo-pt" id="logo-logo"/>
             </td>
           </tr>
 
           <tr align="center" className="flex-gap-tr"  >
             <td className="width: 20%  gap-flex" >
               <div 
-                class="box"
-                onclick="window.location='apps/index.php?menu=PENDATAAN'"
+                className="box"
               >
-                <div class="our-services backups">
-                  <div class="icon">
+                <div className="our-services backups">
+                  <div className="icon">
                     {" "}
                     <img
-                      src={Data}
+                      src={UKS}
                       className="border-radius: 20px width-img-70 pendataan"
                     />{" "}
                   </div>
-                  <h3 className="h3" >PENDATAAN</h3>
+                  <h3 className="h3" >UKS</h3>
                 </div>
                 <h2></h2>
               </div>
             </td>
             <td className="width: 20% gap-flex" >
               <div
-                class="box"
-                onclick="window.location='apps/index.php?menu=PEMBAYARAN'"
+                className="box"
               >
-                <div class="our-services backups">
-                  <div class="icon">
+                <div className="our-services backups">
+                  <div className="icon">
                     {" "}
                     <img
-                      src={Pembayaran}
+                      src={Absensi}
                       className="border-radius: 20px width-img-72 pembayaran"
                     //   style={{fontSize: "1.5rem"}}
                     />{" "}
                   </div>
-                  <h3>PEMBAYARAN</h3>
+                  <h3>Absensi</h3>
                 </div>
               </div>
             </td>
             <td className="width: 20% gap-flex">
               <div
-                class="box"
-                onclick="window.location='apps/index.php?menu=TABUNGAN'"
+                className="box"
               >
-                <div class="our-services backups">
-                  <div class="icon">
+                <div className="our-services backups">
+                  <div className="icon">
                     {" "}
                     <img
-                      src={Tabungan}
+                      src={SIS}
                       className="border-radius: 20px width-img-83 tabungan"
                     />{" "}
                   </div>
-                  <h3>TABUNGAN</h3>
+                  <h3>SIS</h3>
                 </div>
               </div>
             </td>
             <td className="width: 20% gap-flex">
               <div
-                class="box"
-                onclick="window.location='apps/index.php?menu=KEUANGAN'"
+                className="box"
               >
-                <div class="our-services backups">
-                  <div class="icon">
+                <div className="our-services backups">
+                  <div className="icon">
                     {" "}
                     <img
-                      src={Keungan}
+                      src={Kampung}
                       className="border-radius: 20px width-img-60 keuangan"
                     />{" "}
                   </div>
-                  <h3>KEUANGAN</h3>
+                  <h3>E-Kampoeng</h3>
                 </div>
               </div>
             </td>
@@ -111,150 +109,143 @@ const Home = () => {
           <tr align="center" className="flex-gap-tr">
             <td className="width: 20% gap-flex">
               <div
-                class="box"
-                onclick="window.location='apps/index.php?menu=INVENTARIS'"
+                className="box"
               >
-                <div class="our-services settings">
-                  <div class="icon">
+                <div className="our-services settings">
+                  <div className="icon">
                     {" "}
                     <img
-                      src={Inventaris}
+                      src={BayarTagihan}
                       className="border-radius: 20px width-img-120 inventaris"
                     />{" "}
                   </div>
-                  <h3>INVENTARIS</h3>
+                  <h3>Bayartagihan</h3>
                 </div>
               </div>
             </td>
             <td className="width: 20% gap-flex">
               <div
-                class="box"
-                onclick="window.location='apps/index.php?menu=ZISWAF'"
+                className="box"
               >
-                <div class="our-services settings">
-                  <div class="icon">
+                <div className="our-services settings">
+                  <div className="icon">
                     {" "}
                     <img
-                      src={Ziswaf}
+                      src={Sewa}
                       className="border-radius: 20px width-img-100 ziswaf"
                     />{" "}
                   </div>
-                  <h3>ZISWAF</h3>
+                  <h3>Sewa Ruang</h3>
                 </div>
               </div>
             </td>
             <td className="width: 20% gap-flex">
               <div
-                class="box"
-                onclick="window.location='apps/index.php?menu=PPD'"
+                className="box"
               >
-                <div class="our-services settings">
-                  <div class="icon">
+                <div className="our-services settings">
+                  <div className="icon">
                     {" "}
                     <img
-                      src={PPDB}
+                      src={Bawaslu}
                       className="border-radius: 20px width-img-120 ppd"
                     />{" "}
                   </div>
-                  <h3>PPD</h3>
+                  <h3>Bawaslu</h3>
                 </div>
               </div>
             </td>
             <td className="width: 20% gap-flex">
               <div
-                class="box"
-                onclick="window.location='apps/index.php?menu=KOMUNIKASI'"
+                className="box"
               >
-                <div class="our-services settings">
-                  <div class="icon">
+                <div className="our-services settings">
+                  <div className="icon">
                     {" "}
                     <img
                       src={Komunikasi}
                       className="border-radius: 20px width-img-100 komunikasi"
                     />{" "}
                   </div>
-                  <h3>KOMUNIKASI</h3>
+                  <h3>DinarPos</h3>
                 </div>
               </div>
             </td>
           </tr>
 
           <tr align="center" className="flex-gap-tr">
-            <td className="width: 20% gap-flex">
+            <td className="width: 20% gap-flex" colSpan="1">
               <div
-                class="box"
-                onclick="window.location='apps/index.php?menu=APBS'"
+                className="box"
               >
-                <div class="our-services settings">
-                  <div class="icon">
+                <div className="our-services settings">
+                  <div className="icon">
                     {" "}
                     <img
-                      src={APBS}
-                      width="120px"
-                      className="border-radius: 20px width-img-120 apbs"
+                      src={APK}
+                      className="border-radius: 20px width-img-122 apbs"
                     />{" "}
                   </div>
-                  <h3>APBS</h3>
+                  <h3>Aplikasi Pemilu</h3>
                 </div>
               </div>
             </td>
             <td className="width: 20% gap-flex">
               <div
-                class="box"
-                onclick="window.location='apps/index.php?menu=KINERJA'"
+                className="box"
               >
-                <div class="our-services settings">
-                  <div class="icon">
+                <div className="our-services settings">
+                  <div className="icon">
                     {" "}
                     <img
-                      src={Kinerja}
-                      className="border-radius: 20px width-img-80 kinerja"
+                      src={Invit}
+                      className="border-radius: 20px width-img-88 kinerja"
                     />{" "}
                   </div>
-                  <h3>KINERJA</h3>
+                  <h3>E-Invitation</h3>
                 </div>
               </div>
             </td>
             <td className="width: 20% gap-flex">
               <div
-                class="box"
-                onclick="window.location='apps/index.php?menu=KONSOLIDASIAN'"
+                className="box"
               >
-                <div class="our-services settings">
-                  <div class="icon">
+                <div className="our-services settings">
+                  <div className="icon">
                     {" "}
                     <img
                       src={Monitoring}
                       className="border-radius: 20px width-img-80 monitoring"
                     />{" "}
                   </div>
-                  <h3>MONITORING</h3>
+                  <h3>Data Center</h3>
                 </div>
               </div>
             </td>
             <td className="width: 20% gap-flex">
               <div
-                class="box"
-                onclick="window.location='apps/index.php?menu=UANGSAKU'"
+                className="box"
               >
-                <div class="our-services settings">
-                  <div class="icon">
+                <div className="our-services settings">
+                  <div className="icon">
                     {" "}
                     <img
-                      src={Uang}
-                      className="border-radius: 20px width-img-80 saku"
+                      src={Kasir}
+                      className="border-radius: 20px width-img-80 monitoring"
                     />{" "}
                   </div>
-                  <h3>UANG SAKU</h3>
+                  <h3>Kasir</h3>
                 </div>
               </div>
             </td>
+          
           </tr>
           <tr>
-            <td colspan="4" align="center" style={{paddingTop:"30px", paddingBottom:"30px"}}>
-              <p style={{color:"black"}}>Copyright &copy; Sikopin 2021</p>
+            <td colSpan="4" align="center" style={{paddingTop:"30px", paddingBottom:"30px"}}>
+              <p style={{color:"black"}}>Copyright &copy; E-Katalog 2024</p>
             </td>
           </tr>
+          </tbody>
         </table>
       </center>
     </div>
