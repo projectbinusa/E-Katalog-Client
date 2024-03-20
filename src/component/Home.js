@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
 import "../css/Home.css";
 import UKS from "../aset/uks.png";
 import Kampung from "../aset/kampung.png";
@@ -16,6 +17,9 @@ import Gelembung from "../aset/gelembung.png";
 import Logo from "../aset/LOGO_Katalog.png";
 import PT from "../aset/pt-dinartech.png";
 const Home = () => {
+  useEffect(() => {
+    AOS.init(); 
+  }, []);
   return (
     <div className="Bg">
       <div className="bg-element">
@@ -37,10 +41,13 @@ const Home = () => {
                 </td>
               </tr>
 
-              <tr align="center" className="flex-gap-tr kontainer">
-                <td className="width: 20%  gap-flex perCard">
-                  <div className="box face face2">
-                    <div className="our-services backups konten">
+              <tr align="center" className="flex-gap-tr">
+                <td
+                  className="width: 20%  gap-flex"
+                  data-aos="zoom-in-up"
+                >
+                  <div className="box">
+                    <div className="our-services backups">
                       <div className="icon">
                         {" "}
                         <img
@@ -58,22 +65,30 @@ const Home = () => {
                     <h2></h2>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex">
-                  <div className="box">
-                    <div className="our-services backups">
-                      <div className="icon">
-                        {" "}
-                        <img
-                          src={Absensi}
-                          className="border-radius: 20px width-img-72 pembayaran"
-                          //   style={{fontSize: "1.5rem"}}
-                        />{" "}
+                <td className="width: 20% gap-flex" data-aos="zoom-in-down">
+                  <div className="kontainer">
+                    <div className="perCard">
+                      <div className="box">
+                        <div className="our-services backups konten">
+                          <div className="icon ikon">
+                            {" "}
+                            <img
+                              src={Absensi}
+                              className="border-radius: 20px width-img-72 pembayaran fa fa-user-circle "
+                              //   style={{fontSize: "1.5rem"}}
+                            />{" "}
+                          </div>
+                          <div className="slide silde2">
+                            <div className="konten">
+                              <h3>Absensi</h3>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <h3>Absensi</h3>
                     </div>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex">
+                <td className="width: 20% gap-flex" data-aos="zoom-in-down">
                   <div className="box">
                     <div className="our-services backups">
                       <div className="icon">
@@ -87,7 +102,7 @@ const Home = () => {
                     </div>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex">
+                <td className="width: 20% gap-flex " data-aos="zoom-in-up">
                   <div className="box">
                     <div className="our-services backups">
                       <div className="icon">
@@ -103,7 +118,7 @@ const Home = () => {
                 </td>
               </tr>
 
-              <tr align="center" className="flex-gap-tr">
+              <tr align="center" className="flex-gap-tr" data-aos="zoom-in-right">
                 <td className="width: 20% gap-flex">
                   <div className="box">
                     <div className="our-services settings">
@@ -118,7 +133,7 @@ const Home = () => {
                     </div>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex">
+                <td className="width: 20% gap-flex" data-aos="zoom-in-up">
                   <div className="box">
                     <div className="our-services settings">
                       <div className="icon">
@@ -132,7 +147,7 @@ const Home = () => {
                     </div>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex">
+                <td className="width: 20% gap-flex" data-aos="zoom-in-up">
                   <div className="box">
                     <div className="our-services settings">
                       <div className="icon">
@@ -146,7 +161,7 @@ const Home = () => {
                     </div>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex">
+                <td className="width: 20% gap-flex" data-aos="zoom-in-left">
                   <div className="box">
                     <div className="our-services settings">
                       <div className="icon">
