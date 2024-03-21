@@ -17,6 +17,7 @@ import Gelembung from "../aset/gelembung.png";
 import Logo from "../aset/LOGO_Katalog.png";
 import PT from "../aset/pt-dinartech.png";
 const Home = () => {
+  
   useEffect(() => {
     AOS.init(); 
   }, []);
@@ -44,9 +45,10 @@ const Home = () => {
               <tr align="center" className="flex-gap-tr">
                 <td
                   className="width: 20%  gap-flex"
-                  data-aos="zoom-in-up"
+                  
+                  
                 >
-                  <div className="box">
+                  <div className="box wow fadeInLeft slow">
                     <div className="our-services backups">
                       <div className="icon">
                         {" "}
@@ -65,21 +67,21 @@ const Home = () => {
                     <h2></h2>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex" data-aos="zoom-in-down">
-                  <div className="kontainer">
-                    <div className="perCard">
+                <td className="width: 20% gap-flex" >
+                  <div className="">
+                    <div className="">
                       <div className="box">
-                        <div className="our-services backups konten">
-                          <div className="icon ikon">
+                        <div className="our-services backups">
+                          <div className="icon">
                             {" "}
                             <img
                               src={Absensi}
-                              className="border-radius: 20px width-img-72 pembayaran fa fa-user-circle "
+                              className="border-radius: 20px width-img-72 pembayaran  "
                               //   style={{fontSize: "1.5rem"}}
                             />{" "}
                           </div>
                           <div className="slide silde2">
-                            <div className="konten">
+                            <div className="">
                               <h3>Absensi</h3>
                             </div>
                           </div>
@@ -88,8 +90,8 @@ const Home = () => {
                     </div>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex" data-aos="zoom-in-down">
-                  <div className="box">
+                <td className="width: 20% gap-flex" >
+                  <div className="box" >
                     <div className="our-services backups">
                       <div className="icon">
                         {" "}
@@ -102,7 +104,8 @@ const Home = () => {
                     </div>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex " data-aos="zoom-in-up">
+                <td className="width: 20% gap-flex " 
+                >
                   <div className="box">
                     <div className="our-services backups">
                       <div className="icon">
@@ -118,7 +121,7 @@ const Home = () => {
                 </td>
               </tr>
 
-              <tr align="center" className="flex-gap-tr" data-aos="zoom-in-right">
+              <tr align="center" className="flex-gap-tr" >
                 <td className="width: 20% gap-flex">
                   <div className="box">
                     <div className="our-services settings">
@@ -133,7 +136,8 @@ const Home = () => {
                     </div>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex" data-aos="zoom-in-up">
+                <td className="width: 20% gap-flex" 
+                >
                   <div className="box">
                     <div className="our-services settings">
                       <div className="icon">
@@ -147,7 +151,8 @@ const Home = () => {
                     </div>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex" data-aos="zoom-in-up">
+                <td className="width: 20% gap-flex" 
+                >
                   <div className="box">
                     <div className="our-services settings">
                       <div className="icon">
@@ -161,7 +166,7 @@ const Home = () => {
                     </div>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex" data-aos="zoom-in-left">
+                <td className="width: 20% gap-flex" >
                   <div className="box">
                     <div className="our-services settings">
                       <div className="icon">
