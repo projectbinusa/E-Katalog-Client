@@ -17,6 +17,7 @@ import Gelembung from "../aset/gelembung.png";
 import Logo from "../aset/LOGO_Katalog.png";
 import PT from "../aset/pt-dinartech.png";
 import Lab from "../aset/programmer.png";
+import Wa from "../aset/wa.jpeg";
 
 const Home = () => {
   useEffect(() => {
@@ -251,48 +252,20 @@ const Home = () => {
                     </div>
                   </div>
                 </td>
-                {/* <td className="width: 20% gap-flex">
+                <td className="width: 20% gap-flex" colSpan="1">
                   <div className="box">
                     <div className="our-services settings">
                       <div className="icon">
                         {" "}
                         <img
-                          src={Invit}
-                          className="border-radius: 20px width-img-88 kinerja"
+                          src={Wa}
+                          className="border-radius: 20px width-img-122 apbs"
                         />{" "}
                       </div>
-                      <h3>E-Invitation</h3>
+                      <h3>Management WA</h3>
                     </div>
                   </div>
                 </td>
-                <td className="width: 20% gap-flex">
-                  <div className="box">
-                    <div className="our-services settings">
-                      <div className="icon">
-                        {" "}
-                        <img
-                          src={Monitoring}
-                          className="border-radius: 20px width-img-80 monitoring"
-                        />{" "}
-                      </div>
-                      <h3>Data Center</h3>
-                    </div>
-                  </div>
-                </td>
-                <td className="width: 20% gap-flex">
-                  <div className="box">
-                    <div className="our-services settings">
-                      <div className="icon">
-                        {" "}
-                        <img
-                          src={Kasir}
-                          className="border-radius: 20px width-img-80 monitoring"
-                        />{" "}
-                      </div>
-                      <h3>Kasir</h3>
-                    </div>
-                  </div>
-                </td> */}
               </tr>
               <tr>
                 <td
