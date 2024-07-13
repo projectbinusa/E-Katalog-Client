@@ -4,6 +4,20 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./component/Home";
 import { Switch } from "react-router-dom/cjs/react-router-dom.min";
 import Login from "./component/Login";
+import Uks from "./pages/Uks";
+import Absensi from "./pages/Absensi";
+import Sis from "./pages/Sis";
+import Ekampoeng from "./pages/Ekampoeng";
+import Bayartagihan from "./pages/Bayartagihan";
+import Sewaruang from "./pages/Sewaruang";
+import Bawaslu from "./pages/Bawaslu";
+import Dinarpos from "./pages/Dinarpos";
+import Pemilu from "./pages/Pemilu";
+import Invitation from "./pages/Einvitation";
+import Datacenter from "./pages/Datacenter";
+import Kasir from "./pages/Kasir";
+import Labbahasa from "./pages/Labbahasa";
+import managementwa from "./pages/ManagementWa";
 
 function App() {
   return (
@@ -13,6 +27,20 @@ function App() {
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/login" component={Login} exact />
+            <Route path="/uks" component={Uks} exact />
+            <Route path="/absensi" component={Absensi} exact />
+            <Route path="/sis" component={Sis} exact />
+            <Route path="/ekampoeng" component={Ekampoeng} exact />
+            <Route path="/bayartagihan" component={Bayartagihan} exact />
+            <Route path="/sewaruang" component={Sewaruang} exact />
+            <Route path="/bawaslu" component={Bawaslu} exact />
+            <Route path="/dinarpos" component={Dinarpos} exact />
+            <Route path="/pemilu" component={Pemilu} exact />
+            <Route path="/invitation" component={Invitation} exact />
+            <Route path="/datacenter" component={Datacenter} exact />
+            <Route path="/kasir" component={Kasir} exact />
+            <Route path="/labbahasa" component={Labbahasa} exact />
+            <Route path="/managementwa" component={managementwa} exact />
           </Switch>
         </main>
       </BrowserRouter>
