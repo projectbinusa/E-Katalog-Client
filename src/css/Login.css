@@ -1,0 +1,482 @@
+/* Please ❤ this if you like it! */
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900");
+
+body {
+  font-family: "Exo", sans-serif;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, #00c6ff, #f2f2f2, #ffffff);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+a {
+  cursor: pointer;
+  transition: all 200ms linear;
+}
+a:hover {
+  text-decoration: none;
+}
+.link {
+  color: #d3d2d8;
+}
+.link:hover {
+  color: white;
+}
+p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.7;
+}
+h4 {
+  font-weight: 600;
+}
+.card-front .section h4 {
+  color: #000000; /* Warna hitam pekat */
+}
+
+h6 span {
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.card-3d-wrap {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+.full-height {
+  min-height: 100vh;
+}
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+.checkbox:checked + label,
+.checkbox:not(:checked) + label {
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 60px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0;
+  margin: 10px auto;
+  cursor: pointer;
+  background-color: #ffeba7;
+}
+.checkbox:checked + label:before,
+.checkbox:not(:checked) + label:before {
+  position: absolute;
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: white;
+  background-color: #102770;
+  font-family: "unicons";
+  content: "\eb4f";
+  z-index: 20;
+  top: -10px;
+  left: -10px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 24px;
+  transition: all 0.5s ease;
+}
+.checkbox:checked + label:before {
+  transform: translateX(44px) rotate(-270deg);
+}
+
+.card-3d-wrap {
+  position: relative;
+  width: 440px;
+  max-width: 100%;
+  height: 400px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  margin-top: 60px;
+}
+.card-3d-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition: all 600ms ease-out;
+}
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(96, 99, 135, 0.3); /* Transparansi 80% */
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 300%;
+  position: absolute;
+  border-radius: 6px;
+  left: 0;
+  top: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+  transform: rotateY(180deg);
+}
+/* Jika Anda ingin menambahkan efek transparansi pada elemen lain */
+.card-front.active,
+.card-back.active {
+  background-color: rgba(42, 43, 56, 0.9); /* Transparansi saat aktif */
+}
+
+.center-wrap {
+  position: absolute;
+  width: 100%;
+  padding: 0 35px;
+  top: 50%;
+  left: 0;
+  transform: translate3d(0, -50%, 35px) perspective(100px);
+  z-index: 20;
+  display: block;
+}
+
+/* Style dasar untuk form-group */
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem; /* Jarak antara elemen input */
+  margin-top: 1rem; /* Jarak atas dari form-group */
+}
+
+/* Style dasar untuk input */
+.form-style {
+  padding: 13px 20px;
+  padding-left: 55px;
+  height: 48px;
+  width: 100%;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  outline: none;
+  color: #000000; /* Warna teks hitam pekat */
+  background-color: rgba(96, 99, 135, 0.3); /* Warna latar belakang input */
+  border: none;
+  transition: all 200ms linear; /* Transisi yang halus */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Efek bayangan default */
+}
+
+/* Efek saat input dalam keadaan fokus atau aktif */
+.form-style:focus,
+.form-style:active {
+  background-color: rgba(
+    96,
+    99,
+    135,
+    0.5
+  ); /* Warna latar belakang saat fokus */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Efek bayangan saat fokus */
+}
+
+/* Style untuk label */
+.form-group label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #c4c3ca;
+  transition: all 200ms linear;
+  pointer-events: none; /* Agar label tidak dapat diklik */
+}
+
+/* Style label saat input dalam keadaan fokus atau memiliki nilai */
+.form-style:focus + label,
+.form-style:not(:placeholder-shown) + label {
+  top: -10px; /* Jarak dari atas input */
+  left: 10px; /* Jarak dari kiri input */
+  font-size: 12px; /* Ukuran font lebih kecil saat label berada di atas */
+  color: white; /* Warna label saat aktif */
+}
+
+.form-style:focus,
+.form-style:active {
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
+  background-color: rgba(96, 99, 135, 0.3);
+}
+.input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0.75rem; /* Jarak dari tepi kanan input */
+  font-size: 1.5rem; /* Ukuran ikon */
+  color: white; /* Warna ikon */
+  cursor: pointer; /* Tunjukkan bahwa ikon dapat diklik */
+  pointer-events: auto; /* Aktifkan interaksi klik pada ikon */
+}
+
+.form-style {
+  padding: 13px 20px;
+  /* padding-left: 55px; */
+  height: 48px;
+  width: 100%;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  outline: none;
+  color: #000000; /* Warna teks hitam pekat */
+  background-color: rgba(96, 99, 135, 0.3); /* Warna latar belakang input */
+  border: none;
+  transition: all 200ms linear; /* Transisi yang halus */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Efek bayangan default */
+  text-align: left; /* Teks berada di pojok kiri */
+}
+
+.form-style:focus,
+.form-style:active {
+  background-color: rgba(
+    96,
+    99,
+    135,
+    0.5
+  ); /* Warna latar belakang saat fokus */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Efek bayangan saat fokus */
+  color: #000000; /* Warna teks tetap hitam pekat */
+}
+
+/* Mengatur placeholder agar menyesuaikan dengan warna latar belakang */
+.form-style::placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+}
+
+/* Mengatur placeholder saat fokus */
+.form-style:focus::placeholder {
+  opacity: 0; /* Menyembunyikan placeholder saat fokus */
+}
+
+.form-group input:-ms-input-placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input::-moz-placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input:-moz-placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input::-webkit-input-placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input:focus:-ms-input-placeholder {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input:focus::-moz-placeholder {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input:focus:-moz-placeholder {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input:focus::-webkit-input-placeholder {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.btn {
+  border-radius: 4px;
+  height: 44px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  padding: 0 30px;
+  letter-spacing: 1px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  text-align: center;
+  border: none;
+  background-color: #10a2cb;
+  color: white;
+  box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
+}
+.btn:active,
+.btn:focus {
+  background-color: #0b6781;
+  color: #47d4fb;
+  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+}
+.btn:hover {
+  background-color: #0e7d9c;
+  color: white;
+  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+}
+
+/* Style untuk logo */
+.logo {
+  margin-bottom: 0.5rem; 
+}
+
+.height-img {
+  width: 150px; 
+  height: auto;
+}
+
+.Bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Agar background berada di belakang elemen lain */
+}
+
+.bg-element {
+  position: absolute;
+}
+
+.gelembung {
+  width: 100px; /* Sesuaikan dengan kebutuhan */
+  left: 10%;
+  top: 20%;
+}
+
+.gelembung3 {
+  width: 150px; /* Sesuaikan dengan kebutuhan */
+  right: 15%;
+  bottom: 25%;
+}
+
+/* Style untuk gelembung kanan bawah */
+.gelembung-right-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: auto;
+  opacity: 0.5; /* Menyesuaikan opasitas jika diperlukan */
+}
+
+/* Animasi untuk gelembung */
+@keyframes movebubble {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.Bg .gelembung,
+.Bg .gelembung3,
+.bg .gelembung1,
+.bg .gelembung-right-bottom {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  opacity: 0.5;
+  animation: movebubble 4s infinite;
+}
+
+.Bg .gelembung {
+  top: 20%;
+  left: 20%;
+}
+
+.Bg .gelembung3 {
+  bottom: 20%;
+  right: 20%;
+}
+
+.bg .gelembung1 {
+  bottom: 10%;
+  left: 10%;
+}
+
+.bg .gelembung-right-bottom {
+  right: 10%;
+  bottom: 10%;
+}
+
+.logo-wrapper {
+  margin-bottom: 5%; /* Jarak bawah dari logo ke input */
+  margin-left: -10%; /* Geser logo ke kiri */
+}
+
+.height-img {
+  width: 150px; /* Sesuaikan lebar logo */
+  height: auto;
+}
+
+/* Media Queries untuk responsif */
+@media (max-width: 768px) {
+  .table-flex {
+    flex-direction: column;
+  }
+
+  .height-img {
+    width: 120px; /* Sesuaikan lebar logo pada layar kecil */
+  }
+
+  .card-3d-wrapper {
+    width: 90%; /* Sesuaikan lebar card pada layar kecil */
+    margin: 10px;
+    margin-left: 19px;
+    margin-bottom: 10%;
+    margin-top: 10%; /* Bergerak ke atas 10% lebih pada layar kecil */
+  }
+}
+
+.form-title {
+  font-size: 1.5rem; /* Ukuran font judul */
+  color: #333; /* Warna font judul */
+  margin-bottom: 1.5rem; /* Jarak antara judul dan form */
+}
+

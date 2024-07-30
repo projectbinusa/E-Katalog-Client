@@ -1,4 +1,6 @@
 // import logo from './logo.svg';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./component/Home";
