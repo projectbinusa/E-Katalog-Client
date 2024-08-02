@@ -63,7 +63,6 @@ function Login() {
             showConfirmButton: false,
           });
 
-          // Redirect to /dashboard
           setTimeout(() => {
             navigate("/dashboard");
           }, 2000);
