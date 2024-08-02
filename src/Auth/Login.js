@@ -11,86 +11,77 @@ import "../css/Login.css"; // Pastikan path sudah benar
 import Gelembung from "../aset/gelembung.png";
 import Logo from "../aset/LOGO_Katalog.png";
 import { useNavigate } from "react-router-dom";
+const apiUrl = "http://localhost:2007";
 
 function Login() {
-  const [usernameOrEmail, setUsernameOrEmail] = useState("");
+  const [email, setEmail] = useState(""); // Gunakan email
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
+````
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    if (!usernameOrEmail || !password) {
+  
+    if (!email || !password) {
       Swal.fire({
         icon: "error",
         title: "Login Gagal",
-        text: "Email atau Username dan Password harus diisi.",
+        text: "Email dan Password harus diisi.",
         timer: 2000,
         showConfirmButton: false,
       });
       return;
     }
-
-    const isEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
-      usernameOrEmail
-    );
-    const isUsername = /^(?=.*[A-Z])[A-Za-z\s]+$/.test(usernameOrEmail);
-
-    if (isEmail || isUsername) {
-      try {
-        const response = await axios.post(`${apiUrl}/login`, {
-          usernameOrEmail,
-          password,
-        });
-        if (response.data) {
-          const { userData, token } = response.data;
-          localStorage.setItem("token", token);
-          localStorage.setItem("username", userData.username);
-          localStorage.setItem("id", userData.id);
-          localStorage.setItem("role", userData.role);
-          localStorage.setItem("userData", JSON.stringify(userData));
-
-          Swal.fire({
-            icon: "success",
-            title: "Login Berhasil",
-            text: `Selamat datang ${userData.username}. Anda berhasil login.`,
-            timer: 2000,
-            showConfirmButton: false,
-          });
-
-          setTimeout(() => {
-            navigate("/dashboard");
-          }, 2000);
-        }
-      } catch (error) {
-        let errorMessage = "Terjadi kesalahan";
-        if (error.response?.status === 401) {
-          if (isEmail) {
-            errorMessage = "Email atau Password salah";
-          } else if (isUsername) {
-            errorMessage = "Username atau Password salah";
-          }
-        } else {
-          errorMessage = error.response?.data?.message || "Terjadi kesalahan";
-        }
+  
+    try {
+      const response = await axios.post(`${apiUrl}/api/login`, {
+        email,
+        password,
+      });
+  
+      if (response.data) {
+        const { data } = response.data;
+        const { token, data: userData } = data;
+  
+        // Simpan data di localStorage
+        localStorage.setItem("kontol")
+        localStorage.setItem("token", token);
+        localStorage.setItem("email", userData.email);
+        localStorage.setItem("id", userData.id);
+        localStorage.setItem("role", userData.role);
+        localStorage.setItem("userData", JSON.stringify(userData));
+  
         Swal.fire({
-          icon: "error",
-          title: "Login Gagal",
-          text: errorMessage,
+          icon: "success",
+          title: "Login Berhasil",
+          text: `Selamat datang ${userData.username}. Anda berhasil login.`,
           timer: 2000,
           showConfirmButton: false,
         });
+  
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
       }
-    } else {
+    } catch (error) {
+      console.error("Error login:", error); // Log detail kesalahan
+      let errorMessage = "Terjadi kesalahan";
+      if (error.response) {
+        if (error.response.status === 401) {
+          errorMessage = "Email atau Password salah";
+        } else {
+          errorMessage = error.response.data?.message || "Terjadi kesalahan";
+        }
+      }
+  
       Swal.fire({
         icon: "error",
         title: "Login Gagal",
-        text: "Format Username tidak sesuai.",
+        text: errorMessage,
         timer: 2000,
         showConfirmButton: false,
       });
@@ -135,21 +126,21 @@ function Login() {
                     >
                       <div className="form-group">
                         <input
-                          id="usernameOrEmail"
-                          className="w-full px-4 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                          type="text"
-                          placeholder="Masukkan Email atau Username"
+                          id="email"
+                          type="email"
+                          placeholder=" "
                           autoComplete="off"
-                          value={usernameOrEmail}
-                          onChange={(e) => setUsernameOrEmail(e.target.value)}
+                          onChange={(e) => setEmail(e.target.value)}
                           required
+                          className="form-style"
                         />
-                        <label htmlFor="usernameOrEmail">Email/Username</label>
+                        <label htmlFor="email">Email</label>
                         <FontAwesomeIcon
                           icon={faEnvelope}
                           className="input-icon"
                         />
                       </div>
+
                       <div className="form-group mt-2 position-relative">
                         <input
                           type={showPassword ? "text" : "password"}
@@ -158,7 +149,6 @@ function Login() {
                           placeholder=" "
                           id="password"
                           autoComplete="off"
-                          value={password}
                           onChange={(e) => setPassword(e.target.value)}
                           required
                         />

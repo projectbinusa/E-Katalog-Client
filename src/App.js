@@ -1,10 +1,8 @@
-// import logo from './logo.svg';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./App.css";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from "./component/Home";
-import { Switch } from "react-router-dom/cjs/react-router-dom.min";
 import Login from "./Auth/Login";
 import Uks from "./pages/Uks";
 import Absensi from "./pages/Absensi";
@@ -28,32 +26,32 @@ import Profile from './Admin/Profile';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
         <main>
-          <Switch>
-            <Route path="/" component={Home} exact />
-            <Route path="/login" component={Login} exact />
-            <Route path="/register" component={Register} exact />
-            <Route path="/dashboard" component={Dashboard} exact />
-            <Route path="/listprojek" component={Listp} exact />
-            <Route path="/Profile" component={Profile} exact />
-            <Route path="/uks" component={Uks} exact />
-            <Route path="/absensi" component={Absensi} exact />
-            <Route path="/sis" component={Sis} exact />
-            <Route path="/ekampoeng" component={Ekampoeng} exact />
-            <Route path="/bayartagihan" component={Bayartagihan} exact />
-            <Route path="/sewaruang" component={Sewaruang} exact />
-            <Route path="/bawaslu" component={Bawaslu} exact />
-            <Route path="/dinarpos" component={Dinarpos} exact />
-            <Route path="/pemilu" component={Pemilu} exact />
-            <Route path="/invitation" component={Invitation} exact />
-            <Route path="/datacenter" component={Datacenter} exact />
-            <Route path="/kasir" component={Kasir} exact />
-            <Route path="/labbahasa" component={Labbahasa} exact />
-            <Route path="/managementwa" component={managementwa} exact />
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Home />} exact />
+            <Route path="/login" element={<Login />} exact />
+            <Route path="/register" element={<Register />} exact />
+            <Route path="/dashboard" element={<Dashboard />} exact />
+            <Route path="/listprojek" element={<Listp />} exact />
+            <Route path="/Profile" element={<Profile />} exact />
+            <Route path="/uks" element={<Uks />} exact />
+            <Route path="/absensi" element={<Absensi />} exact />
+            <Route path="/sis" element={<Sis />} exact />
+            <Route path="/ekampoeng" element={<Ekampoeng />} exact />
+            <Route path="/bayartagihan" element={<Bayartagihan />} exact />
+            <Route path="/sewaruang" element={<Sewaruang />} exact />
+            <Route path="/bawaslu" element={<Bawaslu />} exact />
+            <Route path="/dinarpos" element={<Dinarpos />} exact />
+            <Route path="/pemilu" element={<Pemilu />} exact />
+            <Route path="/invitation" element={<Invitation />} exact />
+            <Route path="/datacenter" element={<Datacenter />} exact />
+            <Route path="/kasir" element={<Kasir />} exact />
+            <Route path="/labbahasa" element={<Labbahasa />} exact />
+            <Route path="/managementwa" element={<managementwa />} exact />
+          </Routes>
         </main>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }

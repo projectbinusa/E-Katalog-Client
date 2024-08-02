@@ -6,9 +6,15 @@
 }
 
 .content-size-wrapper {
-  max-width: 1200px; /* Atur sesuai kebutuhan */
-  margin: 20px auto; /* Geser ke bawah dan pusatkan secara horizontal */
-  padding: 20px; /* Jarak dalam div */
+  max-width: 600px; /* Atur ukuran lebih kecil */
+  margin: 0 auto; /* Pusatkan secara horizontal */
+  padding: 20px;
+  transition: all 0.5s ease; /* Tambahkan animasi saat ukuran berubah */
+}
+
+/* Ukuran lebih kecil saat di-hover */
+.content-size-wrapper:hover {
+  transform: scale(0.9); /* Mengurangi ukuran div pembungkus */
 }
 
 * {
@@ -101,7 +107,7 @@ body {
   position: relative;
   z-index: 100;
   height: 100%;
-  width: 100%;
+  width: 50%;
   top: 1%;
 }
 
@@ -661,4 +667,48 @@ body {
 }
 .box:hover {
   transform: scale(0.9) translateX(-50%); /* Shrink the box by 10% and shift it to the left by half its width */
+}
+
+.our-services {
+  margin: 20px auto; /* Geser ke bawah dan pusatkan secara horizontal */
+  padding: 20px;
+  width: 100%; /* Penuhi lebar pembungkus */
+  max-width: 400px; /* Batas maksimum ukuran card */
+  text-align: center;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 0 25px 0 rgba(20, 27, 202, 0.17);
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .content-size-wrapper {
+    max-width: 80%; /* Mengurangi ukuran di layar yang lebih kecil */
+  }
+  .our-services {
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .content-size-wrapper {
+    max-width: 100%; /* Lebar penuh pada layar sangat kecil */
+    padding: 10px;
+  }
+  .our-services {
+    max-width: 100%;
+  }
+}
+
+.crad {
+  flex: 1; /* Membuat div mengisi ruang yang tersisa */
+  overflow: auto; /* Menambahkan scrollbar jika konten lebih dari ukuran div */
+  resize: both; /* Memungkinkan resize div */
+  min-width: 300px; /* Menetapkan lebar minimum */
+  min-height: 300px; /* Menetapkan tinggi minimum */
+  padding: 10px; /* Menambahkan padding untuk ruang di sekitar konten */
+  box-sizing: border-box; /* Memastikan padding dan border dihitung dalam ukuran elemen */
+  margin-left: 50%;
 }
