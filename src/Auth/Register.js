@@ -5,12 +5,13 @@ import {
   faLock,
   faEye,
   faEyeSlash,
+  faUser, // Import faUser icon
 } from "@fortawesome/free-solid-svg-icons";
 import "../css/Login.css"; // Ensure path is correct
 import Gelembung from "../aset/gelembung.png";
 import Logo from "../aset/LOGO_Katalog.png";
 
-function Login() {
+function Register() {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -48,7 +49,7 @@ function Login() {
               <div className="card-front">
                 <div className="center-wrap">
                   <div className="section text-center">
-                    <h4 className="form-title">Login</h4> {/* Judul baru */}
+                    <h4 className="form-title">Register</h4>
                     <form>
                       <div className="form-group">
                         <input
@@ -64,6 +65,18 @@ function Login() {
                           icon={faEnvelope}
                           className="input-icon"
                         />
+                      </div>
+                      <div className="form-group mt-2">
+                        <input
+                          type="text"
+                          name="username"
+                          className="form-style"
+                          placeholder=" "
+                          id="username"
+                          autoComplete="off"
+                        />
+                        <label htmlFor="username">Username</label>
+                        <FontAwesomeIcon icon={faUser} className="input-icon" />
                       </div>
                       <div className="form-group mt-2 position-relative">
                         <input
@@ -81,14 +94,14 @@ function Login() {
                           onClick={togglePasswordVisibility}
                         />
                       </div>
-                      <button type="submit" className="btn mt-4">
-                        Log in
-                      </button>
-                      <p className="mb-0 mt-4 text-center">
+                      <p className="mb-0 mr-10">
                         <a href="#0" className="link">
-                          Forgot your password?
+                          Sudah punya akun?
                         </a>
                       </p>
+                      <button type="submit" className="btn mt-4">
+                        Register
+                      </button>
                     </form>
                   </div>
                 </div>
@@ -111,4 +124,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

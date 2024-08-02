@@ -1,0 +1,30 @@
+/* Untuk membuat tabel berada di tengah dan dapat digeser secara horizontal */
+.table-container {
+  overflow-x: auto; /* Aktifkan scrollbar horizontal saat dibutuhkan */
+  margin: 0 auto; /* Memastikan kontainer berada di tengah */
+}
+
+/* Atur ukuran div agar responsif */
+.container {
+  max-width: 100%;
+  padding: 0 15px; /* Padding untuk spasi */
+  position: fixed;
+}
+
+/* Responsif pada tampilan mobile */
+@media (max-width: 768px) {
+  .card {
+    margin-top: 5%; /* Sesuaikan margin untuk tampilan mobile */
+  }
+
+  .container {
+    padding-left: 0; /* Hapus padding kiri di tampilan mobile */
+    padding-right: 0; /* Hapus padding kanan di tampilan mobile */
+  }
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align content */
+}
