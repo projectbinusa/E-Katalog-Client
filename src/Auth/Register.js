@@ -10,12 +10,56 @@ import {
 import "../css/Login.css"; // Ensure path is correct
 import Gelembung from "../aset/gelembung.png";
 import Logo from "../aset/LOGO_Katalog.png";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState(""); // Tambahkan state untuk username
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:2007/api/register", {
+        username,
+        email,
+        password,
+        role: "ADMIN",
+      });
+      if (response.data) {
+        Swal.fire({
+          icon: "success",
+          title: "Registrasi Berhasil!",
+          text: "Anda berhasil terdaftar sebagai admin.",
+          timer: 2000,
+          showConfirmButton: false,
+        }).then(() => {
+          window.location.href = "/login"; // Arahkan ke halaman login atau home setelah registrasi
+        });
+      }
+    } catch (error) {
+      let errorMessage = "Registrasi gagal! Silakan coba lagi.";
+      if (error.response?.status === 401) {
+        errorMessage = "Username atau email sudah digunakan.";
+      } else {
+        errorMessage = error.response?.data?.message || "Terjadi kesalahan.";
+      }
+      Swal.fire({
+        icon: "error",
+        title: "Registrasi Gagal!",
+        text: errorMessage,
+        timer: 2000,
+        showConfirmButton: false,
+      });
+      console.error(error);
+    }
   };
 
   return (
@@ -50,7 +94,10 @@ function Register() {
                 <div className="center-wrap">
                   <div className="section text-center">
                     <h4 className="form-title">Register</h4>
-                    <form>
+                    <form
+                      className="mx-auto max-w-md md:max-w-full md:w-2/3 flex flex-col gap-4"
+                      onSubmit={handleRegister}
+                    >
                       <div className="form-group">
                         <input
                           type="email"
@@ -59,6 +106,9 @@ function Register() {
                           placeholder=" "
                           id="logemail"
                           autoComplete="off"
+                          value={email} // Hubungkan nilai dengan state email
+                          onChange={(e) => setEmail(e.target.value)} // Ubah state email saat input berubah
+                          required
                         />
                         <label htmlFor="logemail">Email</label>
                         <FontAwesomeIcon
@@ -74,6 +124,9 @@ function Register() {
                           placeholder=" "
                           id="username"
                           autoComplete="off"
+                          value={username} // Hubungkan nilai dengan state username
+                          onChange={(e) => setUsername(e.target.value)} // Ubah state username saat input berubah
+                          required
                         />
                         <label htmlFor="username">Username</label>
                         <FontAwesomeIcon icon={faUser} className="input-icon" />
@@ -86,6 +139,9 @@ function Register() {
                           placeholder=" "
                           id="logpass"
                           autoComplete="off"
+                          value={password} // Hubungkan nilai dengan state password
+                          onChange={(e) => setPassword(e.target.value)} // Ubah state password saat input berubah
+                          required
                         />
                         <label htmlFor="logpass">Password</label>
                         <FontAwesomeIcon
@@ -106,7 +162,7 @@ function Register() {
                   </div>
                 </div>
               </div>
-              {/* Removed card-back for Sign Up */}
+              {/* Menghapus card-back untuk Sign Up */}
             </div>
           </div>
         </div>
