@@ -5,7 +5,7 @@ import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./component/Home";
 import { Switch } from "react-router-dom/cjs/react-router-dom.min";
-import Login from "./component/Login";
+import Login from "./Auth/Login";
 import Uks from "./pages/Uks";
 import Absensi from "./pages/Absensi";
 import Sis from "./pages/Sis";
@@ -20,6 +20,10 @@ import Datacenter from "./pages/Datacenter";
 import Kasir from "./pages/Kasir";
 import Labbahasa from "./pages/Labbahasa";
 import managementwa from "./pages/ManagementWa";
+import Register from './Auth/Register';
+import Dashboard from './Admin/Dashboard';
+import Listp from './Admin/Listp';
+import Profile from './Admin/Profile';
 
 function App() {
   return (
@@ -29,6 +33,10 @@ function App() {
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/login" component={Login} exact />
+            <Route path="/register" component={Register} exact />
+            <Route path="/dashboard" component={Dashboard} exact />
+            <Route path="/listprojek" component={Listp} exact />
+            <Route path="/Profile" component={Profile} exact />
             <Route path="/uks" component={Uks} exact />
             <Route path="/absensi" component={Absensi} exact />
             <Route path="/sis" component={Sis} exact />

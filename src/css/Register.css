@@ -35,6 +35,19 @@ h4 {
   color: #000000; /* Warna hitam pekat */
 }
 
+.section {
+  width: 90%; /* Adjust for more padding */
+  max-width: 500px; /* Adjust as needed */
+  margin-top: 20px; /* Space between logo and card */
+}
+
+.card-front {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 h6 span {
   padding: 0 20px;
   text-transform: uppercase;
@@ -91,9 +104,9 @@ h6 span {
 
 .card-3d-wrap {
   position: relative;
-  width: 440px;
-  max-width: 100%;
-  height: 400px;
+  width: 100%;
+  max-width: 600px; /* Increase width */
+  height: 600px; /* Increase height */
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   perspective: 800px;
@@ -108,6 +121,7 @@ h6 span {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   transition: all 600ms ease-out;
+  margin-top: 20px; /* Adjust the margin to push the card up if needed */
 }
 .card-front,
 .card-back {
@@ -141,14 +155,12 @@ h6 span {
 }
 
 .center-wrap {
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  padding: 0 35px;
-  top: 50%;
-  left: 0;
-  transform: translate3d(0, -50%, 35px) perspective(100px);
-  z-index: 20;
-  display: block;
+  height: 100%;
 }
 
 /* Style dasar untuk form-group */
@@ -357,11 +369,11 @@ h6 span {
 
 /* Style untuk logo */
 .logo {
-  margin-bottom: 0.5rem; 
+  margin-bottom: 0.5rem;
 }
 
 .height-img {
-  width: 150px; 
+  width: 150px;
   height: auto;
 }
 
@@ -465,19 +477,37 @@ h6 span {
     width: 120px; /* Sesuaikan lebar logo pada layar kecil */
   }
 
-  .card-3d-wrap {
-    margin-top: 0; /* Reset margin-top pada layar kecil */
-    width: 90%; /* Sesuaikan lebar card pada layar kecil */
-  }
-
   .card-3d-wrapper {
-    margin: 0; /* Reset margin pada layar kecil */
+    width: 90%; /* Sesuaikan lebar card pada layar kecil */
+    margin: 10px;
+    margin-left: 19px;
+    margin-bottom: 10%;
+    margin-top: 50%; /* Bergerak ke atas 10% lebih pada layar kecil */
+    height: auto; /* Adjust height for smaller screens */
   }
 }
 
 .form-title {
   font-size: 1.5rem; /* Ukuran font judul */
   color: #333; /* Warna font judul */
-  margin-bottom: 1.5rem; /* Jarak antara judul dan form */
+}
+
+.context {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  text-align: center;
+}
+
+/* Center the container with full viewport height and width */
+.bg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  position: relative;
+  overflow: hidden;
 }
 
