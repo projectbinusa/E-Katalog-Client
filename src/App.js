@@ -21,7 +21,7 @@ import managementwa from "./pages/ManagementWa";
 import Register from './Auth/Register';
 import Dashboard from './Admin/Dashboard';
 import Listp from './Admin/Listp';
-import Profile from './Admin/Profile';
+import Profile from './component/Profile';
 
 function App() {
   return (

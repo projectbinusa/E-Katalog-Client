@@ -151,7 +151,7 @@ function Register() {
                         />
                       </div>
                       <p className="mb-0 mr-10">
-                        <a href="#0" className="link">
+                        <a href="/login" className="link">
                           Sudah punya akun?
                         </a>
                       </p>
@@ -169,7 +169,7 @@ function Register() {
       </div>
       <div className="bg">
         <div className="bg-element"></div>
-        <img src={Gelembung} alt="gelembung" className="gelembung1" />
+        {/* <img src={Gelembung} alt="gelembung" className="gelembung1" /> */}
         <img
           src={Gelembung}
           alt="gelembung"

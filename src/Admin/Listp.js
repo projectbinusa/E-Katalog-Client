@@ -1,8 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { faArrowLeft, faArrowRight, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faArrowRight,
+  faEdit,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "../component/Sidnav";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Listp() {
   const initialData = [
@@ -44,90 +49,105 @@ function Listp() {
   return (
     <div className="d-flex">
       <Sidebar />
-      <div className="container mt-4" style={{ marginLeft: '3%', paddingLeft: '20px' }}>
-        <div className="card shadow-sm mx-auto" style={{ maxWidth: '1500px', marginTop: '10%' }}>
-          <div className="card-body">
-            <button
-              className="btn btn-primary mb-4"
-              onClick={() =>
-                addData({
-                  id: data.length + 1,
-                  firstName: "New",
-                  lastName: "User",
-                  username: "@newuser",
-                })
-              }
-            >
-              Tambah Data Baru
-            </button>
+      <section
+        className=""
+        style={{  width: "50%", marginLeft: "10%", marginTop: "5%" }}
+      >
+        <div
+          className="container mt-4"
+          style={{ marginLeft: "3%", paddingLeft: "20px" }}
+        >
+          <div
+            className="card shadow-sm mx-auto"
+            style={{ maxWidth: "1500px", marginTop: "10%" }}
+          >
+            <div className="card-body">
+              <button
+                className="btn btn-primary mb-4"
+                onClick={() =>
+                  addData({
+                    id: data.length + 1,
+                    firstName: "New",
+                    lastName: "User",
+                    username: "@newuser",
+                  })
+                }
+              >
+                Tambah Data Baru
+              </button>
 
-            <div className="table-responsive">
-              <table className="table table-striped table-hover">
-                <thead className="thead-light">
-                  <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentItems.map((item, index) => (
-                    <tr key={item.id}>
-                      <th scope="row">
-                        {index + 1 + (currentPage - 1) * itemsPerPage}
-                      </th>
-                      <td>{item.firstName}</td>
-                      <td>{item.lastName}</td>
-                      <td>{item.username}</td>
+              <div className="table-responsive">
+                <table className="table table-striped table-hover">
+                  <thead className="thead-light">
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Username</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {currentItems.map((item, index) => (
+                      <tr key={item.id}>
+                        <th scope="row">
+                          {index + 1 + (currentPage - 1) * itemsPerPage}
+                        </th>
+                        <td>{item.firstName}</td>
+                        <td>{item.lastName}</td>
+                        <td>{item.username}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
 
-            <nav>
-              <ul className="pagination justify-content-center">
-                <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-                  <button
-                    className="page-link"
-                    onClick={() => handlePageChange(currentPage - 1)}
-                  >
-                    Previous
-                  </button>
-                </li>
-                {[...Array(totalPages)].map((_, index) => (
+              <nav>
+                <ul className="pagination justify-content-center">
                   <li
-                    key={index}
                     className={`page-item ${
-                      currentPage === index + 1 ? "active" : ""
+                      currentPage === 1 ? "disabled" : ""
                     }`}
                   >
                     <button
                       className="page-link"
-                      onClick={() => handlePageChange(index + 1)}
+                      onClick={() => handlePageChange(currentPage - 1)}
                     >
-                      {index + 1}
+                      Previous
                     </button>
                   </li>
-                ))}
-                <li
-                  className={`page-item ${
-                    currentPage === totalPages ? "disabled" : ""
-                  }`}
-                >
-                  <button
-                    className="page-link"
-                    onClick={() => handlePageChange(currentPage + 1)}
+                  {[...Array(totalPages)].map((_, index) => (
+                    <li
+                      key={index}
+                      className={`page-item ${
+                        currentPage === index + 1 ? "active" : ""
+                      }`}
+                    >
+                      <button
+                        className="page-link"
+                        onClick={() => handlePageChange(index + 1)}
+                      >
+                        {index + 1}
+                      </button>
+                    </li>
+                  ))}
+                  <li
+                    className={`page-item ${
+                      currentPage === totalPages ? "disabled" : ""
+                    }`}
                   >
-                    Next
-                  </button>
-                </li>
-              </ul>
-            </nav>
+                    <button
+                      className="page-link"
+                      onClick={() => handlePageChange(currentPage + 1)}
+                    >
+                      Next
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

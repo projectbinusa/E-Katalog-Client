@@ -26,19 +26,13 @@ body {
 }
 
 /* Sidebar untuk tampilan mobile */
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .sidebar {
-    width: 100%;
-    left: -100%; /* Sembunyikan sidebar di luar layar */
+    transform: translateX(-100%); /* Menyembunyikan sidebar di luar tampilan */
   }
 
   .sidebar.show {
-    transform: translateX(0); /* Tampilkan sidebar saat toggle diaktifkan */
-  }
-
-  .content {
-    margin-left: 0; /* Reset margin saat sidebar terbuka di tampilan mobile */
-    padding: 20px; /* Padding di sekitar konten */
+    transform: translateX(0); /* Menampilkan sidebar */
   }
 }
 
@@ -186,23 +180,6 @@ body {
     order: 2; /* Pastikan tombol bar tetap di sebelah kiri */
   }
 
-  .sidebar {
-    width: 100%;
-    position: fixed; /* Sidebar menutupi seluruh layar */
-    z-index: 1050; /* Pastikan sidebar berada di atas konten lain */
-    top: 0; /* Mulai dari atas */
-    left: -100%; /* Sembunyikan sidebar di luar layar */
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .sidebar.show {
-    transform: translateX(0); /* Tampilkan sidebar saat toggle diaktifkan */
-  }
-
-  .sidebar-sticky {
-    height: 100vh; /* Pastikan sidebar tetap penuh tinggi */
-  }
-
   .content {
     margin-top: 60px; /* Jarak dari bawah navbar */
     width: 100%; /* Mengisi lebar layar penuh */
@@ -212,16 +189,21 @@ body {
 
 /* Konten utama */
 .content {
-  margin-left: 250px; /* Margin for sidebar width */
-  margin-top: 60px; /* Margin for navbar height */
-  padding: 20px; /* Padding around the content */
-  box-sizing: border-box; /* Ensure padding is included in the width */
-  transition: margin-left 0.3s ease; /* Smooth transition when sidebar toggles */
-  min-height: calc(100vh - 60px); /* Full height minus navbar height */
+  margin-left: 240px; /* Margin untuk lebar sidebar */
+  margin-top: 60px; /* Margin untuk tinggi navbar */
+  padding: 10px; /* Padding di sekitar konten */
+  box-sizing: border-box; /* Pastikan padding termasuk dalam lebar */
+  transition: margin-left 0.3s ease; /* Transisi saat sidebar toggled */
+  min-height: calc(100vh - 60px); /* Tinggi penuh dikurangi tinggi navbar */
 }
 
 .content.shift {
   margin-left: 0; /* No margin when sidebar is shown */
+}
+
+.content main {
+  flex: 1; /* Mengisi sisa ruang dari elemen flex parent */
+  overflow-y: auto; /* Agar konten utama bisa di-scroll secara vertikal */
 }
 
 /* Konten utama saat sidebar terbuka di tampilan mobile */
