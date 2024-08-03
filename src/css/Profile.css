@@ -1,0 +1,14 @@
+/* CSS yang diterapkan pada card */
+.card {
+    transition: transform 0.3s ease; /* Animasi transisi saat ukuran berubah */
+    width: 100%; /* Lebar kartu default */
+  }
+  
+  @media (min-width: 992px) { /* Ukuran layar lebih besar dari lg (992px dan lebih besar) */
+    .card {
+      transform: scale(1.2); /* Membesarkan kartu sebesar 20% */
+      width: 120%; /* Atur lebar kartu lebih besar dari default */
+      margin: 0 auto; /* Rata tengah kartu */
+    }
+  }
+  

@@ -7,25 +7,26 @@ import {
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import "../css/Login.css"; // Pastikan path sudah benar
+import "../css/Login.css";
 import Gelembung from "../aset/gelembung.png";
 import Logo from "../aset/LOGO_Katalog.png";
 import { useNavigate } from "react-router-dom";
+
 const apiUrl = "http://localhost:2007";
 
 function Login() {
-  const [email, setEmail] = useState(""); // Gunakan email
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-````
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
+
     if (!email || !password) {
       Swal.fire({
         icon: "error",
@@ -36,25 +37,24 @@ function Login() {
       });
       return;
     }
-  
+
     try {
       const response = await axios.post(`${apiUrl}/api/login`, {
         email,
         password,
       });
-  
+
       if (response.data) {
         const { data } = response.data;
         const { token, data: userData } = data;
-  
+
         // Simpan data di localStorage
-        localStorage.setItem("kontol")
         localStorage.setItem("token", token);
         localStorage.setItem("email", userData.email);
         localStorage.setItem("id", userData.id);
         localStorage.setItem("role", userData.role);
         localStorage.setItem("userData", JSON.stringify(userData));
-  
+
         Swal.fire({
           icon: "success",
           title: "Login Berhasil",
@@ -62,13 +62,13 @@ function Login() {
           timer: 2000,
           showConfirmButton: false,
         });
-  
+
         setTimeout(() => {
           navigate("/dashboard");
         }, 2000);
       }
     } catch (error) {
-      console.error("Error login:", error); // Log detail kesalahan
+      console.error("Error login:", error);
       let errorMessage = "Terjadi kesalahan";
       if (error.response) {
         if (error.response.status === 401) {
@@ -77,7 +77,7 @@ function Login() {
           errorMessage = error.response.data?.message || "Terjadi kesalahan";
         }
       }
-  
+
       Swal.fire({
         icon: "error",
         title: "Login Gagal",
@@ -119,12 +119,12 @@ function Login() {
               <div className="card-front">
                 <div className="center-wrap">
                   <div className="section text-center">
-                    <h4 className="form-title">Login</h4> {/* Judul baru */}
+                    <h4 className="form-title">Login</h4>
                     <form
                       className="mx-auto max-w-md md:max-w-full md:w-full flex flex-col gap-3"
                       onSubmit={handleLogin}
                     >
-                      <div className="form-group">
+                      <div className="form-group email">
                         <input
                           id="email"
                           type="email"
@@ -141,7 +141,7 @@ function Login() {
                         />
                       </div>
 
-                      <div className="form-group mt-2 position-relative">
+                      <div className="form-group password">
                         <input
                           type={showPassword ? "text" : "password"}
                           name="password"
@@ -156,17 +156,32 @@ function Login() {
                         <FontAwesomeIcon
                           icon={showPassword ? faEye : faEyeSlash}
                           className="input-icon"
-                          onClick={togglePasswordVisibility}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            togglePasswordVisibility();
+                          }}
                         />
                       </div>
-                      <button type="submit" className="btn mt-4">
-                        Log in
-                      </button>
+
                       <p className="mb-0 mt-4 text-center">
-                        <a href="#0" className="link">
+                        <a
+                          href="/register"
+                          className="link"
+                          style={{ marginRight: "20%" }}
+                        >
+                          daftar akun?
+                        </a>
+                        <a
+                          href="#0"
+                          className="link"
+                          style={{ marginLeft: "2%" }}
+                        >
                           Forgot your password?
                         </a>
                       </p>
+                      <button type="submit" className="btn mt-4">
+                        Log in
+                      </button>
                     </form>
                   </div>
                 </div>
@@ -177,7 +192,6 @@ function Login() {
       </div>
       <div className="bg">
         <div className="bg-element"></div>
-        <img src={Gelembung} alt="gelembung" className="gelembung1" />
         <img
           src={Gelembung}
           alt="gelembung"

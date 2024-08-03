@@ -64,7 +64,7 @@ h6 span {
   padding: 0;
   margin: 10px auto;
   cursor: pointer;
-  background-color: #ffeba7;
+  background-color: white;
 }
 .checkbox:checked + label:before,
 .checkbox:not(:checked) + label:before {
@@ -154,42 +154,36 @@ h6 span {
 /* Style dasar untuk form-group */
 .form-group {
   position: relative;
-  margin-bottom: 1.5rem; /* Jarak antara elemen input */
-  margin-top: 1rem; /* Jarak atas dari form-group */
+  margin-bottom: 1.5rem;
 }
 
-/* Style dasar untuk input */
 .form-style {
   padding: 13px 20px;
-  padding-left: 55px;
   height: 48px;
   width: 100%;
-  font-weight: 500;
   border-radius: 4px;
   font-size: 14px;
   line-height: 22px;
   letter-spacing: 0.5px;
   outline: none;
-  color: #000000; /* Warna teks hitam pekat */
-  background-color: rgba(96, 99, 135, 0.3); /* Warna latar belakang input */
+  color: #000000;
+  background-color: rgba(96, 99, 135, 0.3);
   border: none;
-  transition: all 200ms linear; /* Transisi yang halus */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Efek bayangan default */
+  transition: all 200ms linear;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Efek saat input dalam keadaan fokus atau aktif */
 .form-style:focus,
 .form-style:active {
-  background-color: rgba(
-    96,
-    99,
-    135,
-    0.5
-  ); /* Warna latar belakang saat fokus */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Efek bayangan saat fokus */
+  background-color: rgba(96, 99, 135, 0.5);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  color: #000000;
 }
 
-/* Style untuk label */
+.form-style::placeholder {
+  color: transparent; /* Hapus placeholder ketika input memiliki nilai atau difokuskan */
+}
+
 .form-group label {
   position: absolute;
   top: 50%;
@@ -198,16 +192,15 @@ h6 span {
   font-size: 14px;
   color: #c4c3ca;
   transition: all 200ms linear;
-  pointer-events: none; /* Agar label tidak dapat diklik */
+  pointer-events: none;
 }
 
-/* Style label saat input dalam keadaan fokus atau memiliki nilai */
 .form-style:focus + label,
 .form-style:not(:placeholder-shown) + label {
-  top: -10px; /* Jarak dari atas input */
-  left: 10px; /* Jarak dari kiri input */
-  font-size: 12px; /* Ukuran font lebih kecil saat label berada di atas */
-  color: white; /* Warna label saat aktif */
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  color: white;
 }
 
 .form-style:focus,
@@ -339,29 +332,29 @@ h6 span {
   -ms-flex-pack: center;
   text-align: center;
   border: none;
-  background-color: #0997bec9;
-  color: white;
+  background-color: #385f0c;
+  color: rgb(20, 17, 17);
   box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
 }
 .btn:active,
 .btn:focus {
   background-color: #0b6781;
-  color: #47d4fb;
+  color: #227f998a;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
 .btn:hover {
-  background-color: #0e7d9c;
-  color: white;
+  background-color: #0e4c9c;
+  color: rgb(7, 5, 5);
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
 
 /* Style untuk logo */
 .logo {
-  margin-bottom: 0.5rem; 
+  margin-bottom: 0.5rem;
 }
 
 .height-img {
-  width: 150px; 
+  width: 150px;
   height: auto;
 }
 
@@ -481,3 +474,13 @@ h6 span {
   margin-bottom: 1.5rem; /* Jarak antara judul dan form */
 }
 
+/* Style for form-group with email input */
+.form-group.email {
+  margin-top: 10%;
+  margin-bottom: 3%; /* Add 3% margin at the bottom for the email input */
+}
+
+/* Ensure password input container gets the default styling */
+.form-group.password {
+  margin-top: 10%; /* Adjust spacing if needed */
+}
