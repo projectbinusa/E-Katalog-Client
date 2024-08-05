@@ -22,6 +22,9 @@ import Register from './Auth/Register';
 import Dashboard from './Admin/Dashboard';
 import Listp from './Admin/Listp';
 import Profile from './component/Profile';
+import Createlist from './Admin/Createlist';
+import Updatelist from './Admin/Updatelist';
+import ManagementWa from './pages/ManagementWa';
 
 function App() {
   return (
@@ -34,6 +37,8 @@ function App() {
             <Route path="/register" element={<Register />} exact />
             <Route path="/dashboard" element={<Dashboard />} exact />
             <Route path="/listprojek" element={<Listp />} exact />
+            <Route path="/update/:id" element={<Updatelist />} exact />
+            <Route path="/tambahlist" element={<Createlist />} exact />
             <Route path="/Profile" element={<Profile />} exact />
             <Route path="/uks" element={<Uks />} exact />
             <Route path="/absensi" element={<Absensi />} exact />
@@ -48,7 +53,7 @@ function App() {
             <Route path="/datacenter" element={<Datacenter />} exact />
             <Route path="/kasir" element={<Kasir />} exact />
             <Route path="/labbahasa" element={<Labbahasa />} exact />
-            <Route path="/managementwa" element={<managementwa />} exact />
+            <Route path="/managementwa" element={<ManagementWa />} exact />
           </Routes>
         </main>
       </Router>

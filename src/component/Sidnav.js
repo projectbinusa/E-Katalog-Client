@@ -107,7 +107,7 @@ function Sidebar() {
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="/login">
                         Logout
                       </a>
                     </li>

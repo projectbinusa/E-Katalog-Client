@@ -38,3 +38,40 @@
 .table thead {
   background-color: #f8f9fa; /* Light background for the header */
 }
+
+/* Custom button styles */
+.btn-custom {
+  transition: none; /* Disable color transition */
+}
+
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active {
+  background-color: inherit; /* Keep the original background color */
+  border-color: inherit; /* Keep the original border color */
+  color: inherit; /* Keep the original text color */
+}
+
+.btn-custom.btn-warning {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-custom.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-custom.btn-warning:hover,
+.btn-custom.btn-warning:focus,
+.btn-custom.btn-warning:active {
+  background-color: #ffc107; /* Keep the same background color */
+  border-color: #ffc107; /* Keep the same border color */
+}
+
+.btn-custom.btn-danger:hover,
+.btn-custom.btn-danger:focus,
+.btn-custom.btn-danger:active {
+  background-color: #dc3545; /* Keep the same background color */
+  border-color: #dc3545; /* Keep the same border color */
+}
