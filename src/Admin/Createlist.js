@@ -106,7 +106,12 @@ function Createlist() {
                       <label
                         htmlFor="no"
                         className="form-label"
-                        style={{ fontSize: "0.75rem", fontWeight: "bold" }}
+                        style={{
+                          fontSize: "0.75rem",
+                          fontWeight: "bold",
+                          textAlign: "left",
+                          display: "block",
+                        }}
                       >
                         No
                       </label>
@@ -125,7 +130,12 @@ function Createlist() {
                       <label
                         htmlFor="namaProject"
                         className="form-label"
-                        style={{ fontSize: "0.75rem", fontWeight: "bold" }}
+                        style={{
+                          fontSize: "0.75rem",
+                          fontWeight: "bold",
+                          textAlign: "left",
+                          display: "block",
+                        }}
                       >
                         Nama Project
                       </label>
@@ -147,7 +157,12 @@ function Createlist() {
                       <label
                         htmlFor="teknologi"
                         className="form-label"
-                        style={{ fontSize: "0.75rem", fontWeight: "bold" }}
+                        style={{
+                          fontSize: "0.75rem",
+                          fontWeight: "bold",
+                          textAlign: "left",
+                          display: "block",
+                        }}
                       >
                         Teknologi
                       </label>
@@ -166,7 +181,12 @@ function Createlist() {
                       <label
                         htmlFor="developer"
                         className="form-label"
-                        style={{ fontSize: "0.75rem", fontWeight: "bold" }}
+                        style={{
+                          fontSize: "0.75rem",
+                          fontWeight: "bold",
+                          textAlign: "left",
+                          display: "block",
+                        }}
                       >
                         Developer
                       </label>
@@ -188,7 +208,12 @@ function Createlist() {
                       <label
                         htmlFor="link"
                         className="form-label"
-                        style={{ fontSize: "0.75rem", fontWeight: "bold" }}
+                        style={{
+                          fontSize: "0.75rem",
+                          fontWeight: "bold",
+                          textAlign: "left",
+                          display: "block",
+                        }}
                       >
                         Link
                       </label>
@@ -207,7 +232,12 @@ function Createlist() {
                       <label
                         htmlFor="deskripsiProject"
                         className="form-label"
-                        style={{ fontSize: "0.75rem", fontWeight: "bold" }}
+                        style={{
+                          fontSize: "0.75rem",
+                          fontWeight: "bold",
+                          textAlign: "left",
+                          display: "block",
+                        }}
                       >
                         Deskripsi Project
                       </label>
@@ -219,27 +249,26 @@ function Createlist() {
                         onChange={handleChange}
                         placeholder=" Deskripsi Project"
                         rows="3"
-                        required
                       />
                     </div>
                   </div>
 
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm btn-custom"
-                    style={{ marginRight: "70%" }}
-                    onClick={batal}
-                  >
-                    Batal
-                  </button>
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-sm btn-custom"
-                  >
-                    Tambah
-                  </button>
+                  <div className="button-container">
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-sm btn-custom"
+                      onClick={batal}
+                    >
+                      Batal
+                    </button>
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-sm btn-custom"
+                    >
+                      Tambah
+                    </button>
+                  </div>
                 </form>
-                
               </div>
             </div>
           </div>
