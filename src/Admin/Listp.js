@@ -11,7 +11,7 @@ import Sidebar from "../component/Sidnav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
 
 function Listp() {
   const [data, setData] = useState([]);
@@ -22,10 +22,12 @@ function Listp() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:2007/api/list_project/all"
-        );
-        setData(response.data);
+        const response = await axios.get("http://localhost:2007/api/list_project/all");
+        if (Array.isArray(response.data.data)) {
+          setData(response.data.data);
+        } else {
+          console.error("Unexpected API response format:", response.data);
+        }
       } catch (error) {
         console.error("Failed to fetch data:", error);
       }
@@ -34,12 +36,17 @@ function Listp() {
     fetchData();
   }, []);
 
-  const filteredData = data.filter(
-    (item) =>
-      item.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.username.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredData = data.filter((item) => {
+    const namaProject = item.namaProject || "";
+    const teknologi = item.teknologi || "";
+    const developer = item.developer || "";
+
+    return (
+      namaProject.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      teknologi.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      developer.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -47,10 +54,6 @@ function Listp() {
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
-
-  const addData = (newData) => {
-    setData([newData, ...data]);
-  };
 
   const handleDelete = async (id) => {
     Swal.fire({
@@ -63,6 +66,7 @@ function Listp() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
+          await axios.delete(`http://localhost:2007/api/list_project/delete/${id}`);
           setData((prevData) => prevData.filter((item) => item.id !== id));
           Swal.fire({
             title: "Berhasil",
@@ -72,7 +76,7 @@ function Listp() {
             timer: 2000,
           });
         } catch (error) {
-          console.error("Failed to delete project: ", error);
+          console.error("Failed to delete project:", error);
           Swal.fire({
             title: "Gagal",
             text: `Gagal menghapus proyek`,
@@ -149,44 +153,54 @@ function Listp() {
                     </tr>
                   </thead>
                   <tbody>
-                    {currentItems.map((item, index) => (
-                      <tr key={item.id}>
-                        <th scope="row">
-                          {index + 1 + (currentPage - 1) * itemsPerPage}
-                        </th>
-                        <td>{item.firstName}</td>
-                        <td>{item.lastName}</td>
-                        <td>{item.username}</td>
-                        <td>{item.username}</td>
-                        <td>{item.username}</td>
-                        <td>
-                          <div className="d-flex">
-                            <Link
-                              to={`/EditPenilaian/${item.id}`}
-                              className="btn btn-success btn-sm mr-2 btn-custom"
-                              style={{ height: "5%" }}
-                            >
-                              <FontAwesomeIcon
-                                icon={faEdit}
-                                className="mr-1"
-                                style={{ padding: "10%", color: "white" }}
-                              />
-                            </Link>
-                            <button
-                              className="btn btn-danger btn-sm btn-custom"
-                              onClick={() => handleDelete(item.id)}
-                              style={{ height: "5%" }}
-                            >
-                              <FontAwesomeIcon
-                                icon={faTrash}
-                                className="mr-1"
-                                style={{ padding: "10%", color: "white" }}
-                              />
-                            </button>
-                          </div>
-                        </td>
+                    {currentItems.length > 0 ? (
+                      currentItems.map((item, index) => (
+                        <tr key={item.id}>
+                          <th scope="row">
+                            {index + 1 + (currentPage - 1) * itemsPerPage}
+                          </th>
+                          <td>{item.namaProject}</td>
+                          <td>{item.teknologi}</td>
+                          <td>{item.developer}</td>
+                          <td>
+                            <a href={item.link} target="_blank" rel="noopener noreferrer">
+                              {item.link}
+                            </a>
+                          </td>
+                          <td>{item.deskripsiProject}</td>
+                          <td>
+                            <div className="d-flex">
+                              <Link
+                                to={`/EditPenilaian/${item.id}`}
+                                className="btn btn-success btn-sm mr-2 btn-custom"
+                                style={{ height: "5%" }}
+                              >
+                                <FontAwesomeIcon
+                                  icon={faEdit}
+                                  className="mr-1"
+                                  style={{ padding: "10%", color: "white" }}
+                                />
+                              </Link>
+                              <button
+                                className="btn btn-danger btn-sm btn-custom"
+                                onClick={() => handleDelete(item.id)}
+                                style={{ height: "5%" }}
+                              >
+                                <FontAwesomeIcon
+                                  icon={faTrash}
+                                  className="mr-1"
+                                  style={{ padding: "10%", color: "white" }}
+                                />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="7" className="text-center">No data available</td>
                       </tr>
-                    ))}
+                    )}
                   </tbody>
                 </table>
               </div>
