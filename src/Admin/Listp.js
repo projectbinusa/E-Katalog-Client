@@ -10,7 +10,8 @@ import {
 import Sidebar from "../component/Sidnav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Swal from "sweetalert2";
-import axios from "axios";  // Import axios
+import axios from "axios";
+import { Link } from "react-router-dom"; // Import Link
 
 function Listp() {
   const [data, setData] = useState([]);
@@ -19,10 +20,11 @@ function Listp() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    // Fetch data from API
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:2007/api/list_project/all");
+        const response = await axios.get(
+          "http://localhost:2007/api/list_project/all"
+        );
         setData(response.data);
       } catch (error) {
         console.error("Failed to fetch data:", error);
@@ -32,14 +34,13 @@ function Listp() {
     fetchData();
   }, []);
 
-  // Filter data based on search query
-  const filteredData = data.filter((item) =>
-    item.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.username.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredData = data.filter(
+    (item) =>
+      item.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.username.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Pagination logic
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -84,19 +85,21 @@ function Listp() {
     });
   };
 
-  const handleUpdate = (id) => {
-    window.location.href = `/EditPenilaian/${id}`;
-  };
-
   return (
     <div className="d-flex">
       <Sidebar />
       <section style={{ width: "50%", marginLeft: "5%", marginTop: "4%" }}>
-        <div className="container mt-4" style={{ marginLeft: "3%", paddingLeft: "20px" }}>
-          <div className="card shadow-sm mx-auto" style={{ maxWidth: "1500px", marginTop: "10%" }}>
+        <div
+          className="container mt-4"
+          style={{ marginLeft: "3%", paddingLeft: "20px" }}
+        >
+          <div
+            className="card shadow-sm mx-auto"
+            style={{ maxWidth: "1500px", marginTop: "10%" }}
+          >
             <div className="card-body">
               <div className="d-flex align-items-center mb-3">
-                <h2 className="mr-auto">Tabel List Projek</h2>
+                <h3 className="mr-auto">Tabel List Projek</h3>
                 <div className="d-flex">
                   <input
                     type="text"
@@ -106,24 +109,17 @@ function Listp() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
-                  <button
-                    className=" btn-primary btn-custom"
-                    style={{ padding: "2%", height: "5%", borderRadius: "8px" }}
-                    onClick={() =>
-                      addData({
-                        id: data.length + 1,
-                        firstName: "New",
-                        lastName: "User",
-                        username: "@newuser",
-                      })
-                    }
+                  <Link
+                    to={`/tambahlist`}
+                    className="btn btn-primary btn-sm mr-2 btn-custom"
+                    style={{ height: "5%" }}
                   >
                     <FontAwesomeIcon
                       icon={faPlus}
                       className="mr-1"
                       style={{ padding: "10%", color: "white" }}
                     />
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -138,7 +134,10 @@ function Listp() {
                     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
                   }}
                 >
-                  <thead className="thead-light" style={{ borderRadius: "8px 8px 0 0", overflow: "hidden" }}>
+                  <thead
+                    className="thead-light"
+                    style={{ borderRadius: "8px 8px 0 0", overflow: "hidden" }}
+                  >
                     <tr>
                       <th>No</th>
                       <th>Nama Project</th>
@@ -152,7 +151,9 @@ function Listp() {
                   <tbody>
                     {currentItems.map((item, index) => (
                       <tr key={item.id}>
-                        <th scope="row">{index + 1 + (currentPage - 1) * itemsPerPage}</th>
+                        <th scope="row">
+                          {index + 1 + (currentPage - 1) * itemsPerPage}
+                        </th>
                         <td>{item.firstName}</td>
                         <td>{item.lastName}</td>
                         <td>{item.username}</td>
@@ -160,9 +161,9 @@ function Listp() {
                         <td>{item.username}</td>
                         <td>
                           <div className="d-flex">
-                            <button
-                              className=" btn-success btn-sm mr-2 btn-custom"
-                              onClick={() => handleUpdate(item.id)}
+                            <Link
+                              to={`/EditPenilaian/${item.id}`}
+                              className="btn btn-success btn-sm mr-2 btn-custom"
                               style={{ height: "5%" }}
                             >
                               <FontAwesomeIcon
@@ -170,9 +171,9 @@ function Listp() {
                                 className="mr-1"
                                 style={{ padding: "10%", color: "white" }}
                               />
-                            </button>
+                            </Link>
                             <button
-                              className=" btn-danger btn-sm btn-custom"
+                              className="btn btn-danger btn-sm btn-custom"
                               onClick={() => handleDelete(item.id)}
                               style={{ height: "5%" }}
                             >
@@ -192,7 +193,11 @@ function Listp() {
 
               <nav>
                 <ul className="pagination justify-content-center">
-                  <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+                  <li
+                    className={`page-item ${
+                      currentPage === 1 ? "disabled" : ""
+                    }`}
+                  >
                     <button
                       className="page-link"
                       onClick={() => handlePageChange(currentPage - 1)}
@@ -204,7 +209,9 @@ function Listp() {
                   {[...Array(totalPages)].map((_, index) => (
                     <li
                       key={index}
-                      className={`page-item ${currentPage === index + 1 ? "active" : ""}`}
+                      className={`page-item ${
+                        currentPage === index + 1 ? "active" : ""
+                      }`}
                     >
                       <button
                         className="page-link"
@@ -214,7 +221,11 @@ function Listp() {
                       </button>
                     </li>
                   ))}
-                  <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+                  <li
+                    className={`page-item ${
+                      currentPage === totalPages ? "disabled" : ""
+                    }`}
+                  >
                     <button
                       className="page-link"
                       onClick={() => handlePageChange(currentPage + 1)}

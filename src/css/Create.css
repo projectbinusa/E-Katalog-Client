@@ -1,0 +1,41 @@
+.custom-input:focus {
+  background-color: #e9ecef; /* Slightly darker background color */
+  border-color: #ced4da; /* Neutral border color */
+  box-shadow: none; /* Remove the glowing border */
+  outline: none; /* Remove the outline */
+}
+
+/* Ensure the card is responsive and centered */
+.card {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  .card {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  section {
+    width: 100%;
+    padding: 0 15px;
+    margin-left: 0;
+    margin-top: 5%;
+  }
+
+  .btn-custom {
+    width: 100%; /* Make the button full-width */
+  }
+}
+
+.form-label {
+  margin-right: 70%;
+}
