@@ -102,7 +102,7 @@ function Sidebar() {
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="/gantipass">
                         Forgot Password
                       </a>
                     </li>
