@@ -12,19 +12,37 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "../css/List.css"; // Import custom CSS
 
 function Listp() {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const [searchQuery, setSearchQuery] = useState("");
+  const getToken = () => {
+    // Retrieve the token from localStorage or any other method you use
+    return localStorage.getItem("token"); // Adjust based on your storage method
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:2007/api/list_project/all");
-        if (Array.isArray(response.data.data)) {
-          setData(response.data.data);
+        const token = getToken(); // Retrieve the token
+
+        const response = await axios.get(
+          "http://localhost:2007/api/list_project/all",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // Include token in headers
+            },
+          }
+        );
+
+        console.log("API Response:", response); // Log the full response
+
+        // Check the structure of the response
+        if (response.data && Array.isArray(response.data)) {
+          setData(response.data);
         } else {
           console.error("Unexpected API response format:", response.data);
         }
@@ -56,50 +74,71 @@ function Listp() {
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleDelete = async (id) => {
-    Swal.fire({
-      title: "Konfirmasi",
-      text: `Anda yakin ingin menghapus data proyek?`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Ya",
-      cancelButtonText: "Tidak",
-    }).then(async (result) => {
+    try {
+      // Show confirmation dialog
+      const result = await Swal.fire({
+        title: "Konfirmasi",
+        text: "Anda yakin ingin menghapus data proyek?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Ya",
+        cancelButtonText: "Tidak",
+      });
+
       if (result.isConfirmed) {
-        try {
-          await axios.delete(`http://localhost:2007/api/list_project/delete/${id}`);
-          setData((prevData) => prevData.filter((item) => item.id !== id));
-          Swal.fire({
-            title: "Berhasil",
-            text: `Data proyek berhasil dihapus`,
-            icon: "success",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        } catch (error) {
-          console.error("Failed to delete project:", error);
-          Swal.fire({
-            title: "Gagal",
-            text: `Gagal menghapus proyek`,
-            icon: "error",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        }
+        const token = localStorage.getItem("token"); // Retrieve the token
+
+        // Perform the delete operation with the token in headers
+        await axios.delete(
+          `http://localhost:2007/api/list_project/hapus/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // Include token in headers
+            },
+          }
+        );
+
+        // Update the UI by removing the deleted item from the state
+        setData((prevData) => prevData.filter((item) => item.id !== id));
+
+        // Show success message
+        Swal.fire({
+          title: "Berhasil",
+          text: "Data proyek berhasil dihapus",
+          icon: "success",
+          timer: 2000,
+          showConfirmButton: false,
+        });
       }
-    });
+    } catch (error) {
+      console.error("Failed to delete project:", error);
+
+      // Show error message
+      Swal.fire({
+        title: "Gagal",
+        text: "Gagal menghapus proyek",
+        icon: "error",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    }
   };
 
   return (
     <div className="d-flex">
       <Sidebar />
-      <section style={{ width: "50%", marginLeft: "5%", marginTop: "4%" }}>
-        <div
-          className="container mt-4"
-          style={{ marginLeft: "3%", paddingLeft: "20px" }}
-        >
+      <section
+        className="w-100 d-flex justify-content-center align-items-start"
+        style={{ minHeight: "100vh", padding: "0 5%", marginTop: "5%" }}
+      >
+        <div className="container mt-4 px-2">
           <div
-            className="card shadow-sm mx-auto"
-            style={{ maxWidth: "1500px", marginTop: "10%" }}
+            className="card shadow-sm mx-auto responsive-card"
+            style={{
+              width: "100%",
+              maxWidth: "900px",
+              padding: "10px 0",
+            }}
           >
             <div className="card-body">
               <div className="d-flex align-items-center mb-3">
@@ -144,11 +183,11 @@ function Listp() {
                   >
                     <tr>
                       <th>No</th>
-                      <th>Nama Project</th>
+                      <th class="text-nowrap">Nama Project</th>
                       <th>Teknologi</th>
                       <th>Developer</th>
                       <th>Link</th>
-                      <th>Deskripsi Project</th>
+                      <th class="text-nowrap">Deskripsi Project</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -159,19 +198,23 @@ function Listp() {
                           <th scope="row">
                             {index + 1 + (currentPage - 1) * itemsPerPage}
                           </th>
-                          <td>{item.namaProject}</td>
+                          <td>{item.nama_project}</td>
                           <td>{item.teknologi}</td>
                           <td>{item.developer}</td>
                           <td>
-                            <a href={item.link} target="_blank" rel="noopener noreferrer">
+                            <a
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               {item.link}
                             </a>
                           </td>
-                          <td>{item.deskripsiProject}</td>
+                          <td>{item.deskripsi_project}</td>
                           <td>
                             <div className="d-flex">
                               <Link
-                                to={`/EditPenilaian/${item.id}`}
+                                to={`/updatelist/${item.id}`}
                                 className="btn btn-success btn-sm mr-2 btn-custom"
                                 style={{ height: "5%" }}
                               >
@@ -198,7 +241,9 @@ function Listp() {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="7" className="text-center">No data available</td>
+                        <td colSpan="7" className="text-center">
+                          No data available
+                        </td>
                       </tr>
                     )}
                   </tbody>

@@ -37,7 +37,7 @@ function App() {
             <Route path="/register" element={<Register />} exact />
             <Route path="/dashboard" element={<Dashboard />} exact />
             <Route path="/listprojek" element={<Listp />} exact />
-            <Route path="/update/:id" element={<Updatelist />} exact />
+            <Route path="/updatelist/:id" element={<Updatelist />} exact />
             <Route path="/tambahlist" element={<Createlist />} exact />
             <Route path="/Profile" element={<Profile />} exact />
             <Route path="/uks" element={<Uks />} exact />

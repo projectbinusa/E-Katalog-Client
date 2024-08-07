@@ -1,53 +1,126 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../component/Sidnav";
+import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Updatelist() {
-  // State variables for form fields
-  const [formData, setFormData] = useState({
-    no: "",
-    namaProject: "",
-    teknologi: "",
-    developer: "",
-    link: "",
-    deskripsiProject: "",
-  });
+  const [no, setNo] = useState("");
+  const [namaProject, setNamaProject] = useState("");
+  const [teknologi, setTeknologi] = useState("");
+  const [developer, setDeveloper] = useState("");
+  const [link, setLink] = useState("");
+  const [deskripsiProject, setDeskripsiProject] = useState("");
+  const { id } = useParams(); // Get the project ID from the URL
+  const navigate = useNavigate();
 
-  // Handle form input changes
+  // Fetch the selected project data
+  useEffect(() => {
+    const fetchProjectData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:2007/api/list_projek/${id}`);
+        const project = response.data;
+        setNo(project.no);
+        setNamaProject(project.namaProject);
+        setTeknologi(project.teknologi);
+        setDeveloper(project.developer);
+        setLink(project.link);
+        setDeskripsiProject(project.deskripsiProject);
+      } catch (error) {
+        console.error("Gagal mengambil data project: ", error);
+        Swal.fire({
+          title: "Error",
+          text: "Gagal memuat data project. Silakan coba lagi.",
+          icon: "error",
+        });
+      }
+    };
+
+    if (id) {
+      fetchProjectData(); // Fetch data only if there's an ID (editing mode)
+    }
+  }, [id]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    switch (name) {
+      case "no":
+        setNo(value);
+        break;
+      case "namaProject":
+        setNamaProject(value);
+        break;
+      case "teknologi":
+        setTeknologi(value);
+        break;
+      case "developer":
+        setDeveloper(value);
+        break;
+      case "link":
+        setLink(value);
+        break;
+      case "deskripsiProject":
+        setDeskripsiProject(value);
+        break;
+      default:
+        break;
+    }
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log("Form submitted with data:", formData);
+
+    const updatedProject = {
+      no,
+      namaProject,
+      teknologi,
+      developer,
+      link,
+      deskripsiProject,
+    };
+
+    try {
+      const token = localStorage.getItem("token");
+      await axios.put(
+        `http://localhost:2007/api/list_projek/ubah/${id}`,
+        updatedProject,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      Swal.fire({
+        title: "Berhasil",
+        text: "Data project berhasil diperbarui",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      }).then(() => {
+        navigate(-1);
+      });
+    } catch (error) {
+      console.error("Gagal memperbarui data project: ", error);
+      Swal.fire({
+        title: "Gagal",
+        text: "Gagal memperbarui data project. Silakan coba lagi.",
+        icon: "error",
+      });
+    }
   };
 
-  // Handle cancel button click
   const batal = () => {
-    // Logic to handle cancel action
-    setFormData({
-      no: "",
-      namaProject: "",
-      teknologi: "",
-      developer: "",
-      link: "",
-      deskripsiProject: "",
-    });
+    navigate(-1);
   };
 
   return (
     <>
-      <div className="card">
+      <div className="d-flex flex-column flex-md-row">
         <Sidebar />
-        <section style={{ width: "90%", marginTop: "8%" }}>
+        <section style={{ width: "100%", marginTop: "8%" }}>
           <div className="container mt-4">
-            <div className="card shadow-sm p-1">
+            <div className="card shadow-sm p-1" style={{ width: "100%", maxWidth: "800px", margin: "0 auto" }}>
               <div className="card-body">
                 <h2
                   className="card-title"
@@ -57,7 +130,7 @@ function Updatelist() {
                     top: "-10px",
                   }}
                 >
-                  Create List
+                  Update List
                 </h2>
 
                 <form onSubmit={handleSubmit}>
@@ -80,8 +153,9 @@ function Updatelist() {
                         className="form-control custom-input"
                         id="no"
                         name="no"
-                        value={formData.no}
+                        value={no}
                         onChange={handleChange}
+                        autoComplete="off"
                         placeholder=" No"
                         required
                       />
@@ -104,8 +178,9 @@ function Updatelist() {
                         className="form-control custom-input"
                         id="namaProject"
                         name="namaProject"
-                        value={formData.namaProject}
+                        value={namaProject}
                         onChange={handleChange}
+                        autoComplete="off"
                         placeholder=" Nama Project"
                         required
                       />
@@ -131,8 +206,9 @@ function Updatelist() {
                         className="form-control custom-input"
                         id="teknologi"
                         name="teknologi"
-                        value={formData.teknologi}
+                        value={teknologi}
                         onChange={handleChange}
+                        autoComplete="off"
                         placeholder=" Teknologi"
                         required
                       />
@@ -155,8 +231,9 @@ function Updatelist() {
                         className="form-control custom-input"
                         id="developer"
                         name="developer"
-                        value={formData.developer}
+                        value={developer}
                         onChange={handleChange}
+                        autoComplete="off"
                         placeholder=" Developer"
                         required
                       />
@@ -182,8 +259,9 @@ function Updatelist() {
                         className="form-control custom-input"
                         id="link"
                         name="link"
-                        value={formData.link}
+                        value={link}
                         onChange={handleChange}
+                        autoComplete="off"
                         placeholder=" Link"
                         required
                       />
@@ -205,16 +283,16 @@ function Updatelist() {
                         className="form-control custom-input"
                         id="deskripsiProject"
                         name="deskripsiProject"
-                        value={formData.deskripsiProject}
+                        value={deskripsiProject}
                         onChange={handleChange}
+                        autoComplete="off"
                         placeholder=" Deskripsi Project"
                         rows="3"
-                        required
                       />
                     </div>
                   </div>
 
-                  <div className="button-container">
+                  <div className="button-container" style={{ display: "flex", justifyContent: "space-between" }}>
                     <button
                       type="button"
                       className="btn btn-secondary btn-sm btn-custom"
@@ -226,7 +304,7 @@ function Updatelist() {
                       type="submit"
                       className="btn btn-primary btn-sm btn-custom"
                     >
-                      Tambah
+                      Update
                     </button>
                   </div>
                 </form>
