@@ -142,7 +142,7 @@ function Listp() {
           >
             <div className="card-body">
               <div className="d-flex align-items-center mb-3">
-                <h3 className="mr-auto">Tabel List Projek</h3>
+                <p className="mr-auto" style={{ fontWeight:"bold", fontSize:"150%" }}>Tabel List Projek</p>
                 <div className="d-flex">
                   <input
                     type="text"

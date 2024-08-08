@@ -7,26 +7,35 @@ import Swal from "sweetalert2";
 
 function Updatelist() {
   const [no, setNo] = useState("");
-  const [namaProject, setNamaProject] = useState("");
+  const [nama_project, setNama_project] = useState("");
   const [teknologi, setTeknologi] = useState("");
   const [developer, setDeveloper] = useState("");
   const [link, setLink] = useState("");
-  const [deskripsiProject, setDeskripsiProject] = useState("");
-  const { id } = useParams(); // Get the project ID from the URL
+  const [deskripsi_project, setDeskripsi_project] = useState("");
+  const { id } = useParams(); 
   const navigate = useNavigate();
 
-  // Fetch the selected project data
   useEffect(() => {
     const fetchProjectData = async () => {
       try {
-        const response = await axios.get(`http://localhost:2007/api/list_projek/${id}`);
+        const token = localStorage.getItem("token");
+
+        const response = await axios.get(
+          `http://localhost:2007/api/list_project/by-id/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
         const project = response.data;
         setNo(project.no);
-        setNamaProject(project.namaProject);
+        setNama_project(project.nama_project);
         setTeknologi(project.teknologi);
         setDeveloper(project.developer);
         setLink(project.link);
-        setDeskripsiProject(project.deskripsiProject);
+        setDeskripsi_project(project.deskripsi_project);
       } catch (error) {
         console.error("Gagal mengambil data project: ", error);
         Swal.fire({
@@ -38,7 +47,7 @@ function Updatelist() {
     };
 
     if (id) {
-      fetchProjectData(); // Fetch data only if there's an ID (editing mode)
+      fetchProjectData();
     }
   }, [id]);
 
@@ -48,8 +57,8 @@ function Updatelist() {
       case "no":
         setNo(value);
         break;
-      case "namaProject":
-        setNamaProject(value);
+      case "nama_project":
+        setNama_project(value);
         break;
       case "teknologi":
         setTeknologi(value);
@@ -60,8 +69,8 @@ function Updatelist() {
       case "link":
         setLink(value);
         break;
-      case "deskripsiProject":
-        setDeskripsiProject(value);
+      case "deskripsi_project":
+        setDeskripsi_project(value);
         break;
       default:
         break;
@@ -73,17 +82,17 @@ function Updatelist() {
 
     const updatedProject = {
       no,
-      namaProject,
+      nama_project,
       teknologi,
       developer,
       link,
-      deskripsiProject,
+      deskripsi_project,
     };
 
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:2007/api/list_projek/ubah/${id}`,
+        `http://localhost:2007/api/list_project/ubah/${id}`,
         updatedProject,
         {
           headers: {
@@ -118,9 +127,12 @@ function Updatelist() {
     <>
       <div className="d-flex flex-column flex-md-row">
         <Sidebar />
-        <section style={{ width: "100%", marginTop: "8%" }}>
+        <section className="d-flex justify-content-center align-items-center" style={{ width: "100%", marginTop: "8%" }}>
           <div className="container mt-4">
-            <div className="card shadow-sm p-1" style={{ width: "100%", maxWidth: "800px", margin: "0 auto" }}>
+            <div
+              className="card shadow-sm p-1 mx-auto"
+              style={{ width: "100%", maxWidth: "800px", margin: "0 auto" }}
+            >
               <div className="card-body">
                 <h2
                   className="card-title"
@@ -137,32 +149,7 @@ function Updatelist() {
                   <div className="row mb-3">
                     <div className="col-md-6">
                       <label
-                        htmlFor="no"
-                        className="form-label"
-                        style={{
-                          fontSize: "0.75rem",
-                          fontWeight: "bold",
-                          textAlign: "left",
-                          display: "block",
-                        }}
-                      >
-                        No
-                      </label>
-                      <input
-                        type="number"
-                        className="form-control custom-input"
-                        id="no"
-                        name="no"
-                        value={no}
-                        onChange={handleChange}
-                        autoComplete="off"
-                        placeholder=" No"
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <label
-                        htmlFor="namaProject"
+                        htmlFor="nama_project"
                         className="form-label"
                         style={{
                           fontSize: "0.75rem",
@@ -176,18 +163,15 @@ function Updatelist() {
                       <input
                         type="text"
                         className="form-control custom-input"
-                        id="namaProject"
-                        name="namaProject"
-                        value={namaProject}
+                        id="nama_project"
+                        name="nama_project"
+                        value={nama_project}
                         onChange={handleChange}
                         autoComplete="off"
                         placeholder=" Nama Project"
                         required
                       />
                     </div>
-                  </div>
-
-                  <div className="row mb-3">
                     <div className="col-md-6">
                       <label
                         htmlFor="teknologi"
@@ -213,6 +197,9 @@ function Updatelist() {
                         required
                       />
                     </div>
+                  </div>
+
+                  <div className="row mb-3">
                     <div className="col-md-6">
                       <label
                         htmlFor="developer"
@@ -238,9 +225,6 @@ function Updatelist() {
                         required
                       />
                     </div>
-                  </div>
-
-                  <div className="row mb-3">
                     <div className="col-md-6">
                       <label
                         htmlFor="link"
@@ -266,9 +250,12 @@ function Updatelist() {
                         required
                       />
                     </div>
+                  </div>
+
+                  <div className="row mb-3">
                     <div className="col-md-6">
                       <label
-                        htmlFor="deskripsiProject"
+                        htmlFor="deskripsi_project"
                         className="form-label"
                         style={{
                           fontSize: "0.75rem",
@@ -281,9 +268,9 @@ function Updatelist() {
                       </label>
                       <textarea
                         className="form-control custom-input"
-                        id="deskripsiProject"
-                        name="deskripsiProject"
-                        value={deskripsiProject}
+                        id="deskripsi_project"
+                        name="deskripsi_project"
+                        value={deskripsi_project}
                         onChange={handleChange}
                         autoComplete="off"
                         placeholder=" Deskripsi Project"
@@ -292,7 +279,10 @@ function Updatelist() {
                     </div>
                   </div>
 
-                  <div className="button-container" style={{ display: "flex", justifyContent: "space-between" }}>
+                  <div
+                    className="button-container"
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
                     <button
                       type="button"
                       className="btn btn-secondary btn-sm btn-custom"

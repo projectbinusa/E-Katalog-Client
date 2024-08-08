@@ -92,7 +92,10 @@ function Createlist() {
         <Sidebar />
         <section style={{ width: "100%", marginTop: "8%" }}>
           <div className="container mt-4">
-            <div className="card shadow-sm p-1" style={{ width: "100%", maxWidth: "800px", margin: "0 auto" }}>
+            <div
+              className="card shadow-sm p-1"
+              style={{ width: "100%", maxWidth: "800px", margin: "0 auto" }}
+            >
               <div className="card-body">
                 <h2
                   className="card-title"
@@ -107,31 +110,6 @@ function Createlist() {
 
                 <form onSubmit={handleSubmit}>
                   <div className="row mb-3">
-                    <div className="col-md-6">
-                      <label
-                        htmlFor="no"
-                        className="form-label"
-                        style={{
-                          fontSize: "0.75rem",
-                          fontWeight: "bold",
-                          textAlign: "left",
-                          display: "block",
-                        }}
-                      >
-                        No
-                      </label>
-                      <input
-                        type="number"
-                        className="form-control custom-input"
-                        id="no"
-                        name="no"
-                        value={no}
-                        onChange={handleChange}
-                        autoComplete="off"
-                        placeholder=" No"
-                        required
-                      />
-                    </div>
                     <div className="col-md-6">
                       <label
                         htmlFor="nama_project"
@@ -157,9 +135,6 @@ function Createlist() {
                         required
                       />
                     </div>
-                  </div>
-
-                  <div className="row mb-3">
                     <div className="col-md-6">
                       <label
                         htmlFor="teknologi"
@@ -185,6 +160,9 @@ function Createlist() {
                         required
                       />
                     </div>
+                  </div>
+
+                  <div className="row mb-3">
                     <div className="col-md-6">
                       <label
                         htmlFor="developer"
@@ -210,9 +188,6 @@ function Createlist() {
                         required
                       />
                     </div>
-                  </div>
-
-                  <div className="row mb-3">
                     <div className="col-md-6">
                       <label
                         htmlFor="link"
@@ -238,6 +213,34 @@ function Createlist() {
                         required
                       />
                     </div>
+                  </div>
+
+                  <div className="row mb-3">
+                    {/* <div className="col-md-6">
+                      <label
+                        htmlFor="link"
+                        className="form-label"
+                        style={{
+                          fontSize: "0.75rem",
+                          fontWeight: "bold",
+                          textAlign: "left",
+                          display: "block",
+                        }}
+                      >
+                        Link
+                      </label>
+                      <input
+                        type="url"
+                        className="form-control custom-input"
+                        id="link"
+                        name="link"
+                        value={link}
+                        onChange={handleChange}
+                        autoComplete="off"
+                        placeholder=" Link"
+                        required
+                      />
+                    </div> */}
                     <div className="col-md-6">
                       <label
                         htmlFor="deskripsi_project"
@@ -264,7 +267,10 @@ function Createlist() {
                     </div>
                   </div>
 
-                  <div className="button-container" style={{ display: "flex", justifyContent: "space-between" }}>
+                  <div
+                    className="button-container"
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
                     <button
                       type="button"
                       className="btn btn-secondary btn-sm btn-custom"
