@@ -4,6 +4,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from "./component/Home";
 import Login from "./Auth/Login";
+import Sidebar from './component/Sidnav';
 import Uks from "./pages/Uks";
 import Absensi from "./pages/Absensi";
 import Sis from "./pages/Sis";
@@ -25,6 +26,7 @@ import Profile from './component/Profile';
 import Createlist from './Admin/Createlist';
 import Updatelist from './Admin/Updatelist';
 import ManagementWa from './pages/ManagementWa';
+import GantiPass from './component/GantiPass';
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
             <Route path="/login" element={<Login />} exact />
             <Route path="/register" element={<Register />} exact />
             <Route path="/dashboard" element={<Dashboard />} exact />
+            <Route path="/sidenav" element={<Sidebar />} exact />
+            <Route path="/gantipass" element={<GantiPass />} exact />
             <Route path="/listprojek" element={<Listp />} exact />
             <Route path="/updatelist/:id" element={<Updatelist />} exact />
             <Route path="/tambahlist" element={<Createlist />} exact />
