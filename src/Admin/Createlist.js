@@ -4,15 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import "../css/Create.css";
 
 function Createlist() {
   const [no, setNo] = useState("");
-  const [namaProject, setNamaProject] = useState("");
+  const [nama_project, setnama_project] = useState("");
   const [teknologi, setTeknologi] = useState("");
   const [developer, setDeveloper] = useState("");
   const [link, setLink] = useState("");
-  const [deskripsiProject, setDeskripsiProject] = useState("");
+  const [deskripsi_project, setdeskripsi_project] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -21,8 +20,8 @@ function Createlist() {
       case "no":
         setNo(value);
         break;
-      case "namaProject":
-        setNamaProject(value);
+      case "nama_project":
+        setnama_project(value);
         break;
       case "teknologi":
         setTeknologi(value);
@@ -33,8 +32,8 @@ function Createlist() {
       case "link":
         setLink(value);
         break;
-      case "deskripsiProject":
-        setDeskripsiProject(value);
+      case "deskripsi_project":
+        setdeskripsi_project(value);
         break;
       default:
         break;
@@ -46,17 +45,23 @@ function Createlist() {
 
     const newProject = {
       no,
-      namaProject,
+      nama_project,
       teknologi,
       developer,
       link,
-      deskripsiProject,
+      deskripsi_project,
     };
 
     try {
+      const token = localStorage.getItem("token");
       await axios.post(
         "http://localhost:2007/api/list_project/add",
-        newProject
+        newProject,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       Swal.fire({
         title: "Berhasil",
@@ -85,9 +90,12 @@ function Createlist() {
     <>
       <div className="d-flex flex-column flex-md-row">
         <Sidebar />
-        <section style={{ width: "90%", marginTop: "8%" }}>
+        <section style={{ width: "100%", marginTop: "8%" }}>
           <div className="container mt-4">
-            <div className="card shadow-sm p-1">
+            <div
+              className="card shadow-sm p-1"
+              style={{ width: "100%", maxWidth: "800px", margin: "0 auto" }}
+            >
               <div className="card-body">
                 <h2
                   className="card-title"
@@ -104,31 +112,7 @@ function Createlist() {
                   <div className="row mb-3">
                     <div className="col-md-6">
                       <label
-                        htmlFor="no"
-                        className="form-label"
-                        style={{
-                          fontSize: "0.75rem",
-                          fontWeight: "bold",
-                          textAlign: "left",
-                          display: "block",
-                        }}
-                      >
-                        No
-                      </label>
-                      <input
-                        type="number"
-                        className="form-control custom-input"
-                        id="no"
-                        name="no"
-                        value={no}
-                        onChange={handleChange}
-                        placeholder=" No"
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <label
-                        htmlFor="namaProject"
+                        htmlFor="nama_project"
                         className="form-label"
                         style={{
                           fontSize: "0.75rem",
@@ -142,17 +126,15 @@ function Createlist() {
                       <input
                         type="text"
                         className="form-control custom-input"
-                        id="namaProject"
-                        name="namaProject"
-                        value={namaProject}
+                        id="nama_project"
+                        name="nama_project"
+                        value={nama_project}
                         onChange={handleChange}
+                        autoComplete="off"
                         placeholder=" Nama Project"
                         required
                       />
                     </div>
-                  </div>
-
-                  <div className="row mb-3">
                     <div className="col-md-6">
                       <label
                         htmlFor="teknologi"
@@ -173,10 +155,14 @@ function Createlist() {
                         name="teknologi"
                         value={teknologi}
                         onChange={handleChange}
+                        autoComplete="off"
                         placeholder=" Teknologi"
                         required
                       />
                     </div>
+                  </div>
+
+                  <div className="row mb-3">
                     <div className="col-md-6">
                       <label
                         htmlFor="developer"
@@ -197,13 +183,11 @@ function Createlist() {
                         name="developer"
                         value={developer}
                         onChange={handleChange}
+                        autoComplete="off"
                         placeholder=" Developer"
                         required
                       />
                     </div>
-                  </div>
-
-                  <div className="row mb-3">
                     <div className="col-md-6">
                       <label
                         htmlFor="link"
@@ -224,13 +208,42 @@ function Createlist() {
                         name="link"
                         value={link}
                         onChange={handleChange}
+                        autoComplete="off"
                         placeholder=" Link"
                         required
                       />
                     </div>
+                  </div>
+
+                  <div className="row mb-3">
+                    {/* <div className="col-md-6">
+                      <label
+                        htmlFor="link"
+                        className="form-label"
+                        style={{
+                          fontSize: "0.75rem",
+                          fontWeight: "bold",
+                          textAlign: "left",
+                          display: "block",
+                        }}
+                      >
+                        Link
+                      </label>
+                      <input
+                        type="url"
+                        className="form-control custom-input"
+                        id="link"
+                        name="link"
+                        value={link}
+                        onChange={handleChange}
+                        autoComplete="off"
+                        placeholder=" Link"
+                        required
+                      />
+                    </div> */}
                     <div className="col-md-6">
                       <label
-                        htmlFor="deskripsiProject"
+                        htmlFor="deskripsi_project"
                         className="form-label"
                         style={{
                           fontSize: "0.75rem",
@@ -243,17 +256,21 @@ function Createlist() {
                       </label>
                       <textarea
                         className="form-control custom-input"
-                        id="deskripsiProject"
-                        name="deskripsiProject"
-                        value={deskripsiProject}
+                        id="deskripsi_project"
+                        name="deskripsi_project"
+                        value={deskripsi_project}
                         onChange={handleChange}
+                        autoComplete="off"
                         placeholder=" Deskripsi Project"
                         rows="3"
                       />
                     </div>
                   </div>
 
-                  <div className="button-container">
+                  <div
+                    className="button-container"
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
                     <button
                       type="button"
                       className="btn btn-secondary btn-sm btn-custom"

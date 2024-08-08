@@ -41,7 +41,7 @@ function App() {
             <Route path="/sidenav" element={<Sidebar />} exact />
             <Route path="/gantipass" element={<GantiPass />} exact />
             <Route path="/listprojek" element={<Listp />} exact />
-            <Route path="/update/:id" element={<Updatelist />} exact />
+            <Route path="/updatelist/:id" element={<Updatelist />} exact />
             <Route path="/tambahlist" element={<Createlist />} exact />
             <Route path="/Profile" element={<Profile />} exact />
             <Route path="/uks" element={<Uks />} exact />
