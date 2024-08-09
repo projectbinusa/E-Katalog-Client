@@ -157,8 +157,7 @@ function Listp() {
                   />
                   <Link
                     to={`/tambahlist`}
-                    className="btn btn-primary btn-sm mr-2 btn-custom"
-                    style={{ height: "5%" }}
+                    className="btn btn-primary"
                   >
                     <FontAwesomeIcon
                       icon={faPlus}
