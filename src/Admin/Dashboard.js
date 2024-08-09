@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "../component/Sidnav";
 import UKS from "../aset/uks.png";
 import Kampung from "../aset/kampung.png";
@@ -18,20 +18,25 @@ import PT from "../aset/pt-dinartech.png";
 import Lab from "../aset/programmer.png";
 import Wa from "../aset/wa.jpeg";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "../css/Dashboard.css";
 
 function Dashboard() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <div className="d-flex" style={{ height: "100vh" }}>
       <Sidebar />
       <div
         className="Bg"
         style={{
-          marginLeft: "17%",
+          marginLeft: "15%",
           marginRight: "18%",
-          width: "84%",
+          width: "85%",
           marginTop: "4%",
           flex: 1,
-          overflowY: "auto", // Enable scrolling
         }}
       >
         <div className="bg-element">
@@ -42,7 +47,7 @@ function Dashboard() {
         </div>
         <div className="context">
           <center>
-            <table align="center" className="table-flex " border="0">
+            <table align="center" className="table-flex" border="0">
               <tbody>
                 <tr className="tbody-tr">
                   {/* <td colSpan="2">
@@ -123,7 +128,7 @@ function Dashboard() {
                               className="border-radius: 20px width-img-60"
                               alt="Logo"
                             />
-                          </div>
+                          </div>   
                           <h3>E-Kampoeng</h3>
                         </div>
                       </div>

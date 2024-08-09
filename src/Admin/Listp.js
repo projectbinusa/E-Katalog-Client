@@ -19,6 +19,7 @@ function Listp() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const [searchQuery, setSearchQuery] = useState("");
+  
   const getToken = () => {
     // Retrieve the token from localStorage or any other method you use
     return localStorage.getItem("token"); // Adjust based on your storage method
@@ -55,14 +56,16 @@ function Listp() {
   }, []);
 
   const filteredData = data.filter((item) => {
-    const namaProject = item.namaProject || "";
-    const teknologi = item.teknologi || "";
-    const developer = item.developer || "";
+    const { nama_project, teknologi, developer, link, deskripsi_project } = item;
 
+    const lowerCaseQuery = searchQuery.toLowerCase();
+    
     return (
-      namaProject.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      teknologi.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      developer.toLowerCase().includes(searchQuery.toLowerCase())
+      (nama_project && nama_project.toLowerCase().includes(lowerCaseQuery)) ||
+      (teknologi && teknologi.toLowerCase().includes(lowerCaseQuery)) ||
+      (developer && developer.toLowerCase().includes(lowerCaseQuery)) ||
+      (link && link.toLowerCase().includes(lowerCaseQuery)) ||
+      (deskripsi_project && deskripsi_project.toLowerCase().includes(lowerCaseQuery))
     );
   });
 
@@ -183,11 +186,11 @@ function Listp() {
                   >
                     <tr>
                       <th>No</th>
-                      <th class="text-nowrap">Nama Project</th>
+                      <th className="text-nowrap">Nama Project</th>
                       <th>Teknologi</th>
                       <th>Developer</th>
                       <th>Link</th>
-                      <th class="text-nowrap">Deskripsi Project</th>
+                      <th className="text-nowrap">Deskripsi Project</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -201,7 +204,7 @@ function Listp() {
                           <td>{item.nama_project}</td>
                           <td>{item.teknologi}</td>
                           <td>{item.developer}</td>
-                          <td>
+                          <td style={{ color:"Highlight" }}>
                             <a
                               href={item.link}
                               target="_blank"
