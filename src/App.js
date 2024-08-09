@@ -27,6 +27,7 @@ import Createlist from './Admin/Createlist';
 import Updatelist from './Admin/Updatelist';
 import ManagementWa from './pages/ManagementWa';
 import GantiPass from './component/GantiPass';
+import PrivateRoute from './Router/router.jsx';
 
 function App() {
   return (
@@ -37,13 +38,6 @@ function App() {
             <Route path="/" element={<Home />} exact />
             <Route path="/login" element={<Login />} exact />
             <Route path="/register" element={<Register />} exact />
-            <Route path="/dashboard" element={<Dashboard />} exact />
-            <Route path="/sidenav" element={<Sidebar />} exact />
-            <Route path="/gantipass" element={<GantiPass />} exact />
-            <Route path="/listprojek" element={<Listp />} exact />
-            <Route path="/updatelist/:id" element={<Updatelist />} exact />
-            <Route path="/tambahlist" element={<Createlist />} exact />
-            <Route path="/Profile" element={<Profile />} exact />
             <Route path="/uks" element={<Uks />} exact />
             <Route path="/absensi" element={<Absensi />} exact />
             <Route path="/sis" element={<Sis />} exact />
@@ -58,6 +52,17 @@ function App() {
             <Route path="/kasir" element={<Kasir />} exact />
             <Route path="/labbahasa" element={<Labbahasa />} exact />
             <Route path="/managementwa" element={<ManagementWa />} exact />
+            
+            {/* page yang ingin dibuka maka harus login terlebih dahulu */}
+            <Route element={<PrivateRoute role="ADMIN" />}>
+            <Route path="/dashboard" element={<Dashboard />} exact />
+            <Route path="/sidenav" element={<Sidebar />} exact />
+            <Route path="/gantipass" element={<GantiPass />} exact />
+            <Route path="/listprojek" element={<Listp />} exact />
+            <Route path="/updatelist/:id" element={<Updatelist />} exact />
+            <Route path="/tambahlist" element={<Createlist />} exact />
+            <Route path="/Profile" element={<Profile />} exact />
+            </Route>
           </Routes>
         </main>
       </Router>
