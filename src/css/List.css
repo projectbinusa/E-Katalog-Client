@@ -10,3 +10,15 @@
     margin-right: auto;
   }
 }
+
+.table-custom {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.table-custom tbody {
+  border-bottom: 1px solid #ddd; /* Adjust thickness here */
+}

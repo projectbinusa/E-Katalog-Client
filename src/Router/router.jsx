@@ -1,12 +1,14 @@
-import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+// Router/router.jsx
+import React from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
 const PrivateRoute = ({ role }) => {
-  const token = localStorage.getItem("token");
-  const userRole = localStorage.getItem("role"); // Assuming you store the role in localStorage
+  const isAuthenticated = !!localStorage.getItem("token"); // Check if token exists
+  const userRole = localStorage.getItem("role"); // Assume user role is stored in localStorage
 
-  if (!token) {
-    return <Navigate to="/" />;
+  // Check if user is authenticated and has the correct role
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
   }
 
   if (role && userRole !== role) {

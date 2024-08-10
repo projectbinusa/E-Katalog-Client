@@ -32,3 +32,46 @@
     justify-content: space-between; /* Space out buttons on larger screens */
   }
 }
+
+/* Base style for buttons */
+.btn-custom {
+  background-color: white; /* White background */
+  border: 2px solid; /* Border color defined by specific classes */
+  color: inherit; /* Text color inherited from specific classes */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  padding: 5px 10px; /* Adjust padding as needed */
+  border-radius: 4px; /* Optional: Rounded corners */
+}
+
+/* Hover effect */
+.btn-custom:hover,
+.btn-custom:focus {
+  background-color: #f0f0f0; /* Slightly darker background on hover */
+  box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.2); /* Thicker shadow */
+}
+
+/* Specific styles for primary button */
+.btn-primary-custom {
+  border-color: #007bff; /* Primary border color */
+  color: #007bff; /* Primary text color */
+}
+
+.btn-primary-custom:hover,
+.btn-primary-custom:focus {
+  border-color: #074485; /* Brighter border color on hover */
+  color: #074485; /* Brighter text color on hover */
+  box-shadow: 0 0 8px 4px rgba(0, 91, 187, 1.9); /* Thicker light blue shadow */
+}
+
+/* Specific styles for secondary button */
+.btn-secondary-custom {
+  border-color: #6c757d; /* Secondary border color */
+  color: #6c757d; /* Secondary text color */
+}
+
+.btn-secondary-custom:hover,
+.btn-secondary-custom:focus {
+  border-color: #191c1f; /* Brighter border color on hover */
+  color: #000000; /* Brighter text color on hover */
+  box-shadow: 0 0 8px 4px rgba(3, 3, 3, 0.9); /* Thicker light gray shadow */
+}
