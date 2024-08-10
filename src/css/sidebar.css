@@ -107,6 +107,12 @@ body {
   background-color: #f8f9fa; /* Sesuaikan warna navbar dengan sidebar */
 }
 
+@media (max-width: 768px) {
+  .navbar {
+    height: 50px; /* Tinggi navbar pada mode mobile */
+  }
+}
+
 .navbar-brand {
   display: flex;
   align-items: center; /* Posisikan logo secara vertikal di tengah */
@@ -161,6 +167,7 @@ body {
 
   .navbar-toggler {
     margin-right: auto; /* Push the toggle button to the left */
+    margin-top: 5px;
   }
 
   .navbar-nav {

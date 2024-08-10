@@ -2,12 +2,14 @@
 .responsive-card {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10%;
 }
 
 @media (max-width: 768px) {
   .responsive-card {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10%;
   }
 }
 
@@ -22,3 +24,4 @@
 .table-custom tbody {
   border-bottom: 1px solid #ddd; /* Adjust thickness here */
 }
+
