@@ -10,11 +10,27 @@ import Logo from "../aset/LOGO_Katalog.png";
 function Sidebar() {
   const [showSidebar, setShowSidebar] = React.useState(false);
   const location = useLocation();
-
+  // const [profilePic, setProfilePic] = useState(
+  //   "https://kimia.fkip.usk.ac.id/wp-content/uploads/2017/10/1946429.png"
+  // );
   const toggleSidebar = () => setShowSidebar(!showSidebar);
 
   const isActive = (path) => (location.pathname === path ? "active" : "");
 
+  // seEffect(() => {
+  //   const fetchAdmin = async () => {
+  //     try {
+  //       const adminData = await getAdminById(id);
+  //       if (adminData.image) {
+  //         setProfilePic(adminData.image);
+  //       }
+  //     } catch (error) {
+  //       console.error("Failed to fetch admin:", error);
+  //     }
+  //   };
+
+  //   fetchAdmin();
+  // }, [id]);
   return (
     <div className="d-flex">
       <nav className={`sidebar ${showSidebar ? "show" : ""}`}>

@@ -12,7 +12,7 @@ function Updatelist() {
   const [developer, setDeveloper] = useState("");
   const [link, setLink] = useState("");
   const [deskripsi_project, setDeskripsi_project] = useState("");
-  const { id } = useParams(); 
+  const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -127,7 +127,7 @@ function Updatelist() {
     <>
       <div className="d-flex flex-column flex-md-row">
         <Sidebar />
-        <section className="d-flex justify-content-center align-items-center" style={{ width: "100%", marginTop: "8%" }}>
+        <section style={{ width: "100%", marginTop: "8%" }}>
           <div className="container mt-4">
             <div
               className="card shadow-sm p-1 mx-auto"
@@ -285,14 +285,14 @@ function Updatelist() {
                   >
                     <button
                       type="button"
-                      className="btn btn-secondary btn-sm btn-custom"
+                      className="btn btn-custom btn-secondary-custom btn-sm"
                       onClick={batal}
                     >
                       Batal
                     </button>
                     <button
                       type="submit"
-                      className="btn btn-primary btn-sm btn-custom"
+                      className="btn btn-custom btn-primary-custom btn-sm"
                     >
                       Update
                     </button>

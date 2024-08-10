@@ -19,7 +19,6 @@ function Listp() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const [searchQuery, setSearchQuery] = useState("");
-  
   const getToken = () => {
     // Retrieve the token from localStorage or any other method you use
     return localStorage.getItem("token"); // Adjust based on your storage method
@@ -56,16 +55,14 @@ function Listp() {
   }, []);
 
   const filteredData = data.filter((item) => {
-    const { nama_project, teknologi, developer, link, deskripsi_project } = item;
+    const namaProject = item.namaProject || "";
+    const teknologi = item.teknologi || "";
+    const developer = item.developer || "";
 
-    const lowerCaseQuery = searchQuery.toLowerCase();
-    
     return (
-      (nama_project && nama_project.toLowerCase().includes(lowerCaseQuery)) ||
-      (teknologi && teknologi.toLowerCase().includes(lowerCaseQuery)) ||
-      (developer && developer.toLowerCase().includes(lowerCaseQuery)) ||
-      (link && link.toLowerCase().includes(lowerCaseQuery)) ||
-      (deskripsi_project && deskripsi_project.toLowerCase().includes(lowerCaseQuery))
+      namaProject.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      teknologi.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      developer.toLowerCase().includes(searchQuery.toLowerCase())
     );
   });
 
@@ -127,11 +124,41 @@ function Listp() {
     }
   };
 
+  const copyToClipboard = (text, event) => {
+    if (event && event.clientY && event.clientX) {
+      navigator.clipboard.writeText(text).then(
+        () => {
+          // Create a temporary message element
+          const messageElement = document.createElement("div");
+          messageElement.textContent = "Link sudah tersalin";
+          messageElement.style.position = "absolute";
+          messageElement.style.top = `${event.clientY + 10}px`; // Positioning below the cursor
+          messageElement.style.left = `${event.clientX}px`;
+          messageElement.style.backgroundColor = "#333";
+          messageElement.style.color = "#fff";
+          messageElement.style.padding = "5px 10px";
+          messageElement.style.borderRadius = "5px";
+          messageElement.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.5)";
+          messageElement.style.zIndex = "1000";
+          document.body.appendChild(messageElement);
+
+          // Remove the message after 2 seconds
+          setTimeout(() => {
+            document.body.removeChild(messageElement);
+          }, 1000);
+        },
+        (err) => {
+          console.error("Failed to copy: ", err);
+        }
+      );
+    }
+  };
+
   return (
     <div className="d-flex">
       <Sidebar />
       <section
-        className="w-100 d-flex justify-content-center align-items-start"
+        className="w-100 d-flex justify-content-center align-items-start auto-y-scroll"
         style={{ minHeight: "100vh", padding: "0 5%", marginTop: "5%" }}
       >
         <div className="container mt-4 px-2">
@@ -145,40 +172,50 @@ function Listp() {
           >
             <div className="card-body">
               <div className="d-flex align-items-center mb-3">
-                <p className="mr-auto" style={{ fontWeight:"bold", fontSize:"150%" }}>Tabel List Projek</p>
-                <div className="d-flex">
+                <p
+                  className="mr-auto"
+                  style={{ fontWeight: "bold", fontSize: "150%" }}
+                >
+                  Tabel List Projek
+                </p>
+                <div className="d-flex align-items-center">
                   <input
                     type="text"
                     placeholder="Search..."
                     className="form-control mr-2"
-                    style={{ maxWidth: "200px" }}
+                    style={{
+                      maxWidth: "200px",
+                      height: "38px", // Set a fixed height that matches the button height
+                    }}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
                   <Link
                     to={`/tambahlist`}
-                    className="btn btn-primary"
+                    className="btn btn-primary btn-sm mr-2"
+                    style={{
+                      width: "40px", // Set a fixed width for consistency
+                      height: "38px", // Ensure button height matches input height
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
                   >
                     <FontAwesomeIcon
                       icon={faPlus}
                       className="mr-1"
-                      style={{ padding: "10%", color: "white" }}
+                      style={{
+                        color: "white",
+                        marginLeft: "10%",
+                        fontSize: "16px", // Adjust font size if needed
+                      }}
                     />
                   </Link>
                 </div>
               </div>
 
               <div className="table-responsive">
-                <table
-                  className="table table-hover"
-                  style={{
-                    borderCollapse: "separate",
-                    borderSpacing: "0",
-                    borderRadius: "8px",
-                    overflow: "hidden",
-                    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
-                  }}
-                >
+                <table className="table table-hover table-custom">
                   <thead
                     className="thead-light"
                     style={{ borderRadius: "8px 8px 0 0", overflow: "hidden" }}
@@ -203,21 +240,36 @@ function Listp() {
                           <td>{item.nama_project}</td>
                           <td>{item.teknologi}</td>
                           <td>{item.developer}</td>
-                          <td style={{ color:"Highlight" }}>
-                            <a
-                              href={item.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
+                          <td
+                            style={{ color: "Highlight", cursor: "pointer" }}
+                            onClick={(e) => {
+                              if (e.target.tagName !== "A") {
+                                copyToClipboard(item.link);
+                              }
+                            }}
+                          >
+                            <td
+                              onClick={(e) => {
+                                if (e.target.tagName !== "A") {
+                                  copyToClipboard(item.link, e);
+                                }
+                              }}
                             >
-                              {item.link}
-                            </a>
+                              <a
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {item.link}
+                              </a>
+                            </td>
                           </td>
                           <td>{item.deskripsi_project}</td>
                           <td>
                             <div className="d-flex">
                               <Link
                                 to={`/updatelist/${item.id}`}
-                                className="btn btn-success btn-sm mr-2 btn-custom"
+                                className="btn btn-success btn-sm mr-2 "
                                 style={{ height: "5%" }}
                               >
                                 <FontAwesomeIcon
@@ -227,7 +279,7 @@ function Listp() {
                                 />
                               </Link>
                               <button
-                                className="btn btn-danger btn-sm btn-custom"
+                                className="btn btn-danger btn-sm "
                                 onClick={() => handleDelete(item.id)}
                                 style={{ height: "5%" }}
                               >
@@ -262,23 +314,23 @@ function Listp() {
                     <button
                       className="page-link"
                       onClick={() => handlePageChange(currentPage - 1)}
-                      aria-label="Previous"
+                      disabled={currentPage === 1}
                     >
-                      <FontAwesomeIcon icon={faArrowLeft} className="mr-1" />
+                      <FontAwesomeIcon icon={faArrowLeft} />
                     </button>
                   </li>
-                  {[...Array(totalPages)].map((_, index) => (
+                  {Array.from({ length: totalPages }, (_, i) => (
                     <li
-                      key={index}
                       className={`page-item ${
-                        currentPage === index + 1 ? "active" : ""
+                        currentPage === i + 1 ? "active" : ""
                       }`}
+                      key={i + 1}
                     >
                       <button
                         className="page-link"
-                        onClick={() => handlePageChange(index + 1)}
+                        onClick={() => handlePageChange(i + 1)}
                       >
-                        {index + 1}
+                        {i + 1}
                       </button>
                     </li>
                   ))}
@@ -290,9 +342,9 @@ function Listp() {
                     <button
                       className="page-link"
                       onClick={() => handlePageChange(currentPage + 1)}
-                      aria-label="Next"
+                      disabled={currentPage === totalPages}
                     >
-                      <FontAwesomeIcon icon={faArrowRight} className="ml-1" />
+                      <FontAwesomeIcon icon={faArrowRight} />
                     </button>
                   </li>
                 </ul>

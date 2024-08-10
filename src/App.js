@@ -18,14 +18,13 @@ import Invitation from "./pages/Einvitation";
 import Datacenter from "./pages/Datacenter";
 import Kasir from "./pages/Kasir";
 import Labbahasa from "./pages/Labbahasa";
-import managementwa from "./pages/ManagementWa";
+import ManagementWa from './pages/ManagementWa';
 import Register from './Auth/Register';
 import Dashboard from './Admin/Dashboard';
 import Listp from './Admin/Listp';
 import Profile from './component/Profile';
 import Createlist from './Admin/Createlist';
 import Updatelist from './Admin/Updatelist';
-import ManagementWa from './pages/ManagementWa';
 import GantiPass from './component/GantiPass';
 import PrivateRoute from './Router/router.jsx';
 
@@ -52,16 +51,16 @@ function App() {
             <Route path="/kasir" element={<Kasir />} exact />
             <Route path="/labbahasa" element={<Labbahasa />} exact />
             <Route path="/managementwa" element={<ManagementWa />} exact />
-            
-            {/* page yang ingin dibuka maka harus login terlebih dahulu */}
+
+            {/* Protected routes - user must be logged in */}
             <Route element={<PrivateRoute role="ADMIN" />}>
-            <Route path="/dashboard" element={<Dashboard />} exact />
-            <Route path="/sidenav" element={<Sidebar />} exact />
-            <Route path="/gantipass" element={<GantiPass />} exact />
-            <Route path="/listprojek" element={<Listp />} exact />
-            <Route path="/updatelist/:id" element={<Updatelist />} exact />
-            <Route path="/tambahlist" element={<Createlist />} exact />
-            <Route path="/Profile" element={<Profile />} exact />
+              <Route path="/dashboard" element={<Dashboard />} exact />
+              <Route path="/sidenav" element={<Sidebar />} exact />
+              <Route path="/gantipass" element={<GantiPass />} exact />
+              <Route path="/listprojek" element={<Listp />} exact />
+              <Route path="/updatelist/:id" element={<Updatelist />} exact />
+              <Route path="/tambahlist" element={<Createlist />} exact />
+              <Route path="/Profile" element={<Profile />} exact />
             </Route>
           </Routes>
         </main>

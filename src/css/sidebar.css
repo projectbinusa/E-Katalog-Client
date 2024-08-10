@@ -7,22 +7,19 @@ body {
 
 /* Sidebar */
 .sidebar {
+  width: 250px;
+  height: 100vh;
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
-  padding: 58px 0 0; /* Padding untuk tinggi navbar */
-  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-  width: 240px;
   background-color: #f8f9fa;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease-in-out; /* Transition untuk animasi sidebar */
-  z-index: 1000; /* Pastikan sidebar berada di atas konten lainnya */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  transform: translateX(-100%);
 }
 
 .sidebar.show {
-  transform: translateX(0); /* Tampilkan sidebar saat toggle diaktifkan */
+  transform: translateX(0);
 }
 
 /* Sidebar untuk tampilan mobile */
@@ -133,6 +130,10 @@ body {
   align-items: center;
 }
 
+.navbar-toggler {
+  display: none; /* Hide the toggle button on larger screens */
+}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
   .navbar {
@@ -188,24 +189,18 @@ body {
   }
 
   .content {
-    margin-top: 60px; /* Jarak dari bawah navbar */
-    width: 100%; /* Mengisi lebar layar penuh */
-    padding: 20px;
+    margin-left: 0; /* Reset margin saat sidebar terbuka di tampilan mobile */
   }
 }
 
 /* Konten utama */
 .content {
-  margin-left: 240px; /* Margin untuk lebar sidebar */
-  margin-top: 60px; /* Margin untuk tinggi navbar */
-  padding: 10px; /* Padding di sekitar konten */
-  box-sizing: border-box; /* Pastikan padding termasuk dalam lebar */
-  transition: margin-left 0.3s ease; /* Transisi saat sidebar toggled */
-  min-height: calc(100vh - 60px); /* Tinggi penuh dikurangi tinggi navbar */
+  margin-left: 250px; /* Adjust this value to the width of the sidebar */
+  transition: margin-left 0.3s ease;
 }
 
 .content.shift {
-  margin-left: 0; /* No margin when sidebar is shown */
+  margin-left: 0;
 }
 
 .content main {

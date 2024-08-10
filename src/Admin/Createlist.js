@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import "../css/Create.css";
 
 function Createlist() {
   const [no, setNo] = useState("");
@@ -273,14 +274,14 @@ function Createlist() {
                   >
                     <button
                       type="button"
-                      className="btn btn-secondary btn-sm btn-custom"
+                      className="btn btn-custom btn-secondary-custom btn-sm"
                       onClick={batal}
                     >
                       Batal
                     </button>
                     <button
                       type="submit"
-                      className="btn btn-primary btn-sm btn-custom"
+                      className="btn btn-custom btn-primary-custom btn-sm"
                     >
                       Tambah
                     </button>
