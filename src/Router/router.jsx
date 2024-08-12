@@ -1,18 +1,21 @@
-// Router/router.jsx
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
-const PrivateRoute = ({ role }) => {
-  const isAuthenticated = !!localStorage.getItem("token"); // Check if token exists
-  const userRole = localStorage.getItem("role"); // Assume user role is stored in localStorage
+const PrivateRoute = () => {
+  const token = localStorage.getItem("token");
 
-  // Check if user is authenticated and has the correct role
-  if (!isAuthenticated) {
+  // If no token is found, redirect to login page
+  if (!token) {
     return <Navigate to="/login" />;
   }
 
-  if (role && userRole !== role) {
-    return <Navigate to="/" />;
+  // If a token is found, redirect to dashboard if attempting to access login page
+  // Or allow access to any other private route
+  const currentPath = window.location.pathname;
+
+  // Redirect to dashboard if trying to access login page
+  if (currentPath === "/login") {
+    return <Navigate to="/dashboard" />;
   }
 
   return <Outlet />;

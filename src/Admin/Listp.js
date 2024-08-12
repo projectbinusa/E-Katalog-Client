@@ -155,13 +155,13 @@ function Listp() {
   };
 
   return (
-    <div className="d-flex">
+    <div className="d-flex jusify-content-center">
       <Sidebar />
       <section
         className="w-100 d-flex justify-content-center align-items-start auto-y-scroll"
-        style={{ minHeight: "100vh", padding: "0 5%", marginTop: "5%" }}
+        style={{ minHeight: "100vh", padding: "0 5%", marginTop: "10%" }}
       >
-        <div className="container mt-4 px-2">
+        <div className="container mt-4 px-2 shadow-sm">
           <div
             className="card shadow-sm mx-auto responsive-card"
             style={{

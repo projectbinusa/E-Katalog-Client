@@ -29,16 +29,7 @@ function Dashboard() {
   return (
     <div className="d-flex" style={{ height: "100vh" }}>
       <Sidebar />
-      <div
-        className="Bg"
-        style={{
-          marginLeft: "15%",
-          marginRight: "18%",
-          width: "85%",
-          marginTop: "4%",
-          flex: 1,
-        }}
-      >
+      <div className="Bg dashboard-bg">
         <div className="bg-element">
           <img src={Gelembung} alt="gelembung" className="gelembung" />
         </div>
@@ -58,7 +49,7 @@ function Dashboard() {
                       alt="Logo"
                     />
                   </td> */}
-                  <td colSpan="2">
+                  <td colSpan="2" className="responsive-logo-container">
                     <img
                       src={PT}
                       className="logo-pt"
@@ -128,7 +119,7 @@ function Dashboard() {
                               className="border-radius: 20px width-img-60"
                               alt="Logo"
                             />
-                          </div>   
+                          </div>
                           <h3>E-Kampoeng</h3>
                         </div>
                       </div>

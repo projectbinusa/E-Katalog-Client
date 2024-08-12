@@ -1,8 +1,8 @@
-/* sidebar.css */
+/* Global Styles */
 body {
   background-color: #fbfbfb;
-  margin: 0; /* Hapus margin default body */
-  padding: 0; /* Hapus padding default body */
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
 }
 
 /* Sidebar */
@@ -11,31 +11,33 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  padding: 58px 0 0; /* Padding untuk tinggi navbar */
+  padding: 58px 0 0; /* Padding for navbar height */
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
   width: 240px;
   background-color: #f8f9fa;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease-in-out; /* Transition untuk animasi sidebar */
-  z-index: 1000; /* Pastikan sidebar berada di atas konten lainnya */
+  transition: transform 0.3s ease-in-out; /* Transition for sidebar animation */
+  z-index: 1000; /* Ensure sidebar is above other content */
 }
 
+/* Sidebar visibility */
 .sidebar.show {
-  transform: translateX(0); /* Tampilkan sidebar saat toggle diaktifkan */
+  transform: translateX(0); /* Show sidebar when toggled */
 }
 
-/* Sidebar untuk tampilan mobile */
+/* Sidebar for mobile view */
 @media (max-width: 991px) {
   .sidebar {
-    transform: translateX(-100%); /* Menyembunyikan sidebar di luar tampilan */
+    transform: translateX(-100%); /* Hide sidebar off-screen */
   }
 
   .sidebar.show {
-    transform: translateX(0); /* Menampilkan sidebar */
+    transform: translateX(0); /* Show sidebar on toggle */
   }
 }
 
+/* Active state for sidebar items */
 .sidebar .active {
   border-radius: 5px;
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
@@ -44,7 +46,7 @@ body {
 .sidebar-sticky {
   position: relative;
   top: 0;
-  height: calc(100vh - 48px); /* Sesuaikan tinggi dengan navbar */
+  height: calc(100vh - 48px); /* Adjust height with navbar */
   padding-top: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto;
@@ -53,10 +55,10 @@ body {
 }
 
 .flex-grow-1 {
-  flex: 1; /* Mengisi ruang kosong di sidebar */
+  flex: 1; /* Fill available space in sidebar */
   display: flex;
-  align-items: center; /* Vertikal center konten */
-  justify-content: center; /* Horizontal center konten */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
 }
 
 .position-relative {
@@ -80,45 +82,45 @@ body {
 }
 
 .pe-5 {
-  padding-right: 2.5rem; /* Adjust based on the icon size */
+  padding-right: 2.5rem; /* Adjust based on icon size */
 }
 
 .pe-3 {
-  padding-right: 1rem; /* Adjust padding to fit the icon */
+  padding-right: 1rem; /* Adjust padding to fit icon */
 }
 
 .logo {
-  width: 50%; /* Kontainer logo 50% dari lebar elemen induk */
-  max-width: 150px; /* Opsional: Setel lebar maksimum agar tidak terlalu besar */
-  height: auto; /* Pastikan tinggi logo menyesuaikan proporsional */
+  width: 50%; /* Logo container at 50% width */
+  max-width: 150px; /* Optional: Maximum width to avoid being too large */
+  height: auto; /* Maintain proportional height */
   display: flex;
-  align-items: center; /* Posisikan logo secara vertikal di tengah */
+  align-items: center; /* Vertically center the logo */
 }
 
 .logo img {
-  width: 80%; /* Gambar logo mengisi seluruh lebar kontainer */
-  height: auto; /* Pertahankan rasio aspek */
-  transform: scale(1.6) translateY(5%); /* Skalakan dan turunkan logo */
+  width: 80%; /* Logo image fills container width */
+  height: auto; /* Maintain aspect ratio */
+  transform: scale(1.6) translateY(5%); /* Scale and position logo */
   margin-left: 10%;
 }
 
 .navbar {
-  height: 60px; /* Set tinggi navbar sesuai kebutuhan */
+  height: 60px; /* Set height of navbar */
   display: flex;
-  align-items: center; /* Posisikan item secara vertikal di tengah */
-  z-index: 1000; /* Pastikan navbar berada di atas konten */
-  background-color: #f8f9fa; /* Sesuaikan warna navbar dengan sidebar */
+  align-items: center; /* Center items vertically */
+  z-index: 1000; /* Ensure navbar is above content */
+  background-color: #f8f9fa; /* Navbar background color */
 }
 
 @media (max-width: 768px) {
   .navbar {
-    height: 50px; /* Tinggi navbar pada mode mobile */
+    height: 50px; /* Height for mobile view */
   }
 }
 
 .navbar-brand {
   display: flex;
-  align-items: center; /* Posisikan logo secara vertikal di tengah */
+  align-items: center; /* Vertically center the logo */
 }
 
 .dropdown-menu-left {
@@ -136,86 +138,74 @@ body {
 /* Responsive Styles */
 @media (max-width: 992px) {
   .navbar {
-    flex-direction: column; /* Stack navbar items vertically */
-    align-items: flex-start; /* Align items to the left */
+    flex-direction: row; /* Logo and toggle button in one row */
+    align-items: center; /* Center items vertically */
+    padding: 10px 15px; /* Adjust padding */
+    margin-bottom: 0; /* Remove bottom margin */
   }
 
   .logo {
-    width: 100%; /* Logo takes up full width */
-    max-width: none; /* Remove max-width constraint */
+    width: auto; /* Auto width for logo */
+    max-width: 120px; /* Max width for logo */
+    margin-right: 35%; /* Adjust margin */
+    margin-top: 1%; /* Margin from top */
   }
 
-  .logo img {
-    transform: scale(1) translateY(0); /* Reset logo scaling and position */
-    margin-left: 0;
+  .navbar-toggler {
+    margin-right: 0; /* Remove right margin */
+    order: 1; /* Ensure toggle button is first */
   }
 
   .collapse {
     display: flex;
-    flex-direction: column; /* Stack navbar items vertically */
+    flex-direction: column; /* Stack items vertically */
     align-items: flex-start; /* Align items to the left */
+    width: 100%; /* Full width for collapse */
   }
 
   .navbar-nav {
-    flex-direction: column; /* Stack navigation items vertically */
+    flex-direction: column; /* Stack nav items vertically */
+    margin-left: auto; /* Align nav items to the right */
   }
 
   .navbar-nav li {
-    margin-bottom: 10px; /* Add spacing between items */
-  }
-
-  .navbar-toggler {
-    margin-right: auto; /* Push the toggle button to the left */
-    margin-top: 5px;
-  }
-
-  .navbar-nav {
-    margin-left: auto; /* Push the navigation to the right */
-  }
-
-  .logo {
-    display: none; /* Sembunyikan logo saat responsif */
+    margin-bottom: 10px; /* Margin between nav items */
   }
 
   .navbar .profile {
-    order: 1; /* Pindahkan profile ke posisi awal di dalam navbar */
-    margin-left: auto; /* Tempatkan profile di sebelah kanan */
-    padding-right: 1rem; /* Tambahkan padding di sebelah kanan */
-  }
-
-  .navbar-toggler {
-    order: 2; /* Pastikan tombol bar tetap di sebelah kiri */
+    order: 3; /* Place profile last */
+    margin-left: auto; /* Align profile to the right */
   }
 
   .content {
-    margin-top: 60px; /* Jarak dari bawah navbar */
-    width: 100%; /* Mengisi lebar layar penuh */
-    padding: 20px;
+    margin-top: 60px; /* Margin below the navbar */
+    width: 100%; /* Full width of the screen */
+    padding: 20px; /* Padding around the content */
+    margin-left: 0; /* Reset margin-left for responsive view */
+  }
+
+  .container-fluid {
+    position: relative; /* Relative positioning */
+    transform: translateY(-33%); /* Move container up */
   }
 }
 
-/* Konten utama */
+/* Main Content */
 .content {
-  margin-left: 240px; /* Margin untuk lebar sidebar */
-  margin-top: 60px; /* Margin untuk tinggi navbar */
-  padding: 1px; /* Padding di sekitar konten */
-  box-sizing: border-box; /* Pastikan padding termasuk dalam lebar */
-  transition: margin-left 0.3s ease; /* Transisi saat sidebar toggled */
-  min-height: calc(100vh - 60px); /* Tinggi penuh dikurangi tinggi navbar */
+  margin-top: 60px; /* Margin for navbar height */
+  padding: 1px; /* Padding around content */
+  box-sizing: border-box; /* Include padding in width calculation */
+  transition: margin-left 0.3s ease; /* Smooth transition for margin changes */
+  min-height: calc(100vh - 60px); /* Full height minus navbar height */
 }
 
 .content.shift {
-  margin-left: 0; /* No margin when sidebar is shown */
+  /* No margin-left when the sidebar is toggled */
+  /* This ensures the content does not shift */
+  margin-left: 240px; /* Ensure the content margin remains unchanged */
 }
 
 .content main {
-  flex: 1; /* Mengisi sisa ruang dari elemen flex parent */
-  overflow-y: auto; /* Agar konten utama bisa di-scroll secara vertikal */
-}
-
-/* Konten utama saat sidebar terbuka di tampilan mobile */
-@media (max-width: 992px) {
-  .content {
-    margin-left: 0; /* Reset margin saat sidebar terbuka di tampilan mobile */
-  }
+  flex: 1; /* Fill remaining space */
+  overflow-y: auto; /* Vertical scroll */
 }

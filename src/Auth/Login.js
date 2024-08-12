@@ -27,6 +27,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    // Validate input
     if (!email || !password) {
       Swal.fire({
         icon: "error",
@@ -39,22 +40,25 @@ function Login() {
     }
 
     try {
+      // Perform login request
       const response = await axios.post(`${apiUrl}/api/login`, {
         email,
         password,
       });
 
-      if (response.data) {
+      // Check if the response contains data
+      if (response.data && response.data.data) {
         const { data } = response.data;
         const { token, data: userData } = data;
 
-        // Simpan data di localStorage
+        // Save user data to localStorage
         localStorage.setItem("token", token);
         localStorage.setItem("email", userData.email);
         localStorage.setItem("id", userData.id);
         localStorage.setItem("role", userData.role);
         localStorage.setItem("userData", JSON.stringify(userData));
 
+        // Notify success
         Swal.fire({
           icon: "success",
           title: "Login Berhasil",
@@ -63,12 +67,24 @@ function Login() {
           showConfirmButton: false,
         });
 
+        // Redirect to the dashboard after a short delay
         setTimeout(() => {
           navigate("/dashboard");
         }, 2000);
+      } else {
+        // Handle unexpected response structure
+        Swal.fire({
+          icon: "error",
+          title: "Login Gagal",
+          text: "Terjadi kesalahan pada server.",
+          timer: 2000,
+          showConfirmButton: false,
+        });
       }
     } catch (error) {
       console.error("Error login:", error);
+
+      // Extract error message
       let errorMessage = "Terjadi kesalahan";
       if (error.response) {
         if (error.response.status === 401) {
