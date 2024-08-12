@@ -12,27 +12,6 @@
   font-size: 0.875rem; /* Adjust font size for better readability */
 }
 
-/* Ensure the form and button layout adjust on small screens */
-@media (max-width: 768px) {
-  .card {
-    margin: 0 10px; /* Add margin for small screens */
-  }
-
-  .button-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Add space between buttons */
-    align-items: center; /* Center align buttons */
-  }
-}
-
-@media (min-width: 768px) {
-  .button-container {
-    display: flex;
-    justify-content: space-between; /* Space out buttons on larger screens */
-  }
-}
-
 /* Base style for buttons */
 .btn-custom {
   background-color: white; /* White background */
@@ -74,4 +53,29 @@
   border-color: #191c1f; /* Brighter border color on hover */
   color: #000000; /* Brighter text color on hover */
   box-shadow: 0 0 8px 4px rgba(3, 3, 3, 0.9); /* Thicker light gray shadow */
+}
+
+/* Ensure the form and button layout adjust on small screens */
+@media (max-width: 768px) {
+  .card {
+    margin: 0 10px; /* Add margin for small screens */
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: row; /* Align buttons side-by-side */
+    gap: 10px; /* Add space between buttons */
+    justify-content: space-between; /* Space out buttons */
+  }
+
+  .btn-custom {
+    flex: 1; /* Make buttons take equal width */
+  }
+}
+
+@media (min-width: 768px) {
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Space out buttons on larger screens */
+  }
 }
