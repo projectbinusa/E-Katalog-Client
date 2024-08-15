@@ -159,7 +159,7 @@ function Listp() {
           minHeight: "100vh",
           padding: "0 5%",
           marginTop: "10%",
-          marginLeft: "5%",
+          // marginLeft: "10px",
         }}
       >
         <div className="container mt-4 px-2 shadow-sm">
