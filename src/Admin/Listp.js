@@ -19,35 +19,38 @@ function Listp() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const [searchQuery, setSearchQuery] = useState("");
+
   const getToken = () => {
-    // Retrieve the token from localStorage or any other method you use
-    return localStorage.getItem("token"); // Adjust based on your storage method
+    return localStorage.getItem("token"); // Retrieve the token
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = getToken(); // Retrieve the token
+        const token = getToken(); // Ambil token
 
         const response = await axios.get(
           "http://localhost:2007/api/list_project/all",
           {
             headers: {
-              Authorization: `Bearer ${token}`, // Include token in headers
+              Authorization: `Bearer ${token}`, // Sertakan token di header
             },
           }
         );
 
-        console.log("API Response:", response); // Log the full response
+        console.log("Respons API:", response); // Log respons penuh
 
-        // Check the structure of the response
         if (response.data && Array.isArray(response.data)) {
-          setData(response.data);
+          // Urutkan data berdasarkan `createdAt` atau field timestamp lainnya secara menurun
+          const sortedData = response.data.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          );
+          setData(sortedData);
         } else {
-          console.error("Unexpected API response format:", response.data);
+          console.error("Format respons API tidak terduga:", response.data);
         }
       } catch (error) {
-        console.error("Failed to fetch data:", error);
+        console.error("Gagal mengambil data:", error);
       }
     };
 
@@ -75,7 +78,6 @@ function Listp() {
 
   const handleDelete = async (id) => {
     try {
-      // Show confirmation dialog
       const result = await Swal.fire({
         title: "Konfirmasi",
         text: "Anda yakin ingin menghapus data proyek?",
@@ -86,22 +88,19 @@ function Listp() {
       });
 
       if (result.isConfirmed) {
-        const token = localStorage.getItem("token"); // Retrieve the token
+        const token = getToken(); // Ambil token
 
-        // Perform the delete operation with the token in headers
         await axios.delete(
           `http://localhost:2007/api/list_project/hapus/${id}`,
           {
             headers: {
-              Authorization: `Bearer ${token}`, // Include token in headers
+              Authorization: `Bearer ${token}`, // Sertakan token di header
             },
           }
         );
 
-        // Update the UI by removing the deleted item from the state
         setData((prevData) => prevData.filter((item) => item.id !== id));
 
-        // Show success message
         Swal.fire({
           title: "Berhasil",
           text: "Data proyek berhasil dihapus",
@@ -111,9 +110,8 @@ function Listp() {
         });
       }
     } catch (error) {
-      console.error("Failed to delete project:", error);
+      console.error("Gagal menghapus proyek:", error);
 
-      // Show error message
       Swal.fire({
         title: "Gagal",
         text: "Gagal menghapus proyek",
@@ -128,7 +126,6 @@ function Listp() {
     if (event && event.clientY && event.clientX) {
       navigator.clipboard.writeText(text).then(
         () => {
-          // Create a temporary message element
           const messageElement = document.createElement("div");
           messageElement.textContent = "Link sudah tersalin";
           messageElement.style.position = "absolute";
@@ -142,24 +139,28 @@ function Listp() {
           messageElement.style.zIndex = "1000";
           document.body.appendChild(messageElement);
 
-          // Remove the message after 2 seconds
           setTimeout(() => {
             document.body.removeChild(messageElement);
           }, 1000);
         },
         (err) => {
-          console.error("Failed to copy: ", err);
+          console.error("Gagal menyalin:", err);
         }
       );
     }
   };
 
   return (
-    <div className="d-flex jusify-content-center">
+    <div className="d-flex jusify-content-center fixed">
       <Sidebar />
       <section
         className="w-100 d-flex justify-content-center align-items-start auto-y-scroll"
-        style={{ minHeight: "100vh", padding: "0 5%", marginTop: "10%" }}
+        style={{
+          minHeight: "100vh",
+          padding: "0 5%",
+          marginTop: "10%",
+          marginLeft: "5%",
+        }}
       >
         <div className="container mt-4 px-2 shadow-sm">
           <div
@@ -244,25 +245,17 @@ function Listp() {
                             style={{ color: "Highlight", cursor: "pointer" }}
                             onClick={(e) => {
                               if (e.target.tagName !== "A") {
-                                copyToClipboard(item.link);
+                                copyToClipboard(item.link, e);
                               }
                             }}
                           >
-                            <td
-                              onClick={(e) => {
-                                if (e.target.tagName !== "A") {
-                                  copyToClipboard(item.link, e);
-                                }
-                              }}
+                            <a
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
-                              <a
-                                href={item.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                {item.link}
-                              </a>
-                            </td>
+                              {item.link}
+                            </a>
                           </td>
                           <td>{item.deskripsi_project}</td>
                           <td>

@@ -47,7 +47,7 @@ function Login() {
       });
 
       // Check if the response contains data
-      if (response.data && response.data.data) {
+      if (response.data && response.data) {
         const { data } = response.data;
         const { token, data: userData } = data;
 

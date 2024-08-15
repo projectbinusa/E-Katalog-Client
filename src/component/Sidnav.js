@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGaugeHigh } from "@fortawesome/free-solid-svg-icons";
@@ -6,31 +6,35 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "../css/sidebar.css"; // Pastikan file CSS ini ada
 import Logo from "../aset/LOGO_Katalog.png";
+import { getAdminById } from "../Router/Getprofile";
 
 function Sidebar() {
-  const [showSidebar, setShowSidebar] = React.useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [profilePic, setProfilePic] = useState("");
   const location = useLocation();
-  // const [profilePic, setProfilePic] = useState(
-  //   "https://kimia.fkip.usk.ac.id/wp-content/uploads/2017/10/1946429.png"
-  // );
+  const id = localStorage.getItem("id");
+
+  useEffect(() => {
+    if (id) {
+      const fetchAdmin = async () => {
+        try {
+          const adminData = await getAdminById(id);
+          if (adminData && adminData.image) {
+            setProfilePic(adminData.image);
+          }
+        } catch (error) {
+          console.error("Failed to fetch admin:", error);
+        }
+      };
+
+      fetchAdmin();
+    }
+  }, [id]);
+
   const toggleSidebar = () => setShowSidebar(!showSidebar);
 
   const isActive = (path) => (location.pathname === path ? "active" : "");
 
-  // seEffect(() => {
-  //   const fetchAdmin = async () => {
-  //     try {
-  //       const adminData = await getAdminById(id);
-  //       if (adminData.image) {
-  //         setProfilePic(adminData.image);
-  //       }
-  //     } catch (error) {
-  //       console.error("Failed to fetch admin:", error);
-  //     }
-  //   };
-
-  //   fetchAdmin();
-  // }, [id]);
   return (
     <div className="d-flex">
       <nav className={`sidebar ${showSidebar ? "show" : ""}`}>
@@ -101,7 +105,7 @@ function Sidebar() {
                     aria-expanded="false"
                   >
                     <img
-                      src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
+                      src={profilePic || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdztTDcpZ2pFqwWDYwSXbvZq5nzJYg5cn8w&s"}
                       className="rounded-circle"
                       height="22"
                       alt="Avatar"
