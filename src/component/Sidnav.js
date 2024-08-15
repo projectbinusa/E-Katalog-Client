@@ -19,8 +19,13 @@ function Sidebar() {
       const fetchAdmin = async () => {
         try {
           const adminData = await getAdminById(id);
+          console.log("Admin Data:", adminData); // Tambahkan ini untuk debugging
           if (adminData && adminData.image) {
             setProfilePic(adminData.image);
+          } else {
+            setProfilePic(
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdztTDcpZ2pFqwWDYwSXbvZq5nzJYg5cn8w&s"
+            ); // Gambar default
           }
         } catch (error) {
           console.error("Failed to fetch admin:", error);
@@ -105,10 +110,10 @@ function Sidebar() {
                     aria-expanded="false"
                   >
                     <img
-                      src={profilePic || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdztTDcpZ2pFqwWDYwSXbvZq5nzJYg5cn8w&s"}
+                      src={profilePic}
                       className="rounded-circle"
-                      height="22"
-                      alt="Avatar"
+                      height="50"
+                      // alt="Avatar"
                       loading="lazy"
                     />
                   </a>
@@ -117,19 +122,19 @@ function Sidebar() {
                     aria-labelledby="profileDropdown"
                   >
                     <li>
-                      <a className="dropdown-item" href="/profile">
+                      <Link className="dropdown-item" to="/profile">
                         Profile
-                      </a>
-                    </li>
+                      </Link>
+                    </li> 
                     <li>
-                      <a className="dropdown-item" href="/gantipass">
+                      <Link className="dropdown-item" to="/gantipass">
                         Forgot Password
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="/login">
+                      <Link className="dropdown-item" to="/login">
                         Logout
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
