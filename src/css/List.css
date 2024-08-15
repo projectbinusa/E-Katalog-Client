@@ -7,9 +7,18 @@
 
 @media (max-width: 768px) {
   .responsive-card {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10%;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .table-custom {
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: auto; /* Agar tabel bisa di-scroll horizontal jika terlalu lebar */
+  }
+
+  .pagination {
+    justify-content: center;
   }
 }
 
@@ -24,4 +33,3 @@
 .table-custom tbody {
   border-bottom: 1px solid #ddd; /* Adjust thickness here */
 }
-

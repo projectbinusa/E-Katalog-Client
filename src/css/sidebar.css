@@ -1,8 +1,8 @@
 /* Global Styles */
 body {
   background-color: #fbfbfb;
-  margin: 0; /* Remove default body margin */
-  padding: 0; /* Remove default body padding */
+  margin: 0;
+  padding: 0;
 }
 
 /* Sidebar */
@@ -11,33 +11,29 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  padding: 58px 0 0; /* Padding for navbar height */
-  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  padding: 58px 0 0;
   width: 240px;
   background-color: #f8f9fa;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease-in-out; /* Transition for sidebar animation */
-  z-index: 1000; /* Ensure sidebar is above other content */
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
 }
 
-/* Sidebar visibility */
 .sidebar.show {
-  transform: translateX(0); /* Show sidebar when toggled */
+  transform: translateX(0);
 }
 
-/* Sidebar for mobile view */
 @media (max-width: 991px) {
   .sidebar {
-    transform: translateX(-100%); /* Hide sidebar off-screen */
+    transform: translateX(-100%);
   }
 
   .sidebar.show {
-    transform: translateX(0); /* Show sidebar on toggle */
+    transform: translateX(0);
   }
 }
 
-/* Active state for sidebar items */
 .sidebar .active {
   border-radius: 5px;
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
@@ -46,85 +42,55 @@ body {
 .sidebar-sticky {
   position: relative;
   top: 0;
-  height: calc(100vh - 48px); /* Adjust height with navbar */
+  height: calc(100vh - 58px);
   padding-top: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto;
-  flex-direction: column;
   flex: 1;
 }
 
 .flex-grow-1 {
-  flex: 1; /* Fill available space in sidebar */
+  flex: 1;
   display: flex;
-  align-items: center; /* Vertically center content */
-  justify-content: center; /* Horizontally center content */
-}
-
-.position-relative {
-  position: relative;
-}
-
-.position-absolute {
-  position: absolute;
-}
-
-.top-50 {
-  top: 50%;
-}
-
-.end-0 {
-  right: 0;
-}
-
-.translate-middle-y {
-  transform: translateY(-50%);
-}
-
-.pe-5 {
-  padding-right: 2.5rem; /* Adjust based on icon size */
-}
-
-.pe-3 {
-  padding-right: 1rem; /* Adjust padding to fit icon */
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {
-  width: 50%; /* Logo container at 50% width */
-  max-width: 150px; /* Optional: Maximum width to avoid being too large */
-  height: auto; /* Maintain proportional height */
+  width: 50%;
+  max-width: 150px;
+  height: auto;
   display: flex;
-  align-items: center; /* Vertically center the logo */
+  align-items: center;
 }
 
 .logo img {
-  width: 80%; /* Logo image fills container width */
-  height: auto; /* Maintain aspect ratio */
-  transform: scale(1.6) translateY(5%); /* Scale and position logo */
+  width: 80%;
+  height: auto;
+  transform: scale(1.6) translateY(5%);
   margin-left: 10%;
 }
 
 .navbar {
-  height: 60px; /* Set height of navbar */
+  height: 60px;
   display: flex;
-  align-items: center; /* Center items vertically */
-  z-index: 1000; /* Ensure navbar is above content */
-  background-color: #f8f9fa; /* Navbar background color */
+  align-items: center;
+  z-index: 1000;
+  background-color: #f8f9fa;
 }
 
 @media (max-width: 768px) {
   .navbar {
-    height: 50px; /* Height for mobile view */
+    height: 50px;
   }
 }
 
 .navbar-brand {
   display: flex;
-  align-items: center; /* Vertically center the logo */
+  align-items: center;
 }
 
 .dropdown-menu-left {
-  right: auto;
   left: 0;
   transform: translate(-70%, 0);
 }
@@ -138,74 +104,71 @@ body {
 /* Responsive Styles */
 @media (max-width: 992px) {
   .navbar {
-    flex-direction: row; /* Logo and toggle button in one row */
-    align-items: center; /* Center items vertically */
-    padding: 10px 15px; /* Adjust padding */
-    margin-bottom: 0; /* Remove bottom margin */
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 15px;
   }
 
   .logo {
-    width: auto; /* Auto width for logo */
-    max-width: 120px; /* Max width for logo */
-    margin-right: 35%; /* Adjust margin */
-    margin-top: 1%; /* Margin from top */
+    width: auto;
+    max-width: 120px;
+    margin-right: 35%;
+    margin-top: 1%;
   }
 
   .navbar-toggler {
-    margin-right: 0; /* Remove right margin */
-    order: 1; /* Ensure toggle button is first */
+    margin-right: 0;
+    order: 1;
   }
 
   .collapse {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: flex-start; /* Align items to the left */
-    width: 100%; /* Full width for collapse */
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
   }
 
   .navbar-nav {
-    flex-direction: column; /* Stack nav items vertically */
-    margin-left: auto; /* Align nav items to the right */
+    flex-direction: column;
+    margin-left: auto;
   }
 
   .navbar-nav li {
-    margin-bottom: 10px; /* Margin between nav items */
+    margin-bottom: 10px;
   }
 
   .navbar .profile {
-    order: 3; /* Place profile last */
-    margin-left: auto; /* Align profile to the right */
+    order: 3;
+    margin-left: auto;
   }
 
   .content {
-    margin-top: 60px; /* Margin below the navbar */
-    width: 100%; /* Full width of the screen */
-    padding: 20px; /* Padding around the content */
-    margin-left: 0; /* Reset margin-left for responsive view */
+    margin-top: 60px;
+    padding: 20px;
+    width: 100%;
+    margin-left: 0;
   }
 
   .container-fluid {
-    position: relative; /* Relative positioning */
-    transform: translateY(-33%); /* Move container up */
+    position: relative;
+    transform: translateY(-33%);
   }
 }
 
 /* Main Content */
 .content {
-  margin-top: 60px; /* Margin for navbar height */
-  padding: 1px; /* Padding around content */
-  box-sizing: border-box; /* Include padding in width calculation */
-  transition: margin-left 0.3s ease; /* Smooth transition for margin changes */
-  min-height: calc(100vh - 60px); /* Full height minus navbar height */
+  margin-top: 60px;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: margin-left 0.3s ease;
+  min-height: calc(100vh - 60px);
 }
 
 .content.shift {
-  /* No margin-left when the sidebar is toggled */
-  /* This ensures the content does not shift */
-  margin-left: 240px; /* Ensure the content margin remains unchanged */
+  margin-left: 240px;
 }
 
 .content main {
-  flex: 1; /* Fill remaining space */
-  overflow-y: auto; /* Vertical scroll */
+  flex: 1;
+  overflow-y: auto;
 }
