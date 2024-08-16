@@ -51,7 +51,7 @@ function Sidebar() {
                 className="d-flex align-items-center text-decoration-none"
               >
                 <button
-                  className={`btn btn-light btn-sm d-block w-100 text-start hover-menu ${isActive(
+                  className={`btn d-block w-100 text-start ${isActive(
                     "/dashboard"
                   )}`}
                 >
@@ -66,7 +66,7 @@ function Sidebar() {
                 className="d-flex align-items-center text-decoration-none"
               >
                 <button
-                  className={`btn btn-light btn-sm d-block w-100 text-start hover-menu ${isActive(
+                  className={`btn btn-sm d-block w-100 text-start ${isActive(
                     "/listprojek"
                   )}`}
                 >

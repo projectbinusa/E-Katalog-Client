@@ -1,10 +1,9 @@
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./App.css";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
 import Home from "./component/Home";
 import Login from "./Auth/Login";
-// import Sidebar from "./component/Sidnav";
 import Uks from "./pages/Uks";
 import Absensi from "./pages/Absensi";
 import Sis from "./pages/Sis";
@@ -27,25 +26,44 @@ import Createlist from "./Admin/Createlist";
 import Updatelist from "./Admin/Updatelist";
 import GantiPass from "./component/GantiPass";
 
+// Fungsi untuk memeriksa apakah role pengguna adalah "ADMIN"
 function checkAdminRole() {
   const userRole = localStorage.getItem("role");
   return userRole === "ADMIN";
 }
 
+// Fungsi untuk memeriksa apakah pengguna sudah login (token tersimpan)
 function isAuthenticated() {
   const token = localStorage.getItem("token");
-  return !!token;
+  return token !== null && token !== undefined && token !== '';
 }
 
+// Komponen untuk mengelola rute berdasarkan otentikasi
+function AuthRoute({ children }) {
+  if (isAuthenticated()) {
+    // Jika sudah login, redirect ke dashboard
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  // Jika belum login, tetap di halaman yang diinginkan (misalnya halaman login)
+  return children;
+}
+
+// Komponen ProtectedRoute untuk melindungi rute berdasarkan otentikasi dan role
 function ProtectedRoute({ children }) {
+  const location = useLocation();
+  
   if (!isAuthenticated()) {
-    return <Navigate to="/login" />;
+    // Redirect ke halaman login jika belum login
+    return <Navigate to="/login" replace state={{ from: location }} />;
   }
 
   if (!checkAdminRole()) {
-    return <Navigate to="/" />;
+    // Redirect ke halaman utama jika bukan "ADMIN"
+    return <Navigate to="/" replace />;
   }
 
+  // Render konten jika pengguna lolos semua validasi
   return children;
 }
 
@@ -55,11 +73,34 @@ function App() {
       <BrowserRouter>
         <main>
           <Routes>
-            <Route path="/" element={<Home />} exact />
-            <Route path="/login" element={<Login />} exact />
-            <Route path="/register" element={<Register />} exact />
-
-            {/* Public routes */}
+            {/* Rute publik */}
+            <Route
+              path="/"
+              element={
+                <AuthRoute>
+                  <Home />
+                </AuthRoute>
+              }
+              exact
+            />
+            <Route
+              path="/login"
+              element={
+                <AuthRoute>
+                  <Login />
+                </AuthRoute>
+              }
+              exact
+            />
+            <Route
+              path="/register"
+              element={
+                <AuthRoute>
+                  <Register />
+                </AuthRoute>
+              }
+              exact
+            />
             <Route path="/uks" element={<Uks />} exact />
             <Route path="/absensi" element={<Absensi />} exact />
             <Route path="/sis" element={<Sis />} exact />
@@ -75,7 +116,7 @@ function App() {
             <Route path="/labbahasa" element={<Labbahasa />} exact />
             <Route path="/managementwa" element={<ManagementWa />} exact />
 
-            {/* Protected routes - Admin only */}
+            {/* Rute dilindungi - Hanya untuk Admin */}
             <Route
               path="/dashboard"
               element={
