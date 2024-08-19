@@ -9,7 +9,7 @@ export const getProjects = async () => {
         Authorization: `Bearer ${token}`, // Sertakan token di header
       },
     });
-
+ 
     return response.data; // Mengembalikan data proyek
   } catch (error) {
     console.error("Failed to fetch projects:", error);

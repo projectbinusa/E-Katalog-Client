@@ -58,8 +58,8 @@ function Profile() {
 
   const handleSaveData = async () => {
     try {
-      await axios.patch(
-        `http://localhost:2007/api/users/by-id/${id}`,
+      await axios.put(
+        `http://localhost:2007/api/users/update/${id}`,
         {
           email: formData.email,
           username: formData.username,
