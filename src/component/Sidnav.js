@@ -42,7 +42,7 @@ function Sidebar() {
 
   return (
     <div className="d-flex">
-      <nav className={`sidebar ${showSidebar ? "show" : ""}`}>
+      <nav className={`sidebar ${showSidebar ? "show" : ""} shadow`}>
         <div className="sidebar-sticky">
           <div className="d-flex flex-column mx-3 mt-4">
             <div className="mb-2 shadow-sm">
@@ -51,7 +51,7 @@ function Sidebar() {
                 className="d-flex align-items-center text-decoration-none"
               >
                 <button
-                  className={`btn btn-light btn-sm d-block w-100 text-start hover-menu ${isActive(
+                  className={`btn d-block w-100 text-start ${isActive(
                     "/dashboard"
                   )}`}
                 >
@@ -66,7 +66,7 @@ function Sidebar() {
                 className="d-flex align-items-center text-decoration-none"
               >
                 <button
-                  className={`btn btn-light btn-sm d-block w-100 text-start hover-menu ${isActive(
+                  className={`btn btn-sm d-block w-100 text-start ${isActive(
                     "/listprojek"
                   )}`}
                 >
@@ -102,7 +102,7 @@ function Sidebar() {
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item dropdown profile">
                   <a
-                    className="nav-link dropdown-toggle"
+                    className="nav-link"
                     href="#"
                     id="profileDropdown"
                     role="button"
@@ -112,8 +112,7 @@ function Sidebar() {
                     <img
                       src={profilePic}
                       className="rounded-circle"
-                      height="50"
-                      // alt="Avatar"
+                      height="35"
                       loading="lazy"
                     />
                   </a>

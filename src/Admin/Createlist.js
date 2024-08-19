@@ -91,7 +91,7 @@ function Createlist() {
     <>
       <div className="d-flex flex-column flex-md-row">
         <Sidebar />
-        <section style={{ width: "100%", marginTop: "8%" }}>
+        <section style={{ width: "100%", marginTop: "8%", alignItems:"center" }}>
           <div className="container mt-4">
             <div
               className="card shadow-sm p-1"

@@ -1,43 +1,48 @@
+/* GantiPass.css */
+
+.container-fluid {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 250px; /* Atur sesuai kebutuhan */
+}
+
+.password-change-container {
+    margin-left: 250px; /* Sama dengan lebar sidebar untuk tampilan non-responsif */
+    padding: 20px;
+    width: calc(100% - 250px); /* Mengisi sisa ruang untuk tampilan non-responsif */
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .container-fluid {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        display: none; /* Menyembunyikan sidebar pada tampilan kecil */
+    }
+    
+    .password-change-container {
+        margin-left: 0; /* Menghapus margin pada tampilan kecil */
+        width: 100%; /* Lebar penuh pada tampilan kecil */
+        margin-top: 20px; /* Jarak dari atas */
+        margin-bottom: 200%; /* Jarak dari bawah */
+    }
+}
+
 .password-change-container {
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     border: 1px solid #e1e5e8;
+    margin-top: 200%;
+    height: 10%;
 }
 
 .form-floating input {
     border-radius: 8px;
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-@media (max-width: 576px) {
-    .password-change-container {
-        padding: 20px;
-    }
-    
-    .btn-block {
-        width: 100%;
-    }
-}
-
-@media (min-width: 577px) {
-    .password-change-container {
-        padding: 40px;
-    }
-    
-    .btn-block {
-        width: auto;
-    }
 }
