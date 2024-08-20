@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import {
   faArrowLeft,
   faArrowRight,
-  faEdit,
+  faPen,
   faPlus,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
@@ -159,12 +159,11 @@ function Listp() {
           minHeight: "100vh",
           padding: "0 5%",
           marginTop: "10%",
-          // marginLeft: "10px",
         }}
       >
-        <div className="container mt-4 px-2 shadow-sm">
+        <div className="container mt-4 px-2">
           <div
-            className="card shadow-sm mx-auto responsive-card"
+            className="card mx-auto responsive-card shadow-xl"
             style={{
               width: "100%",
               maxWidth: "900px",
@@ -175,14 +174,14 @@ function Listp() {
               <div className="d-flex align-items-center mb-3">
                 <p
                   className="mr-auto"
-                  style={{ fontWeight: "bold", fontSize: "150%" }}
+                  style={{ fontWeight: "bold", fontSize: "150%", }}
                 >
                   Tabel List Projek
                 </p>
                 <div className="d-flex align-items-center">
                   <input
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Cari..."
                     className="form-control mr-2"
                     style={{
                       maxWidth: "200px",
@@ -193,7 +192,7 @@ function Listp() {
                   />
                   <Link
                     to={`/tambahlist`}
-                    className="btn btn-primary btn-sm mr-2"
+                    className="btn btn-primary btn-sm mr-0"
                     style={{
                       width: "40px", // Set a fixed width for consistency
                       height: "38px", // Ensure button height matches input height
@@ -221,7 +220,7 @@ function Listp() {
                     className="thead-light"
                     style={{ borderRadius: "8px 8px 0 0", overflow: "hidden" }}
                   >
-                    <tr>
+                    <tr style={{font: "menu", fontWeight: "bold", fontSize: "13px"}}>
                       <th>No</th>
                       <th className="text-nowrap">Nama Project</th>
                       <th>Teknologi</th>
@@ -266,8 +265,8 @@ function Listp() {
                                 style={{ height: "5%" }}
                               >
                                 <FontAwesomeIcon
-                                  icon={faEdit}
-                                  className="mr-1"
+                                  icon={faPen}
+                                  className="mr-1 mt-1"
                                   style={{ padding: "10%", color: "white" }}
                                 />
                               </Link>
@@ -278,7 +277,7 @@ function Listp() {
                               >
                                 <FontAwesomeIcon
                                   icon={faTrash}
-                                  className="mr-1"
+                                  className="mr-1 mt-1"
                                   style={{ padding: "10%", color: "white" }}
                                 />
                               </button>
@@ -289,7 +288,7 @@ function Listp() {
                     ) : (
                       <tr>
                         <td colSpan="7" className="text-center">
-                          No data available
+                        Tidak ada data yang tersedia
                         </td>
                       </tr>
                     )}
