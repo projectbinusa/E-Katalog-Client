@@ -41,12 +41,12 @@ function isAuthenticated() {
 // Komponen untuk mengelola rute berdasarkan otentikasi
 function AuthRoute({ children }) {
   if (isAuthenticated()) {
-    // Jika sudah login, redirect ke dashboard
-    return <Navigate to="/dashboard" replace />;
+    // Jika sudah login, tetap di halaman yang diinginkan
+    return children;
   }
 
-  // Jika belum login, tetap di halaman yang diinginkan (misalnya halaman login)
-  return children;
+  // Jika belum login, redirect ke halaman Home
+  return <Navigate to="/" replace />;
 }
 
 // Komponen ProtectedRoute untuk melindungi rute berdasarkan otentikasi dan role
@@ -54,12 +54,12 @@ function ProtectedRoute({ children }) {
   const location = useLocation();
   
   if (!isAuthenticated()) {
-    // Redirect ke halaman login jika belum login
-    return <Navigate to="/login" replace state={{ from: location }} />;
+    // Redirect ke halaman Home jika belum login
+    return <Navigate to="/" replace state={{ from: location }} />;
   }
 
   if (!checkAdminRole()) {
-    // Redirect ke halaman utama jika bukan "ADMIN"
+    // Redirect ke halaman Home jika bukan "ADMIN"
     return <Navigate to="/" replace />;
   }
 
@@ -77,9 +77,7 @@ function App() {
             <Route
               path="/"
               element={
-                <AuthRoute>
-                  <Home />
-                </AuthRoute>
+                <Home />
               }
               exact
             />
