@@ -1,10 +1,3 @@
-/* Global Styles */
-body {
-  background-color: #fbfbfb;
-  margin: 0;
-  padding: 0;
-}
-
 /* Sidebar */
 .sidebar {
   position: fixed;
@@ -105,25 +98,24 @@ body {
 /* Responsive Styles */
 @media (max-width: 992px) {
   .navbar {
-    flex-direction: row;
+    display: flex;
+    justify-content: space-between; /* Mengatur jarak antar elemen di dalam navbar */
     align-items: center;
     padding: 10px 15px;
   }
 
   .logo {
-    width: auto;
     max-width: 120px;
-    margin-right: 35%;
-    margin-top: 1%;
+    margin: 0; /* Menghapus margin untuk logo */
+    order: 1; /* Menempatkan logo di urutan pertama */
   }
 
   .navbar-toggler {
-    margin-right: 0;
-    order: 1;
+    margin: 0; /* Menghapus margin untuk navbar-toggler */
+    order: 2; /* Menempatkan tombol navbar-toggler di urutan kedua */
   }
 
   .collapse {
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;

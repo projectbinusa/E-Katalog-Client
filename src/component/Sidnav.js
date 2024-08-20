@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGaugeHigh } from "@fortawesome/free-solid-svg-icons";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "../css/sidebar.css"; // Pastikan file CSS ini ada
+import { faCubes, faGaugeHigh } from "@fortawesome/free-solid-svg-icons";
+import "../css/sidebar.css";
 import Logo from "../aset/LOGO_Katalog.png";
-import { getAdminById } from "../Router/Getprofile";
+import { getAdminById } from "../Router/Getprofile"; // Sesuaikan path jika perlu
 
 function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -19,13 +17,13 @@ function Sidebar() {
       const fetchAdmin = async () => {
         try {
           const adminData = await getAdminById(id);
-          console.log("Admin Data:", adminData); // Tambahkan ini untuk debugging
+          console.log("Admin Data:", adminData);
           if (adminData && adminData.image) {
             setProfilePic(adminData.image);
           } else {
             setProfilePic(
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdztTDcpZ2pFqwWDYwSXbvZq5nzJYg5cn8w&s"
-            ); // Gambar default
+            );
           }
         } catch (error) {
           console.error("Failed to fetch admin:", error);
@@ -51,7 +49,7 @@ function Sidebar() {
                 className="d-flex align-items-center text-decoration-none"
               >
                 <button
-                  className={`btn d-block w-100 text-start ${isActive(
+                  className={`btn btn-light btn-sm d-block w-100 text-start hover-menu ${isActive(
                     "/dashboard"
                   )}`}
                 >
@@ -66,17 +64,14 @@ function Sidebar() {
                 className="d-flex align-items-center text-decoration-none"
               >
                 <button
-                  className={`btn btn-sm d-block w-100 text-start ${isActive(
+                  className={`btn btn-light btn-sm d-block w-100 text-start hover-menu ${isActive(
                     "/listprojek"
                   )}`}
                 >
-                  <FontAwesomeIcon icon={faGaugeHigh} className="me-2" />
+                  <FontAwesomeIcon icon={faCubes} className="me-2" />
                   <b>List Projek</b>
                 </button>
               </Link>
-            </div>
-            <div className="flex-grow-1">
-              {/* Tambahkan item menu lainnya di sini jika diperlukan */}
             </div>
           </div>
         </div>
@@ -85,6 +80,10 @@ function Sidebar() {
       <div className={`content ${showSidebar ? "shift" : ""}`}>
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
           <div className="container-fluid">
+            <div className="logo">
+              <img src={Logo} alt="Logo" loading="lazy" />
+            </div>
+
             <button
               className="navbar-toggler"
               type="button"
@@ -93,10 +92,6 @@ function Sidebar() {
             >
               <i className="fas fa-bars"></i>
             </button>
-
-            <div className="logo">
-              <img src={Logo} alt="Logo" loading="lazy" />
-            </div>
 
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav ms-auto">
@@ -112,7 +107,8 @@ function Sidebar() {
                     <img
                       src={profilePic}
                       className="rounded-circle"
-                      height="35"
+                      height="40"
+                      alt="Avatar"
                       loading="lazy"
                     />
                   </a>
@@ -124,7 +120,7 @@ function Sidebar() {
                       <Link className="dropdown-item" to="/profile">
                         Profile
                       </Link>
-                    </li> 
+                    </li>
                     <li>
                       <Link className="dropdown-item" to="/gantipass">
                         Forgot Password
@@ -132,7 +128,7 @@ function Sidebar() {
                     </li>
                     <li>
                       <Link className="dropdown-item" to="/login">
-                        Logout
+                        Log Out
                       </Link>
                     </li>
                   </ul>
@@ -141,9 +137,7 @@ function Sidebar() {
             </div>
           </div>
         </nav>
-
-        {/* Konten utama */}
-        <main>{/* Konten halaman Anda di sini */}</main>
+        <main>{/* Content goes here */}</main>
       </div>
     </div>
   );

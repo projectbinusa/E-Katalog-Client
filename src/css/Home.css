@@ -498,9 +498,7 @@
 
 }
 
-.kontainer .perCard:hover .slide.slide1{
-
-    transform: translateY(0px);
+.kontainer .perCard:hover .slide.slide1{transform: translateY(0px);
 
 }
 

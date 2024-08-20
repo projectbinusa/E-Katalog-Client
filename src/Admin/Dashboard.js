@@ -3,7 +3,7 @@ import Sidebar from "../component/Sidnav";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "../css/Dashboard.css";
-import { getProjects } from "../Router/getProject.jsx";
+import { getProjects } from "../Router/getProject";
 import Gelembung from "../aset/gelembung.png";
 import PT from "../aset/pt-dinartech.png";
 
@@ -36,7 +36,10 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="d-flex" style={{ height: "100vh" }}>
+    <div
+      className="d-flex"
+      style={{ height: "100vh", overflowY: "auto", overflowX: "hidden" }}
+    >
       <Sidebar />
       <div className="Bg dashboard-bg">
         <div className="bg-element">
@@ -45,24 +48,27 @@ function Dashboard() {
         <div className="bg-element">
           <img src={Gelembung} alt="gelembung" className="gelembung3" />
         </div>
-        <div className="context">
-          <div className="logo-container">
-            <img src={PT} className="logo-pt" id="logo-logo" alt="Logo" />
+        <div className="context1">
+          <div className="logo-container2">
+            <img src={PT} className="logo-pt1" id="logo-logo" alt="Logo" />
           </div>
           <div className="projects-grid">
             {projects.length > 0 ? (
-              projects.map((project, index) => (
+              projects.map((project) => (
                 <Link
-                  key={index}
+                  key={project.id}
                   to={`/projects/${project.id}`}
                   className="project-card"
                 >
-                  <div className="box">
-                    <div className="our-services">
+                  <div className="box2">
+                    <div className="our-services-iconnn">
                       <div className="icon">
                         <img
-                          src={project.image || "default-image-url-here.png"}
-                          className={`width-img-${project.width || "70"}`}
+                          src={
+                            project.image ||
+                            "https://johannesippen.com/img/blog/humans-not-users/header.jpg"
+                          }
+                          className="icon-img" // Menambahkan kelas untuk kontrol ukuran
                           alt={project.nama_projek}
                         />
                       </div>
