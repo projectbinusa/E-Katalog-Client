@@ -1,35 +1,99 @@
-/* Listp.css */
+/* Responsive card style */
 .responsive-card {
   margin-left: auto;
   margin-right: auto;
   margin-top: 10%;
 }
 
-@media (max-width: 768px) {
-  .responsive-card {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .table-custom {
-    width: 100%;
-    margin: 0 auto;
-    overflow-x: auto; /* Agar tabel bisa di-scroll horizontal jika terlalu lebar */
-  }
-
-  .pagination {
-    justify-content: center;
-  }
-}
-
+/* Style for table */
 .table-custom {
   border-collapse: separate;
   border-spacing: 0;
   border-radius: 8px;
-  overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Ensure the table is scrollable horizontally on small screens */
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* Style for the table */
 .table-custom tbody {
   border-bottom: 1px solid #ddd; /* Adjust thickness here */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .responsive-card {
+    width: 100%;
+    margin: 0 auto; /* Center the card */
+  }
+
+  .table-custom {
+    width: 100%;
+    margin-right: 0; /* Remove any right margin */
+  }
+
+  .table-responsive {
+    padding: 0; /* Remove any padding that might push the table */
+  }
+
+  .pagination {
+    justify-content: center; /* Center the pagination controls */
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+  }
+
+  .logo {
+    max-width: 120px;
+    margin: 0;
+    order: 1;
+  }
+
+  .navbar-toggler {
+    margin: 0;
+    order: 2;
+  }
+
+  .collapse {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    margin-left: auto;
+  }
+
+  .navbar-nav li {
+    margin-bottom: 10px;
+  }
+
+  .navbar .profile {
+    order: 3;
+    margin-left: auto;
+  }
+
+  .content {
+    margin-top: 60px;
+    padding: 20px;
+    width: 100%;
+    margin-right: 0; /* Ensure no extra margin on the right */
+    display: flex;
+    justify-content: center;
+  }
+
+  .container-fluid {
+    position: relative;
+    transform: translateY(0); /* Adjust as needed */
+  }
 }

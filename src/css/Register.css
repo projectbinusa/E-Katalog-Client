@@ -215,7 +215,7 @@ h6 span {
 
 /* Style label saat input dalam keadaan fokus atau memiliki nilai */
 .form-style:focus + label,
-.form-style:not(:placeholder-shown) + label {
+.form-style:not(:placeholder-shown) + label { 
   top: -10px; /* Jarak dari atas input */
   left: 10px; /* Jarak dari kiri input */
   font-size: 12px; /* Ukuran font lebih kecil saat label berada di atas */

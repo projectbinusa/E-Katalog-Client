@@ -1,20 +1,24 @@
+/* Global Styles */
+body {
+  background-color: #fbfbfb;
+  margin: 0;
+  padding: 0;
+}
+
 /* Sidebar */
 .sidebar {
   position: fixed;
-  top: 0;
+  top: 50px;
   bottom: 0;
   left: 0;
-  padding: 58px 0 0;
   width: 240px;
   background-color: #f8f9fa;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease-in-out;
   z-index: 1000;
+  transition: transform 0.3s ease-in-out;
 }
 
 .sidebar.show {
-  transform: translateX(0);
+  transform: translateX(0); /* Sidebar masuk ke layar ketika show */
 }
 
 @media (max-width: 991px) {
@@ -66,11 +70,11 @@
 
 .navbar {
   height: 60px;
-  display: flex;
-  align-items: center;
-  z-index: 1000;
-  background: rgb(0, 0, 0);
   background: linear-gradient(-1.7deg, #00c6ff, #f2f2f2, #ffffff);
+  z-index: 1050; /* Navbar berada di atas elemen lain */
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -98,24 +102,27 @@
 /* Responsive Styles */
 @media (max-width: 992px) {
   .navbar {
-    display: flex;
-    justify-content: space-between; /* Mengatur jarak antar elemen di dalam navbar */
+    flex-direction: row;
     align-items: center;
     padding: 10px 15px;
   }
 
   .logo {
+    width: auto;
     max-width: 120px;
-    margin: 0; /* Menghapus margin untuk logo */
-    order: 1; /* Menempatkan logo di urutan pertama */
+    margin-top: 1%;
   }
 
   .navbar-toggler {
-    margin: 0; /* Menghapus margin untuk navbar-toggler */
-    order: 2; /* Menempatkan tombol navbar-toggler di urutan kedua */
+    order: 1;
+  }
+
+  .navbar-toggler-icon {
+    margin-right: 10px;
   }
 
   .collapse {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
@@ -152,12 +159,13 @@
 
 /* Main Content */
 .content {
-  margin-top: 60px;
+  margin-top: 60px; /* Memberikan ruang untuk navbar */
   padding: 20px;
   box-sizing: border-box;
-  min-height: calc(100vh - 60px);
+  width: 100%;
   display: flex;
   justify-content: center;
+  transition: margin-left 0.3s ease-in-out;
 }
 
 .content main {
