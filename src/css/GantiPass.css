@@ -13,6 +13,12 @@
     margin-left: 250px; /* Sama dengan lebar sidebar untuk tampilan non-responsif */
     padding: 20px;
     width: calc(100% - 250px); /* Mengisi sisa ruang untuk tampilan non-responsif */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border: 1px solid #e1e5e8;
+    margin-top: 200%;
+    height: 10%;
 }
 
 /* Responsif */
@@ -31,15 +37,6 @@
         margin-top: 20px; /* Jarak dari atas */
         margin-bottom: 200%; /* Jarak dari bawah */
     }
-}
-
-.password-change-container {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border: 1px solid #e1e5e8;
-    margin-top: 200%;
-    height: 10%;
 }
 
 .form-floating input {
