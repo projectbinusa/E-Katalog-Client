@@ -58,14 +58,18 @@ function Listp() {
   }, []);
 
   const filteredData = data.filter((item) => {
-    const namaProject = item.namaProject || "";
+    const namaProject = item.nama_project || "";
     const teknologi = item.teknologi || "";
     const developer = item.developer || "";
+    const link = item.link || "";
+    const deskripsiProject = item.deskripsi_project || "";
 
     return (
       namaProject.toLowerCase().includes(searchQuery.toLowerCase()) ||
       teknologi.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      developer.toLowerCase().includes(searchQuery.toLowerCase())
+      developer.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      link.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      deskripsiProject.toLowerCase().includes(searchQuery.toLowerCase())
     );
   });
 
@@ -151,19 +155,20 @@ function Listp() {
   };
 
   return (
-    <div className="d-flex jusify-content-center fixed">
+    <div className="d-flex jusify-content-center fixed Bg">
       <Sidebar />
       <section
-        className="w-100 d-flex justify-content-center align-items-start auto-y-scroll"
+        className="card1 w-100 d-flex justify-content-center align-items-start auto-y-scroll"
         style={{
           minHeight: "100vh",
           padding: "0 5%",
-          marginTop: "10%",
+          marginTop: "9%",
+          marginLeft: "13%"
         }}
       >
-        <div className="container mt-4 px-2">
+        <div className="container mt-4 px-1">
           <div
-            className="card mx-auto responsive-card shadow-xl"
+            className="card mx-auto responsive-card"
             style={{
               width: "100%",
               maxWidth: "900px",
@@ -174,7 +179,7 @@ function Listp() {
               <div className="d-flex align-items-center mb-3">
                 <p
                   className="mr-auto"
-                  style={{ fontWeight: "bold", fontSize: "150%", }}
+                  style={{ fontWeight: "bold", fontSize: "150%" }}
                 >
                   Tabel List Projek
                 </p>
@@ -220,7 +225,13 @@ function Listp() {
                     className="thead-light"
                     style={{ borderRadius: "8px 8px 0 0", overflow: "hidden" }}
                   >
-                    <tr style={{font: "menu", fontWeight: "bold", fontSize: "13px"}}>
+                    <tr
+                      style={{
+                        font: "menu",
+                        fontWeight: "bold",
+                        fontSize: "13px",
+                      }}
+                    >
                       <th>No</th>
                       <th className="text-nowrap">Nama Project</th>
                       <th>Teknologi</th>
@@ -241,6 +252,7 @@ function Listp() {
                           <td>{item.teknologi}</td>
                           <td>{item.developer}</td>
                           <td
+                          className="text-decoration-none"
                             style={{ color: "Highlight", cursor: "pointer" }}
                             onClick={(e) => {
                               if (e.target.tagName !== "A") {
@@ -288,7 +300,7 @@ function Listp() {
                     ) : (
                       <tr>
                         <td colSpan="7" className="text-center">
-                        Tidak ada data yang tersedia
+                          Tidak ada data yang tersedia
                         </td>
                       </tr>
                     )}

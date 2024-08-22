@@ -14,7 +14,7 @@ body {
 /* Style untuk keseluruhan konten */
 .content1 {
   position: relative;
-  z-index: 100;
+  z-index: 1000;
   height: 100%;
   width: 100%;
   overflow: auto; /* Mengizinkan scroll vertikal dan horizontal */
@@ -45,7 +45,6 @@ body {
   gap: 20px; /* Jarak antar card */
   justify-content: center;
   margin-top: 2%;
-  overflow-x: auto; /* Mengizinkan scroll horizontal */
 }
 
 /* Style untuk setiap card project */
@@ -77,7 +76,7 @@ body {
   margin-top: 70px;
   padding-bottom: 150px;
   padding: 0 40px;
-  min-height: 120px;
+  /* min-height: 120px; */
   text-align: center;
   border-radius: 10px;
   background-color: #fff;
@@ -86,7 +85,7 @@ body {
   opacity: 1;
 }
 
-.our-services-iconnn .icon {
+.our-services-iconnn .icon2 {
   margin-bottom: -21px;
   transform: translateY(-50%);
   text-align: center;
@@ -104,8 +103,10 @@ body {
   border-radius: 20px; /* Jika Anda ingin menambahkan border-radius */
 }
 
-.our-services-iconnn:hover .icon-img {
-  transform: scale(1.2); /* Efek perbesar pada hover */
+.our-services-iconnn:hover {
+  transform: scale(1.2);
+  transform: translateZ(10px); /* Card terlihat seperti terangkat */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2); /* Tambahkan shadow saat hover */
 }
 
 /* Style untuk judul project */
@@ -134,7 +135,7 @@ body {
     margin: 0 auto; /* Memastikan card berada di tengah */
   }
 
-  .icon {
+  .icon2 {
     height: 80px; /* Sesuaikan tinggi ikon untuk layar kecil */
   }
 
@@ -149,17 +150,17 @@ body {
 }
 
 /* In Dashboard.css */
-.dashboard-bg {
+.dashboard-bg1 {
   margin-left: 15%;
   margin-right: 18%;
   width: 85%;
   margin-top: 3.5%;
-  flex: 1;
-  overflow: auto; /* Ensure child elements scroll */
+  /* flex: 1; */
+  overflow-y: auto; /* Ensure child elements scroll */
 }
 
 @media (max-width: 768px) {
-  .dashboard-bg {
+  .dashboard-bg1 {
     margin-top: 10%;
     margin-left: 0;
     margin-right: 0;
@@ -173,4 +174,15 @@ body {
   height: 100vh;
   overflow-y: auto; /* Mengizinkan scroll vertikal */
   overflow-x: hidden; /* Menyembunyikan scrollbar horizontal jika tidak diperlukan */
+}
+
+/* Pastikan elemen teks dapat diseleksi dan disalin */
+.copy-allowed {
+  user-select: text; /* Memastikan teks bisa diseleksi */
+  pointer-events: auto; /* Memastikan elemen dapat berinteraksi */
+}
+
+/* Jika ada overlay atau elemen lain yang mungkin menghalangi penyalinan, pastikan tidak ada aturan yang menghalangi */
+.no-overlay {
+  pointer-events: none; /* Memastikan overlay tidak memblokir interaksi */
 }

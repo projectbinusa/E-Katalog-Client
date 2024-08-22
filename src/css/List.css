@@ -1,35 +1,106 @@
-/* Listp.css */
+body {
+  font-family: "Exo", sans-serif;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, #00c6ff, #f2f2f2, #ffffff);
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive card style */
 .responsive-card {
   margin-left: auto;
   margin-right: auto;
   margin-top: 10%;
+  border-radius: 8px; /* Add border radius */
 }
 
-@media (max-width: 768px) {
-  .responsive-card {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .table-custom {
-    width: 100%;
-    margin: 0 auto;
-    overflow-x: auto; /* Agar tabel bisa di-scroll horizontal jika terlalu lebar */
-  }
-
-  .pagination {
-    justify-content: center;
-  }
-}
-
+/* Style for the table */
 .table-custom {
   border-collapse: separate;
   border-spacing: 0;
   border-radius: 8px;
-  overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: white; /* Ensure the background is white */
 }
 
-.table-custom tbody {
-  border-bottom: 1px solid #ddd; /* Adjust thickness here */
+/* Ensure the table is scrollable horizontally on small screens */
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* Adjust table row and header styles */
+.table-custom thead {
+  background-color: #f8f9fa; /* Light gray for table header */
+  color: #343a40; /* Dark text for contrast */
+}
+
+.table-custom th,
+.table-custom td {
+  padding: 12px; /* Adjust padding for better spacing */
+  text-align: center; /* Center align text */
+}
+
+.table-custom tbody tr:hover {
+  background-color: #e9ecef; /* Light gray on hover */
+}
+
+/* Pagination styles */
+.pagination .page-link {
+  color: #007bff; /* Primary color for pagination */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.pagination .page-link:hover {
+  background-color: #e9ecef; /* Light gray on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .responsive-card {
+    width: 100%;
+    margin: 0 auto; /* Center the card */
+  }
+
+  .table-custom {
+    width: 100%;
+    margin-right: 0; /* Remove any right margin */
+  }
+
+  .table-responsive {
+    padding: 0; /* Remove any padding that might push the table */
+  }
+
+  .pagination {
+    justify-content: center; /* Center the pagination controls */
+  }
+
+  .container {
+    margin-right: 13rem;
+  }
+
+  .card1 {
+    margin-top: 30%;
+  }
+}
+
+@media (max-width: 576px) {
+  .table-custom th,
+  .table-custom td {
+    padding: 8px; /* Reduce padding for smaller screens */
+  }
+}
+
+a {
+  text-decoration: none; /* Menghilangkan garis bawah */
+  color: #070a0e; /* Mengatur warna link sesuai dengan teks sekitarnya */
+}
+
+a:hover {
+  text-decoration: none; /* Opsi: Menambahkan garis bawah saat dihover */
+  color: #070a0e; /* Ubah warna link saat dihover (opsional) */
 }

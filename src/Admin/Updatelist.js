@@ -125,7 +125,7 @@ function Updatelist() {
 
   return (
     <>
-      <div className="d-flex flex-column flex-md-row">
+      <div className="d-flex flex-column flex-md-row Bg">
         <Sidebar />
         <section style={{ width: "100%", marginTop: "8%" }}>
           <div className="container mt-4">

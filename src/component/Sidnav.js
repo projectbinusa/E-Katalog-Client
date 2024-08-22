@@ -8,6 +8,7 @@ import { getAdminById } from "../Router/Getprofile"; // Sesuaikan path jika perl
 
 function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const [profilePic, setProfilePic] = useState("");
   const location = useLocation();
   const id = localStorage.getItem("id");
@@ -35,6 +36,7 @@ function Sidebar() {
   }, [id]);
 
   const toggleSidebar = () => setShowSidebar(!showSidebar);
+  const toggleDropdown = () => setShowDropdown(!showDropdown);
 
   const isActive = (path) => (location.pathname === path ? "active" : "");
 
@@ -79,11 +81,7 @@ function Sidebar() {
 
       <div className={`content ${showSidebar ? "shift" : ""}`}>
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-          <div className="container-fluid">
-            <div className="logo">
-              <img src={Logo} alt="Logo" loading="lazy" />
-            </div>
-
+          <div className="container-fluid d-flex align-items-center">
             <button
               className="navbar-toggler"
               type="button"
@@ -93,7 +91,11 @@ function Sidebar() {
               <i className="fas fa-bars"></i>
             </button>
 
-            <div className="collapse navbar-collapse">
+            <div className="logo ms-2">
+              <img src={Logo} alt="Logo" loading="lazy" />
+            </div>
+
+            <div className="collapse navbar-collapse ms-auto">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item dropdown profile">
                   <a
@@ -101,37 +103,40 @@ function Sidebar() {
                     href="#"
                     id="profileDropdown"
                     role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
+                    onClick={toggleDropdown}
+                    aria-expanded={showDropdown}
                   >
                     <img
                       src={profilePic}
                       className="rounded-circle"
-                      height="40"
+                      height="38"
+                      width="50"
                       alt="Avatar"
                       loading="lazy"
                     />
                   </a>
-                  <ul
-                    className="dropdown-menu dropdown-menu-left"
-                    aria-labelledby="profileDropdown"
-                  >
-                    <li>
-                      <Link className="dropdown-item" to="/profile">
-                        Profile
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="/gantipass">
-                        Forgot Password
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="/login">
-                        Log Out
-                      </Link>
-                    </li>
-                  </ul>
+                  {showDropdown && (
+                    <ul
+                      className="dropdown-menu dropdown-menu-left show"
+                      aria-labelledby="profileDropdown"
+                    >
+                      <li>
+                        <Link className="dropdown-item" to="/profile">
+                          Profile
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="/gantipass">
+                          Forgot Password
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="/login">
+                          Log Out
+                        </Link>
+                      </li>
+                    </ul>
+                  )}  
                 </li>
               </ul>
             </div>
