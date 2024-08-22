@@ -109,7 +109,8 @@ function Sidebar() {
                     <img
                       src={profilePic}
                       className="rounded-circle"
-                      height="40"
+                      height="38"
+                      width="50"
                       alt="Avatar"
                       loading="lazy"
                     />
@@ -135,7 +136,7 @@ function Sidebar() {
                         </Link>
                       </li>
                     </ul>
-                  )}
+                  )}  
                 </li>
               </ul>
             </div>

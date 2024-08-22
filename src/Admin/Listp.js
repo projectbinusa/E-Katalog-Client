@@ -155,19 +155,20 @@ function Listp() {
   };
 
   return (
-    <div className="d-flex jusify-content-center fixed">
+    <div className="d-flex jusify-content-center fixed Bg">
       <Sidebar />
       <section
-        className="w-100 d-flex justify-content-center align-items-start auto-y-scroll"
+        className="card1 w-100 d-flex justify-content-center align-items-start auto-y-scroll"
         style={{
           minHeight: "100vh",
           padding: "0 5%",
-          marginTop: "10%",
+          marginTop: "9%",
+          marginLeft: "13%"
         }}
       >
-        <div className="container mt-4 px-2">
+        <div className="container mt-4 px-1">
           <div
-            className="card mx-auto responsive-card shadow-xl"
+            className="card mx-auto responsive-card"
             style={{
               width: "100%",
               maxWidth: "900px",
@@ -251,6 +252,7 @@ function Listp() {
                           <td>{item.teknologi}</td>
                           <td>{item.developer}</td>
                           <td
+                          className="text-decoration-none"
                             style={{ color: "Highlight", cursor: "pointer" }}
                             onClick={(e) => {
                               if (e.target.tagName !== "A") {

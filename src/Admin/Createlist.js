@@ -89,7 +89,7 @@ function Createlist() {
 
   return (
     <>
-      <div className="d-flex flex-column flex-md-row">
+      <div className="d-flex flex-column flex-md-row Bg">
         <Sidebar />
         <section style={{ width: "100%", marginTop: "8%", alignItems:"center" }}>
           <div className="container mt-4">

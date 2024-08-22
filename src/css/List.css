@@ -1,16 +1,26 @@
+body {
+  font-family: "Exo", sans-serif;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, #00c6ff, #f2f2f2, #ffffff);
+  width: 100%;
+  height: 100%;
+}
+
 /* Responsive card style */
 .responsive-card {
   margin-left: auto;
   margin-right: auto;
   margin-top: 10%;
+  border-radius: 8px; /* Add border radius */
 }
 
-/* Style for table */
+/* Style for the table */
 .table-custom {
   border-collapse: separate;
   border-spacing: 0;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: white; /* Ensure the background is white */
 }
 
 /* Ensure the table is scrollable horizontally on small screens */
@@ -18,9 +28,35 @@
   overflow-x: auto;
 }
 
-/* Style for the table */
-.table-custom tbody {
-  border-bottom: 1px solid #ddd; /* Adjust thickness here */
+/* Adjust table row and header styles */
+.table-custom thead {
+  background-color: #f8f9fa; /* Light gray for table header */
+  color: #343a40; /* Dark text for contrast */
+}
+
+.table-custom th,
+.table-custom td {
+  padding: 12px; /* Adjust padding for better spacing */
+  text-align: center; /* Center align text */
+}
+
+.table-custom tbody tr:hover {
+  background-color: #e9ecef; /* Light gray on hover */
+}
+
+/* Pagination styles */
+.pagination .page-link {
+  color: #007bff; /* Primary color for pagination */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.pagination .page-link:hover {
+  background-color: #e9ecef; /* Light gray on hover */
 }
 
 /* Responsive styles */
@@ -42,58 +78,29 @@
   .pagination {
     justify-content: center; /* Center the pagination controls */
   }
+
+  .container {
+    margin-right: 13rem;
+  }
+
+  .card1 {
+    margin-top: 30%;
+  }
 }
 
-@media (max-width: 992px) {
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
+@media (max-width: 576px) {
+  .table-custom th,
+  .table-custom td {
+    padding: 8px; /* Reduce padding for smaller screens */
   }
+}
 
-  .logo {
-    max-width: 120px;
-    margin: 0;
-    order: 1;
-  }
+a {
+  text-decoration: none; /* Menghilangkan garis bawah */
+  color: #070a0e; /* Mengatur warna link sesuai dengan teks sekitarnya */
+}
 
-  .navbar-toggler {
-    margin: 0;
-    order: 2;
-  }
-
-  .collapse {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .navbar-nav {
-    flex-direction: column;
-    margin-left: auto;
-  }
-
-  .navbar-nav li {
-    margin-bottom: 10px;
-  }
-
-  .navbar .profile {
-    order: 3;
-    margin-left: auto;
-  }
-
-  .content {
-    margin-top: 60px;
-    padding: 20px;
-    width: 100%;
-    margin-right: 0; /* Ensure no extra margin on the right */
-    display: flex;
-    justify-content: center;
-  }
-
-  .container-fluid {
-    position: relative;
-    transform: translateY(0); /* Adjust as needed */
-  }
+a:hover {
+  text-decoration: none; /* Opsi: Menambahkan garis bawah saat dihover */
+  color: #070a0e; /* Ubah warna link saat dihover (opsional) */
 }
