@@ -16,6 +16,7 @@ function Profile() {
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdztTDcpZ2pFqwWDYwSXbvZq5nzJYg5cn8w&s",
   });
 
+  const [originalData, setOriginalData] = useState({}); // Menyimpan data asli untuk pembatalan
   const [isEditingData, setIsEditingData] = useState(false);
   const [isFileSelected, setIsFileSelected] = useState(false);
   const [imageFile, setImageFile] = useState(null);
@@ -30,11 +31,13 @@ function Profile() {
       })
       .then((response) => {
         const { email, username, image } = response.data;
-        setFormData({
+        const data = {
           email,
           username,
           image: image || formData.image,
-        });
+        };
+        setFormData(data);
+        setOriginalData(data); // Simpan data asli
       })
       .catch((error) => {
         console.error("Ada kesalahan saat mengambil data:", error);
@@ -71,6 +74,7 @@ function Profile() {
         }
       );
       setIsEditingData(false);
+      setOriginalData(formData); // Update data asli setelah menyimpan
       Swal.fire({
         title: "Berhasil",
         text: "Data berhasil disimpan!",
@@ -115,6 +119,7 @@ function Profile() {
       setIsFileSelected(false);
       setImageFile(null);
       setPreviewImage(null);
+      setOriginalData({ ...formData, image: response.data.image }); // Update data asli setelah menyimpan gambar
       Swal.fire({
         title: "Berhasil",
         text: "Foto profil berhasil disimpan!",
@@ -132,6 +137,14 @@ function Profile() {
         showConfirmButton: false,
       });
     }
+  };
+
+  const handleCancel = () => {
+    setFormData(originalData); // Kembalikan data ke nilai asli
+    setIsEditingData(false); // Kembali ke mode non-edit
+    setImageFile(null); // Reset file gambar jika ada
+    setPreviewImage(null); // Hapus preview gambar jika ada
+    setIsFileSelected(false); // Reset status file yang dipilih
   };
 
   return (
@@ -154,25 +167,27 @@ function Profile() {
                   <img
                     src={formData.image}
                     alt="Avatar"
-                    className="my-5"
+                    className="my-5 mb-2 mt-2"
                     style={{
-                      width: "150px",
+                      width: "100px",
                       borderRadius: "50%",
-                      height: "150px",
+                      height: "100px",
                     }}
                   />
+                  <p className="text-center mb-1">
+                    Disarankan Ukuran Gambar 1:1
+                  </p>
+                  <p className="mb-2">Preview</p>
 
                   {!isFileSelected && (
                     <p className="text-white">{formData.username}</p>
                   )}
-
                   <input
                     type="file"
                     id="imageUpload"
                     style={{ display: "none" }}
                     onChange={handleFileChange}
                   />
-
                   {previewImage && (
                     <div
                       style={{
@@ -190,16 +205,15 @@ function Profile() {
                           color: "white",
                         }}
                       >
-                        Preview
                       </span>
                       <img
                         src={previewImage}
                         alt="Preview Avatar"
                         className="my-3"
                         style={{
-                          width: "150px",
+                          width: "100px",
                           borderRadius: "50%",
-                          height: "150px",
+                          height: "100px",
                         }}
                       />
                     </div>
@@ -247,12 +261,20 @@ function Profile() {
                             />
                           </div>
                         </div>
-                        <button
-                          className="btn btn-custom btn-primary-custom btn-sm"
-                          onClick={handleSaveData}
-                        >
-                          Simpan
-                        </button>
+                        <div className="d-flex mt-2">
+                          <button
+                            className="btn btn-custom btn-primary-custom btn-sm"
+                            onClick={handleSaveData}
+                          >
+                            Simpan
+                          </button>
+                          <button
+                            className="btn btn-custom btn-danger-custom btn-sm ml-auto"
+                            onClick={handleCancel}
+                          >
+                            Batal
+                          </button>
+                        </div>
                       </div>
                     ) : (
                       <div>
