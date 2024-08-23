@@ -40,6 +40,7 @@ body {
   text-align: center; /* Center align text */
 }
 
+
 .table-custom tbody tr:hover {
   background-color: #e9ecef; /* Light gray on hover */
 }
@@ -63,7 +64,9 @@ body {
 @media (max-width: 768px) {
   .responsive-card {
     width: 100%;
-    margin: 0 auto; /* Center the card */
+    /* margin: 0 auto; Center the card */
+    padding-left: 50%;
+    padding-top: 10%;
   }
 
   .table-custom {
@@ -80,7 +83,8 @@ body {
   }
 
   .container {
-    margin-right: 13rem;
+    margin-right: 50%;
+    padding-top: 22%;
   }
 
   .card1 {

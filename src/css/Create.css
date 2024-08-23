@@ -56,26 +56,28 @@
 }
 
 /* Ensure the form and button layout adjust on small screens */
+/* Media query untuk layar dengan lebar maksimum 768px */
 @media (max-width: 768px) {
-  .card {
-    margin: 0 10px; /* Add margin for small screens */
-  }
-
   .button-container {
     display: flex;
-    flex-direction: row; /* Align buttons side-by-side */
-    gap: 10px; /* Add space between buttons */
-    justify-content: space-between; /* Space out buttons */
+    flex-direction: row; /* Atur tombol berdampingan */
+    gap: 10px; /* Tambahkan jarak antara tombol */
+    justify-content: space-between; /* Atur jarak tombol */
   }
 
   .btn-custom {
-    flex: 1; /* Make buttons take equal width */
+    flex: 1; /* Buat tombol memiliki lebar yang sama */
+  }
+
+
+  section{
+    padding-right: 10%;
   }
 }
 
-@media (min-width: 768px) {
-  .button-container {
-    display: flex;
-    justify-content: space-between; /* Space out buttons on larger screens */
-  }
+.container2 {
+  margin-left: 15%;
+  margin-right: 18%;
+  width: 85%;
+  margin-top: 3.5%;
 }

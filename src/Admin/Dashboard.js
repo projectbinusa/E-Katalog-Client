@@ -9,6 +9,7 @@ import PT from "../aset/pt-dinartech.png";
 
 function Dashboard() {
   const [projects, setProjects] = useState([]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     AOS.init();
@@ -16,7 +17,7 @@ function Dashboard() {
     const fetchProjects = async () => {
       try {
         const projectData = await getProjects();
-        console.log(projectData); // Pastikan data yang diterima memiliki nama_project
+        console.log(projectData);
 
         const sortedProjects = projectData.sort((a, b) => {
           if (a.nama_project < b.nama_project) return -1;
@@ -31,8 +32,20 @@ function Dashboard() {
     };
 
     fetchProjects();
+
+    // Handler untuk resize event
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Menambahkan event listener resize
+    window.addEventListener("resize", handleResize);
+
+    // Membersihkan event listener ketika komponen di-unmount
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Render komponen
   return (
     <div className="d-flex">
       <Sidebar />
@@ -50,7 +63,7 @@ function Dashboard() {
                 projects.map((project) => (
                   <Link
                     key={project.id}
-                    to={`/projects/${project.id}`}
+                    // to={`/projects/${project.id}`}
                     className="project-card"
                   >
                     <div className="box2">
@@ -61,7 +74,7 @@ function Dashboard() {
                               project.image ||
                               "https://i0.wp.com/www.stignatius.co.uk/wp-content/uploads/2020/10/default-user-icon.jpg?fit=415%2C415&ssl=1"
                             }
-                            className="icon-img"
+                            className="gambar-img"
                             alt={project.nama_project}
                           />
                         </div>
@@ -70,13 +83,11 @@ function Dashboard() {
                             color: "black",
                             textAlign: "center",
                             fontWeight: "bold",
-                            transform: "translateY(-20%)", // Pindahkan h4 ke atas 10% dari posisinya
+                            transform: "translateY(-20%)",
                           }}
                         >
                           <i> {project.nama_project} </i>
                         </h4>
-
-                        {/* <p>{project.teknologi}</p> */}
                       </div>
                     </div>
                   </Link>
