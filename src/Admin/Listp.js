@@ -163,7 +163,7 @@ function Listp() {
           minHeight: "100vh",
           padding: "0 5%",
           marginTop: "9%",
-          marginLeft: "13%"
+          marginLeft: "13%",
         }}
       >
         <div className="container mt-4 px-1">
@@ -232,15 +232,74 @@ function Listp() {
                         fontSize: "13px",
                       }}
                     >
-                      <th>No</th>
-                      <th className="text-nowrap">Nama Project</th>
-                      <th>Teknologi</th>
-                      <th>Developer</th>
-                      <th>Link</th>
-                      <th className="text-nowrap">Deskripsi Project</th>
-                      <th>Aksi</th>
+                      <th
+                        style={{
+                          background: "#D1E9F6",
+                          color: "black",
+                          fontSize: "120%",
+                        }}
+                      >
+                        No
+                      </th>
+                      <th
+                        className="text-nowrap"
+                        style={{
+                          background: "#D1E9F6",
+                          color: "black",
+                          fontSize: "120%",
+                        }}
+                      >
+                        Nama Project
+                      </th>
+                      <th
+                        style={{
+                          background: "#D1E9F6",
+                          color: "black",
+                          fontSize: "120%",
+                        }}
+                      >
+                        Teknologi
+                      </th>
+                      <th
+                        style={{
+                          background: "#D1E9F6",
+                          color: "black",
+                          fontSize: "120%",
+                        }}
+                      >
+                        Developer
+                      </th>
+                      <th
+                        style={{
+                          background: "#D1E9F6",
+                          color: "black",
+                          fontSize: "120%",
+                        }}
+                      >
+                        Link
+                      </th>
+                      <th
+                        className="text-nowrap"
+                        style={{
+                          background: "#D1E9F6",
+                          color: "black",
+                          fontSize: "120%",
+                        }}
+                      >
+                        Deskripsi Project
+                      </th>
+                      <th
+                        style={{
+                          background: "#D1E9F6",
+                          color: "black",
+                          fontSize: "120%",
+                        }}
+                      >
+                        Aksi
+                      </th>
                     </tr>
                   </thead>
+
                   <tbody>
                     {currentItems.length > 0 ? (
                       currentItems.map((item, index) => (
@@ -252,7 +311,7 @@ function Listp() {
                           <td>{item.teknologi}</td>
                           <td>{item.developer}</td>
                           <td
-                          className="text-decoration-none"
+                            className="text-decoration-none"
                             style={{ color: "Highlight", cursor: "pointer" }}
                             onClick={(e) => {
                               if (e.target.tagName !== "A") {

@@ -7,18 +7,31 @@ import Logo from "../aset/LOGO_Katalog.png";
 import { getAdminById } from "../Router/Getprofile";
 
 function Sidebar() {
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false); // Default to hidden on small screens
   const [showDropdown, setShowDropdown] = useState(false);
   const [profilePic, setProfilePic] = useState("");
   const location = useLocation();
   const id = localStorage.getItem("id");
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setShowSidebar(false); // Hide sidebar on small screens
+      } else {
+        setShowSidebar(true); // Show sidebar on larger screens
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Call handler on mount
+    return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
+  }, []);
+
+  useEffect(() => {
     if (id) {
       const fetchAdmin = async () => {
         try {
           const adminData = await getAdminById(id);
-          console.log("Admin Data:", adminData);
           if (adminData && adminData.image) {
             setProfilePic(adminData.image);
           } else {
@@ -35,8 +48,8 @@ function Sidebar() {
     }
   }, [id]);
 
-  const toggleSidebar = () => setShowSidebar(!showSidebar);
-  const toggleDropdown = () => setShowDropdown(!showDropdown);
+  const toggleSidebar = () => setShowSidebar(prev => !prev); // Toggle sidebar visibility
+  const toggleDropdown = () => setShowDropdown(prev => !prev);
 
   const isActive = (path) => (location.pathname === path ? "active" : "");
 
@@ -86,7 +99,7 @@ function Sidebar() {
               className="navbar-toggler"
               type="button"
               aria-label="Toggle navigation"
-              onClick={toggleSidebar} // Pastikan ini terpasang dengan benar
+              onClick={toggleSidebar}
             >
               <i className="fas fa-bars"></i>
             </button>
@@ -109,8 +122,8 @@ function Sidebar() {
                     <img
                       src={profilePic}
                       className="rounded-circle"
-                      height="38"
-                      width="50"
+                      height="35"
+                      width="35"
                       alt="Avatar"
                       loading="lazy"
                     />

@@ -128,7 +128,7 @@ function Updatelist() {
       <div className="d-flex flex-column flex-md-row Bg">
         <Sidebar />
         <section style={{ width: "100%", marginTop: "8%" }}>
-          <div className="container mt-4">
+          <div className="container2 mt-6">
             <div
               className="card shadow-sm p-1 mx-auto"
               style={{ width: "100%", maxWidth: "800px", margin: "0 auto" }}
@@ -152,10 +152,11 @@ function Updatelist() {
                         htmlFor="nama_project"
                         className="form-label"
                         style={{
-                          fontSize: "0.75rem",
+                          fontSize: "1rem",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
+                          color: "#686D76",
                         }}
                       >
                         Nama Project
@@ -170,6 +171,7 @@ function Updatelist() {
                         autoComplete="off"
                         placeholder=" Nama Project"
                         required
+                        style={{ color: "black" }}
                       />
                     </div>
                     <div className="col-md-6">
@@ -177,10 +179,11 @@ function Updatelist() {
                         htmlFor="teknologi"
                         className="form-label"
                         style={{
-                          fontSize: "0.75rem",
+                          fontSize: "1rem",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
+                          color: "#686D76",
                         }}
                       >
                         Teknologi
@@ -195,6 +198,7 @@ function Updatelist() {
                         autoComplete="off"
                         placeholder=" Teknologi"
                         required
+                        style={{ color: "black" }}
                       />
                     </div>
                   </div>
@@ -205,10 +209,11 @@ function Updatelist() {
                         htmlFor="developer"
                         className="form-label"
                         style={{
-                          fontSize: "0.75rem",
+                          fontSize: "1rem",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
+                          color: "#686D76",
                         }}
                       >
                         Developer
@@ -223,6 +228,7 @@ function Updatelist() {
                         autoComplete="off"
                         placeholder=" Developer"
                         required
+                        style={{ color: "black" }}
                       />
                     </div>
                     <div className="col-md-6">
@@ -230,10 +236,11 @@ function Updatelist() {
                         htmlFor="link"
                         className="form-label"
                         style={{
-                          fontSize: "0.75rem",
+                          fontSize: "1rem",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
+                          color: "#686D76",
                         }}
                       >
                         Link
@@ -248,6 +255,7 @@ function Updatelist() {
                         autoComplete="off"
                         placeholder=" Link"
                         required
+                        style={{ color: "black" }}
                       />
                     </div>
                   </div>
@@ -258,10 +266,11 @@ function Updatelist() {
                         htmlFor="deskripsi_project"
                         className="form-label"
                         style={{
-                          fontSize: "0.75rem",
+                          fontSize: "1rem",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
+                          color: "#686D76",
                         }}
                       >
                         Deskripsi Project

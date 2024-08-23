@@ -17,7 +17,7 @@
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     border: 1px solid #e1e5e8;
-    margin-top: 200%;
+    margin-top: 10%;
     height: 10%;
 }
 
@@ -34,8 +34,7 @@
     .password-change-container {
         margin-left: 0; /* Menghapus margin pada tampilan kecil */
         width: 100%; /* Lebar penuh pada tampilan kecil */
-        margin-top: 20px; /* Jarak dari atas */
-        margin-bottom: 200%; /* Jarak dari bawah */
+        margin-top: 125%; /* Jarak dari atas */
     }
 }
 

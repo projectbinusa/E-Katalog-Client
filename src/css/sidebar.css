@@ -13,7 +13,7 @@ body {
   left: 0;
   width: 240px;
   background-color: #f8f9fa;
-  z-index: 1000;
+  z-index: 1000; /* Pastikan z-index cukup tinggi */
   transition: transform 0.3s ease-in-out;
   transform: translateX(0); /* Sidebar selalu terlihat pada tampilan non-responsif */
 }
@@ -21,6 +21,7 @@ body {
 @media (max-width: 991px) {
   .sidebar {
     transform: translateX(-100%); /* Sidebar tersembunyi pada tampilan responsif */
+    z-index: 1050; /* Pastikan sidebar di atas elemen lain */
   }
 
   .sidebar.show {
@@ -36,7 +37,9 @@ body {
 .sidebar-sticky {
   position: relative;
   top: 0;
-  height: calc(100vh - 60px); /* Mengatur tinggi sidebar agar sesuai dengan tampilan layar */
+  height: calc(
+    100vh - 60px
+  ); /* Mengatur tinggi sidebar agar sesuai dengan tampilan layar */
   padding-top: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto;
@@ -83,6 +86,29 @@ body {
   transform: translate(-70%, 0);
 }
 
+/* Style untuk dropdown menu */
+.dropdown-menu {
+  background-color: transparent;
+  border: #00c6ff;
+  transition: background-color 0.3s ease;
+}
+
+/* Warna latar belakang dropdown menu saat dibuka */
+.dropdown-menu.show {
+  background-color: #f2f2f2;
+}
+
+/* Style untuk item dropdown */
+.dropdown-menu .dropdown-item {
+  transition: background-color 0.3s ease;
+}
+
+/* Warna latar belakang item dropdown saat dihover */
+.dropdown-menu .dropdown-item:hover {
+  background-color: #00c6ff;
+  color: white;
+}
+
 .hover-menu {
   transition: background-color 0.3s ease, color 0.3s ease;
   display: flex;
@@ -91,49 +117,40 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 992px) {
-  .navbar {
-    padding: 10px 15px;
+  .navbar-toggler {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-toggler img {
+    margin-right: 10px; /* Memberi jarak antara ikon bar dan logo */
+  }
+
+  .navbar-collapse {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .sidebar.show {
+    transform: translateX(0); /* Sidebar muncul ketika tombol bar diklik */
   }
 
   .logo {
-    display: none; /* Sembunyikan logo pada tampilan kecil */
-  }
-
-  .navbar-toggler {
-    display: block; /* Tampilkan tombol toggle pada tampilan kecil */
-  }
-
-  .collapse {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
+    align-items: center;
+    width: auto;
+    left: 10%;
+    transform: translateY(-55%);
   }
 
   .navbar-nav {
-    flex-direction: column;
+    flex-direction: row;
     margin-left: auto;
-  }
-
-  .navbar-nav li {
-    margin-bottom: 10px;
   }
 
   .navbar .profile {
     margin-left: auto;
-  }
-
-  .content {
-    margin-top: 60px;
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .container-fluid {
-    position: relative;
-    transform: translateY(-33%);
   }
 }
 
@@ -166,4 +183,8 @@ body {
   .card {
     margin-top: 20px;
   }
+}
+
+.sidebar.shift {
+  margin-left: 240px; /* Menggeser konten saat sidebar muncul */
 }

@@ -183,17 +183,17 @@ function Login() {
                         <a
                           href="/register"
                           className="link"
-                          style={{ marginRight: "20%" }}
+                          style={{ marginRight: "60%" }}
                         >
                           daftar akun?
                         </a>
-                        <a
+                        {/* <a
                           href="#0"
                           className="link"
                           style={{ marginLeft: "2%" }}
                         >
                           Forgot your password?
-                        </a>
+                        </a> */}
                       </p>
                       <button type="submit" className="btn mt-4">
                         Log in

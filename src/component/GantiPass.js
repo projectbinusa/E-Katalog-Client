@@ -6,8 +6,8 @@ import Sidebar from "./Sidnav";
 function GantiPass() {
   return (
     <div className="container-fluid p-5">
-      <Sidebar className="sidebar" />
-      <div className="password-change-container mt-5 p-6">
+      <Sidebar className="sidebar5" />
+      <div className="password-change-container p-6">
         <h2 className="text-center mb-4">Ganti Password</h2>
         <form>
           <div className="form-floating mb-3">

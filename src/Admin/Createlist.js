@@ -92,7 +92,7 @@ function Createlist() {
       <div className="d-flex flex-column flex-md-row Bg">
         <Sidebar />
         <section style={{ width: "100%", marginTop: "8%", alignItems:"center" }}>
-          <div className="container mt-4">
+          <div className="container2 mt-6">
             <div
               className="card shadow-sm p-1"
               style={{ width: "100%", maxWidth: "800px", margin: "0 auto" }}
@@ -116,10 +116,11 @@ function Createlist() {
                         htmlFor="nama_project"
                         className="form-label"
                         style={{
-                          fontSize: "0.75rem",
+                          fontSize: "1rem",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
+                          color: "#686D76"
                         }}
                       >
                         Nama Project
@@ -141,10 +142,11 @@ function Createlist() {
                         htmlFor="teknologi"
                         className="form-label"
                         style={{
-                          fontSize: "0.75rem",
+                          fontSize: "1rem",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
+                           color: "#686D76"
                         }}
                       >
                         Teknologi
@@ -169,10 +171,11 @@ function Createlist() {
                         htmlFor="developer"
                         className="form-label"
                         style={{
-                          fontSize: "0.75rem",
+                          fontSize: "1rem",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
+                           color: "#686D76"
                         }}
                       >
                         Developer
@@ -194,10 +197,11 @@ function Createlist() {
                         htmlFor="link"
                         className="form-label"
                         style={{
-                          fontSize: "0.75rem",
+                          fontSize: "1rem",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
+                           color: "#686D76"
                         }}
                       >
                         Link
@@ -222,10 +226,11 @@ function Createlist() {
                         htmlFor="link"
                         className="form-label"
                         style={{
-                          fontSize: "0.75rem",
+                          fontSize: "1rem",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
+                           color: "#686D76"
                         }}
                       >
                         Link
@@ -247,10 +252,11 @@ function Createlist() {
                         htmlFor="deskripsi_project"
                         className="form-label"
                         style={{
-                          fontSize: "0.75rem",
+                          fontSize: "1rem",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
+                           color: "#686D76"
                         }}
                       >
                         Deskripsi Project
