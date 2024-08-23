@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCubes, faGaugeHigh } from "@fortawesome/free-solid-svg-icons";
 import "../css/sidebar.css";
 import Logo from "../aset/LOGO_Katalog.png";
-import { getAdminById } from "../Router/Getprofile"; // Sesuaikan path jika perlu
+import { getAdminById } from "../Router/Getprofile";
 
 function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -86,7 +86,7 @@ function Sidebar() {
               className="navbar-toggler"
               type="button"
               aria-label="Toggle navigation"
-              onClick={toggleSidebar}
+              onClick={toggleSidebar} // Pastikan ini terpasang dengan benar
             >
               <i className="fas fa-bars"></i>
             </button>
@@ -136,13 +136,14 @@ function Sidebar() {
                         </Link>
                       </li>
                     </ul>
-                  )}  
+                  )}
                 </li>
               </ul>
             </div>
           </div>
         </nav>
-        <main>{/* Content goes here */}</main>
+
+        <main>{/* Konten utama di sini */}</main>
       </div>
     </div>
   );

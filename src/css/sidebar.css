@@ -8,70 +8,60 @@ body {
 /* Sidebar */
 .sidebar {
   position: fixed;
-  top: 50px;
+  top: 60px; /* Menyesuaikan dengan tinggi navbar */
   bottom: 0;
   left: 0;
   width: 240px;
   background-color: #f8f9fa;
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
-}
-
-.sidebar.show {
-  transform: translateX(0); /* Sidebar masuk ke layar ketika show */
+  transform: translateX(0); /* Sidebar selalu terlihat pada tampilan non-responsif */
 }
 
 @media (max-width: 991px) {
   .sidebar {
-    transform: translateX(-100%);
+    transform: translateX(-100%); /* Sidebar tersembunyi pada tampilan responsif */
   }
 
   .sidebar.show {
-    transform: translateX(0);
+    transform: translateX(0); /* Sidebar muncul ketika tombol bar diklik */
   }
 }
 
 .sidebar .active {
   border-radius: 5px;
-  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
 }
 
 .sidebar-sticky {
   position: relative;
   top: 0;
-  height: calc(100vh - 58px);
+  height: calc(100vh - 60px); /* Mengatur tinggi sidebar agar sesuai dengan tampilan layar */
   padding-top: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto;
   flex: 1;
 }
 
-.flex-grow-1 {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .logo {
-  width: 50%;
+  width: auto;
   max-width: 150px;
   height: auto;
   display: flex;
   align-items: center;
+  margin: 0 auto;
 }
 
 .logo img {
-  width: 80%;
+  width: 100%;
   height: auto;
-  transform: scale(1.6) translateY(5%);
-  margin-left: 10%;
 }
 
+/* Navbar */
 .navbar {
   height: 60px;
   background: linear-gradient(-1.7deg, #00c6ff, #f2f2f2, #ffffff);
-  z-index: 1050; /* Navbar berada di atas elemen lain */
+  z-index: 1050;
   position: fixed;
   top: 0;
   width: 100%;
@@ -102,23 +92,15 @@ body {
 /* Responsive Styles */
 @media (max-width: 992px) {
   .navbar {
-    flex-direction: row;
-    align-items: center;
     padding: 10px 15px;
   }
 
   .logo {
-    width: auto;
-    max-width: 120px;
-    margin-top: 1%;
+    display: none; /* Sembunyikan logo pada tampilan kecil */
   }
 
   .navbar-toggler {
-    order: 1;
-  }
-
-  .navbar-toggler-icon {
-    margin-right: 10px;
+    display: block; /* Tampilkan tombol toggle pada tampilan kecil */
   }
 
   .collapse {
@@ -138,7 +120,6 @@ body {
   }
 
   .navbar .profile {
-    order: 3;
     margin-left: auto;
   }
 
@@ -146,7 +127,6 @@ body {
     margin-top: 60px;
     padding: 20px;
     width: 100%;
-    margin-right: 10px;
     display: flex;
     justify-content: center;
   }

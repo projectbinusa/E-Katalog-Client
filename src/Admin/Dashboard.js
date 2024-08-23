@@ -37,7 +37,7 @@ function Dashboard() {
     <div className="d-flex">
       <Sidebar />
       <div className="Bg dashboard-bg1">
-        <div className="bg-element">   
+        <div className="bg-element2">
           <img src={Gelembung} alt="gelembung" className="gelembung" />
         </div>
         <div className="context1">
@@ -65,9 +65,17 @@ function Dashboard() {
                             alt={project.nama_project}
                           />
                         </div>
-                        <h3 style={{ color: "black", textAlign:"center", fontWeight:'bold' }}> 
-                          <i> {project.nama_project} </i> 
-                        </h3>
+                        <h4
+                          style={{
+                            color: "black",
+                            textAlign: "center",
+                            fontWeight: "bold",
+                            transform: "translateY(-20%)", // Pindahkan h4 ke atas 10% dari posisinya
+                          }}
+                        >
+                          <i> {project.nama_project} </i>
+                        </h4>
+
                         {/* <p>{project.teknologi}</p> */}
                       </div>
                     </div>
