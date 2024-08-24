@@ -461,10 +461,16 @@ h6 span {
   .card-3d-wrap {
     margin-top: 0; /* Reset margin-top pada layar kecil */
     width: 90%; /* Sesuaikan lebar card pada layar kecil */
+    margin-left: auto; /* Geser card ke kiri */
+    margin-right: auto; /* Pastikan card tetap di tengah */
   }
 
   .card-3d-wrapper {
     margin: 0; /* Reset margin pada layar kecil */
+  }
+
+  .card-front {
+    padding-right: 0; /* Reset padding-right pada layar kecil */
   }
 }
 
@@ -483,4 +489,13 @@ h6 span {
 /* Ensure password input container gets the default styling */
 .form-group.password {
   margin-top: 10%; /* Adjust spacing if needed */
+}
+
+@media (max-width: 768px) {
+  .card-3d-wrap {
+    margin-top: 0; /* Reset margin-top pada layar kecil */
+    width: 90%; /* Sesuaikan lebar card pada layar kecil */
+    margin-left: 0; /* Geser card ke kiri */
+    transform: translateX(-10%); /* Geser card lebih jauh ke kiri */
+  }
 }
