@@ -152,7 +152,7 @@ function Profile() {
       <Sidebar />
       <section className="" style={{ width: "100%", marginRight: "10%" }}>
         <div className="row justify-content-center align-items-center h-100">
-          <div className="col-lg-6 mb-4 mb-lg-0">
+          <div className="col-lg-6 mb-5 mb-lg-0 ">
             <div className="card mb-3" style={{ borderRadius: ".5rem" }}>
               <div className="row g-0">
                 <div

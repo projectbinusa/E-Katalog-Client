@@ -10,19 +10,20 @@ import PT from "../aset/pt-dinartech.png";
 function Dashboard() {
   const [projects, setProjects] = useState([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [previousMode, setPreviousMode] = useState(
+    window.innerWidth < 768 ? "responsive" : "desktop"
+  );
 
+  // Efek untuk mengambil data proyek
   useEffect(() => {
-    AOS.init();
-
     const fetchProjects = async () => {
       try {
         const projectData = await getProjects();
         console.log(projectData);
 
+        // Mengurutkan proyek dari yang terbaru hingga yang lama berdasarkan createdAt
         const sortedProjects = projectData.sort((a, b) => {
-          if (a.nama_project < b.nama_project) return -1;
-          if (a.nama_project > b.nama_project) return 1;
-          return 0;
+          return new Date(b.createdAt) - new Date(a.createdAt);
         });
 
         setProjects(sortedProjects);
@@ -32,10 +33,19 @@ function Dashboard() {
     };
 
     fetchProjects();
+  }, []);
 
-    // Handler untuk resize event
+  // Efek untuk menangani resize jendela dan auto reload ketika mode berubah
+  useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      const newWindowWidth = window.innerWidth;
+      setWindowWidth(newWindowWidth);
+
+      const currentMode = newWindowWidth < 768 ? "responsive" : "desktop";
+      if (currentMode !== previousMode) {
+        setPreviousMode(currentMode);
+        window.location.reload(); // Reload halaman ketika mode berubah
+      }
     };
 
     // Menambahkan event listener resize
@@ -43,9 +53,13 @@ function Dashboard() {
 
     // Membersihkan event listener ketika komponen di-unmount
     return () => window.removeEventListener("resize", handleResize);
+  }, [previousMode]);
+
+  useEffect(() => {
+    // Initialize AOS (animate on scroll)
+    AOS.init();
   }, []);
 
-  // Render komponen
   return (
     <div className="d-flex">
       <Sidebar />

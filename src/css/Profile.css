@@ -10,5 +10,9 @@
       width: 120%; /* Atur lebar kartu lebih besar dari default */
       margin: 0 auto; /* Rata tengah kartu */
     }
+
+    .row {
+      margin-left: 50%;
+    }
   }
   

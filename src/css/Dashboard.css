@@ -50,7 +50,7 @@ body {
 .projects-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Jarak antar card */
+  gap: 10px; /* Jarak antar card */
   justify-content: center;
   margin-top: 2%;
 }
@@ -140,7 +140,7 @@ body {
 
   .box2:hover {
     width: 100%;
-    height: 0; /* Membuat card tetap persegi */
+    height: 100%; /* Membuat card tetap persegi */
   }
 
   .our-services-iconnn {
