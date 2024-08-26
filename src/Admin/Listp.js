@@ -249,7 +249,7 @@ function Listp() {
                           fontSize: "120%",
                         }}
                       >
-                        Nama Project
+                        Project Name
                       </th>
                       <th
                         style={{
@@ -258,7 +258,7 @@ function Listp() {
                           fontSize: "120%",
                         }}
                       >
-                        Teknologi
+                        Technology
                       </th>
                       <th
                         style={{
@@ -286,7 +286,7 @@ function Listp() {
                           fontSize: "120%",
                         }}
                       >
-                        Deskripsi Project
+                        Project Description
                       </th>
                       <th
                         style={{
@@ -295,7 +295,7 @@ function Listp() {
                           fontSize: "120%",
                         }}
                       >
-                        Aksi
+                        Action
                       </th>
                     </tr>
                   </thead>

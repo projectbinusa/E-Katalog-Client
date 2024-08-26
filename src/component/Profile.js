@@ -148,7 +148,7 @@ function Profile() {
   };
 
   return (
-    <div className="d-flex " style={{marginTop: "15%"}}>
+    <div className="d-flex " style={{marginTop: "15%", marginLeft: "25px"}}>
       <Sidebar />
       <section className="" style={{ width: "100%", marginRight: "10%" }}>
         <div className="row justify-content-center align-items-center h-100">
