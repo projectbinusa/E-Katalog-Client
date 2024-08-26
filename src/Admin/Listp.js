@@ -249,7 +249,7 @@ function Listp() {
                           fontSize: "120%",
                         }}
                       >
-                        Nama Project
+                        Project Name
                       </th>
                       <th
                         style={{
@@ -258,7 +258,7 @@ function Listp() {
                           fontSize: "120%",
                         }}
                       >
-                        Teknologi
+                        Technology
                       </th>
                       <th
                         style={{
@@ -279,6 +279,15 @@ function Listp() {
                         Link
                       </th>
                       <th
+                        style={{
+                          background: "#D1E9F6",
+                          color: "black",
+                          fontSize: "120%",
+                        }}
+                      >
+                        Image
+                      </th>
+                      <th
                         className="text-nowrap"
                         style={{
                           background: "#D1E9F6",
@@ -286,7 +295,7 @@ function Listp() {
                           fontSize: "120%",
                         }}
                       >
-                        Deskripsi Project
+                        Project Description
                       </th>
                       <th
                         style={{
@@ -295,7 +304,7 @@ function Listp() {
                           fontSize: "120%",
                         }}
                       >
-                        Aksi
+                        Action
                       </th>
                     </tr>
                   </thead>
@@ -326,6 +335,10 @@ function Listp() {
                             >
                               {item.link}
                             </a>
+                          </td>
+                          <td>
+                            {" "}
+                            <img style={{ width:"75px", height:"60px" }} src={item.image} alt="" />{" "}
                           </td>
                           <td>{item.deskripsi_project}</td>
                           <td>
