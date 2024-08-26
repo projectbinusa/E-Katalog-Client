@@ -279,6 +279,15 @@ function Listp() {
                         Link
                       </th>
                       <th
+                        style={{
+                          background: "#D1E9F6",
+                          color: "black",
+                          fontSize: "120%",
+                        }}
+                      >
+                        Image
+                      </th>
+                      <th
                         className="text-nowrap"
                         style={{
                           background: "#D1E9F6",
@@ -326,6 +335,10 @@ function Listp() {
                             >
                               {item.link}
                             </a>
+                          </td>
+                          <td>
+                            {" "}
+                            <img style={{ width:"75px", height:"60px" }} src={item.image} alt="" />{" "}
                           </td>
                           <td>{item.deskripsi_project}</td>
                           <td>

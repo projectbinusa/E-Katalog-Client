@@ -5,83 +5,102 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "../css/Create.css";
-import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Createlist() {
   const [no, setNo] = useState("");
-  const [nama_project, setnama_project] = useState("");
+  const [nama_project, setNamaProject] = useState("");
   const [teknologi, setTeknologi] = useState("");
   const [developer, setDeveloper] = useState("");
-  const [link, setLink] = useState("");
-  const [deskripsi_project, setdeskripsi_project] = useState("");
+  const [file, setFile] = useState(null); // state untuk menyimpan file
+  const [deskripsi_project, setDeskripsiProject] = useState("");
   const navigate = useNavigate();
+  const id = localStorage.getItem("id");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    switch (name) {
-      case "no":
-        setNo(value);
-        break;
-      case "nama_project":
-        setnama_project(value);
-        break;
-      case "teknologi":
-        setTeknologi(value);
-        break;
-      case "developer":
-        setDeveloper(value);
-        break;
-      case "link":
-        setLink(value);
-        break;
-      case "deskripsi_project":
-        setdeskripsi_project(value);
-        break;
-      default:
-        break;
-    }
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]); // menyimpan file yang dipilih
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newProject = {
-      no,
-      nama_project,
-      teknologi,
-      developer,
-      link,
-      deskripsi_project,
-    };
+    const formData = new FormData();
 
-    try {
-      const token = localStorage.getItem("token");
-      await axios.post(
-        "http://localhost:2007/api/list_project/add",
-        newProject,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+    if (file) {
+      // Menggunakan FileReader untuk memproses file sebelum dikirim ke server
+      const reader = new FileReader();
+      reader.onloadend = async () => {
+        formData.append("image", file); // menambahkan file ke formData setelah diproses
+        formData.append("listProject", JSON.stringify({nama_project,developer,deskripsi_project,teknologi})); 
+
+        try {
+          const token = localStorage.getItem("token");
+          const response = await axios.post(
+            `http://localhost:2007/api/list_project/add/byId/${id}`,
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          Swal.fire({
+            title: "Berhasil",
+            text: "Data project berhasil ditambahkan",
+            icon: "success",
+            timer: 1500,
+            showConfirmButton: false,
+          }).then(() => {
+            navigate(-1);
+          });
+        } catch (error) {
+          console.error("Gagal menambahkan data project: ", error);
+          const errorMessage =
+            error.response?.data?.message ||
+            "Gagal menambahkan data project. Silakan coba lagi.";
+          Swal.fire({
+            title: "Gagal",
+            text: errorMessage,
+            icon: "error",
+          });
         }
-      );
-      Swal.fire({
-        title: "Berhasil",
-        text: "Data project berhasil ditambahkan",
-        icon: "success",
-        timer: 1500,
-        showConfirmButton: false,
-      }).then(() => {
-        navigate(-1);
-      });
-    } catch (error) {
-      console.error("Gagal menambahkan data project: ", error);
-      Swal.fire({
-        title: "Gagal",
-        text: "Gagal menambahkan data project. Silakan coba lagi.",
-        icon: "error",
-      });
+      };
+      reader.readAsDataURL(file); // membaca file sebagai Data URL
+    } else {
+      formData.append("listProject", JSON.stringify({nama_project,developer,deskripsi_project,teknologi})); 
+
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.post(
+          `http://localhost:2007/api/list_project/add/byId/${id}`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        Swal.fire({
+          title: "Berhasil",
+          text: "Data project berhasil ditambahkan",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+        }).then(() => {
+          navigate(-1);
+        });
+      } catch (error) {
+        console.error("Gagal menambahkan data project: ", error);
+        const errorMessage =
+          error.response?.data?.message ||
+          "Gagal menambahkan data project. Silakan coba lagi.";
+        Swal.fire({
+          title: "Gagal",
+          text: errorMessage,
+          icon: "error",
+        });
+      }
     }
   };
 
@@ -93,7 +112,9 @@ function Createlist() {
     <>
       <div className="d-flex flex-column flex-md-row Bg">
         <Sidebar />
-        <section style={{ width: "100%", marginTop: "8%", alignItems: "center" }}>
+        <section
+          style={{ width: "100%", marginTop: "8%", alignItems: "center" }}
+        >
           <div className="container2 mt-6">
             <div
               className="card shadow-sm p-1"
@@ -122,10 +143,10 @@ function Createlist() {
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
-                          color: "#686D76"
+                          color: "#686D76",
                         }}
                       >
-                        Project Name
+                        Nama Project
                       </label>
                       <input
                         type="text"
@@ -133,9 +154,9 @@ function Createlist() {
                         id="nama_project"
                         name="nama_project"
                         value={nama_project}
-                        onChange={handleChange}
+                        onChange={(e) => setNamaProject(e.target.value)}
                         autoComplete="off"
-                        placeholder="Project Name"
+                        placeholder=" Nama Project"
                         required
                       />
                     </div>
@@ -148,10 +169,10 @@ function Createlist() {
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
-                          color: "#686D76"
+                          color: "#686D76",
                         }}
                       >
-                        Technology
+                        Teknologi
                       </label>
                       <input
                         type="text"
@@ -159,9 +180,9 @@ function Createlist() {
                         id="teknologi"
                         name="teknologi"
                         value={teknologi}
-                        onChange={handleChange}
+                        onChange={(e) => setTeknologi(e.target.value)}
                         autoComplete="off"
-                        placeholder="Technology"
+                        placeholder=" Teknologi"
                         required
                       />
                     </div>
@@ -177,7 +198,7 @@ function Createlist() {
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
-                          color: "#686D76"
+                          color: "#686D76",
                         }}
                       >
                         Developer
@@ -188,67 +209,38 @@ function Createlist() {
                         id="developer"
                         name="developer"
                         value={developer}
-                        onChange={handleChange}
+                        onChange={(e) => setDeveloper(e.target.value)}
                         autoComplete="off"
-                        placeholder="Developer"
+                        placeholder=" Developer"
                         required
                       />
                     </div>
                     <div className="col-md-6">
                       <label
-                        htmlFor="link"
+                        htmlFor="image"
                         className="form-label"
                         style={{
                           fontSize: "1rem",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
-                          color: "#686D76"
+                          color: "#686D76",
                         }}
                       >
-                        Link
+                        Gambar
                       </label>
                       <input
-                        type="url"
+                        type="file"
                         className="form-control custom-input"
-                        id="link"
-                        name="link"
-                        value={link}
-                        onChange={handleChange}
-                        autoComplete="off"
-                        placeholder=" Link"
-                        required
+                        id="image"
+                        name="image"
+                        onChange={handleFileChange}
+                        accept="image/*" // hanya menerima file gambar
                       />
                     </div>
                   </div>
 
                   <div className="row mb-3">
-                    {/* <div className="col-md-6">
-                      <label
-                        htmlFor="link"
-                        className="form-label"
-                        style={{
-                          fontSize: "1rem",
-                          fontWeight: "bold",
-                          textAlign: "left",
-                          display: "block",
-                           color: "#686D76"
-                        }}
-                      >
-                        Link
-                      </label>
-                      <input
-                        type="url"
-                        className="form-control custom-input"
-                        id="link"
-                        name="link"
-                        value={link}
-                        onChange={handleChange}
-                        autoComplete="off"
-                        placeholder=" Link"
-                        required
-                      />
-                    </div> */}
                     <div className="col-md-6">
                       <label
                         htmlFor="deskripsi_project"
@@ -258,47 +250,42 @@ function Createlist() {
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
-                          color: "#686D76"
+                          color: "#686D76",
                         }}
                       >
-                        Project Description
+                        Deskripsi Project
                       </label>
                       <textarea
                         className="form-control custom-input"
                         id="deskripsi_project"
                         name="deskripsi_project"
                         value={deskripsi_project}
-                        onChange={handleChange}
+                        onChange={(e) => setDeskripsiProject(e.target.value)}
                         autoComplete="off"
-                        placeholder="Project Description"
+                        placeholder=" Deskripsi Project"
                         rows="3"
                       />
                     </div>
                   </div>
 
-                  <div className="button-container" style={{ display: "flex", justifyContent: "space-between", gap: "10px" }}>
+                  <div
+                    className="button-container"
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
                     <button
-                      className="btn btn-danger btn-sm"
+                      type="button"
+                      className="btn btn-custom btn-secondary-custom btn-sm"
                       onClick={batal}
-                      style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
                     >
-                      <FontAwesomeIcon
-                        icon={faClose}
-                        style={{ fontSize: "1.2rem", padding: "6px", color: "white" }}
-                      />
+                      Batal
                     </button>
                     <button
                       type="submit"
-                      className="btn btn-primary btn-sm"
-                      style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                      className="btn btn-custom btn-primary-custom btn-sm"
                     >
-                      <FontAwesomeIcon
-                        icon={faCheck}
-                        style={{ fontSize: "1.2rem", padding: "5px", color: "white" }}
-                      />
+                      Tambah
                     </button>
                   </div>
-
                 </form>
               </div>
             </div>
