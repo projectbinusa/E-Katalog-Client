@@ -5,6 +5,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "../css/Create.css";
+import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Createlist() {
   const [no, setNo] = useState("");
@@ -91,7 +93,7 @@ function Createlist() {
     <>
       <div className="d-flex flex-column flex-md-row Bg">
         <Sidebar />
-        <section style={{ width: "100%", marginTop: "8%", alignItems:"center" }}>
+        <section style={{ width: "100%", marginTop: "8%", alignItems: "center" }}>
           <div className="container2 mt-6">
             <div
               className="card shadow-sm p-1"
@@ -123,7 +125,7 @@ function Createlist() {
                           color: "#686D76"
                         }}
                       >
-                        Nama Project
+                        Project Name
                       </label>
                       <input
                         type="text"
@@ -133,7 +135,7 @@ function Createlist() {
                         value={nama_project}
                         onChange={handleChange}
                         autoComplete="off"
-                        placeholder=" Nama Project"
+                        placeholder="Project Name"
                         required
                       />
                     </div>
@@ -146,10 +148,10 @@ function Createlist() {
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
-                           color: "#686D76"
+                          color: "#686D76"
                         }}
                       >
-                        Teknologi
+                        Technology
                       </label>
                       <input
                         type="text"
@@ -159,7 +161,7 @@ function Createlist() {
                         value={teknologi}
                         onChange={handleChange}
                         autoComplete="off"
-                        placeholder=" Teknologi"
+                        placeholder="Technology"
                         required
                       />
                     </div>
@@ -175,7 +177,7 @@ function Createlist() {
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
-                           color: "#686D76"
+                          color: "#686D76"
                         }}
                       >
                         Developer
@@ -188,7 +190,7 @@ function Createlist() {
                         value={developer}
                         onChange={handleChange}
                         autoComplete="off"
-                        placeholder=" Developer"
+                        placeholder="Developer"
                         required
                       />
                     </div>
@@ -201,7 +203,7 @@ function Createlist() {
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
-                           color: "#686D76"
+                          color: "#686D76"
                         }}
                       >
                         Link
@@ -256,10 +258,10 @@ function Createlist() {
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
-                           color: "#686D76"
+                          color: "#686D76"
                         }}
                       >
-                        Deskripsi Project
+                        Project Description
                       </label>
                       <textarea
                         className="form-control custom-input"
@@ -268,30 +270,35 @@ function Createlist() {
                         value={deskripsi_project}
                         onChange={handleChange}
                         autoComplete="off"
-                        placeholder=" Deskripsi Project"
+                        placeholder="Project Description"
                         rows="3"
                       />
                     </div>
                   </div>
 
-                  <div
-                    className="button-container"
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
+                  <div className="button-container" style={{ display: "flex", justifyContent: "space-between", gap: "10px" }}>
                     <button
-                      type="button"
-                      className="btn btn-custom btn-secondary-custom btn-sm"
+                      className="btn btn-danger btn-sm"
                       onClick={batal}
+                      style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
                     >
-                      Batal
+                      <FontAwesomeIcon
+                        icon={faClose}
+                        style={{ fontSize: "1.2rem", padding: "6px", color: "white" }}
+                      />
                     </button>
                     <button
                       type="submit"
-                      className="btn btn-custom btn-primary-custom btn-sm"
+                      className="btn btn-primary btn-sm"
+                      style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
                     >
-                      Tambah
+                      <FontAwesomeIcon
+                        icon={faCheck}
+                        style={{ fontSize: "1.2rem", padding: "5px", color: "white" }}
+                      />
                     </button>
                   </div>
+
                 </form>
               </div>
             </div>
