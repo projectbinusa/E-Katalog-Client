@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "../css/Create.css";
+import { API_DUMMY } from "../utils/api";
 
 function Createlist() {
   const [no, setNo] = useState("");
@@ -35,7 +36,7 @@ function Createlist() {
         try {
           const token = localStorage.getItem("token");
           const response = await axios.post(
-            `http://localhost:2007/api/list_project/add/byId/${id}`,
+            `${API_DUMMY}/api/list_project/add/byId/${id}`,
             formData,
             {
               headers: {
@@ -72,7 +73,7 @@ function Createlist() {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.post(
-          `http://localhost:2007/api/list_project/add/byId/${id}`,
+          `${API_DUMMY}/api/list_project/add/byId/${id}`,
           formData,
           {
             headers: {

@@ -11,8 +11,9 @@ import "../css/Login.css";
 import Gelembung from "../aset/gelembung.png";
 import Logo from "../aset/LOGO_Katalog.png";
 import { useNavigate } from "react-router-dom";
+import { API_DUMMY } from "../utils/api";
 
-const apiUrl = "http://localhost:2007";
+// const apiUrl = "http://localhost:2007";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -41,7 +42,7 @@ function Login() {
 
     try {
       // Perform login request
-      const response = await axios.post(`${apiUrl}/api/login`, {
+      const response = await axios.post(`${API_DUMMY}/api/login`, {
         email,
         password,
       });

@@ -4,6 +4,7 @@ import Sidebar from "../component/Sidnav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage, faSave } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
+import { API_DUMMY } from "../utils/api";
 
 function Profile() {
   const id = localStorage.getItem("id");
@@ -24,7 +25,7 @@ function Profile() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:2007/api/users/by-id/${id}`, {
+      .get(`${API_DUMMY}/api/users/by-id/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -62,7 +63,7 @@ function Profile() {
   const handleSaveData = async () => {
     try {
       await axios.put(
-        `http://localhost:2007/api/users/update/${id}`,
+        `${API_DUMMY}/api/users/update/${id}`,
         {
           email: formData.email,
           username: formData.username,
@@ -102,7 +103,7 @@ function Profile() {
 
     try {
       const response = await axios.put(
-        `http://localhost:2007/api/edit/image/${id}`,
+        `${API_DUMMY}/api/edit/image/${id}`,
         updateData,
         {
           headers: {
