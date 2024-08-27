@@ -11,6 +11,7 @@ import Gelembung from "../aset/gelembung.png";
 import Logo from "../aset/LOGO_Katalog.png";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { API_DUMMY } from "../utils/api";
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,7 +27,7 @@ function Register() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:2007/api/register", {
+      const response = await axios.post(`${API_DUMMY}/api/register`, {
         username,
         email,
         password,

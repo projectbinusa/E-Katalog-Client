@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { API_DUMMY } from "../utils/api";
 
 function Updatelist() {
   const [no, setNo] = useState("");
@@ -21,7 +22,7 @@ function Updatelist() {
         const token = localStorage.getItem("token");
 
         const response = await axios.get(
-          `http://localhost:2007/api/list_project/by-id/${id}`,
+          `${API_DUMMY}/api/list_project/by-id/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -92,7 +93,7 @@ function Updatelist() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:2007/api/list_project/ubah/${id}`,
+        `${API_DUMMY}/api/list_project/ubah/${id}`,
         updatedProject,
         {
           headers: {

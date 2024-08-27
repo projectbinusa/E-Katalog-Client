@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../css/List.css"; // Import custom CSS
+import { API_DUMMY } from "../utils/api";
 
 function Listp() {
   const [data, setData] = useState([]);
@@ -30,7 +31,7 @@ function Listp() {
         const token = getToken(); // Ambil token
 
         const response = await axios.get(
-          "http://localhost:2007/api/list_project/all",
+          `${API_DUMMY}/api/list_project/all`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // Sertakan token di header
@@ -95,7 +96,7 @@ function Listp() {
         const token = getToken(); // Ambil token
 
         await axios.delete(
-          `http://localhost:2007/api/list_project/hapus/${id}`,
+          `${API_DUMMY}/api/list_project/hapus/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // Sertakan token di header
