@@ -39,28 +39,17 @@ function isAuthenticated() {
   return token !== null && token !== undefined && token !== '';
 }
 
-// Komponen untuk mengelola rute berdasarkan otentikasi
-function AuthRoute({ children }) {
-  if (isAuthenticated()) {
-    // Jika sudah login, tetap di halaman yang diinginkan
-    return children;
-  }
-
-  // Jika belum login, redirect ke halaman Home
-  return <Navigate to="/" replace />;
-}
-
-// Komponen ProtectedRoute untuk melindungi rute berdasarkan otentikasi dan role
-function ProtectedRoute({ children }) {
+// Komponen PrivateRoute untuk melindungi rute berdasarkan otentikasi dan role
+function PrivateRoute({ children }) {
   const location = useLocation();
-  
+
   if (!isAuthenticated()) {
-    // Redirect ke halaman Home jika belum login
-    return <Navigate to="/" replace state={{ from: location }} />;
+    // Redirect ke halaman login jika belum login
+    return <Navigate to="/login" replace state={{ from: location }} />;
   }
 
   if (!checkAdminRole()) {
-    // Redirect ke halaman Home jika bukan "ADMIN"
+    // Redirect ke halaman beranda jika bukan "ADMIN"
     return <Navigate to="/" replace />;
   }
 
@@ -75,109 +64,73 @@ function App() {
         <main>
           <Routes>
             {/* Rute publik */}
-            <Route
-              path="/"
-              element={
-                <Home />
-              }
-              exact
-            />
-            <Route
-              path="/login"
-              element={
-                <AuthRoute>
-                  <Login />
-                </AuthRoute>
-              }
-              exact
-            />
-            <Route
-              path="/register"
-              element={
-                <AuthRoute>
-                  <Register />
-                </AuthRoute>
-              }
-              exact
-            />
-            <Route path="/uks" element={<Uks />} exact />
-            <Route path="/absensi" element={<Absensi />} exact />
-            <Route path="/sis" element={<Sis />} exact />
-            <Route path="/ekampoeng" element={<Ekampoeng />} exact />
-            <Route path="/bayartagihan" element={<Bayartagihan />} exact />
-            <Route path="/sewaruang" element={<Sewaruang />} exact />
-            <Route path="/bawaslu" element={<Bawaslu />} exact />
-            <Route path="/dinarpos" element={<Dinarpos />} exact />
-            <Route path="/pemilu" element={<Pemilu />} exact />
-            <Route path="/invitation" element={<Invitation />} exact />
-            <Route path="/datacenter" element={<Datacenter />} exact />
-            <Route path="/kasir" element={<Kasir />} exact />
-            <Route path="/labbahasa" element={<Labbahasa />} exact />
-            <Route path="/managementwa" element={<ManagementWa />} exact />
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/detail/:id" element={<DetailLp />} />
+            <Route path="/uks" element={<Uks />} />
+            <Route path="/absensi" element={<Absensi />} />
+            <Route path="/sis" element={<Sis />} />
+            <Route path="/ekampoeng" element={<Ekampoeng />} />
+            <Route path="/bayartagihan" element={<Bayartagihan />} />
+            <Route path="/sewaruang" element={<Sewaruang />} />
+            <Route path="/bawaslu" element={<Bawaslu />} />
+            <Route path="/dinarpos" element={<Dinarpos />} />
+            <Route path="/pemilu" element={<Pemilu />} />
+            <Route path="/invitation" element={<Invitation />} />
+            <Route path="/datacenter" element={<Datacenter />} />
+            <Route path="/kasir" element={<Kasir />} />
+            <Route path="/labbahasa" element={<Labbahasa />} />
+            <Route path="/managementwa" element={<ManagementWa />} />
 
             {/* Rute dilindungi - Hanya untuk Admin */}
             <Route
               path="/dashboard"
               element={
-                <ProtectedRoute>
+                <PrivateRoute>
                   <Dashboard />
-                </ProtectedRoute>
+                </PrivateRoute>
               }
-              exact
             />
             <Route
               path="/gantipass"
               element={
-                <ProtectedRoute>
+                <PrivateRoute>
                   <GantiPass />
-                </ProtectedRoute>
+                </PrivateRoute>
               }
-              exact
             />
             <Route
               path="/listprojek"
               element={
-                <ProtectedRoute>
+                <PrivateRoute>
                   <Listp />
-                </ProtectedRoute>
+                </PrivateRoute>
               }
-              exact
             />
             <Route
               path="/updatelist/:id"
               element={
-                <ProtectedRoute>
+                <PrivateRoute>
                   <Updatelist />
-                </ProtectedRoute>
+                </PrivateRoute>
               }
-              exact
             />
             <Route
               path="/tambahlist"
               element={
-                <ProtectedRoute>
+                <PrivateRoute>
                   <Createlist />
-                </ProtectedRoute>
+                </PrivateRoute>
               }
-              exact
             />
             <Route
               path="/profile"
               element={
-                <ProtectedRoute>
+                <PrivateRoute>
                   <Profile />
-                </ProtectedRoute>
+                </PrivateRoute>
               }
-              exact
-            />
-            <Route
-              path="/detail"
-              element={
-                <ProtectedRoute>
-                  <DetailLp />
-                </ProtectedRoute>
-              }
-              exact
             />
           </Routes>
         </main>

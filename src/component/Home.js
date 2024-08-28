@@ -6,6 +6,8 @@ import { getProjects } from "../Router/getProject";
 import Gelembung from "../aset/gelembung.png";
 import Logo from "../aset/LOGO_Katalog.png";
 import PT from "../aset/pt-dinartech.png";
+import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Home = () => {
   const [projects, setProjects] = useState([]);
@@ -88,6 +90,18 @@ const Home = () => {
                       >
                         <i>{project.nama_project}</i>
                       </h4>
+                      <Link
+                        to={`/detail/${project.id}`}
+                        style={{
+                          marginLeft: "220px",
+                          marginBottom: "50%",
+                          transform: "translateY(-25%)", // Geser ke atas 5% lagi
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        More <FontAwesomeIcon icon={faAnglesRight} />
+                      </Link>
                     </div>
                   </div>
                 </Link>
