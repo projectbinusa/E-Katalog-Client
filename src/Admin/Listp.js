@@ -182,12 +182,12 @@ function Listp() {
                   className="mr-auto"
                   style={{ fontWeight: "bold", fontSize: "150%" }}
                 >
-                  Tabel List Projek
+                  Project List Table
                 </p>
                 <div className="d-flex align-items-center">
                   <input
                     type="text"
-                    placeholder="Cari..."
+                    placeholder="Search..."
                     className="form-control mr-2"
                     style={{
                       maxWidth: "200px",
@@ -339,7 +339,7 @@ function Listp() {
                           </td>
                           <td>
                             {" "}
-                            <img style={{ width:"75px", height:"60px" }} src={item.image} alt="" />{" "}
+                            <img style={{ width: "75px", height: "60px" }} src={item.image} alt="" />{" "}
                           </td>
                           <td>{item.deskripsi_project}</td>
                           <td>
@@ -373,7 +373,7 @@ function Listp() {
                     ) : (
                       <tr>
                         <td colSpan="7" className="text-center">
-                          Tidak ada data yang tersedia
+                          No data available
                         </td>
                       </tr>
                     )}
@@ -384,9 +384,8 @@ function Listp() {
               <nav>
                 <ul className="pagination justify-content-center">
                   <li
-                    className={`page-item ${
-                      currentPage === 1 ? "disabled" : ""
-                    }`}
+                    className={`page-item ${currentPage === 1 ? "disabled" : ""
+                      }`}
                   >
                     <button
                       className="page-link"
@@ -398,9 +397,8 @@ function Listp() {
                   </li>
                   {Array.from({ length: totalPages }, (_, i) => (
                     <li
-                      className={`page-item ${
-                        currentPage === i + 1 ? "active" : ""
-                      }`}
+                      className={`page-item ${currentPage === i + 1 ? "active" : ""
+                        }`}
                       key={i + 1}
                     >
                       <button
@@ -412,9 +410,8 @@ function Listp() {
                     </li>
                   ))}
                   <li
-                    className={`page-item ${
-                      currentPage === totalPages ? "disabled" : ""
-                    }`}
+                    className={`page-item ${currentPage === totalPages ? "disabled" : ""
+                      }`}
                   >
                     <button
                       className="page-link"
