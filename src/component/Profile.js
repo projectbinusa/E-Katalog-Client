@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../component/Sidnav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faImage, faSave, faX } from "@fortawesome/free-solid-svg-icons";
+import { faImage, faSave } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import { API_DUMMY } from "../utils/api";
 
@@ -149,12 +149,12 @@ function Profile() {
   };
 
   return (
-    <div className="d-flex " style={{ marginTop: "15%", marginLeft: "25px" }}>
+    <div className="d-flex flex-column flex-md-row Bg" >
       <Sidebar />
-      <section className="" style={{ width: "100%", marginRight: "10%" }}>
+      <section style={{ width: "100%"}}>
         <div className="row justify-content-center align-items-center h-100">
-          <div className="col-lg-6 mb-5 mb-lg-0 ">
-            <div className="card mb-3" style={{ borderRadius: ".5rem" }}>
+          <div className="col-lg-8 mb-5 mb-lg-0 " style={{ marginLeft:"1%" }}>
+            <div className="card mb-3" style={{ borderRadius: ".5rem", marginLeft:"20%" }}>
               <div className="row g-0">
                 <div
                   className="col-md-4 d-flex flex-column align-items-center justify-content-center text-center text-white"
@@ -176,7 +176,7 @@ function Profile() {
                     }}
                   />
                   <p className="text-center mb-1">
-                    Recommended image sizes 1:1
+                    Disarankan Ukuran Gambar 1:1
                   </p>
                   <p className="mb-2">Preview</p>
 
@@ -234,62 +234,62 @@ function Profile() {
                     }}
                   />
                 </div>
-                <div className="col-md-8">
-                  <div className="card-body p-4">
+                <div className="col-md-8 justify-content-center">
+                  <div className="card-body p-5">
                     {isEditingData ? (
                       <div>
-                        <h6>Change Personal Data</h6>
+                        <h6 style={{ fontWeight:"bold" }}>Ubah Data Diri</h6>
                         <hr className="mt-0 mb-4" />
                         <div className="row pt-1">
                           <div className="col-6 mb-3">
-                            <h6>Email</h6>
+                            <h6 style={{ fontWeight:"bold" }}>Email</h6>
                             <input
                               type="email"
                               name="email"
                               value={formData.email}
                               onChange={handleInputChange}
                               className="form-control"
+                              style={{ fontWeight:"bold" }}
                             />
                           </div>
                           <div className="col-6 mb-3">
-                            <h6>Username</h6>
+                            <h6 style={{ fontWeight:"bold" }}>Username</h6>
                             <input
                               type="text"
                               name="username"
                               value={formData.username}
                               onChange={handleInputChange}
                               className="form-control"
+                              style={{ fontWeight:"bold" }}
                             />
                           </div>
                         </div>
                         <div className="d-flex mt-2">
                           <button
-                            className="btn btn-primary btn-sm"
-                            style={{ height: "35px", width: "10%" }}
+                            className="btn btn-custom btn-primary-custom btn-sm"
                             onClick={handleSaveData}
                           >
-                            <FontAwesomeIcon icon={faCheck} />
+                            Simpan
                           </button>
                           <button
-                            className="btn btn-danger btn-sm ml-auto"
-                            style={{ height: "35px", width: "10%" }}
+                            className="btn btn-custom btn-danger-custom btn-sm ml-auto"
                             onClick={handleCancel}
                           >
-                            <FontAwesomeIcon icon={faX} />
+                            Batal
                           </button>
                         </div>
                       </div>
                     ) : (
                       <div>
-                        <h6>Personal Data</h6>
+                        <h6 style={{ fontWeight:"bold" }}>Data Diri</h6>
                         <hr className="mt-0 mb-4" />
                         <div className="row pt-1">
                           <div className="col-6 mb-3">
-                            <h6>Email</h6>
+                            <h6 style={{ fontWeight:"bold" }}>Email</h6>
                             <p className="text-muted">{formData.email}</p>
                           </div>
                           <div className="col-6 mb-3">
-                            <h6>Username</h6>
+                            <h6 style={{ fontWeight:"bold" }}>Username</h6>
                             <p className="text-muted">{formData.username}</p>
                           </div>
                         </div>
@@ -297,7 +297,7 @@ function Profile() {
                           className="btn btn-custom btn-primary-custom btn-sm"
                           onClick={() => setIsEditingData(true)}
                         >
-                          Edit Personal Data
+                          Edit Data Diri
                         </button>
                       </div>
                     )}

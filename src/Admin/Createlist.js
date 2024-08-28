@@ -34,7 +34,15 @@ function Createlist() {
       const reader = new FileReader();
       reader.onloadend = async () => {
         formData.append("image", file); // menambahkan file ke formData setelah diproses
-        formData.append("listProject", JSON.stringify({nama_project,developer,deskripsi_project,teknologi})); 
+        formData.append(
+          "listProject",
+          JSON.stringify({
+            nama_project,
+            developer,
+            deskripsi_project,
+            teknologi,
+          })
+        );
 
         try {
           const token = localStorage.getItem("token");
@@ -71,7 +79,15 @@ function Createlist() {
       };
       reader.readAsDataURL(file); // membaca file sebagai Data URL
     } else {
-      formData.append("listProject", JSON.stringify({nama_project,developer,deskripsi_project,teknologi})); 
+      formData.append(
+        "listProject",
+        JSON.stringify({
+          nama_project,
+          developer,
+          deskripsi_project,
+          teknologi,
+        })
+      );
 
       try {
         const token = localStorage.getItem("token");
@@ -245,7 +261,10 @@ function Createlist() {
                         required
                       />
                     </div>
-                    <div className="col-md-14">
+                  </div>
+
+                  <div className="row mb-3">
+                    <div className="col-md-6">
                       <label
                         htmlFor="image"
                         className="form-label"
@@ -268,10 +287,7 @@ function Createlist() {
                         accept="image/*" // hanya menerima file gambar
                       />
                     </div>
-                  </div>
-
-                  <div className="row mb-3">
-                    <div className="col-md-14">
+                    <div className="col-md-6">
                       <label
                         htmlFor="deskripsi_project"
                         className="form-label"
