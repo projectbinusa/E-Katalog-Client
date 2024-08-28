@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../component/Sidnav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage, faSave } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faImage, faSave, faX } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import { API_DUMMY } from "../utils/api";
 
@@ -149,7 +149,7 @@ function Profile() {
   };
 
   return (
-    <div className="d-flex " style={{marginTop: "15%", marginLeft: "25px"}}>
+    <div className="d-flex " style={{ marginTop: "15%", marginLeft: "25px" }}>
       <Sidebar />
       <section className="" style={{ width: "100%", marginRight: "10%" }}>
         <div className="row justify-content-center align-items-center h-100">
@@ -176,7 +176,7 @@ function Profile() {
                     }}
                   />
                   <p className="text-center mb-1">
-                    Disarankan Ukuran Gambar 1:1
+                    Recommended image sizes 1:1
                   </p>
                   <p className="mb-2">Preview</p>
 
@@ -238,7 +238,7 @@ function Profile() {
                   <div className="card-body p-4">
                     {isEditingData ? (
                       <div>
-                        <h6>Ubah Data Diri</h6>
+                        <h6>Change Personal Data</h6>
                         <hr className="mt-0 mb-4" />
                         <div className="row pt-1">
                           <div className="col-6 mb-3">
@@ -264,22 +264,24 @@ function Profile() {
                         </div>
                         <div className="d-flex mt-2">
                           <button
-                            className="btn btn-custom btn-primary-custom btn-sm"
+                            className="btn btn-primary btn-sm"
+                            style={{ height: "35px", width: "10%" }}
                             onClick={handleSaveData}
                           >
-                            Simpan
+                            <FontAwesomeIcon icon={faCheck} />
                           </button>
                           <button
-                            className="btn btn-custom btn-danger-custom btn-sm ml-auto"
+                            className="btn btn-danger btn-sm ml-auto"
+                            style={{ height: "35px", width: "10%" }}
                             onClick={handleCancel}
                           >
-                            Batal
+                            <FontAwesomeIcon icon={faX} />
                           </button>
                         </div>
                       </div>
                     ) : (
                       <div>
-                        <h6>Data Diri</h6>
+                        <h6>Personal Data</h6>
                         <hr className="mt-0 mb-4" />
                         <div className="row pt-1">
                           <div className="col-6 mb-3">
@@ -295,7 +297,7 @@ function Profile() {
                           className="btn btn-custom btn-primary-custom btn-sm"
                           onClick={() => setIsEditingData(true)}
                         >
-                          Edit Data Diri
+                          Edit Personal Data
                         </button>
                       </div>
                     )}

@@ -5,6 +5,8 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { API_DUMMY } from "../utils/api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faX } from "@fortawesome/free-solid-svg-icons";
 
 function Updatelist() {
   const [no, setNo] = useState("");
@@ -12,9 +14,15 @@ function Updatelist() {
   const [teknologi, setTeknologi] = useState("");
   const [developer, setDeveloper] = useState("");
   const [link, setLink] = useState("");
+  const [file, setFile] = useState(null); // state untuk menyimpan file
   const [deskripsi_project, setDeskripsi_project] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]); // menyimpan file yang dipilih
+  };
+
 
   useEffect(() => {
     const fetchProjectData = async () => {
@@ -160,7 +168,7 @@ function Updatelist() {
                           color: "#686D76",
                         }}
                       >
-                        Nama Project
+                        Project Name
                       </label>
                       <input
                         type="text"
@@ -170,7 +178,7 @@ function Updatelist() {
                         value={nama_project}
                         onChange={handleChange}
                         autoComplete="off"
-                        placeholder=" Nama Project"
+                        placeholder=" Project Name"
                         required
                         style={{ color: "black" }}
                       />
@@ -187,7 +195,7 @@ function Updatelist() {
                           color: "#686D76",
                         }}
                       >
-                        Teknologi
+                        Technology
                       </label>
                       <input
                         type="text"
@@ -197,7 +205,7 @@ function Updatelist() {
                         value={teknologi}
                         onChange={handleChange}
                         autoComplete="off"
-                        placeholder=" Teknologi"
+                        placeholder=" Technology"
                         required
                         style={{ color: "black" }}
                       />
@@ -261,8 +269,32 @@ function Updatelist() {
                     </div>
                   </div>
 
+                  <div className="col-md-14">
+                    <label
+                      htmlFor="image"
+                      className="form-label"
+                      style={{
+                        fontSize: "1rem",
+                        fontWeight: "bold",
+                        textAlign: "left",
+                        display: "block",
+                        color: "#686D76",
+                      }}
+                    >
+                      Image
+                    </label>
+                    <input
+                      type="file"
+                      className="form-control custom-input"
+                      id="image"
+                      name="image"
+                      onChange={handleFileChange}
+                      accept="image/*" // hanya menerima file gambar
+                    />
+                  </div>
+
                   <div className="row mb-3">
-                    <div className="col-md-6">
+                    <div className="col-md-14">
                       <label
                         htmlFor="deskripsi_project"
                         className="form-label"
@@ -274,7 +306,7 @@ function Updatelist() {
                           color: "#686D76",
                         }}
                       >
-                        Deskripsi Project
+                        Project Description
                       </label>
                       <textarea
                         className="form-control custom-input"
@@ -283,7 +315,7 @@ function Updatelist() {
                         value={deskripsi_project}
                         onChange={handleChange}
                         autoComplete="off"
-                        placeholder=" Deskripsi Project"
+                        placeholder=" Project Description"
                         rows="3"
                       />
                     </div>
@@ -295,16 +327,18 @@ function Updatelist() {
                   >
                     <button
                       type="button"
-                      className="btn btn-custom btn-secondary-custom btn-sm"
+                      className="btn btn-danger btn-sm"
+                      style={{ height: "35px", width: "5%" }}
                       onClick={batal}
                     >
-                      Batal
+                      <FontAwesomeIcon icon={faX} />
                     </button>
                     <button
                       type="submit"
-                      className="btn btn-custom btn-primary-custom btn-sm"
+                      className="btn btn-primary btn-sm"
+                      style={{ height: "35px", width: "5%" }}
                     >
-                      Update
+                      <FontAwesomeIcon icon={faCheck} />
                     </button>
                   </div>
                 </form>

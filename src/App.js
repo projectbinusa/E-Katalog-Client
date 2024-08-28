@@ -25,6 +25,7 @@ import Profile from "./component/Profile";
 import Createlist from "./Admin/Createlist";
 import Updatelist from "./Admin/Updatelist";
 import GantiPass from "./component/GantiPass";
+import DetailLp from "./Admin/DetailLp";
 
 // Fungsi untuk memeriksa apakah role pengguna adalah "ADMIN"
 function checkAdminRole() {
@@ -165,6 +166,15 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Profile />
+                </ProtectedRoute>
+              }
+              exact
+            />
+            <Route
+              path="/detail"
+              element={
+                <ProtectedRoute>
+                  <DetailLp />
                 </ProtectedRoute>
               }
               exact

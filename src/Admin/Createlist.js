@@ -6,12 +6,15 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "../css/Create.css";
 import { API_DUMMY } from "../utils/api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faX } from "@fortawesome/free-solid-svg-icons";
 
 function Createlist() {
   const [no, setNo] = useState("");
   const [nama_project, setNamaProject] = useState("");
   const [teknologi, setTeknologi] = useState("");
   const [developer, setDeveloper] = useState("");
+  const [link, setLink] = useState("");
   const [file, setFile] = useState(null); // state untuk menyimpan file
   const [deskripsi_project, setDeskripsiProject] = useState("");
   const navigate = useNavigate();
@@ -147,7 +150,7 @@ function Createlist() {
                           color: "#686D76",
                         }}
                       >
-                        Nama Project
+                        Project Name
                       </label>
                       <input
                         type="text"
@@ -157,7 +160,7 @@ function Createlist() {
                         value={nama_project}
                         onChange={(e) => setNamaProject(e.target.value)}
                         autoComplete="off"
-                        placeholder=" Nama Project"
+                        placeholder=" Project Name"
                         required
                       />
                     </div>
@@ -173,7 +176,7 @@ function Createlist() {
                           color: "#686D76",
                         }}
                       >
-                        Teknologi
+                        Technology
                       </label>
                       <input
                         type="text"
@@ -183,7 +186,7 @@ function Createlist() {
                         value={teknologi}
                         onChange={(e) => setTeknologi(e.target.value)}
                         autoComplete="off"
-                        placeholder=" Teknologi"
+                        placeholder=" Technology"
                         required
                       />
                     </div>
@@ -218,6 +221,32 @@ function Createlist() {
                     </div>
                     <div className="col-md-6">
                       <label
+                        htmlFor="link"
+                        className="form-label"
+                        style={{
+                          fontSize: "1rem",
+                          fontWeight: "bold",
+                          textAlign: "left",
+                          display: "block",
+                          color: "#686D76",
+                        }}
+                      >
+                        Link
+                      </label>
+                      <input
+                        type="url"
+                        className="form-control custom-input"
+                        id="link"
+                        name="link"
+                        value={link}
+                        onChange={(e) => setLink(e.target.value)}
+                        autoComplete="off"
+                        placeholder=" Link"
+                        required
+                      />
+                    </div>
+                    <div className="col-md-14">
+                      <label
                         htmlFor="image"
                         className="form-label"
                         style={{
@@ -228,7 +257,7 @@ function Createlist() {
                           color: "#686D76",
                         }}
                       >
-                        Gambar
+                        Image
                       </label>
                       <input
                         type="file"
@@ -242,7 +271,7 @@ function Createlist() {
                   </div>
 
                   <div className="row mb-3">
-                    <div className="col-md-6">
+                    <div className="col-md-14">
                       <label
                         htmlFor="deskripsi_project"
                         className="form-label"
@@ -254,7 +283,7 @@ function Createlist() {
                           color: "#686D76",
                         }}
                       >
-                        Deskripsi Project
+                        Project Description
                       </label>
                       <textarea
                         className="form-control custom-input"
@@ -263,7 +292,7 @@ function Createlist() {
                         value={deskripsi_project}
                         onChange={(e) => setDeskripsiProject(e.target.value)}
                         autoComplete="off"
-                        placeholder=" Deskripsi Project"
+                        placeholder=" Project Description"
                         rows="3"
                       />
                     </div>
@@ -275,16 +304,18 @@ function Createlist() {
                   >
                     <button
                       type="button"
-                      className="btn btn-custom btn-secondary-custom btn-sm"
+                      className="btn btn-danger btn-sm"
+                      style={{ height: "35px", width: "5%" }}
                       onClick={batal}
                     >
-                      Batal
+                      <FontAwesomeIcon icon={faX} />
                     </button>
                     <button
                       type="submit"
-                      className="btn btn-custom btn-primary-custom btn-sm"
+                      className="btn btn-primary btn-sm"
+                      style={{ height: "35px", width: "5%" }}
                     >
-                      Tambah
+                      <FontAwesomeIcon icon={faCheck} />
                     </button>
                   </div>
                 </form>
