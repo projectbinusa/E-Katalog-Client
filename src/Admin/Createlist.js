@@ -159,7 +159,7 @@ function Createlist() {
                         htmlFor="nama_project"
                         className="form-label"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "95%",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
@@ -185,7 +185,7 @@ function Createlist() {
                         htmlFor="teknologi"
                         className="form-label"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "95%",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
@@ -214,7 +214,7 @@ function Createlist() {
                         htmlFor="developer"
                         className="form-label"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "95%",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
@@ -240,7 +240,7 @@ function Createlist() {
                         htmlFor="link"
                         className="form-label"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "95%",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
@@ -269,7 +269,7 @@ function Createlist() {
                         htmlFor="image"
                         className="form-label"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "95%",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
@@ -292,7 +292,7 @@ function Createlist() {
                         htmlFor="deskripsi_project"
                         className="form-label"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "95%",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
@@ -320,16 +320,14 @@ function Createlist() {
                   >
                     <button
                       type="button"
-                      className="btn btn-danger btn-sm"
-                      style={{ height: "35px", width: "5%" }}
+                      className="button btn-danger btn-sm"
                       onClick={batal}
                     >
                       <FontAwesomeIcon icon={faX} />
                     </button>
                     <button
                       type="submit"
-                      className="btn btn-primary btn-sm"
-                      style={{ height: "35px", width: "5%" }}
+                      className="button btn-primary btn-sm"
                     >
                       <FontAwesomeIcon icon={faCheck} />
                     </button>

@@ -178,34 +178,22 @@ function Listp() {
           >
             <div className="card-body">
               <div className="d-flex align-items-center mb-3">
-                <p
-                  className="mr-auto"
-                  style={{ fontWeight: "bold", fontSize: "150%" }}
+                <h5
+                  className="title mr-auto text-nowrap"
                 >
                   Tabel List Projek
-                </p>
+                </h5>
                 <div className="d-flex align-items-center">
                   <input
                     type="text"
                     placeholder="Cari..."
-                    className="form-control mr-2"
-                    style={{
-                      maxWidth: "200px",
-                      height: "38px", // Set a fixed height that matches the button height
-                    }}
+                    className="cari form-control mr-2"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
                   <Link
                     to={`/tambahlist`}
-                    className="btn btn-primary btn-sm mr-0"
-                    style={{
-                      width: "40px", // Set a fixed width for consistency
-                      height: "38px", // Ensure button height matches input height
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
+                    className="tambah btn-primary btn-sm mr-0"
                   >
                     <FontAwesomeIcon
                       icon={faPlus}

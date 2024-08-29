@@ -64,9 +64,9 @@ function DetailLp() {
                     alt="Avatar"
                     className="my-5 mb-2 mt-2"
                     style={{
-                      width: "100px",
+                      width: "200px",
                       borderRadius: "50%",
-                      height: "100px",
+                      height: "200px",
                     }}
                   />
                 </div>
@@ -74,29 +74,29 @@ function DetailLp() {
                 <div className="col-md-8">
                   <div className="card-body p-4">
                     <div>
-                      <h6>Detail Project List</h6>
+                      <h6 style={{ fontWeight:"bold" }}>Detail Project List</h6>
                       <hr className="mt-0 mb-4" />
                       <div className="row pt-1">
                         <div className="col-6 mb-3">
-                          <h6>Project Name</h6>
+                          <h6 style={{ fontWeight:"bold" }}>Project Name</h6>
                           <p className="text-muted">
                             {projectData.nama_project}
                           </p>
                         </div>
                         <div className="col-6 mb-3">
-                          <h6>Technology</h6>
+                          <h6 style={{ fontWeight:"bold" }}>Technology</h6>
                           <p className="text-muted">{projectData.teknologi}</p>
                         </div>
                         <div className="col-6 mb-3">
-                          <h6>Developer</h6>
+                          <h6 style={{ fontWeight:"bold" }}>Developer</h6>
                           <p className="text-muted">{projectData.developer}</p>
                         </div>
                         <div className="col-6 mb-3">
-                          <h6>Link</h6>
+                          <h6 style={{ fontWeight:"bold" }}>Link</h6>
                           <p className="text-muted">{projectData.link}</p>
                         </div>
                         <div className="col-15 mb-3">
-                          <h6>Project Description</h6>
+                          <h6 style={{ fontWeight:"bold" }}>Project Description</h6>
                           <p className="text-muted">
                             {projectData.deskripsi_project}
                           </p>
