@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // Import useParams dari react-router-dom
-import Sidebar from "../component/Sidnav";
+import { useParams } from "react-router-dom";
 import { API_DUMMY } from "../utils/api";
+import '../css/Detail.css'; // Import file CSS
 
 function DetailLp() {
-  const { id } = useParams(); // Ambil ID dari URL menggunakan useParams
+  const { id } = useParams();
   const [projectData, setProjectData] = useState(null);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function DetailLp() {
     };
 
     fetchProjectData();
-  }, [id]); // Tambahkan id ke dependency array
+  }, [id]);
 
   if (!projectData) {
     return <div>Loading...</div>;
@@ -41,62 +41,52 @@ function DetailLp() {
 
   return (
     <div className="d-flex flex-column flex-md-row Bg">
-      <Sidebar />
       <section className="" style={{ width: "100%", marginRight: "10%" }}>
         <div className="row justify-content-center align-items-center h-100">
-          <div className="col-lg-8 mb-5 mb-lg-0 " style={{ marginLeft: "20%" }}>
-            <div className="card mb-3" style={{ borderRadius: ".5rem" }}>
+          <div className="col-lg-8 mb-5 mb-lg-0">
+            <div className="card mb-3 card-custom">
               <div className="row g-0">
-                <div
-                  className="col-md-4 d-flex flex-column align-items-center justify-content-center text-center text-white"
-                  style={{
-                    background: "linear-gradient(40deg,#45cafc,#303f9f)",
-                    borderTopLeftRadius: ".5rem",
-                    borderBottomLeftRadius: ".5rem",
-                    padding: "20px",
-                  }}
-                >
+                <div className="col-md-4 card-left">
                   <img
                     src={
                       projectData.image ||
                       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdztTDcpZ2pFqwWDYwSXbvZq5nzJYg5cn8w&s"
                     }
                     alt="Avatar"
-                    className="my-5 mb-2 mt-2"
-                    style={{
-                      width: "200px",
-                      borderRadius: "50%",
-                      height: "200px",
-                    }}
+                    className="avatar my-5 mb-2 mt-2"
                   />
                 </div>
 
                 <div className="col-md-8">
-                  <div className="card-body p-4">
+                  <div className="card-body p-4 card-body-custom">
                     <div>
-                      <h6 style={{ fontWeight:"bold" }}>Detail Project List</h6>
+                      <h6 className="bold-title">Detail Project List</h6>
                       <hr className="mt-0 mb-4" />
                       <div className="row pt-1">
                         <div className="col-6 mb-3">
-                          <h6 style={{ fontWeight:"bold" }}>Project Name</h6>
+                          <h6 className="bold-title">Project Name</h6>
                           <p className="text-muted">
                             {projectData.nama_project}
                           </p>
                         </div>
                         <div className="col-6 mb-3">
-                          <h6 style={{ fontWeight:"bold" }}>Technology</h6>
-                          <p className="text-muted">{projectData.teknologi}</p>
+                          <h6 className="bold-title">Technology</h6>
+                          <p className="text-muted">
+                            {projectData.teknologi}
+                          </p>
                         </div>
                         <div className="col-6 mb-3">
-                          <h6 style={{ fontWeight:"bold" }}>Developer</h6>
-                          <p className="text-muted">{projectData.developer}</p>
+                          <h6 className="bold-title">Developer</h6>
+                          <p className="text-muted">
+                            {projectData.developer}
+                          </p>
                         </div>
                         <div className="col-6 mb-3">
-                          <h6 style={{ fontWeight:"bold" }}>Link</h6>
+                          <h6 className="bold-title">Link</h6>
                           <p className="text-muted">{projectData.link}</p>
                         </div>
                         <div className="col-15 mb-3">
-                          <h6 style={{ fontWeight:"bold" }}>Project Description</h6>
+                          <h6 className="bold-title">Project Description</h6>
                           <p className="text-muted">
                             {projectData.deskripsi_project}
                           </p>
