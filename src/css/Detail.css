@@ -1,0 +1,41 @@
+.card-custom {
+    border-radius: 0.5rem;
+    width: 150%; /* Perbesar lebar card */
+  }
+  
+  .col-lg-8 {
+    margin-left: 10%; /* Kurangi margin untuk menyesuaikan posisi */
+  }
+  
+  .card-left {
+    background: linear-gradient(40deg, #45cafc, #303f9f);
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+  
+  .avatar {
+    width: 220px; /* Sesuaikan ukuran avatar jika diperlukan */
+    border-radius: 50%;
+    height: 220px;
+  }
+  
+  .card-body-custom {
+    padding: 1.5rem 2rem; /* Perbesar padding di dalam card */
+  }
+  
+  .bold-title {
+    font-weight: bold;
+  }
+  
+  .text-muted {
+    color: #6c757d;
+  }
+  
+  

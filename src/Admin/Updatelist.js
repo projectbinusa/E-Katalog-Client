@@ -14,8 +14,7 @@ function Updatelist() {
   const [teknologi, setTeknologi] = useState("");
   const [developer, setDeveloper] = useState("");
   const [link, setLink] = useState("");
-  const [file, setFile] = useState(null); // state untuk menyimpan file baru yang diupload
-  const [existingImage, setExistingImage] = useState(""); // state untuk menyimpan gambar yang sudah ada
+  const [file, setFile] = useState(null); // state untuk menyimpan file
   const [deskripsi_project, setDeskripsi_project] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
@@ -45,7 +44,6 @@ function Updatelist() {
         setDeveloper(project.developer);
         setLink(project.link);
         setDeskripsi_project(project.deskripsi_project);
-        setExistingImage(project.image); // menyimpan gambar yang sudah ada
       } catch (error) {
         console.error("Gagal mengambil data project: ", error);
         Swal.fire({
@@ -64,88 +62,42 @@ function Updatelist() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Create a new FormData object
-    const formData = new FormData();
+    const updatedProject = {
+      no,
+      nama_project,
+      teknologi,
+      developer,
+      link,
+      deskripsi_project,
+    };
 
-    // Append basic project data as a JSON string
-    formData.append(
-      "listProject",
-      JSON.stringify({ nama_project, developer, deskripsi_project, teknologi })
-    );
-
-    // Check if a new file is selected
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = async () => {
-        // After processing the file, append it to the FormData
-        formData.append("image", file);
-
-        try {
-          const token = localStorage.getItem("token");
-          await axios.put(
-            `${API_DUMMY}/api/list_project/ubah/${id}`,
-            formData,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "multipart/form-data",
-              },
-            }
-          );
-          Swal.fire({
-            title: "Berhasil",
-            text: "Data project berhasil diperbarui",
-            icon: "success",
-            timer: 1500,
-            showConfirmButton: false,
-          }).then(() => {
-            navigate(-1);
-          });
-        } catch (error) {
-          console.error("Gagal memperbarui data project: ", error);
-          Swal.fire({
-            title: "Gagal",
-            text: "Gagal memperbarui data project. Silakan coba lagi.",
-            icon: "error",
-          });
+    try {
+      const token = localStorage.getItem("token");
+      await axios.put(
+        `${API_DUMMY}/api/list_project/ubah/${id}`,
+        updatedProject,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      };
-
-      // Start reading the file to trigger onloadend
-      reader.readAsDataURL(file);
-    } else {
-      // If no new file, proceed with the existing image or no image at all
-      formData.append("existingImage", existingImage);
-
-      try {
-        const token = localStorage.getItem("token");
-        await axios.put(
-          `${API_DUMMY}/api/list_project/ubah/${id}`,
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-        Swal.fire({
-          title: "Berhasil",
-          text: "Data project berhasil diperbarui",
-          icon: "success",
-          timer: 1500,
-          showConfirmButton: false,
-        }).then(() => {
-          navigate(-1);
-        });
-      } catch (error) {
-        console.error("Gagal memperbarui data project: ", error);
-        Swal.fire({
-          title: "Gagal",
-          text: "Gagal memperbarui data project. Silakan coba lagi.",
-          icon: "error",
-        });
-      }
+      );
+      Swal.fire({
+        title: "Berhasil",
+        text: "Data project berhasil diperbarui",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      }).then(() => {
+        navigate(-1);
+      });
+    } catch (error) {
+      console.error("Gagal memperbarui data project: ", error);
+      Swal.fire({
+        title: "Gagal",
+        text: "Gagal memperbarui data project. Silakan coba lagi.",
+        icon: "error",
+      });
     }
   };
 
@@ -182,7 +134,7 @@ function Updatelist() {
                         htmlFor="nama_project"
                         className="form-label"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "95%",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
@@ -209,7 +161,7 @@ function Updatelist() {
                         htmlFor="teknologi"
                         className="form-label"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "95%",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
@@ -239,7 +191,7 @@ function Updatelist() {
                         htmlFor="developer"
                         className="form-label"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "95%",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
@@ -266,7 +218,7 @@ function Updatelist() {
                         htmlFor="link"
                         className="form-label"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "95%",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
@@ -296,7 +248,7 @@ function Updatelist() {
                         htmlFor="image"
                         className="form-label"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "95%",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
@@ -319,7 +271,7 @@ function Updatelist() {
                         htmlFor="deskripsi_project"
                         className="form-label"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "95%",
                           fontWeight: "bold",
                           textAlign: "left",
                           display: "block",
@@ -336,7 +288,7 @@ function Updatelist() {
                         onChange={(e) => setDeskripsi_project(e.target.value)}
                         autoComplete="off"
                         placeholder=" Project Description"
-                        rows="3"
+                        rows="3" 
                       />
                     </div>
                   </div>
@@ -347,16 +299,14 @@ function Updatelist() {
                   >
                     <button
                       type="button"
-                      className="btn btn-danger btn-sm"
-                      style={{ height: "35px", width: "5%" }}
+                      className="button btn-danger btn-sm"
                       onClick={batal}
                     >
                       <FontAwesomeIcon icon={faX} />
                     </button>
                     <button
                       type="submit"
-                      className="btn btn-primary btn-sm"
-                      style={{ height: "35px", width: "5%" }}
+                      className="button btn-primary btn-sm"
                     >
                       <FontAwesomeIcon icon={faCheck} />
                     </button>
