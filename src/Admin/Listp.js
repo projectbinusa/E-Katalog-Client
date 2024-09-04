@@ -48,10 +48,10 @@ function Listp() {
           );
           setData(sortedData);
         } else {
-          console.error("Format respons API tidak terduga:", response.data);
+          console.error("Unexpected API response format:", response.data);
         }
       } catch (error) {
-        console.error("Gagal mengambil data:", error);
+        console.error("Failed to retrieve data:", error);
       }
     };
 
@@ -84,12 +84,12 @@ function Listp() {
   const handleDelete = async (id) => {
     try {
       const result = await Swal.fire({
-        title: "Konfirmasi",
-        text: "Anda yakin ingin menghapus data proyek?",
+        title: "Confirmation",
+        text: "Are you sure you want to delete project data?",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Ya",
-        cancelButtonText: "Tidak",
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
       });
 
       if (result.isConfirmed) {
@@ -107,19 +107,19 @@ function Listp() {
         setData((prevData) => prevData.filter((item) => item.id !== id));
 
         Swal.fire({
-          title: "Berhasil",
-          text: "Data proyek berhasil dihapus",
+          title: "Succes",
+          text: "Project data has been successfully deleted",
           icon: "success",
           timer: 2000,
           showConfirmButton: false,
         });
       }
     } catch (error) {
-      console.error("Gagal menghapus proyek:", error);
+      console.error("Failed to delete project:", error);
 
       Swal.fire({
-        title: "Gagal",
-        text: "Gagal menghapus proyek",
+        title: "Failed",
+        text: "Failed to delete project",
         icon: "error",
         timer: 2000,
         showConfirmButton: false,
@@ -132,7 +132,7 @@ function Listp() {
       navigator.clipboard.writeText(text).then(
         () => {
           const messageElement = document.createElement("div");
-          messageElement.textContent = "Link sudah tersalin";
+          messageElement.textContent = "The link has been copied";
           messageElement.style.position = "absolute";
           messageElement.style.top = `${event.clientY + 10}px`; // Positioning below the cursor
           messageElement.style.left = `${event.clientX}px`;
@@ -149,7 +149,7 @@ function Listp() {
           }, 1000);
         },
         (err) => {
-          console.error("Gagal menyalin:", err);
+          console.error("Failed to copy:", err);
         }
       );
     }
@@ -181,7 +181,7 @@ function Listp() {
                 <h5
                   className="title mr-auto text-nowrap"
                 >
-                  Tabel List Projek
+                  Project List Table
                 </h5>
                 <div className="d-flex align-items-center">
                   <input
@@ -327,7 +327,7 @@ function Listp() {
                           </td>
                           <td>
                             {" "}
-                            <img style={{ width:"75px", height:"60px" }} src={item.image} alt="" />{" "}
+                            <img style={{ width: "75px", height: "60px" }} src={item.image} alt="" />{" "}
                           </td>
                           <td>{item.deskripsi_project}</td>
                           <td>
@@ -361,7 +361,7 @@ function Listp() {
                     ) : (
                       <tr>
                         <td colSpan="7" className="text-center">
-                          Tidak ada data yang tersedia
+                          No data available
                         </td>
                       </tr>
                     )}
@@ -372,9 +372,8 @@ function Listp() {
               <nav>
                 <ul className="pagination justify-content-center">
                   <li
-                    className={`page-item ${
-                      currentPage === 1 ? "disabled" : ""
-                    }`}
+                    className={`page-item ${currentPage === 1 ? "disabled" : ""
+                      }`}
                   >
                     <button
                       className="page-link"
@@ -386,9 +385,8 @@ function Listp() {
                   </li>
                   {Array.from({ length: totalPages }, (_, i) => (
                     <li
-                      className={`page-item ${
-                        currentPage === i + 1 ? "active" : ""
-                      }`}
+                      className={`page-item ${currentPage === i + 1 ? "active" : ""
+                        }`}
                       key={i + 1}
                     >
                       <button
@@ -400,9 +398,8 @@ function Listp() {
                     </li>
                   ))}
                   <li
-                    className={`page-item ${
-                      currentPage === totalPages ? "disabled" : ""
-                    }`}
+                    className={`page-item ${currentPage === totalPages ? "disabled" : ""
+                      }`}
                   >
                     <button
                       className="page-link"

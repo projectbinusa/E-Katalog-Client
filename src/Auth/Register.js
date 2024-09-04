@@ -36,8 +36,8 @@ function Register() {
       if (response.data) {
         Swal.fire({
           icon: "success",
-          title: "Registrasi Berhasil!",
-          text: "Anda berhasil terdaftar sebagai admin.",
+          title: "Registration Successful!",
+          text: "You have successfully registered as admin.",
           timer: 2000,
           showConfirmButton: false,
         }).then(() => {
@@ -45,15 +45,15 @@ function Register() {
         });
       }
     } catch (error) {
-      let errorMessage = "Registrasi gagal! Silakan coba lagi.";
+      let errorMessage = "registration failed! Please try again.";
       if (error.response?.status === 401) {
-        errorMessage = "Username atau email sudah digunakan.";
+        errorMessage = "Username or email is already in use.";
       } else {
-        errorMessage = error.response?.data?.message || "Terjadi kesalahan.";
+        errorMessage = error.response?.data?.message || "There is an error.";
       }
       Swal.fire({
         icon: "error",
-        title: "Registrasi Gagal!",
+        title: "Registration Failed!",
         text: errorMessage,
         timer: 2000,
         showConfirmButton: false,
@@ -152,7 +152,7 @@ function Register() {
                       </div>
                       <p className="mb-0 mr-10">
                         <a href="/login" className="link">
-                          Sudah punya akun?
+                          Already have an account?
                         </a>
                       </p>
                       <button type="submit" className="btn mt-4">
