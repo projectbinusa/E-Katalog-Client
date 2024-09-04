@@ -57,8 +57,8 @@ function Createlist() {
             }
           );
           Swal.fire({
-            title: "Berhasil",
-            text: "Data project berhasil ditambahkan",
+            title: "Success",
+            text: "Project data added successfully",
             icon: "success",
             timer: 1500,
             showConfirmButton: false,
@@ -66,12 +66,12 @@ function Createlist() {
             navigate(-1);
           });
         } catch (error) {
-          console.error("Gagal menambahkan data project: ", error);
+          console.error("Failed to add project data: ", error);
           const errorMessage =
             error.response?.data?.message ||
-            "Gagal menambahkan data project. Silakan coba lagi.";
+            "Failed to add project data. Silakan coba lagi.";
           Swal.fire({
-            title: "Gagal",
+            title: "Failed",
             text: errorMessage,
             icon: "error",
           });
@@ -102,8 +102,8 @@ function Createlist() {
           }
         );
         Swal.fire({
-          title: "Berhasil",
-          text: "Data project berhasil ditambahkan",
+          title: "Success",
+          text: "Project data added successfully",
           icon: "success",
           timer: 1500,
           showConfirmButton: false,
@@ -111,10 +111,10 @@ function Createlist() {
           navigate(-1);
         });
       } catch (error) {
-        console.error("Gagal menambahkan data project: ", error);
+        console.error("Failed to add project data: ", error);
         const errorMessage =
           error.response?.data?.message ||
-          "Gagal menambahkan data project. Silakan coba lagi.";
+          "Failed to add project data. Silakan coba lagi.";
         Swal.fire({
           title: "Gagal",
           text: errorMessage,

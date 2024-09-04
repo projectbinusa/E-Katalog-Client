@@ -32,8 +32,8 @@ function Login() {
     if (!email || !password) {
       Swal.fire({
         icon: "error",
-        title: "Login Gagal",
-        text: "Email dan Password harus diisi.",
+        title: "Login Failed",
+        text: "Email and Password must be filled in.",
         timer: 2000,
         showConfirmButton: false,
       });
@@ -62,8 +62,8 @@ function Login() {
         // Notify success
         Swal.fire({
           icon: "success",
-          title: "Login Berhasil",
-          text: `Selamat datang ${userData.username}. Anda berhasil login.`,
+          title: "Login Success",
+          text: `Welcome ${userData.username}. You have successfully logged in.`,
           timer: 2000,
           showConfirmButton: false,
         });
@@ -76,8 +76,8 @@ function Login() {
         // Handle unexpected response structure
         Swal.fire({
           icon: "error",
-          title: "Login Gagal",
-          text: "Terjadi kesalahan pada server.",
+          title: "Login Failed",
+          text: "An error occurred on the server.",
           timer: 2000,
           showConfirmButton: false,
         });
@@ -86,18 +86,18 @@ function Login() {
       console.error("Error login:", error);
 
       // Extract error message
-      let errorMessage = "Terjadi kesalahan";
+      let errorMessage = "There is an error";
       if (error.response) {
         if (error.response.status === 401) {
-          errorMessage = "Email atau Password salah";
+          errorMessage = "Incorrect email or password";
         } else {
-          errorMessage = error.response.data?.message || "Terjadi kesalahan";
+          errorMessage = error.response.data?.message || "There is an error";
         }
       }
 
       Swal.fire({
         icon: "error",
-        title: "Login Gagal",
+        title: "Login Failed",
         text: errorMessage,
         timer: 2000,
         showConfirmButton: false,
@@ -186,7 +186,7 @@ function Login() {
                           className="link"
                           style={{ marginRight: "60%" }}
                         >
-                          daftar akun?
+                          Register?
                         </a>
                         {/* <a
                           href="#0"

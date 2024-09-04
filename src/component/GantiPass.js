@@ -41,7 +41,7 @@ function GantiPass() {
             <label htmlFor="confirmPassword">Confirm New Password</label>
           </div>
           <button type="submit" className="btn btn-primary btn-block">
-            Ganti Password
+            Change Password
           </button>
         </form>
       </div>

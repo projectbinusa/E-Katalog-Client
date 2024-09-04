@@ -41,7 +41,7 @@ function Profile() {
         setOriginalData(data); // Simpan data asli
       })
       .catch((error) => {
-        console.error("Ada kesalahan saat mengambil data:", error);
+        console.error("There was an error while retrieving data:", error);
       });
   }, [id, token]);
 
@@ -77,18 +77,18 @@ function Profile() {
       setIsEditingData(false);
       setOriginalData(formData); // Update data asli setelah menyimpan
       Swal.fire({
-        title: "Berhasil",
-        text: "Data berhasil disimpan!",
+        title: "Success",
+        text: "Data saved successfully!",
         icon: "success",
         timer: 2000,
         showConfirmButton: false,
       });
     } catch (error) {
-      console.error("Ada kesalahan saat memperbarui data:", error);
+      console.error("There was an error updating data:", error);
       Swal.fire({
         icon: "error",
-        title: "Gagal",
-        text: "Gagal menyimpan data.",
+        title: "Failed",
+        text: "Failed to save data.",
         timer: 2000,
         showConfirmButton: false,
       });
@@ -122,18 +122,18 @@ function Profile() {
       setPreviewImage(null);
       setOriginalData({ ...formData, image: response.data.image }); // Update data asli setelah menyimpan gambar
       Swal.fire({
-        title: "Berhasil",
-        text: "Foto profil berhasil disimpan!",
+        title: "Success",
+        text: "Profile photo saved successfully!",
         icon: "success",
         timer: 2000,
         showConfirmButton: false,
       });
     } catch (error) {
-      console.error("Ada kesalahan saat memperbarui foto profil:", error);
+      console.error("There was an error updating the profile photo:", error);
       Swal.fire({
         icon: "error",
-        title: "Gagal",
-        text: "Gagal menyimpan foto profil.",
+        title: "Failed",
+        text: "Failed to save profile photo.",
         timer: 2000,
         showConfirmButton: false,
       });
@@ -238,7 +238,7 @@ function Profile() {
                   <div className="card-body p-5">
                     {isEditingData ? (
                       <div>
-                        <h6 style={{ fontWeight: "bold" }}>Ubah Data Diri</h6>
+                        <h6 style={{ fontWeight: "bold" }}>Change personal data</h6>
                         <hr className="mt-0 mb-4" />
                         <div className="row pt-1">
                           <div className="col-6 mb-3">
@@ -303,7 +303,7 @@ function Profile() {
                           style={{ height: "35px", width: "10%" }}
                           onClick={() => setIsEditingData(true)}
                         >
-                          <FontAwesomeIcon icon={faPenToSquare}/>
+                          <FontAwesomeIcon icon={faPenToSquare} />
                         </button>
                       </div>
                     )}
