@@ -163,49 +163,37 @@ function Listp() {
         style={{
           minHeight: "100vh",
           padding: "0 5%",
-          marginTop: "9%",
+          marginTop: "5%",
           marginLeft: "13%",
         }}
       >
-        <div className="container mt-4 px-1">
+        <div className="container px-1">
           <div
             className="card mx-auto responsive-card"
             style={{
               width: "100%",
-              maxWidth: "900px",
+              maxWidth: "100%",
               padding: "10px 0",
             }}
           >
             <div className="card-body">
               <div className="d-flex align-items-center mb-3">
-                <p
-                  className="mr-auto"
-                  style={{ fontWeight: "bold", fontSize: "150%" }}
+                <h5
+                  className="title mr-auto text-nowrap"
                 >
-                  Project List Table
-                </p>
+                  Tabel List Projek
+                </h5>
                 <div className="d-flex align-items-center">
                   <input
                     type="text"
-                    placeholder="Search..."
-                    className="form-control mr-2"
-                    style={{
-                      maxWidth: "200px",
-                      height: "38px", // Set a fixed height that matches the button height
-                    }}
+                    placeholder="Cari..."
+                    className="cari form-control mr-2"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
                   <Link
                     to={`/tambahlist`}
-                    className="btn btn-primary btn-sm mr-0"
-                    style={{
-                      width: "40px", // Set a fixed width for consistency
-                      height: "38px", // Ensure button height matches input height
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
+                    className="tambah btn-primary btn-sm mr-0"
                   >
                     <FontAwesomeIcon
                       icon={faPlus}
@@ -339,7 +327,7 @@ function Listp() {
                           </td>
                           <td>
                             {" "}
-                            <img style={{ width: "75px", height: "60px" }} src={item.image} alt="" />{" "}
+                            <img style={{ width:"75px", height:"60px" }} src={item.image} alt="" />{" "}
                           </td>
                           <td>{item.deskripsi_project}</td>
                           <td>
@@ -373,7 +361,7 @@ function Listp() {
                     ) : (
                       <tr>
                         <td colSpan="7" className="text-center">
-                          No data available
+                          Tidak ada data yang tersedia
                         </td>
                       </tr>
                     )}
@@ -384,8 +372,9 @@ function Listp() {
               <nav>
                 <ul className="pagination justify-content-center">
                   <li
-                    className={`page-item ${currentPage === 1 ? "disabled" : ""
-                      }`}
+                    className={`page-item ${
+                      currentPage === 1 ? "disabled" : ""
+                    }`}
                   >
                     <button
                       className="page-link"
@@ -397,8 +386,9 @@ function Listp() {
                   </li>
                   {Array.from({ length: totalPages }, (_, i) => (
                     <li
-                      className={`page-item ${currentPage === i + 1 ? "active" : ""
-                        }`}
+                      className={`page-item ${
+                        currentPage === i + 1 ? "active" : ""
+                      }`}
                       key={i + 1}
                     >
                       <button
@@ -410,8 +400,9 @@ function Listp() {
                     </li>
                   ))}
                   <li
-                    className={`page-item ${currentPage === totalPages ? "disabled" : ""
-                      }`}
+                    className={`page-item ${
+                      currentPage === totalPages ? "disabled" : ""
+                    }`}
                   >
                     <button
                       className="page-link"

@@ -7,7 +7,7 @@ body {
 
 /* Sidebar */
 .sidebar {
-  position: fixed;
+  position: absolute;
   top: 60px; /* Menyesuaikan dengan tinggi navbar */
   bottom: 0;
   left: 0;
@@ -15,12 +15,16 @@ body {
   background-color: #f8f9fa;
   z-index: 1000; /* Pastikan z-index cukup tinggi */
   transition: transform 0.3s ease-in-out;
-  transform: translateX(0); /* Sidebar selalu terlihat pada tampilan non-responsif */
+  transform: translateX(
+    0
+  ); /* Sidebar selalu terlihat pada tampilan non-responsif */
 }
 
 @media (max-width: 991px) {
   .sidebar {
-    transform: translateX(-100%); /* Sidebar tersembunyi pada tampilan responsif */
+    transform: translateX(
+      -100%
+    ); /* Sidebar tersembunyi pada tampilan responsif */
     z-index: 1050; /* Pastikan sidebar di atas elemen lain */
   }
 
@@ -100,7 +104,7 @@ body {
 
 /* Style untuk item dropdown */
 .dropdown-menu .dropdown-item {
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease;
 }
 
 /* Warna latar belakang item dropdown saat dihover */
@@ -113,6 +117,12 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   display: flex;
   align-items: center;
+}
+
+.navbar-toggler {
+  background: #333;
+  color: white;
+  border: none;
 }
 
 /* Responsive Styles */
@@ -182,6 +192,9 @@ body {
 @media (max-width: 768px) {
   .card {
     margin-top: 20px;
+  }
+  .sidebar {
+    width: 200px; /* Lebar sidebar pada tampilan responsif */
   }
 }
 
