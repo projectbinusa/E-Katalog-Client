@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCubes, faGaugeHigh } from "@fortawesome/free-solid-svg-icons";
 import "../css/sidebar.css";
 import Logo from "../aset/LOGO_Katalog.png";
 import { getAdminById } from "../Router/Getprofile";
+import Swal from "sweetalert2";
 
 function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false); // Default to hidden on small screens
   const [showDropdown, setShowDropdown] = useState(false);
   const [profilePic, setProfilePic] = useState("");
   const location = useLocation();
+  const navigate = useNavigate();
   const id = localStorage.getItem("id");
 
   useEffect(() => {
@@ -48,10 +50,39 @@ function Sidebar() {
     }
   }, [id]);
 
-  const toggleSidebar = () => setShowSidebar(prev => !prev); // Toggle sidebar visibility
-  const toggleDropdown = () => setShowDropdown(prev => !prev);
+  const toggleSidebar = () => setShowSidebar((prev) => !prev); // Toggle sidebar visibility
+  const toggleDropdown = () => setShowDropdown((prev) => !prev);
 
   const isActive = (path) => (location.pathname === path ? "active" : "");
+
+  const handleLogout = () => {
+    Swal.fire({
+      title: "Logged out!",
+      text: "You have been logged out.",
+      icon: "success",
+      timer: 2000, // SweetAlert akan otomatis hilang setelah 2 detik
+      showConfirmButton: false, // Menghilangkan tombol OK
+      customClass: {
+        container: "my-custom-container",
+        popup: "my-custom-popup",
+        title: "my-custom-title",
+        content: "my-custom-content",
+      },
+      didOpen: () => {
+        // Menambahkan kelas kustom pada body
+        document.body.classList.add("swal2-shown");
+      },
+      willClose: () => {
+        // Menghapus kelas kustom dari body
+        document.body.classList.remove("swal2-shown");
+      },
+    }).then(() => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      localStorage.removeItem("id");
+      navigate("/login");
+    });
+  };
 
   return (
     <div className="d-flex">
@@ -92,7 +123,7 @@ function Sidebar() {
         </div>
       </nav>
 
-      <div className={`content ${showSidebar ? "shift" : ""}`}>
+      <div className="content">
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
           <div className="container-fluid d-flex align-items-center">
             <button
@@ -144,9 +175,9 @@ function Sidebar() {
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/login">
+                        <a className="dropdown-item" onClick={handleLogout}>
                           Log Out
-                        </Link>
+                        </a>
                       </li>
                     </ul>
                   )}

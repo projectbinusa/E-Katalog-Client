@@ -13,6 +13,7 @@ function Updatelist() {
   const [nama_project, setNama_project] = useState("");
   const [teknologi, setTeknologi] = useState("");
   const [developer, setDeveloper] = useState("");
+  const [image, setImage] = useState("");
   const [link, setLink] = useState("");
   const [file, setFile] = useState(null); // state untuk menyimpan file
   const [deskripsi_project, setDeskripsi_project] = useState("");
@@ -43,7 +44,10 @@ function Updatelist() {
         setTeknologi(project.teknologi);
         setDeveloper(project.developer);
         setLink(project.link);
+        setImage(project.image);
+        console.log(image)
         setDeskripsi_project(project.deskripsi_project);
+        
       } catch (error) {
         console.error("Gagal mengambil data project: ", error);
         Swal.fire({
@@ -109,7 +113,7 @@ function Updatelist() {
     <>
       <div className="d-flex flex-column flex-md-row Bg">
         <Sidebar />
-        <section style={{ width: "100%", marginTop: "8%" }}>
+        <section>
           <div className="container2 mt-6">
             <div
               className="card shadow-sm p-1 mx-auto"
@@ -121,13 +125,13 @@ function Updatelist() {
                   style={{
                     marginBottom: "5px",
                     position: "relative",
-                    top: "-10px",
+                    top: "-3px",
                   }}
                 >
                   Update List
                 </h2>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} style={{ padding: "4%" }}>
                   <div className="row mb-3">
                     <div className="col-md-6">
                       <label
@@ -263,8 +267,10 @@ function Updatelist() {
                         id="image"
                         name="image"
                         onChange={handleFileChange}
+                        value=""
                         accept="image/*" // hanya menerima file gambar
                       />
+                      <img src={image} alt="" style={{ width:"70px",  height:"50px"}}/>
                     </div>
                     <div className="col-md-6">
                       <label
@@ -288,7 +294,7 @@ function Updatelist() {
                         onChange={(e) => setDeskripsi_project(e.target.value)}
                         autoComplete="off"
                         placeholder=" Project Description"
-                        rows="3" 
+                        rows="3"
                       />
                     </div>
                   </div>
@@ -304,10 +310,7 @@ function Updatelist() {
                     >
                       <FontAwesomeIcon icon={faX} />
                     </button>
-                    <button
-                      type="submit"
-                      className="button btn-primary btn-sm"
-                    >
+                    <button type="submit" className="button btn-primary btn-sm">
                       <FontAwesomeIcon icon={faCheck} />
                     </button>
                   </div>

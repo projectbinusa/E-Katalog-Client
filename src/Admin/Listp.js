@@ -34,7 +34,7 @@ function Listp() {
           `${API_DUMMY}/api/list_project/all`,
           {
             headers: {
-              Authorization: `Bearer ${token}`, // Sertakan token di header
+              Authorization: `Bearer ${token}`, 
             },
           }
         );
@@ -134,7 +134,7 @@ function Listp() {
           const messageElement = document.createElement("div");
           messageElement.textContent = "The link has been copied";
           messageElement.style.position = "absolute";
-          messageElement.style.top = `${event.clientY + 10}px`; // Positioning below the cursor
+          messageElement.style.top = `${event.clientY + 10}px`; 
           messageElement.style.left = `${event.clientX}px`;
           messageElement.style.backgroundColor = "#333";
           messageElement.style.color = "#fff";
@@ -163,8 +163,8 @@ function Listp() {
         style={{
           minHeight: "100vh",
           padding: "0 5%",
-          marginTop: "5%",
-          marginLeft: "13%",
+          marginTop: "8%",
+          marginLeft: "12%",
         }}
       >
         <div className="container px-1">

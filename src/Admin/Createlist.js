@@ -130,11 +130,9 @@ function Createlist() {
 
   return (
     <>
-      <div className="d-flex flex-column flex-md-row Bg">
+      <div className="d-flex flex-column flex-md-row Bg atur">
         <Sidebar />
-        <section
-          style={{ width: "100%", marginTop: "8%", alignItems: "center" }}
-        >
+        <section>
           <div className="container2 mt-6">
             <div
               className="card shadow-sm p-1"
@@ -146,13 +144,13 @@ function Createlist() {
                   style={{
                     marginBottom: "5px",
                     position: "relative",
-                    top: "-10px",
+                    top: "-3px",
                   }}
                 >
                   Create List
                 </h2>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} style={{ padding: "4%" }}>
                   <div className="row mb-3">
                     <div className="col-md-6">
                       <label
@@ -325,10 +323,7 @@ function Createlist() {
                     >
                       <FontAwesomeIcon icon={faX} />
                     </button>
-                    <button
-                      type="submit"
-                      className="button btn-primary btn-sm"
-                    >
+                    <button type="submit" className="button btn-primary btn-sm">
                       <FontAwesomeIcon icon={faCheck} />
                     </button>
                   </div>
