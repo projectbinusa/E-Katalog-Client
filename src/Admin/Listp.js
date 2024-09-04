@@ -34,7 +34,7 @@ function Listp() {
           `${API_DUMMY}/api/list_project/all`,
           {
             headers: {
-              Authorization: `Bearer ${token}`, // Sertakan token di header
+              Authorization: `Bearer ${token}`, 
             },
           }
         );
