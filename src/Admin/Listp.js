@@ -163,8 +163,8 @@ function Listp() {
         style={{
           minHeight: "100vh",
           padding: "0 5%",
-          marginTop: "5%",
-          marginLeft: "13%",
+          marginTop: "8%",
+          marginLeft: "12%",
         }}
       >
         <div className="container px-1">

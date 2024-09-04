@@ -60,6 +60,7 @@ body {
 }
 
 /* Responsive styles */
+/* Responsive styles */
 @media (max-width: 768px) {
   .responsive-card {
     width: 100%;
@@ -74,6 +75,7 @@ body {
 
   .table-responsive {
     padding: 0; /* Remove any padding that might push the table */
+    margin-top: 20%; /* Adjust to move table down by 20% */
   }
 
   .pagination {
@@ -113,12 +115,21 @@ body {
     transform: translateX(-449%); /* Adjust to move left by 5% more */
     margin-top: 13%; /* Move down by 30% */
   }
+ 
+  .card {
+    transform: translateY(50%);
+    /* margin-right: 20%; */
+  }
 }
 
 @media (max-width: 576px) {
   .table-custom th,
   .table-custom td {
     padding: 8px; /* Reduce padding for smaller screens */
+  }
+
+  .table-responsive {
+    margin-top: 20%; /* Ensure the table moves down by 20% on very small screens */
   }
 }
 

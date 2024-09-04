@@ -34,7 +34,14 @@
   }
 
   section {
-    padding-right: 10%;
+    padding-right: 5%;
+    transform: translateY(-25%);
+  }
+
+  .card {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
   }
 }
 
@@ -43,4 +50,10 @@
   margin-right: 18%;
   width: 85%;
   margin-top: 3.5%;
+}
+
+section {
+  width: 100%;
+  margin-top: 8%;
+  align-items: center;
 }
