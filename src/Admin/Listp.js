@@ -134,7 +134,7 @@ function Listp() {
           const messageElement = document.createElement("div");
           messageElement.textContent = "The link has been copied";
           messageElement.style.position = "absolute";
-          messageElement.style.top = `${event.clientY + 10}px`; // Positioning below the cursor
+          messageElement.style.top = `${event.clientY + 10}px`; 
           messageElement.style.left = `${event.clientX}px`;
           messageElement.style.backgroundColor = "#333";
           messageElement.style.color = "#fff";
