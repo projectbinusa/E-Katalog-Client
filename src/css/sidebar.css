@@ -146,7 +146,7 @@ body {
     transform: translateX(0); /* Sidebar muncul ketika tombol bar diklik */
   }
 
-  .logo {
+  .rounded-circle {
     display: flex;
     align-items: center;
     width: auto;

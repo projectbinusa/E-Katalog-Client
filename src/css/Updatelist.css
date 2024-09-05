@@ -2,46 +2,83 @@
 
 /* Ensure the card takes full width and has appropriate margins */
 .card {
-    width: 100%;
-    max-width: 800px; /* Set a max-width to avoid too wide cards on large screens */
-    margin: 0 auto; /* Center the card horizontally */
+  width: 100%;
+  max-width: 800px; /* Set a max-width to avoid too wide cards on large screens */
+  margin: 0 auto; /* Center the card horizontally */
+  overflow: hidden; /* Ensure no overflow issues on the card itself */
+  max-height: 500px; /* Set a max height for the card */
+}
+
+/* Make the card-body scrollable */
+.card-body {
+  max-height: 500px; /* Set a max height for the card-body */
+  padding: 20px; /* Add some padding for better readability */
+  scrollbar-width: thin; /* Firefox: set scrollbar width */
+}
+
+/* Optional: Custom scrollbar for WebKit browsers (Chrome, Safari) */
+.card-body::-webkit-scrollbar {
+  width: 8px; /* Adjust scrollbar width */
+}
+
+.card-body::-webkit-scrollbar-thumb {
+  background-color: #b0b0b0; /* Customize scrollbar color */
+  border-radius: 10px; /* Make scrollbar rounded */
+}
+
+/* Style adjustments for form controls */
+.custom-input {
+  font-size: 0.875rem; /* Adjust font size for better readability */
+}
+
+.button {
+  height: 35px;
+  width: 5%; /* Set the width to a consistent size */
+}
+
+/* Ensure the form and button layout adjust on small screens */
+/* Media query untuk layar dengan lebar maksimum 768px */
+@media (max-width: 768px) {
+  .button-container {
+    display: flex;
+    flex-direction: row; /* Atur tombol berdampingan */
+    gap: 10px; /* Tambahkan jarak antara tombol */
+    justify-content: space-between; /* Atur jarak tombol */
   }
-  
-  /* Style adjustments for form controls */
-  .custom-input {
-    font-size: 0.875rem; /* Adjust font size for better readability */
-  }
-  
+
+  /* Adjust button size for smaller screens */
   .button {
     height: 35px;
-    width: 5%; /* Set the width to a consistent size */
+    width: 16%; /* Ubah ukuran tombol menjadi persentase untuk responsif */
   }
-  
-  /* Ensure the form and button layout adjust on small screens */
-  /* Media query untuk layar dengan lebar maksimum 768px */
-  @media (max-width: 768px) {
-    .button-container {
-      display: flex;
-      flex-direction: row; /* Atur tombol berdampingan */
-      gap: 10px; /* Tambahkan jarak antara tombol */
-      justify-content: space-between; /* Atur jarak tombol */
-    }
-  
-    /* Adjust button size for smaller screens */
-    .button {
-      height: 35px;
-      width: 16%; /* Ubah ukuran tombol menjadi persentase untuk responsif */
-    }
-  
-    section {
-      padding-right: 5%;
-    }
+
+  section {
+    padding-right: 5%;
+    /* transform: translateY(20%); */
   }
-  
-  .container2 {
-    margin-left: 15%;
-    margin-right: 18%;
-    width: 85%;
-    margin-top: 3.5%;
+
+  .card {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    transform: translateY(-5%);
   }
-  
+
+  .card-body {
+    max-height: 1050px;
+    overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  }
+}
+
+.container2 {
+  margin-left: 15%;
+  margin-right: 18%;
+  width: 85%;
+  margin-top: 3.5%;
+}
+
+section {
+  width: 100%;
+  margin-top: 8%;
+  align-items: center;
+}
