@@ -5,6 +5,25 @@
   width: 100%;
   max-width: 800px; /* Set a max-width to avoid too wide cards on large screens */
   margin: 0 auto; /* Center the card horizontally */
+  overflow: hidden; /* Ensure no overflow issues on the card itself */
+  max-height: 500px; /* Set a max height for the card */
+}
+
+/* Make the card-body scrollable */
+.card-body {
+  max-height: 500px; /* Set a max height for the card-body */
+  padding: 20px; /* Add some padding for better readability */
+  scrollbar-width: thin; /* Firefox: set scrollbar width */
+}
+
+/* Optional: Custom scrollbar for WebKit browsers (Chrome, Safari) */
+.card-body::-webkit-scrollbar {
+  width: 8px; /* Adjust scrollbar width */
+}
+
+.card-body::-webkit-scrollbar-thumb {
+  background-color: #b0b0b0; /* Customize scrollbar color */
+  border-radius: 10px; /* Make scrollbar rounded */
 }
 
 /* Style adjustments for form controls */
@@ -18,11 +37,10 @@
 }
 
 /* Ensure the form and button layout adjust on small screens */
-/* Media query untuk layar dengan lebar maksimum 768px */
 @media (max-width: 768px) {
   .button-container {
     display: flex;
-    flex-direction: row; /* Atur tombol berdampingan */
+    flex-direction: row; /* Tombol berdampingan */
     gap: 10px; /* Tambahkan jarak antara tombol */
     justify-content: space-between; /* Atur jarak tombol */
   }
@@ -35,13 +53,20 @@
 
   section {
     padding-right: 5%;
-    transform: translateY(-25%);
+    transform: translateX(-5%);
   }
 
   .card {
-    margin-left: 5%;
+    margin-left: 2%;
     margin-right: 5%;
     width: 90%;
+    transform: translateY(-5%);
+  }
+
+  /* Reduce max-height for smaller screens */
+  .card-body {
+    max-height: 1050px;
+    overflow-y: auto; /* Enable vertical scrolling when content overflows */
   }
 }
 

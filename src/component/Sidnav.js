@@ -60,22 +60,8 @@ function Sidebar() {
       title: "Logged out!",
       text: "You have been logged out.",
       icon: "success",
-      timer: 2000, // SweetAlert akan otomatis hilang setelah 2 detik
-      showConfirmButton: false, // Menghilangkan tombol OK
-      customClass: {
-        container: "my-custom-container",
-        popup: "my-custom-popup",
-        title: "my-custom-title",
-        content: "my-custom-content",
-      },
-      didOpen: () => {
-        // Menambahkan kelas kustom pada body
-        document.body.classList.add("swal2-shown");
-      },
-      willClose: () => {
-        // Menghapus kelas kustom dari body
-        document.body.classList.remove("swal2-shown");
-      },
+      timer: 2000,
+      showConfirmButton: false,
     }).then(() => {
       localStorage.removeItem("token");
       localStorage.removeItem("role");
@@ -135,7 +121,8 @@ function Sidebar() {
               <i className="fas fa-bars"></i>
             </button>
 
-            <div className="logo ms-2">
+            {/* Logo hanya muncul pada layar besar */}
+            <div className="logo d-none d-lg-block ms-2">
               <img src={Logo} alt="Logo" loading="lazy" />
             </div>
 

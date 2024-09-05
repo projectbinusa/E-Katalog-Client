@@ -45,9 +45,8 @@ function Updatelist() {
         setDeveloper(project.developer);
         setLink(project.link);
         setImage(project.image);
-        console.log(image)
+        console.log(image);
         setDeskripsi_project(project.deskripsi_project);
-        
       } catch (error) {
         console.error("Gagal mengambil data project: ", error);
         Swal.fire({
@@ -77,6 +76,35 @@ function Updatelist() {
 
     try {
       const token = localStorage.getItem("token");
+
+      // Upload gambar jika ada file yang dipilih
+      if (file) {
+        const formData = new FormData();
+        formData.append("image", file); // tambahkan file ke form data
+        formData.append(
+          "listProject",
+          JSON.stringify({
+            nama_project,
+            developer,
+            deskripsi_project,
+            teknologi
+          })
+        )
+
+        // Kirim file gambar ke server
+        await axios.post(
+          `${API_DUMMY}/api/list_project/edit/imagelistproject/${id}`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+      }
+
+      // Update data project lainnya
       await axios.put(
         `${API_DUMMY}/api/list_project/ubah/${id}`,
         updatedProject,
@@ -86,6 +114,7 @@ function Updatelist() {
           },
         }
       );
+
       Swal.fire({
         title: "Berhasil",
         text: "Data project berhasil diperbarui",
@@ -270,7 +299,11 @@ function Updatelist() {
                         value=""
                         accept="image/*" // hanya menerima file gambar
                       />
-                      <img src={image} alt="" style={{ width:"70px",  height:"50px"}}/>
+                      <img
+                        src={image}
+                        alt=""
+                        style={{ width: "70px", height: "50px" }}
+                      />
                     </div>
                     <div className="col-md-6">
                       <label
