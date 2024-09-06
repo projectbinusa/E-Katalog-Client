@@ -159,7 +159,7 @@ function Listp() {
     <div className="d-flex jusify-content-center fixed Bg">
       <Sidebar />
       <section
-        className="card1 w-100 d-flex justify-content-center align-items-start auto-y-scroll"
+        className="card1 w-100 d-flex justify-content-center align-items-start"
         style={{
           minHeight: "100vh",
           padding: "0 5%",
@@ -176,7 +176,7 @@ function Listp() {
               padding: "10px 0",
             }}
           >
-            <div className="card-body">
+            <div className="card-body1">
               <div className="d-flex align-items-center mb-3">
                 <h5
                   className="title mr-auto text-nowrap"

@@ -1,13 +1,6 @@
-/* Global Styles */
-body {
-  background-color: #fbfbfb;
-  margin: 0;
-  padding: 0;
-}
-
 /* Sidebar */
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 60px; /* Menyesuaikan dengan tinggi navbar */
   bottom: 0;
   left: 0;
@@ -15,16 +8,12 @@ body {
   background-color: #f8f9fa;
   z-index: 1000; /* Pastikan z-index cukup tinggi */
   transition: transform 0.3s ease-in-out;
-  transform: translateX(
-    0
-  ); /* Sidebar selalu terlihat pada tampilan non-responsif */
+  transform: translateX(0); /* Sidebar terlihat pada tampilan non-responsif */
 }
 
 @media (max-width: 991px) {
   .sidebar {
-    transform: translateX(
-      -100%
-    ); /* Sidebar tersembunyi pada tampilan responsif */
+    transform: translateX(-100%); /* Sidebar tersembunyi pada tampilan responsif */
     z-index: 1050; /* Pastikan sidebar di atas elemen lain */
   }
 
@@ -41,13 +30,10 @@ body {
 .sidebar-sticky {
   position: relative;
   top: 0;
-  height: calc(
-    100vh - 60px
-  ); /* Mengatur tinggi sidebar agar sesuai dengan tampilan layar */
+  height: calc(100vh - 60px); /* Mengatur tinggi sidebar agar sesuai dengan layar */
   padding-top: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto;
-  flex: 1;
 }
 
 .logo {
@@ -80,47 +66,8 @@ body {
   }
 }
 
-.navbar-brand {
-  display: flex;
-  align-items: center;
-}
-
-.dropdown-menu-left {
-  left: 0;
-  transform: translate(-70%, 0);
-}
-
-/* Style untuk dropdown menu */
-.dropdown-menu {
-  background-color: transparent;
-  border: #00c6ff;
-  transition: background-color 0.3s ease;
-}
-
-/* Warna latar belakang dropdown menu saat dibuka */
-.dropdown-menu.show {
-  background-color: #f2f2f2;
-}
-
-/* Style untuk item dropdown */
-.dropdown-menu .dropdown-item {
-  transition: background-color 0.5s ease;
-}
-
-/* Warna latar belakang item dropdown saat dihover */
-.dropdown-menu .dropdown-item:hover {
-  background-color: #00c6ff;
-  color: white;
-}
-
-.hover-menu {
-  transition: background-color 0.3s ease, color 0.3s ease;
-  display: flex;
-  align-items: center;
-}
-
 .navbar-toggler {
-  background: #333;
+  /* background: #333; */
   color: white;
   border: none;
 }
@@ -132,36 +79,20 @@ body {
     align-items: center;
   }
 
-  .navbar-toggler img {
-    margin-right: 10px; /* Memberi jarak antara ikon bar dan logo */
-  }
-
   .navbar-collapse {
     display: flex;
     justify-content: flex-end;
     align-items: center;
   }
+}
 
-  .sidebar.show {
-    transform: translateX(0); /* Sidebar muncul ketika tombol bar diklik */
-  }
+.navbar-nav {
+  flex-direction: row;
+  margin-left: auto;
+}
 
-  .rounded-circle {
-    display: flex;
-    align-items: center;
-    width: auto;
-    left: 10%;
-    transform: translateY(-55%);
-  }
-
-  .navbar-nav {
-    flex-direction: row;
-    margin-left: auto;
-  }
-
-  .navbar .profile {
-    margin-left: auto;
-  }
+.navbar .profile {
+  margin-left: auto;
 }
 
 /* Main Content */
@@ -182,22 +113,15 @@ body {
   justify-content: center;
 }
 
-/* Card Content */
-.card {
-  max-width: 100%;
-  width: 100%;
-  margin: 0 auto;
+/* Tombol Hover */
+.hover-menu:hover {
+  background-color: #e8e8e8;
 }
 
-@media (max-width: 768px) {
-  .card {
-    margin-top: 20px;
-  }
-  .sidebar {
-    width: 200px; /* Lebar sidebar pada tampilan responsif */
-  }
-}
-
-.sidebar.shift {
-  margin-left: 240px; /* Menggeser konten saat sidebar muncul */
+/* Profil Gambar */
+.profile img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
 }

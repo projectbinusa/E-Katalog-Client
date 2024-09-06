@@ -24,9 +24,9 @@ body {
 }
 
 /* Ensure the table is scrollable horizontally on small screens */
-.table-responsive {
+/* .table-responsive {
   overflow-x: auto;
-}
+} */
 
 /* Adjust table row and header styles */
 .table-custom thead {
@@ -60,26 +60,25 @@ body {
 }
 
 /* Responsive styles */
-/* Responsive styles */
 @media (max-width: 768px) {
   .responsive-card {
     width: 100%;
     padding-left: 50%;
-    padding-top: 10%;
+    padding-top: 5%;
   }
 
   .table-custom {
     width: 100%;
-    margin-right: 0; /* Remove any right margin */
+    margin-right: 0;
   }
 
   .table-responsive {
-    padding: 0; /* Remove any padding that might push the table */
-    margin-top: 20%; /* Adjust to move table down by 20% */
+    padding: 0;
+    margin-top: 20%;
   }
 
   .pagination {
-    justify-content: center; /* Center the pagination controls */
+    justify-content: center;
   }
 
   .container {
@@ -92,15 +91,10 @@ body {
   }
 
   .title {
-    transform: translateY(
-      -100%
-    ); /* Remove or modify transform to keep text aligned */
-    text-align: center; /* Ensure the text is centered */
-    margin: 0; /* Ensure no extra margin that might misalign the text */
-    font-size: 1%;
-    margin-top: 2%;
+    text-align: center;
+    transform: translateY(-80%);
     margin-bottom: 2%;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .cari {
@@ -108,39 +102,37 @@ body {
     height: 38px;
     transform: translateX(-70%);
     margin-top: 12%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   }
 
   .tambah {
-    transform: translateX(-449%); /* Adjust to move left by 5% more */
-    margin-top: 13%; /* Move down by 30% */
+    transform: translateX(-449%);
+    margin-top: 13%;
   }
- 
+
   .card {
     transform: translateY(50%);
-    /* margin-right: 20%; */
   }
 }
 
 @media (max-width: 576px) {
   .table-custom th,
   .table-custom td {
-    padding: 8px; /* Reduce padding for smaller screens */
+    padding: 8px;
   }
 
   .table-responsive {
-    margin-top: 20%; /* Ensure the table moves down by 20% on very small screens */
+    margin-top: 15%;
   }
 }
 
 a {
-  text-decoration: none; /* Menghilangkan garis bawah */
-  color: #070a0e; /* Mengatur warna link sesuai dengan teks sekitarnya */
+  text-decoration: none;
+  color: #070a0e;
 }
 
 a:hover {
-  text-decoration: none; /* Opsi: Menambahkan garis bawah saat dihover */
-  color: #070a0e; /* Ubah warna link saat dihover (opsional) */
+  color: #070a0e;
 }
 
 .title {
@@ -154,4 +146,9 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.card-body1 {
+  max-height: 500px; /* Set a max height for the card-body */
+  padding: 20px; /* Add some padding for better readability */
 }
