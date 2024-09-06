@@ -87,9 +87,9 @@ function Updatelist() {
             nama_project,
             developer,
             deskripsi_project,
-            teknologi
+            teknologi,
           })
-        )
+        );
 
         // Kirim file gambar ke server
         await axios.post(
@@ -296,8 +296,7 @@ function Updatelist() {
                         id="image"
                         name="image"
                         onChange={handleFileChange}
-                        value=""
-                        accept="image/*" // hanya menerima file gambar
+                        accept="image/*"
                       />
                       <img
                         src={image}

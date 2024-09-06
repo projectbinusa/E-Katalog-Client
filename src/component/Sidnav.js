@@ -16,17 +16,21 @@ function Sidebar() {
   const id = localStorage.getItem("id");
 
   useEffect(() => {
+    console.log("Sidebar is now:", showSidebar ? "Visible" : "Hidden");
+  }, [showSidebar]);
+
+  useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setShowSidebar(false); // Hide sidebar on small screens
+      if (window.innerWidth >= 768) {
+        setShowSidebar(true); // Always show sidebar on larger screens
       } else {
-        setShowSidebar(true); // Show sidebar on larger screens
+        setShowSidebar(false); // Hide sidebar on smaller screens
       }
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Call handler on mount
-    return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
+    handleResize(); // Check on mount
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -116,12 +120,11 @@ function Sidebar() {
               className="navbar-toggler"
               type="button"
               aria-label="Toggle navigation"
-              onClick={toggleSidebar}
+              onClick={toggleSidebar} // This will toggle the sidebar
             >
               <i className="fas fa-bars"></i>
             </button>
 
-            {/* Logo hanya muncul pada layar besar */}
             <div className="logo d-none d-lg-block ms-2">
               <img src={Logo} alt="Logo" loading="lazy" />
             </div>
