@@ -131,12 +131,11 @@ function Sidebar() {
 
             <div className="collapse navbar-collapse ms-auto">
               <ul className="navbar-nav ms-auto">
-                <li className="nav-item dropdown profile">
-                  <a
-                    className="nav-link"
-                    href="#"
+                <li className="nav-item dropdown">
+                  <button
+                    className="nav-link btn"
+                    type="button"
                     id="profileDropdown"
-                    role="button"
                     onClick={toggleDropdown}
                     aria-expanded={showDropdown}
                   >
@@ -148,10 +147,10 @@ function Sidebar() {
                       alt="Avatar"
                       loading="lazy"
                     />
-                  </a>
+                  </button>
                   {showDropdown && (
                     <ul
-                      className="dropdown-menu dropdown-menu-left show"
+                      className="dropdown-menu show"
                       aria-labelledby="profileDropdown"
                     >
                       <li>
@@ -165,9 +164,9 @@ function Sidebar() {
                         </Link>
                       </li>
                       <li>
-                        <a className="dropdown-item" onClick={handleLogout}>
+                        <button className="dropdown-item" onClick={handleLogout}>
                           Log Out
-                        </a>
+                        </button>
                       </li>
                     </ul>
                   )}

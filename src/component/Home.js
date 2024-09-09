@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { getProjects } from "../Router/getProject";
+import { getProjects } from "../Router/getProject"; // Pastikan fungsi ini mengembalikan data dari API
 import Gelembung from "../aset/gelembung.png";
 import Logo from "../aset/LOGO_Katalog.png";
 import PT from "../aset/pt-dinartech.png";
@@ -11,16 +11,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Home = () => {
   const [projects, setProjects] = useState([]);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         const projectData = await getProjects();
-        const sortedProjects = projectData.sort((a, b) => {
-          return new Date(b.createdAt) - new Date(a.createdAt);
-        });
-        setProjects(sortedProjects);
+        if (Array.isArray(projectData)) {
+          const sortedProjects = projectData.sort((a, b) => {
+            return new Date(b.createdAt) - new Date(a.createdAt);
+          });
+          setProjects(sortedProjects); // Set semua proyek ke state tanpa batasan jumlah
+        } else {
+          console.error("Data proyek tidak valid:", projectData);
+        }
       } catch (error) {
         console.error("Failed to fetch projects:", error);
       }
@@ -30,17 +33,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    AOS.init();
+    AOS.init(); // Inisialisasi AOS
   }, []);
 
   return (
@@ -95,7 +88,7 @@ const Home = () => {
                         style={{
                           marginLeft: "220px",
                           marginBottom: "50%",
-                          transform: "translateY(-25%)", // Geser ke atas 5% lagi
+                          transform: "translateY(-25%)",
                           display: "flex",
                           alignItems: "center",
                         }}
