@@ -64,7 +64,7 @@ body {
   .responsive-card {
     width: 100%;
     padding-left: 50%;
-    padding-top: 5%;
+    padding-top: 5%;  
   }
 
   .table-custom {
@@ -151,4 +151,5 @@ a:hover {
 .card-body1 {
   max-height: 500px; /* Set a max height for the card-body */
   padding: 20px; /* Add some padding for better readability */
+  max-width: 100%;
 }

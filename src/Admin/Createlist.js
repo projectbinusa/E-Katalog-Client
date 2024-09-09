@@ -41,6 +41,7 @@ function Createlist() {
             developer,
             deskripsi_project,
             teknologi,
+            link,
           })
         );
 
@@ -86,6 +87,7 @@ function Createlist() {
           developer,
           deskripsi_project,
           teknologi,
+          link,
         })
       );
 

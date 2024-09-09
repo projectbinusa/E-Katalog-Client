@@ -1,19 +1,14 @@
-import axios from 'axios';
-import { API_DUMMY } from '../utils/api';
-
+// Pastikan fungsi getProjects di Router/getProject.js mengembalikan data yang benar
 export const getProjects = async () => {
   try {
-    const token = localStorage.getItem("token"); // Mengambil token dari localStorage
-
-    const response = await axios.get(`${API_DUMMY}/api/list_project/all`, {
-      headers: {
-        Authorization: `Bearer ${token}`, // Sertakan token di header
-      },
-    });
- 
-    return response.data; // Mengembalikan data proyek
+    const response = await fetch("http://localhost:2007/api/list_project/all");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    return data; // Pastikan data ini sesuai dengan yang Anda harapkan
   } catch (error) {
     console.error("Failed to fetch projects:", error);
-    throw error;
+    return [];
   }
 };
