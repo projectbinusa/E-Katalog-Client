@@ -62,77 +62,56 @@ function Updatelist() {
     }
   }, [id]);
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const updatedProject = {
-      no,
-      nama_project,
-      teknologi,
-      developer,
-      link,
-      deskripsi_project,
-    };
+    const formData = new FormData();
+    formData.append("no", no);
+    formData.append("nama_project", nama_project);
+    formData.append("teknologi", teknologi);
+    formData.append("developer", developer);
+    formData.append("link", link);
+    formData.append("deskripsi_project", deskripsi_project);
+
+    // Append the image file if it's changed
+    if (file) {
+        formData.append("image", file); // Add the new file to FormData
+    }
 
     try {
-      const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
 
-      // Upload gambar jika ada file yang dipilih
-      if (file) {
-        const formData = new FormData();
-        formData.append("image", file); // tambahkan file ke form data
-        formData.append(
-          "listProject",
-          JSON.stringify({
-            nama_project,
-            developer,
-            deskripsi_project,
-            teknologi,
-          })
+        // Send formData with PUT request to update the project including the image
+        await axios.put(
+            `${API_DUMMY}/api/list_project/edit/imagelistproject/${id}`,
+            formData,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "multipart/form-data", // Make sure to set this for file uploads
+                },
+            }
         );
 
-        // Kirim file gambar ke server
-        await axios.post(
-          `${API_DUMMY}/api/list_project/edit/imagelistproject/${id}`,
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-      }
-
-      // Update data project lainnya
-      await axios.put(
-        `${API_DUMMY}/api/list_project/ubah/${id}`,
-        updatedProject,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      Swal.fire({
-        title: "Berhasil",
-        text: "Data project berhasil diperbarui",
-        icon: "success",
-        timer: 1500,
-        showConfirmButton: false,
-      }).then(() => {
-        navigate(-1);
-      });
+        Swal.fire({
+            title: "Berhasil",
+            text: "Data project berhasil diperbarui",
+            icon: "success",
+            timer: 1500,
+            showConfirmButton: false,
+        }).then(() => {
+            navigate(-1);
+        });
     } catch (error) {
-      console.error("Gagal memperbarui data project: ", error);
-      Swal.fire({
-        title: "Gagal",
-        text: "Gagal memperbarui data project. Silakan coba lagi.",
-        icon: "error",
-      });
+        console.error("Gagal memperbarui data project: ", error);
+        Swal.fire({
+            title: "Gagal",
+            text: "Gagal memperbarui data project. Silakan coba lagi.",
+            icon: "error",
+        });
     }
-  };
+};
+
 
   const batal = () => {
     navigate(-1);
