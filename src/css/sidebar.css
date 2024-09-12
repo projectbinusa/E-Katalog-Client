@@ -13,7 +13,9 @@
 
 @media (max-width: 991px) {
   .sidebar {
-    transform: translateX(-100%); /* Sidebar tersembunyi pada tampilan responsif */
+    transform: translateX(
+      -100%
+    ); /* Sidebar tersembunyi pada tampilan responsif */
     z-index: 1050; /* Pastikan sidebar di atas elemen lain */
   }
 
@@ -30,7 +32,9 @@
 .sidebar-sticky {
   position: relative;
   top: 0;
-  height: calc(100vh - 60px); /* Mengatur tinggi sidebar agar sesuai dengan layar */
+  height: calc(
+    100vh - 60px
+  ); /* Mengatur tinggi sidebar agar sesuai dengan layar */
   padding-top: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto;
@@ -129,4 +133,9 @@
 .dropdown-menu {
   margin-top: 5%;
   transform: translateX(-80%);
+}
+
+.dropdown-item:hover {
+  background-color: #007bff; /* Warna biru untuk efek hover */
+  color: white; /* Mengubah teks menjadi putih agar lebih kontras */
 }

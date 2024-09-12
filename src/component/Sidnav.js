@@ -39,7 +39,8 @@ function Sidebar() {
         try {
           const adminData = await getAdminById(id);
           if (adminData && adminData.image) {
-            setProfilePic(adminData.image);
+            // Add timestamp to URL to prevent caching
+            setProfilePic(`${adminData.image}?${new Date().getTime()}`);
           } else {
             setProfilePic(
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdztTDcpZ2pFqwWDYwSXbvZq5nzJYg5cn8w&s"
@@ -47,10 +48,19 @@ function Sidebar() {
           }
         } catch (error) {
           console.error("Failed to fetch admin:", error);
+          setProfilePic(
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdztTDcpZ2pFqwWDYwSXbvZq5nzJYg5cn8w&s"
+          );
         }
       };
 
       fetchAdmin();
+
+      // Auto reload every 10 seconds
+      const intervalId = setInterval(fetchAdmin, 10000);
+
+      // Cleanup interval on unmount
+      return () => clearInterval(intervalId);
     }
   }, [id]);
 
@@ -133,7 +143,7 @@ function Sidebar() {
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item dropdown">
                   <button
-                    className="nav-link btn"
+                    className="nav-link"
                     type="button"
                     id="profileDropdown"
                     onClick={toggleDropdown}
@@ -146,6 +156,11 @@ function Sidebar() {
                       width="35"
                       alt="Avatar"
                       loading="lazy"
+                      onError={(e) => {
+                        // Fallback in case image fails to load
+                        e.target.src =
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdztTDcpZ2pFqwWDYwSXbvZq5nzJYg5cn8w&s";
+                      }}
                     />
                   </button>
                   {showDropdown && (

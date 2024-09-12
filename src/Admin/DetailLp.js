@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import FontAwesomeIcon
+import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons"; // Import faAnglesLeft icon
 import { API_DUMMY } from "../utils/api";
 import '../css/Detail.css'; // Import file CSS
 
 function DetailLp() {
   const { id } = useParams();
   const [projectData, setProjectData] = useState(null);
+  const navigate = useNavigate(); // Menggunakan useNavigate
 
   useEffect(() => {
     const fetchProjectData = async () => {
@@ -34,6 +37,11 @@ function DetailLp() {
 
     fetchProjectData();
   }, [id]);
+
+  // Fungsi untuk navigasi ke halaman Home
+  const handleGoHome = () => {
+    navigate("/"); // Mengarahkan pengguna ke halaman beranda
+  };
 
   if (!projectData) {
     return <div>Loading...</div>;
@@ -85,11 +93,23 @@ function DetailLp() {
                           <h6 className="bold-title">Link</h6>
                           <p className="text-muted">{projectData.link}</p>
                         </div>
-                        <div className="col-15 mb-3">
+                        <div className="col-12 mb-3">
                           <h6 className="bold-title">Project Description</h6>
                           <p className="text-muted">
                             {projectData.deskripsi_project}
                           </p>
+                          {/* Bungkus icon dan teks "Back" dengan div */}
+                          <div
+                            onClick={handleGoHome} // Event handler onClick untuk ikon dan teks
+                            style={{ cursor: "pointer", display: "flex", alignItems: "center", }}
+                          >
+                            <FontAwesomeIcon
+                              icon={faAnglesLeft}
+                              size="lg"
+                              style={{ marginRight: "5px" }} // Sedikit jarak antara ikon dan teks
+                            />
+                            <span>Back</span>
+                          </div>
                         </div>
                       </div>
                     </div>
