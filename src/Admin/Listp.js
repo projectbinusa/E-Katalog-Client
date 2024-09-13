@@ -30,14 +30,11 @@ function Listp() {
       try {
         const token = getToken(); // Ambil token
 
-        const response = await axios.get(
-          `${API_DUMMY}/api/list_project/all`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`, 
-            },
-          }
-        );
+        const response = await axios.get(`${API_DUMMY}/api/list_project/all`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         console.log("Respons API:", response); // Log respons penuh
 
@@ -95,14 +92,11 @@ function Listp() {
       if (result.isConfirmed) {
         const token = getToken(); // Ambil token
 
-        await axios.delete(
-          `${API_DUMMY}/api/list_project/hapus/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`, // Sertakan token di header
-            },
-          }
-        );
+        await axios.delete(`${API_DUMMY}/api/list_project/hapus/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Sertakan token di header
+          },
+        });
 
         setData((prevData) => prevData.filter((item) => item.id !== id));
 
@@ -134,7 +128,7 @@ function Listp() {
           const messageElement = document.createElement("div");
           messageElement.textContent = "The link has been copied";
           messageElement.style.position = "absolute";
-          messageElement.style.top = `${event.clientY + 10}px`; 
+          messageElement.style.top = `${event.clientY + 10}px`;
           messageElement.style.left = `${event.clientX}px`;
           messageElement.style.backgroundColor = "#333";
           messageElement.style.color = "#fff";
@@ -161,10 +155,11 @@ function Listp() {
       <section
         className="card1 w-100 d-flex justify-content-center align-items-start"
         style={{
-          minHeight: "1000vh",
+          minHeight: "100vh",
           padding: "0 5%",
           marginTop: "8%",
           marginLeft: "12%",
+          marginBottom: "3%", // Tambahkan margin bawah agar pagination tidak tenggelam
         }}
       >
         <div className="container px-1">
@@ -178,9 +173,7 @@ function Listp() {
           >
             <div className="card-body1">
               <div className="d-flex align-items-center mb-3">
-                <h5
-                  className="title mr-auto text-nowrap"
-                >
+                <h5 className="title mr-auto text-nowrap">
                   Project List Table
                 </h5>
                 <div className="d-flex align-items-center">
@@ -327,7 +320,11 @@ function Listp() {
                           </td>
                           <td>
                             {" "}
-                            <img style={{ width: "75px", height: "60px" }} src={item.image} alt="" />{" "}
+                            <img
+                              style={{ width: "75px", height: "60px" }}
+                              src={item.image}
+                              alt=""
+                            />{" "}
                           </td>
                           <td>{item.deskripsi_project}</td>
                           <td>
@@ -372,8 +369,9 @@ function Listp() {
               <nav>
                 <ul className="pagination justify-content-center">
                   <li
-                    className={`page-item ${currentPage === 1 ? "disabled" : ""
-                      }`}
+                    className={`page-item ${
+                      currentPage === 1 ? "disabled" : ""
+                    }`}
                   >
                     <button
                       className="page-link"
@@ -385,8 +383,9 @@ function Listp() {
                   </li>
                   {Array.from({ length: totalPages }, (_, i) => (
                     <li
-                      className={`page-item ${currentPage === i + 1 ? "active" : ""
-                        }`}
+                      className={`page-item ${
+                        currentPage === i + 1 ? "active" : ""
+                      }`}
                       key={i + 1}
                     >
                       <button
@@ -398,8 +397,9 @@ function Listp() {
                     </li>
                   ))}
                   <li
-                    className={`page-item ${currentPage === totalPages ? "disabled" : ""
-                      }`}
+                    className={`page-item ${
+                      currentPage === totalPages ? "disabled" : ""
+                    }`}
                   >
                     <button
                       className="page-link"

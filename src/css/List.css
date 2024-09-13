@@ -7,18 +7,21 @@ body {
 }
 
 .container {
-  min-height: 100vh; /* Ensure container takes at least full viewport height */
+  max-height: 100vh; /* Ensure container takes at least full viewport height */
+  width: auto;
   display: flex;
-  flex-direction: column;
   justify-content: space-between; /* Ensures pagination stays at the bottom */
 }
 
 /* Responsive card style */
 .responsive-card {
+  width: 100%; /* Atur ukuran card untuk kondisi non-responsif */
+  max-width: 1200px; /* Maksimal lebar card */
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10%;
-  border-radius: 8px; /* Add border radius */
+  border-radius: 8px;
 }
 
 /* Style for the table */
@@ -70,6 +73,7 @@ body {
 @media (max-width: 768px) {
   .responsive-card {
     width: 100%;
+    height: 100%;
     padding-left: 50%;
     padding-top: 5%;
   }
@@ -156,8 +160,11 @@ a:hover {
 }
 
 .card-body1 {
-  min-height: 900px; /* Ensure there's a minimum height */
-  max-height: 200%; /* Allow height to grow dynamically */
   /* overflow-y: auto; */
   padding: 30px; /* Add padding for readability */
+}
+
+.card1 {
+  width: 60%; /* Default width */
+  transition: width 0.3s ease-in-out; /* Smooth transition */
 }
