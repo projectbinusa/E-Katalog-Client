@@ -1,41 +1,68 @@
 .card-custom {
-    border-radius: 0.5rem;
-    width: 150%; /* Perbesar lebar card */
+  border-radius: 0.5rem;
+  width: 100%; /* Sesuaikan lebar card secara responsif */
+}
+
+.col-lg-8 {
+  margin-left: auto; /* Gunakan auto untuk sentralisasi yang lebih baik */
+  margin-right: auto; /* agar card selalu berada di tengah */
+}
+
+.card-left {
+  background: linear-gradient(40deg, #45cafc, #303f9f);
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.avatar {
+  width: 220px;
+  border-radius: 50%;
+  height: 220px;
+}
+
+.card-body-custom {
+  padding: 1.5rem 2rem;
+}
+
+/* Untuk tampilan responsif */
+@media (max-width: 768px) {
+  .sesi {
+    margin-left: 5.5%;
+    margin-top: 50%;
   }
-  
-  .col-lg-8 {
-    margin-left: 10%; /* Kurangi margin untuk menyesuaikan posisi */
-  }
-  
+
   .card-left {
-    background: linear-gradient(40deg, #45cafc, #303f9f);
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
+    padding: 25px; /* Kurangi padding pada layar kecil */
   }
-  
+
   .avatar {
-    width: 220px; /* Sesuaikan ukuran avatar jika diperlukan */
-    border-radius: 50%;
-    height: 220px;
+    width: 150px; /* Sesuaikan ukuran avatar */
+    height: 150px;
   }
-  
+
   .card-body-custom {
-    padding: 1.5rem 2rem; /* Perbesar padding di dalam card */
+    padding: 1rem; /* Kurangi padding di dalam card */
   }
-  
-  .bold-title {
-    font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  .card-left {
+    padding: 10px; /* Lebih sedikit padding untuk layar lebih kecil */
   }
-  
-  .text-muted {
-    color: #6c757d;
+
+  .avatar {
+    width: 100px;
+    height: 100px;
   }
-  
-  
+
+  .card-body-custom {
+    padding: 0.5rem; /* Lebih sedikit padding pada card */
+  }
+}

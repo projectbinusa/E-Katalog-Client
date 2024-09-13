@@ -49,7 +49,7 @@ function DetailLp() {
 
   return (
     <div className="d-flex flex-column flex-md-row Bg">
-      <section className="" style={{ width: "100%", marginRight: "10%" }}>
+      <section className="sesi" style={{ width: "100%", marginRight: "10%" }}>
         <div className="row justify-content-center align-items-center h-100">
           <div className="col-lg-8 mb-5 mb-lg-0">
             <div className="card mb-3 card-custom">
