@@ -162,12 +162,13 @@ function Listp() {
           marginBottom: "3%", // Tambahkan margin bawah agar pagination tidak tenggelam
         }}
       >
-        <div className="container px-1">
+        <div className=" px-3">
           <div
             className="card mx-auto responsive-card"
             style={{
               width: "100%",
               maxWidth: "100%",
+              height:"100",
               padding: "10px 0",
             }}
           >
