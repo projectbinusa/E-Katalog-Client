@@ -62,7 +62,7 @@ function Updatelist() {
     }
   }, [id]);
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
@@ -73,45 +73,54 @@ const handleSubmit = async (e) => {
     formData.append("link", link);
     formData.append("deskripsi_project", deskripsi_project);
 
-    // Append the image file if it's changed
+    // Append image file only if the file is selected
     if (file) {
-        formData.append("image", file); // Add the new file to FormData
+      formData.append("image", file);
     }
 
     try {
-        const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token");
 
-        // Send formData with PUT request to update the project including the image
-        await axios.put(
-            `${API_DUMMY}/api/list_project/edit/imagelistproject/${id}`,
-            formData,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "multipart/form-data", // Make sure to set this for file uploads
-                },
-            }
-        );
+      const response = await axios.put(
+        `${API_DUMMY}/api/list_project/edit/imagelistproject/${id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
-        Swal.fire({
-            title: "Berhasil",
-            text: "Data project berhasil diperbarui",
-            icon: "success",
-            timer: 1500,
-            showConfirmButton: false,
-        }).then(() => {
-            navigate(-1);
-        });
+      Swal.fire({
+        title: "Berhasil",
+        text: "Data project berhasil diperbarui",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      }).then(() => {
+        navigate(-1); // Go back after success
+      });
     } catch (error) {
-        console.error("Gagal memperbarui data project: ", error);
-        Swal.fire({
-            title: "Gagal",
-            text: "Gagal memperbarui data project. Silakan coba lagi.",
-            icon: "error",
-        });
+      // Log the error response from the server for better debugging
+      console.error("Gagal memperbarui data project:", error.response);
+      Swal.fire({
+        title: "Gagal",
+        text:
+          error.response?.data?.message ||
+          "Gagal memperbarui data project. Silakan coba lagi.",
+        icon: "error",
+      });
     }
-};
-
+  };
+  console.log("Form Data: ", {
+    no,
+    nama_project,
+    teknologi,
+    developer,
+    link,
+    deskripsi_project,
+  });
 
   const batal = () => {
     navigate(-1);
