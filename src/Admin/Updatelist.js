@@ -65,17 +65,8 @@ function Updatelist() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const listProjectData = {
-        nama_project: nama_project,
-        developer: developer,
-        deskripsi_project: deskripsi_project,
-        teknologi: teknologi,
-        link: link,
-    };
-
     try {
-        const token = localStorage.getItem("token");
-
+      const token = localStorage.getItem("token");
         // First, send JSON data
         await axios.put(
             `${API_DUMMY}/api/list_project/ubah/${id}`,
@@ -114,16 +105,47 @@ function Updatelist() {
         }).then(() => {
             navigate(-1);
         });
-    } catch (error) {
-        console.error("Gagal memperbarui data project: ", error);
-        Swal.fire({
-            title: "Gagal",
-            text: "Gagal memperbarui data project. Silakan coba lagi.",
-            icon: "error",
-        });
-    }
-};
+=======
+      const response = await axios.put(
+        `${API_DUMMY}/api/list_project/edit/imagelistproject/${id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
+      Swal.fire({
+        title: "Berhasil",
+        text: "Data project berhasil diperbarui",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      }).then(() => {
+        navigate(-1); // Go back after success
+      });
+    } catch (error) {
+      // Log the error response from the server for better debugging
+      console.error("Gagal memperbarui data project:", error.response);
+      Swal.fire({
+        title: "Gagal",
+        text:
+          error.response?.data?.message ||
+          "Gagal memperbarui data project. Silakan coba lagi.",
+        icon: "error",
+      });
+    }
+  };
+  console.log("Form Data: ", {
+    no,
+    nama_project,
+    teknologi,
+    developer,
+    link,
+    deskripsi_project,
+  });
 
 
   const batal = () => {
@@ -134,7 +156,7 @@ function Updatelist() {
     <>
       <div className="d-flex flex-column flex-md-row Bg">
         <Sidebar />
-        <section>
+        <section className="atur">
           <div className="container2 mt-6">
             <div
               className="card shadow-sm p-1 mx-auto"
