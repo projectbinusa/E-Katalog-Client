@@ -62,36 +62,48 @@ function Updatelist() {
     }
   }, [id]);
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("no", no);
-    formData.append("nama_project", nama_project);
-    formData.append("teknologi", teknologi);
-    formData.append("developer", developer);
-    formData.append("link", link);
-    formData.append("deskripsi_project", deskripsi_project);
-
-    // Append the image file if it's changed
-    if (file) {
-        formData.append("image", file); // Add the new file to FormData
-    }
+    const listProjectData = {
+        nama_project: nama_project,
+        developer: developer,
+        deskripsi_project: deskripsi_project,
+        teknologi: teknologi,
+        link: link,
+    };
 
     try {
         const token = localStorage.getItem("token");
 
-        // Send formData with PUT request to update the project including the image
+        // First, send JSON data
         await axios.put(
-            `${API_DUMMY}/api/list_project/edit/imagelistproject/${id}`,
-            formData,
+            `${API_DUMMY}/api/list_project/ubah/${id}`,
+            listProjectData,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    "Content-Type": "multipart/form-data", // Make sure to set this for file uploads
+                    "Content-Type": "application/json", // Sending JSON
                 },
             }
         );
+
+        // If a new file is selected, send the image in a separate request
+        if (file) {
+            const formData = new FormData();
+            formData.append("image", file);
+
+            await axios.put(
+                `${API_DUMMY}/api/list_project/update-image/${id}`,
+                formData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "multipart/form-data", 
+                    },
+                }
+            );
+        }
 
         Swal.fire({
             title: "Berhasil",
@@ -111,6 +123,7 @@ const handleSubmit = async (e) => {
         });
     }
 };
+
 
 
   const batal = () => {
