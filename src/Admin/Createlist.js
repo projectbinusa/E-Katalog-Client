@@ -132,9 +132,9 @@ function Createlist() {
 
   return (
     <>
-      <div className="d-flex flex-column flex-md-row Bg atur">
+      <div className="d-flex flex-column flex-md-row Bg ">
         <Sidebar />
-        <section>
+        <section className="atur">
           <div className="container2 mt-6">
             <div
               className="card shadow-sm p-1"
