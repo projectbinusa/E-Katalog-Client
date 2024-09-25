@@ -65,22 +65,47 @@ function Updatelist() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("no", no);
-    formData.append("nama_project", nama_project);
-    formData.append("teknologi", teknologi);
-    formData.append("developer", developer);
-    formData.append("link", link);
-    formData.append("deskripsi_project", deskripsi_project);
-
-    // Append image file only if the file is selected
-    if (file) {
-      formData.append("image", file);
-    }
-
     try {
       const token = localStorage.getItem("token");
+        // First, send JSON data
+        await axios.put(
+            `${API_DUMMY}/api/list_project/ubah/${id}`,
+            listProjectData,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json", // Sending JSON
+                },
+            }
+        );
 
+        // If a new file is selected, send the image in a separate request
+        if (file) {
+            const formData = new FormData();
+            formData.append("image", file);
+
+            await axios.put(
+                `${API_DUMMY}/api/list_project/update-image/${id}`,
+                formData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "multipart/form-data", 
+                    },
+                }
+            );
+        }
+
+        Swal.fire({
+            title: "Berhasil",
+            text: "Data project berhasil diperbarui",
+            icon: "success",
+            timer: 1500,
+            showConfirmButton: false,
+        }).then(() => {
+            navigate(-1);
+        });
+=======
       const response = await axios.put(
         `${API_DUMMY}/api/list_project/edit/imagelistproject/${id}`,
         formData,
@@ -121,6 +146,7 @@ function Updatelist() {
     link,
     deskripsi_project,
   });
+
 
   const batal = () => {
     navigate(-1);
