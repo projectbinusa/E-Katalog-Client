@@ -180,7 +180,7 @@ function Listp() {
                 <div className="d-flex align-items-center">
                   <input
                     type="text"
-                    placeholder="Cari..."
+                    placeholder="Search..."
                     className="cari form-control mr-2"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}

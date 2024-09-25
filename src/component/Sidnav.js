@@ -38,29 +38,14 @@ function Sidebar() {
       const fetchAdmin = async () => {
         try {
           const adminData = await getAdminById(id);
-          if (adminData && adminData.image) {
-            // Add timestamp to URL to prevent caching
-            setProfilePic(`${adminData.image}?${new Date().getTime()}`);
-          } else {
-            setProfilePic(
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdztTDcpZ2pFqwWDYwSXbvZq5nzJYg5cn8w&s"
-            );
+          if (adminData.image) {
+            setProfilePic(adminData.image);
           }
         } catch (error) {
           console.error("Failed to fetch admin:", error);
-          setProfilePic(
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdztTDcpZ2pFqwWDYwSXbvZq5nzJYg5cn8w&s"
-          );
         }
       };
-
       fetchAdmin();
-
-      // Auto reload every 10 seconds
-      const intervalId = setInterval(fetchAdmin, 10000);
-
-      // Cleanup interval on unmount
-      return () => clearInterval(intervalId);
     }
   }, [id]);
 
@@ -148,6 +133,7 @@ function Sidebar() {
                     id="profileDropdown"
                     onClick={toggleDropdown}
                     aria-expanded={showDropdown}
+                    aria-haspopup="true"
                   >
                     <img
                       src={profilePic}
@@ -155,9 +141,7 @@ function Sidebar() {
                       height="35"
                       width="35"
                       alt="Avatar"
-                      loading="lazy"
                       onError={(e) => {
-                        // Fallback in case image fails to load
                         e.target.src =
                           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdztTDcpZ2pFqwWDYwSXbvZq5nzJYg5cn8w&s";
                       }}

@@ -60,31 +60,33 @@ function GantiPass() {
       );
       console.log("response status:", response.status); // Debug response status
 
-      
-    if (response.status === 200) {
-      Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Password changed successfully.',
-      });
-    } else {
+
+      if (response.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Password changed successfully.',
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Failed to change password.',
+        });
+        const errorMessage = await response.data;
+        setError(errorMessage.message || "Failed to change password.");
+      }
+    } catch (error) {
+      console.error("Catch error:", error); // Debug catch errors
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Failed to change password.',
+        text: 'An error occurred while changing the password.',
       });
-      const errorMessage = await response.data;
-      setError(errorMessage.message || "Failed to change password.");
     }
-  } catch (error) {
-    console.error("Catch error:", error); // Debug catch errors
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'An error occurred while changing the password.',
-    });
-  }
-};
+  };
 
   return (
     <div className="container-fluid p-5">
