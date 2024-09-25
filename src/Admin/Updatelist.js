@@ -65,57 +65,45 @@ function Updatelist() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const listProjectData = {
+      nama_project: nama_project,
+      developer: developer,
+      deskripsi_project: deskripsi_project,
+      teknologi: teknologi,
+      link: link,
+    };
+
     try {
       const token = localStorage.getItem("token");
-        // First, send JSON data
-        await axios.put(
-            `${API_DUMMY}/api/list_project/ubah/${id}`,
-            listProjectData,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json", // Sending JSON
-                },
-            }
-        );
 
-        // If a new file is selected, send the image in a separate request
-        if (file) {
-            const formData = new FormData();
-            formData.append("image", file);
-
-            await axios.put(
-                `${API_DUMMY}/api/list_project/update-image/${id}`,
-                formData,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        "Content-Type": "multipart/form-data", 
-                    },
-                }
-            );
-        }
-
-        Swal.fire({
-            title: "Berhasil",
-            text: "Data project berhasil diperbarui",
-            icon: "success",
-            timer: 1500,
-            showConfirmButton: false,
-        }).then(() => {
-            navigate(-1);
-        });
-=======
-      const response = await axios.put(
-        `${API_DUMMY}/api/list_project/edit/imagelistproject/${id}`,
-        formData,
+      // First, send JSON data
+      await axios.put(
+        `${API_DUMMY}/api/list_project/ubah/${id}`,
+        listProjectData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json", // Sending JSON
           },
         }
       );
+
+      // If a new file is selected, send the image in a separate request
+      if (file) {
+        const formData = new FormData();
+        formData.append("image", file);
+
+        await axios.put(
+          `${API_DUMMY}/api/list_project/update-image/${id}`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data", // Sending file
+            },
+          }
+        );
+      }
 
       Swal.fire({
         title: "Berhasil",
@@ -124,29 +112,17 @@ function Updatelist() {
         timer: 1500,
         showConfirmButton: false,
       }).then(() => {
-        navigate(-1); // Go back after success
+        navigate(-1);
       });
     } catch (error) {
-      // Log the error response from the server for better debugging
-      console.error("Gagal memperbarui data project:", error.response);
+      console.error("Gagal memperbarui data project: ", error);
       Swal.fire({
         title: "Gagal",
-        text:
-          error.response?.data?.message ||
-          "Gagal memperbarui data project. Silakan coba lagi.",
+        text: "Gagal memperbarui data project. Silakan coba lagi.",
         icon: "error",
       });
     }
   };
-  console.log("Form Data: ", {
-    no,
-    nama_project,
-    teknologi,
-    developer,
-    link,
-    deskripsi_project,
-  });
-
 
   const batal = () => {
     navigate(-1);
@@ -156,7 +132,7 @@ function Updatelist() {
     <>
       <div className="d-flex flex-column flex-md-row Bg">
         <Sidebar />
-        <section className="atur">
+        <section>
           <div className="container2 mt-6">
             <div
               className="card shadow-sm p-1 mx-auto"
