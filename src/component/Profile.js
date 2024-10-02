@@ -100,7 +100,7 @@ function Profile() {
     if (imageFile) {
       updateData.append("image", imageFile);
     }
-
+  
     try {
       const response = await axios.put(
         `${API_DUMMY}/api/edit/image/${id}`,
@@ -112,7 +112,7 @@ function Profile() {
           },
         }
       );
-
+  
       setFormData({
         ...formData,
         image: response.data.image || formData.image,
@@ -121,6 +121,10 @@ function Profile() {
       setImageFile(null);
       setPreviewImage(null);
       setOriginalData({ ...formData, image: response.data.image }); // Update data asli setelah menyimpan gambar
+  
+      // Reload the entire page
+      window.location.reload();
+  
       Swal.fire({
         title: "Success",
         text: "Profile photo saved successfully!",
@@ -139,6 +143,7 @@ function Profile() {
       });
     }
   };
+  
 
   const handleCancel = () => {
     setFormData(originalData); // Kembalikan data ke nilai asli
