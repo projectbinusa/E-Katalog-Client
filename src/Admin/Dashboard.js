@@ -14,14 +14,14 @@ function Dashboard() {
     window.innerWidth < 768 ? "responsive" : "desktop"
   );
 
-  // Efek untuk mengambil data proyek
+  // Effect to fetch project data
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         const projectData = await getProjects();
         console.log(projectData);
 
-        // Mengurutkan proyek dari yang terbaru hingga yang lama berdasarkan createdAt
+        // Sort projects from newest to oldest based on createdAt
         const sortedProjects = projectData.sort((a, b) => {
           return new Date(b.createdAt) - new Date(a.createdAt);
         });
@@ -35,7 +35,7 @@ function Dashboard() {
     fetchProjects();
   }, []);
 
-  // Efek untuk menangani resize jendela dan auto reload ketika mode berubah
+  // Effect to handle window resize and auto reload when mode changes
   useEffect(() => {
     const handleResize = () => {
       const newWindowWidth = window.innerWidth;
@@ -44,14 +44,14 @@ function Dashboard() {
       const currentMode = newWindowWidth < 768 ? "responsive" : "desktop";
       if (currentMode !== previousMode) {
         setPreviousMode(currentMode);
-        window.location.reload(); // Reload halaman ketika mode berubah
+        window.location.reload(); // Reload the page when mode changes
       }
     };
 
-    // Menambahkan event listener resize
+    // Add resize event listener
     window.addEventListener("resize", handleResize);
 
-    // Membersihkan event listener ketika komponen di-unmount
+    // Clean up the event listener when component unmounts
     return () => window.removeEventListener("resize", handleResize);
   }, [previousMode]);
 
@@ -63,7 +63,7 @@ function Dashboard() {
   return (
     <div className="d-flex">
       <Sidebar />
-      <div className="Bg dashboard-bg1">
+      <div className="Bg dashboard-bg1 dashboard-content"> {/* Added dashboard-content class */}
         <div className="bg-element2">
           <img src={Gelembung} alt="gelembung" className="gelembung" />
         </div>
@@ -80,7 +80,7 @@ function Dashboard() {
                     // to={`/projects/${project.id}`}
                     className="project-card"
                   >
-                    <div className="box2">
+                    <div className="box2 text-center">
                       <div className="our-services-iconnn" data-aos="fade-up">
                         <div className="icon2">
                           <img
@@ -100,7 +100,7 @@ function Dashboard() {
                             transform: "translateY(-20%)",
                           }}
                         >
-                          <i> {project.nama_project} </i>
+                          <i>{project.nama_project}</i>
                         </h4>
                       </div>
                     </div>
@@ -116,5 +116,5 @@ function Dashboard() {
     </div>
   );
 }
- 
+
 export default Dashboard;

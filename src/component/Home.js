@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { getProjects } from "../Router/getProject"; // Pastikan fungsi ini mengembalikan data dari API
+import { getProjects } from "../Router/getProject"; // Ensure this function returns data from the API
 import Gelembung from "../aset/gelembung.png";
 import Logo from "../aset/LOGO_Katalog.png";
 import PT from "../aset/pt-dinartech.png";
@@ -20,9 +20,9 @@ const Home = () => {
           const sortedProjects = projectData.sort((a, b) => {
             return new Date(b.createdAt) - new Date(a.createdAt);
           });
-          setProjects(sortedProjects); // Set semua proyek ke state tanpa batasan jumlah
+          setProjects(sortedProjects); // Set all projects to state without limiting number
         } else {
-          console.error("Data proyek tidak valid:", projectData);
+          console.error("Invalid project data:", projectData);
         }
       } catch (error) {
         console.error("Failed to fetch projects:", error);
@@ -33,12 +33,12 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    AOS.init(); // Inisialisasi AOS
+    AOS.init(); // Initialize AOS
   }, []);
 
   return (
     <div className="Bg">
-      {/* Elemen gelembung */}
+      {/* Bubble Elements */}
       <div className="bg-element">
         <img src={Gelembung} alt="gelembung" className="gelembung" />
       </div>
@@ -52,7 +52,7 @@ const Home = () => {
           <img src={PT} className="logo-pt" id="logo-logo" alt="Logo" />
         </div>
 
-        <div className="scrollable-container1">
+        <div className="scrollable-container">
           <div className="projects-container">
             {projects.length > 0 ? (
               projects.map((project) => (
@@ -73,25 +73,12 @@ const Home = () => {
                           alt={project.nama_project}
                         />
                       </div>
-                      <h4
-                        style={{
-                          color: "black",
-                          textAlign: "center",
-                          fontWeight: "bold",
-                          transform: "translateY(-20%)",
-                        }}
-                      >
+                      <h4 className="project-title">
                         <i>{project.nama_project}</i>
                       </h4>
                       <Link
                         to={`/detail/${project.id}`}
-                        style={{
-                          marginLeft: "220px",
-                          marginBottom: "50%",
-                          transform: "translateY(-25%)",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
+                        className="more-link"
                       >
                         More <FontAwesomeIcon icon={faAnglesRight} />
                       </Link>
