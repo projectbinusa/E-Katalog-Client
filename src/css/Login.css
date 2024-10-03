@@ -463,6 +463,7 @@ h6 span {
     width: 90%; /* Sesuaikan lebar card pada layar kecil */
     margin-left: auto; /* Geser card ke kiri */
     margin-right: auto; /* Pastikan card tetap di tengah */
+    transform: translateX(0); /* Reset transformasi */
   }
 
   .card-3d-wrapper {
@@ -472,30 +473,21 @@ h6 span {
   .card-front {
     padding-right: 0; /* Reset padding-right pada layar kecil */
   }
-}
 
-.form-title {
-  font-size: 1.5rem; /* Ukuran font judul */
-  color: #333; /* Warna font judul */
-  margin-bottom: 1.5rem; /* Jarak antara judul dan form */
-}
+  .form-title {
+    font-size: 1.5rem; /* Ukuran font judul */
+    color: #333; /* Warna font judul */
+    margin-bottom: 1.5rem; /* Jarak antara judul dan form */
+  }
 
-/* Style for form-group with email input */
-.form-group.email {
-  margin-top: 10%;
-  margin-bottom: 3%; /* Add 3% margin at the bottom for the email input */
-}
+  /* Style for form-group with email input */
+  .form-group.email {
+    margin-top: 10%;
+    margin-bottom: 3%; /* Add 3% margin at the bottom for the email input */
+  }
 
-/* Ensure password input container gets the default styling */
-.form-group.password {
-  margin-top: 10%; /* Adjust spacing if needed */
-}
-
-@media (max-width: 768px) {
-  .card-3d-wrap {
-    margin-top: 0; /* Reset margin-top pada layar kecil */
-    width: 90%; /* Sesuaikan lebar card pada layar kecil */
-    margin-left: 0; /* Geser card ke kiri */
-    transform: translateX(-10%); /* Geser card lebih jauh ke kiri */
+  /* Ensure password input container gets the default styling */
+  .form-group.password {
+    margin-top: 10%; /* Adjust spacing if needed */
   }
 }

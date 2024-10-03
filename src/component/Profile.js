@@ -156,12 +156,12 @@ function Profile() {
   return (
     <div className="d-flex flex-column flex-md-row Bg">
       <Sidebar />
-      <section style={{ width: "100%" }}>
+      <section style={{ flexGrow: 1, padding: '1rem', overflow: 'auto' }}>
         <div className="row justify-content-center align-items-center h-100">
-          <div className="col-lg-8 mb-5 mb-lg-0 " style={{ marginLeft: "1%" }}>
+          <div className="col-lg-8 mb-5 mb-lg-0">
             <div
               className="card mb-3"
-              style={{ borderRadius: ".5rem", marginLeft: "20%" }}
+              style={{ borderRadius: ".5rem" }}
             >
               <div className="row g-0">
                 <div
@@ -185,7 +185,7 @@ function Profile() {
                   />
                   <p className="text-center mb-1">Recommended Image Size 1:1</p>
                   <p className="mb-2">Preview</p>
-
+  
                   {!isFileSelected && (
                     <p className="text-white">{formData.username}</p>
                   )}
@@ -196,22 +196,7 @@ function Profile() {
                     onChange={handleFileChange}
                   />
                   {previewImage && (
-                    <div
-                      style={{
-                        position: "relative",
-                        textAlign: "center",
-                      }}
-                    >
-                      <span
-                        style={{
-                          position: "absolute",
-                          top: "-15px",
-                          left: "50%",
-                          transform: "translateX(-50%)",
-                          fontWeight: "bold",
-                          color: "white",
-                        }}
-                      ></span>
+                    <div style={{ position: "relative", textAlign: "center" }}>
                       <img
                         src={previewImage}
                         alt="Preview Avatar"
@@ -224,7 +209,7 @@ function Profile() {
                       />
                     </div>
                   )}
-
+  
                   <FontAwesomeIcon
                     icon={isFileSelected ? faSave : faImage}
                     size="2x"
@@ -269,22 +254,11 @@ function Profile() {
                             />
                           </div>
                         </div>
-                        <div
-                          className="d-flex mt-2"
-                          style={{ justifyContent: "space-between" }}
-                        >
-                          <button
-                            className="btn-primary btn-sm"
-                            style={{ height: "35px", width: "10%" }}
-                            onClick={handleSaveData}
-                          >
+                        <div className="d-flex mt-2" style={{ justifyContent: "space-between" }}>
+                          <button className="btn-primary btn-sm" style={{ height: "35px", width: "10%" }} onClick={handleSaveData}>
                             <FontAwesomeIcon icon={faCheck} />
                           </button>
-                          <button
-                            className="btn-danger btn-sm"
-                            style={{ height: "35px", width: "10%" }}
-                            onClick={handleCancel}
-                          >
+                          <button className="btn-danger btn-sm" style={{ height: "35px", width: "10%" }} onClick={handleCancel}>
                             <FontAwesomeIcon icon={faX} />
                           </button>
                         </div>
@@ -303,11 +277,7 @@ function Profile() {
                             <p className="text-muted">{formData.username}</p>
                           </div>
                         </div>
-                        <button
-                          className="btn-primary btn-sm"
-                          style={{ height: "35px", width: "10%" }}
-                          onClick={() => setIsEditingData(true)}
-                        >
+                        <button className="btn-primary btn-sm" style={{ height: "35px", width: "10%" }} onClick={() => setIsEditingData(true)}>
                           <FontAwesomeIcon icon={faPenToSquare} />
                         </button>
                       </div>
@@ -321,6 +291,6 @@ function Profile() {
       </section>
     </div>
   );
-}
+}  
 
 export default Profile;
