@@ -3,6 +3,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./App.css";
 import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
 import Home from "./component/Home";
+import Catalog from "./component/Catalog";
+import Service from "./component/Service";
 import Login from "./Auth/Login";
 import Uks from "./pages/Uks";
 import Absensi from "./pages/Absensi";
@@ -65,6 +67,8 @@ function App() {
           <Routes>
             {/* Rute publik */}
             <Route path="/" element={<Home />} />
+            <Route path="/catalog" element={<Catalog />} />
+            <Route path="/service" element={<Service />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/detail/:id" element={<DetailLp />} />
