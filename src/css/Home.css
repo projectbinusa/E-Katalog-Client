@@ -1,188 +1,151 @@
+/* Menghapus margin dan padding untuk body */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #260d6a; /* Menyesuaikan dengan warna header */
+}
+
 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-section {
+  font-family: "Poppins", sans-serif;
+  background-color: #260d6a;
+  color: #fff;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(0deg, #00c6ff, #f2f2f2, #ffffff);
-  width: 100%;
-  height: 100%;
+.home-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.Bg {
-  background-image: url(https://i.pinimg.com/564x/3a/c5/ff/3ac5ff639e701804aaa3142f305df7ee.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.logo {
+  height: 60px;
+  width: auto;
 }
 
-.context {
-  position: relative;
-  z-index: 100;
-  height: 100%;
-  width: 100%;
-  top: 1%;
-  overflow-y: auto; /* Enable vertical scrolling */
-}
-
-.context h1 {
-  text-align: center;
-  color: #fff;
-  font-size: 30px;
-}
-
-.header {
+.main-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px; /* Added padding for spacing */
+  padding: 50px;
+  flex-grow: 1;
 }
 
-.height-img {
-  height: 200px;
-  width: 200px;
+.intro-text {
+  flex-basis: 50%;
 }
 
-.logo-pt {
-  height: 50px;
-  width: 150px;
+.intro-text h1 {
+  font-size: 48px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 15px;
 }
 
-.projects-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* Space between cards */
-  justify-content: center;
-  margin-top: 2%;
+.intro-text h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
 }
 
-.box {
-  transition: all 0.5s;
-  width: 100%;
-  max-width: 300px; /* Set max width for cards */
+.subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: orange;
+  margin-bottom: 30px;
 }
 
-.box:hover {
-  transform: scale(1.15);
-}
-
-.our-services {
-  margin-top: 70px;
-  padding: 20px; /* Padding for inner content */
-  min-height: 120px;
-  text-align: center;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 0 25px rgba(20, 27, 202, 0.17);
-}
-
-.icon {
-  margin-bottom: -21px;
-  transform: translateY(-50%);
-  text-align: center;
-}
-
-.project-title {
-  color: black;
+.btn-cta {
+  display: inline-block;
+  background-color: #ffc300;
+  color: #1e0b54;
+  padding: 15px 30px;
+  font-size: 20px;
   font-weight: bold;
-  margin-top: 10px;
+  border-radius: 50px;
+  text-align: center;
+  text-decoration: none;
 }
 
-.more-link {
-  display: inline-flex;
+.btn-cta:hover {
+  background-color: #ffd633;
+  color: #000;
+}
+
+.product-image {
+  flex-basis: 40%;
+  height: auto;
+  max-width: 400px;
+  background-color: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header2 {
+  display: flex;
+  justify-content: flex-start; /* Mengatur agar semua item berada di kiri */
   align-items: center;
-  margin-top: 10px;
-  color: #007bff; /* Link color */
-  text-decoration: none; /* Remove underline */
+  background-color: #260d6a; /* Warna latar belakang header */
 }
 
-.more-link:hover {
-  text-decoration: underline; /* Underline on hover */
+.logo2 {
+  height: 40px; /* Perbesar logo (ubah sesuai kebutuhan) */
+  width: auto;
+  margin-right: 750px; /* Memberikan jarak antara logo dan navbar */
 }
 
-/* Bubble Animation */
-.bg-element {
-  width: 5px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
+.navbar2 {
+  display: flex; /* Memastikan navbar tetap rata */
+  align-items: center; /* Menjaga agar item tetap di tengah vertikal */
 }
 
-.gelembung {
-  width: 150px;
-  animation: floatAnimation 3s infinite alternate;
+.nav-link2 {
+  margin: 0 10px; /* Memberikan jarak horizontal antar link */
+  padding: 10px 15px; /* Memberi padding agar lebih nyaman */
+  text-decoration: none;
+  color: white; /* Warna teks default putih */
+  background-color: transparent; /* Latar belakang transparan */
+  border: none; /* Hilangkan border jika ada */
+  outline: none; /* Hilangkan outline jika ada */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transisi halus untuk hover */
 }
 
-.gelembung3 {
-  width: 120px;
-  padding-top: 70px;
-  padding-left: 950px;
-  animation: floatAnimation 4s infinite alternate;
+.nav-link2:hover {
+  background-color: #f1c40f; /* Warna hover (kuning) */
+  color: black; /* Warna teks saat hover */
 }
 
-/* Float Animation */
-@keyframes floatAnimation {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+/* Pastikan tidak ada outline saat link di-klik */
+.nav-link:focus {
+  outline: none;
 }
 
-/* Media Queries */
-@media screen and (max-width: 768px) {
-  .header {
-    padding: 15px; /* Adjust padding */
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .main-section {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .height-img {
-    height: 150px; /* Adjust height for smaller screens */
-    width: 150px;
+  .intro-text {
+    flex-basis: 100%;
+    margin-bottom: 20px;
   }
 
-  .logo-pt {
-    height: 40px; /* Adjust height for smaller screens */
-    width: auto; /* Adjust width automatically */
-  }
-
-  .projects-container {
-    gap: 20px; /* Increase gap for better spacing */
-  }
-
-  .box {
-    max-width: 90%; /* Use more of the screen width on small devices */
-  }
-
-  .our-services {
-    margin-top: 20px;
-    padding: 20px;
-    width: 90%; /* Center the card */
-    margin: 0 auto; /* Center the card */
-  }
-}
-
-@media screen and (max-width: 390px) {
-  .height-img {
-    height: 100px; /* Further adjust height for very small screens */
-    width: auto; /* Auto width */
-  }
-
-  .logo-pt {
-    height: 25px; /* Smaller logo for very small screens */
-    width: auto;
-  }
-
-  .our-services {
-    margin-top: 20px; /* Adjust margin */
-    padding: 10px; /* Reduce padding */
-    min-height: 150px; /* Ensure minimum height */
-    width: 125%; /* Width adjustment */
-    margin: 0 20px; /* Adjust margin */
+  .product-image {
+    max-width: 300px;
   }
 }
