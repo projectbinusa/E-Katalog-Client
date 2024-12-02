@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header2 {
+    display: flex;
+    justify-content: space-between; /* Memastikan ruang yang sama di antara elemen */
+    align-items: center; /* Menjaga semua elemen di tengah vertikal */
+    padding: 20px;
+    background-color: #260d6a; /* Warna latar belakang header */
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column; /* Menyusun logo dan input pencarian secara vertikal */
+    align-items: flex-start; /* Menyusun logo dan input ke kiri */
+}
+
+.logo2 {
+    height: 40px; /* Memperbesar ukuran logo */
+    width: auto;
+    margin-bottom: 5px; /* Memberikan jarak antara logo dan input pencarian */
+}
+
+.search-input {
+    width: 30%; /* Membuat input pencarian memenuhi lebar */
+    padding: 10px; /* Padding untuk kenyamanan */
+    border: 1px solid #ccc; /* Border abu-abu */
+    border-radius: 4px; /* Membuat sudut input melengkung */
+}
+
+.navbar2 {
+    display: flex; /* Memastikan navbar tetap rata */
+    align-items: center; /* Menjaga agar item tetap di tengah vertikal */
+}
+
+.nav-link2 {
+    margin: 0 10px; /* Memberikan jarak horizontal antar link */
+    padding: 10px 15px; /* Memberi padding agar lebih nyaman */
+    text-decoration: none;
+    color: white; /* Warna teks */
+    background-color: transparent; /* Latar belakang transparan */
+    border: none; /* Hilangkan border jika ada */
+    outline: none; /* Hilangkan outline jika ada */
+    transition: background-color 0.3s ease; /* Transisi halus untuk hover */
+}
+
+.nav-link2:hover {
+    background-color: #f1c40f; /* Warna hover (kuning) */
+    color: black; /* Warna teks saat hover */
+}
+
+/* Pastikan tidak ada outline saat link di-klik */
+.nav-link2:focus {
+    outline: none;
+}
