@@ -1,0 +1,51 @@
+.card-header-with-accent {
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.card-header-with-accent .card-body {
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.card-header-with-accent .card-body h4 {
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    font-weight: 300;
+}
+
+.card-header-with-accent .card-footer-accent {
+    height: 10px;
+    background-color: #260d6a;
+}
+
+.row.g-3 {
+    margin-top: 20px;
+}
+
+.card {
+    transition: transform 0.3s ease-in-out;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: none;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    height: 100px;
+    object-fit: cover;
+}
+
+.card-body.text-center {
+    text-align: center;
+}

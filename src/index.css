@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html, body {
+  height: 100%; 
+  margin: 0; 
+  overflow-x: hidden; 
+  background: none !important;
+}
+
+body {
+  display: flex;
+  flex-direction: column; 
+}
+
+.container {
+  flex-grow: 1; 
+}
+
+.App {
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  flex-grow: 0; 
+  padding: 20px;
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+}
+
+.App-body {
+  flex-grow: 1; 
+  overflow-y: auto;
+}
