@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/GantiPass.css";
 import Sidebar from "./Sidnav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

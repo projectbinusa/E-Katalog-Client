@@ -1,6 +1,7 @@
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "./App.css";
+// import "./App.css";
+import './index.css';
 import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
 import Home from "./component/Home";
 import Catalog from "./component/Catalog";

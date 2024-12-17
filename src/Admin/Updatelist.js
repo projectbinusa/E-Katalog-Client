@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../component/Sidnav";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";S
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";

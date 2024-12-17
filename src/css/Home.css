@@ -1,8 +1,8 @@
-/* Menghapus margin dan padding untuk body */
+/* Reset dan gaya umum */
 body {
   margin: 0;
   padding: 0;
-  background-color: #260d6a; /* Menyesuaikan dengan warna header */
+  background-color: #260d6a; /* Warna ungu gelap */
 }
 
 * {
@@ -11,25 +11,28 @@ body {
   box-sizing: border-box;
 }
 
-.main-section {
-  font-family: "Poppins", sans-serif;
-  background-color: #260d6a;
-  color: #fff;
-  margin: 0;
-  padding: 0;
-}
-
+/* Halaman utama */
 .home-page {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #260d6a; /* Sama dengan warna body */
+  color: white;
 }
 
-.logo {
-  height: 60px;
-  width: auto;
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between; /* Logo kiri, navbar kanan */
+  align-items: center;
+  padding: 10px 20px; /* Atur padding */
+  background-color: #260d6a; /* Warna latar */
+  /* border-bottom: 2px solid red; Garis bawah di bawah header */
 }
 
+
+/* Main Section */
 .main-section {
   display: flex;
   justify-content: space-between;
@@ -80,6 +83,7 @@ body {
   color: #000;
 }
 
+/* Gambar Produk */
 .product-image {
   flex-basis: 40%;
   height: auto;
@@ -87,53 +91,7 @@ body {
   background-color: transparent;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.header2 {
-  display: flex;
-  justify-content: flex-start; /* Mengatur agar semua item berada di kiri */
-  align-items: center;
-  background-color: #260d6a; /* Warna latar belakang header */
-}
-
-.logo2 {
-  height: 40px; /* Perbesar logo (ubah sesuai kebutuhan) */
-  width: auto;
-  margin-right: 750px; /* Memberikan jarak antara logo dan navbar */
-}
-
-.navbar2 {
-  display: flex; /* Memastikan navbar tetap rata */
-  align-items: center; /* Menjaga agar item tetap di tengah vertikal */
-}
-
-.nav-link2 {
-  margin: 0 10px; /* Memberikan jarak horizontal antar link */
-  padding: 10px 15px; /* Memberi padding agar lebih nyaman */
-  text-decoration: none;
-  color: white; /* Warna teks default putih */
-  background-color: transparent; /* Latar belakang transparan */
-  border: none; /* Hilangkan border jika ada */
-  outline: none; /* Hilangkan outline jika ada */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transisi halus untuk hover */
-}
-
-.nav-link2:hover {
-  background-color: #f1c40f; /* Warna hover (kuning) */
-  color: black; /* Warna teks saat hover */
-}
-
-/* Pastikan tidak ada outline saat link di-klik */
-.nav-link:focus {
-  outline: none;
-}
-
-
-/* Responsiveness */
+/* Responsif */
 @media (max-width: 768px) {
   .main-section {
     flex-direction: column;
@@ -147,5 +105,23 @@ body {
 
   .product-image {
     max-width: 300px;
+  }
+
+  /* Navbar */
+  .navbar {
+    display: flex;
+    gap: 30px; /* Jarak antar link */
+  }
+  
+  .nav-link {
+    text-decoration: none; /* Hilangkan garis bawah */
+    color: white; /* Warna teks putih */
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #ffd633; /* Warna hover kuning */
   }
 }

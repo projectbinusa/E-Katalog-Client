@@ -25,10 +25,20 @@
 }
 
 .search-input {
-    width: 30%; /* Membuat input pencarian memenuhi lebar */
+    width: 70%; /* Mengubah lebar menjadi 70% untuk lebih responsif */
+    max-width: 500px; /* Menambahkan batas maksimum lebar */
     padding: 10px; /* Padding untuk kenyamanan */
+    height: 40px; /* Menetapkan tinggi untuk konsistensi */
     border: 1px solid #ccc; /* Border abu-abu */
     border-radius: 4px; /* Membuat sudut input melengkung */
+    margin-right: 10px; /* Menambahkan margin kanan untuk jarak dengan elemen lain */
+    margin-left: 50px; /* Menambahkan margin kiri untuk memindahkan input ke kanan */
+    font-size: 16px; /* Menetapkan ukuran font untuk kenyamanan */
+}
+
+.search-input::placeholder {
+    color: #aaa; /* Warna placeholder */
+    opacity: 1; /* Pastikan placeholder terlihat */
 }
 
 .navbar2 {

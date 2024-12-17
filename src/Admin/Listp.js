@@ -8,7 +8,7 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "../component/Sidnav";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { Link } from "react-router-dom";
